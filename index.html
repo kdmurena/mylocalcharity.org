@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Local Charity — Find Charities Near You</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --sun: #F5A623; --sun-light: #FEF3DC; --sun-dark: #C57D0A;
+    --coral: #E8533A; --coral-light: #FDECEA;
+    --teal: #1D8F6E; --teal-light: #E0F4ED; --teal-dark: #0F5E48;
+    --plum: #6B3FA0; --plum-light: #F0EAF8;
+    --sky: #2E7DD1; --sky-light: #EAF2FB;
+    --cream: #FBF8F3; --warm-white: #FFFEF9;
+    --ink: #1A1208; --ink-mid: #4A3F32; --ink-light: #8A7B6C;
+    --border: rgba(26,18,8,0.1); --border-strong: rgba(26,18,8,0.2);
+    --shadow: 0 2px 16px rgba(26,18,8,0.08); --shadow-lg: 0 8px 40px rgba(26,18,8,0.12);
+    --r: 14px; --r-sm: 8px; --r-pill: 100px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; font-size: 15px; line-height: 1.6; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(251,248,243,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .nav-logo { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 700; color: var(--teal-dark); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+  .nav-logo span { color: var(--coral); }
+  .nav-links { display: flex; gap: 0.25rem; align-items: center; }
+  .nav-links a, .nav-btn { font-size: 14px; font-weight: 400; padding: 8px 14px; border-radius: var(--r-pill); text-decoration: none; color: var(--ink-mid); transition: background 0.15s, color 0.15s; border: none; cursor: pointer; background: none; font-family: 'DM Sans', sans-serif; }
+  .nav-links a:hover { background: var(--border); color: var(--ink); }
+  .nav-btn-primary { background: var(--teal) !important; color: white !important; font-weight: 500 !important; padding: 8px 18px !important; }
+  .nav-btn-primary:hover { background: var(--teal-dark) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; border: none; background: none; }
+  .hamburger span { width: 22px; height: 2px; background: var(--ink-mid); border-radius: 2px; display: block; }
+
+  /* GEO BANNER */
+  .geo-banner { background: var(--teal-light); border-bottom: 1px solid rgba(29,143,110,0.2); padding: 10px 1.5rem; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; font-size: 13px; }
+  .geo-banner-text { color: var(--teal-dark); display: flex; align-items: center; gap: 6px; }
+  .geo-pulse { width: 8px; height: 8px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; flex-shrink: 0; }
+  @keyframes pulse { 0%,100%{ opacity:1; } 50%{ opacity:0.4; } }
+  .geo-city { font-weight: 500; color: var(--teal-dark); }
+  .geo-change { font-size: 12px; color: var(--teal); background: none; border: 1px solid var(--teal); border-radius: var(--r-pill); padding: 3px 12px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
+  .geo-change:hover { background: var(--teal); color: white; }
+  .geo-input-wrap { display: none; align-items: center; gap: 8px; }
+  .geo-input-wrap.open { display: flex; }
+  .geo-input { font-size: 13px; padding: 5px 10px; border-radius: var(--r-sm); border: 1px solid var(--teal); font-family: 'DM Sans', sans-serif; color: var(--ink); background: white; outline: none; width: 160px; }
+  .geo-submit { font-size: 12px; padding: 5px 12px; background: var(--teal); color: white; border: none; border-radius: var(--r-pill); cursor: pointer; font-family: 'DM Sans', sans-serif; }
+
+  /* HERO */
+  .hero { background: var(--warm-white); padding: 5rem 1.5rem 3rem; text-align: center; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(29,143,110,0.07) 0%, transparent 70%), radial-gradient(ellipse 50% 40% at 20% 0%, rgba(245,166,35,0.08) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 80% 0%, rgba(232,83,58,0.06) 0%, transparent 60%); pointer-events: none; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--coral); background: var(--coral-light); padding: 5px 14px; border-radius: var(--r-pill); margin-bottom: 1.25rem; }
+  .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 700; line-height: 1.1; color: var(--ink); max-width: 680px; margin: 0 auto 1rem; }
+  .hero h1 em { font-style: italic; color: var(--teal); }
+  .hero p { font-size: 1.05rem; color: var(--ink-mid); max-width: 520px; margin: 0 auto 2rem; font-weight: 300; }
+  .search-wrap { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; position: relative; z-index: 1; }
+  .search-row { display: flex; gap: 8px; background: white; border: 1.5px solid var(--border-strong); border-radius: var(--r); padding: 6px 6px 6px 16px; box-shadow: var(--shadow); }
+  .search-row input { flex: 1; border: none; outline: none; font-size: 15px; font-family: 'DM Sans', sans-serif; color: var(--ink); background: transparent; }
+  .search-row input::placeholder { color: var(--ink-light); }
+  .search-btn { background: var(--teal); color: white; border: none; border-radius: var(--r-sm); padding: 10px 20px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.15s; white-space: nowrap; }
+  .search-btn:hover { background: var(--teal-dark); }
+  .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .pill { font-size: 13px; padding: 6px 14px; border-radius: var(--r-pill); border: 1px solid var(--border-strong); background: white; cursor: pointer; transition: all 0.15s; color: var(--ink-mid); font-family: 'DM Sans', sans-serif; }
+  .pill:hover, .pill.active { background: var(--teal); border-color: var(--teal); color: white; }
+
+  /* STATS BAR */
+  .stats-bar { display: flex; justify-content: center; gap: 3rem; padding: 1.5rem; background: var(--teal-light); border-bottom: 1px solid rgba(29,143,110,0.15); flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 700; color: var(--teal-dark); display: block; }
+  .stat-label { font-size: 12px; color: var(--teal); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* MAIN */
+  .main { max-width: 1140px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem; }
+  .section-title { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 500; color: var(--ink); }
+  .section-link { font-size: 13px; color: var(--teal); text-decoration: none; font-weight: 500; }
+  .section-link:hover { text-decoration: underline; }
+
+  /* SPOTLIGHT */
+  .spotlight { background: linear-gradient(135deg, var(--teal-dark) 0%, #0d5a45 100%); border-radius: 20px; padding: 2rem; display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: center; margin-bottom: 1rem; color: white; position: relative; overflow: hidden; }
+  .spotlight::after { content: '🩲'; position: absolute; right: 2rem; top: 50%; transform: translateY(-50%); font-size: 5rem; opacity: 0.15; pointer-events: none; }
+  .spotlight-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.15); backdrop-filter: blur(4px); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.9); padding: 4px 12px; border-radius: var(--r-pill); margin-bottom: 0.75rem; width: fit-content; }
+  .spotlight h2 { font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; color: white; }
+  .spotlight p { font-size: 14px; color: rgba(255,255,255,0.8); margin-bottom: 1rem; line-height: 1.6; max-width: 480px; }
+  .spotlight-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .spotlight-tag { font-size: 12px; padding: 4px 12px; border-radius: var(--r-pill); background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+  .spotlight-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-white { background: white; color: var(--teal-dark); border: none; border-radius: var(--r-pill); padding: 10px 20px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s; text-decoration: none; display: inline-block; }
+  .btn-white:hover { background: var(--teal-light); }
+  .btn-outline-white { background: rgba(255,255,255,0.12); color: white; border: 1px solid rgba(255,255,255,0.35); border-radius: var(--r-pill); padding: 10px 20px; font-size: 14px; font-weight: 400; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s; text-decoration: none; display: inline-block; }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.22); }
+
+  /* FEATURED ROW (Educate Tomorrow + SEED) */
+  .featured-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+  .featured-card { border-radius: 16px; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; position: relative; overflow: hidden; }
+  .featured-card-edu { background: linear-gradient(135deg, #1a4fa0 0%, #0d3470 100%); color: white; }
+  .featured-card-seed { background: linear-gradient(135deg, #6B3FA0 0%, #4a2870 100%); color: white; }
+  .featured-card-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; background: rgba(255,255,255,0.15); padding: 3px 10px; border-radius: var(--r-pill); width: fit-content; color: rgba(255,255,255,0.9); }
+  .featured-card h3 { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 700; color: white; }
+  .featured-card p { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.55; flex: 1; }
+  .featured-card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .featured-tag { font-size: 11px; padding: 3px 10px; border-radius: var(--r-pill); background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.85); }
+  .featured-card-footer { display: flex; gap: 8px; flex-wrap: wrap; }
+  .featured-btn { font-size: 13px; padding: 8px 16px; border-radius: var(--r-pill); cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 500; text-decoration: none; display: inline-block; border: none; transition: all 0.15s; }
+  .featured-btn-white { background: white; color: var(--ink); }
+  .featured-btn-outline { background: rgba(255,255,255,0.12); color: white; border: 1px solid rgba(255,255,255,0.3); }
+  .featured-btn-white:hover { opacity: 0.9; }
+  .featured-btn-outline:hover { background: rgba(255,255,255,0.25); }
+  .featured-card::after { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-size: 4rem; opacity: 0.12; pointer-events: none; }
+  .featured-card-edu::after { content: '📚'; }
+  .featured-card-seed::after { content: '🌱'; }
+
+  /* CHARITY GRID */
+  .charity-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+  .charity-card { background: white; border-radius: var(--r); border: 1px solid var(--border); padding: 1.25rem; transition: box-shadow 0.2s, transform 0.2s; cursor: pointer; display: flex; flex-direction: column; }
+  .charity-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .card-top { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 0.75rem; }
+  .card-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+  .card-icon-teal { background: var(--teal-light); }
+  .card-icon-sun { background: var(--sun-light); }
+  .card-icon-plum { background: var(--plum-light); }
+  .card-icon-sky { background: var(--sky-light); }
+  .card-icon-coral { background: var(--coral-light); }
+  .card-meta { flex: 1; min-width: 0; }
+  .card-name { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 2px; line-height: 1.3; }
+  .card-location { font-size: 12px; color: var(--ink-light); }
+  .card-distance { font-size: 11px; font-weight: 500; color: var(--teal); background: var(--teal-light); padding: 3px 10px; border-radius: var(--r-pill); white-space: nowrap; }
+  .card-desc { font-size: 13px; color: var(--ink-mid); line-height: 1.55; margin-bottom: 0.875rem; flex: 1; }
+  .card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 0.875rem; }
+  .tag { font-size: 11px; padding: 3px 10px; border-radius: var(--r-pill); background: var(--cream); border: 1px solid var(--border); color: var(--ink-mid); font-weight: 500; }
+  .card-footer { display: flex; gap: 8px; border-top: 1px solid var(--border); padding-top: 0.875rem; }
+  .card-btn { flex: 1; font-size: 13px; font-weight: 500; padding: 8px; border-radius: var(--r-sm); cursor: pointer; text-align: center; font-family: 'DM Sans', sans-serif; border: none; transition: all 0.15s; }
+  .card-btn-primary { background: var(--teal); color: white; }
+  .card-btn-primary:hover { background: var(--teal-dark); }
+  .card-btn-secondary { background: var(--cream); color: var(--ink-mid); border: 1px solid var(--border); }
+  .card-btn-secondary:hover { background: var(--teal-light); color: var(--teal-dark); }
+  .urgency-dot { width: 7px; height: 7px; background: var(--coral); border-radius: 50%; display: inline-block; margin-right: 5px; animation: pulse 2s infinite; }
+
+  /* TABS */
+  .tabs { display: flex; gap: 4px; background: var(--cream); border-radius: var(--r-sm); padding: 4px; margin-bottom: 1.5rem; width: fit-content; }
+  .tab-btn { padding: 9px 18px; border-radius: 7px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; color: var(--ink-light); background: none; transition: all 0.15s; }
+  .tab-btn.active { background: white; color: var(--ink); box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* HOW IT WORKS */
+  .how-section { background: var(--warm-white); border-radius: 20px; padding: 2.5rem; margin-bottom: 2.5rem; border: 1px solid var(--border); }
+  .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+  .how-step { text-align: center; }
+  .how-num { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 700; color: var(--teal); line-height: 1; margin-bottom: 0.5rem; }
+  .how-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+  .how-title { font-weight: 500; color: var(--ink); margin-bottom: 0.25rem; font-size: 0.95rem; }
+  .how-desc { font-size: 13px; color: var(--ink-light); line-height: 1.5; }
+
+  /* DROP-OFF */
+  .dropoff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .dropoff-card { background: white; border-radius: var(--r); border: 1px solid var(--border); padding: 1.1rem; display: flex; gap: 12px; align-items: flex-start; }
+  .dropoff-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--sun-light); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+  .dropoff-name { font-weight: 500; color: var(--ink); font-size: 0.9rem; margin-bottom: 2px; }
+  .dropoff-addr { font-size: 12px; color: var(--ink-light); margin-bottom: 4px; }
+  .dropoff-dist { font-size: 12px; color: var(--teal); font-weight: 500; }
+  .dropoff-open { font-size: 11px; color: #2E7D32; font-weight: 500; }
+  .dropoff-accepts { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
+  .accepts-tag { font-size: 10px; padding: 2px 8px; border-radius: var(--r-pill); background: var(--teal-light); color: var(--teal-dark); }
+
+  /* VOLUNTEER */
+  .volunteer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+  .vol-card { background: white; border-radius: var(--r); border: 1px solid var(--border); padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; }
+  .vol-header { display: flex; justify-content: space-between; align-items: flex-start; }
+  .vol-role { font-weight: 500; color: var(--ink); font-size: 0.95rem; }
+  .vol-org { font-size: 13px; color: var(--teal); font-weight: 500; }
+  .vol-badge { font-size: 11px; padding: 3px 10px; border-radius: var(--r-pill); white-space: nowrap; }
+  .badge-urgent { background: var(--coral-light); color: var(--coral); }
+  .badge-open { background: var(--teal-light); color: var(--teal-dark); }
+  .vol-details { font-size: 13px; color: var(--ink-mid); }
+  .vol-detail-row { display: flex; gap: 4px; align-items: center; margin-bottom: 4px; }
+  .vol-apply { width: 100%; padding: 10px; background: var(--plum-light); color: var(--plum); border: 1px solid rgba(107,63,160,0.2); border-radius: var(--r-sm); font-size: 13px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
+  .vol-apply:hover { background: var(--plum); color: white; }
+
+  /* RESULTS BAR */
+  .results-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; }
+  .results-count { font-size: 13px; color: var(--ink-light); }
+  .sort-select { font-size: 13px; color: var(--ink-mid); border: 1px solid var(--border-strong); border-radius: var(--r-sm); padding: 6px 10px; background: white; font-family: 'DM Sans', sans-serif; cursor: pointer; outline: none; }
+
+  /* LIST BANNER */
+  .list-banner { background: var(--sun-light); border: 1px solid rgba(245,166,35,0.25); border-radius: 20px; padding: 2rem; display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .list-icon { font-size: 3rem; flex-shrink: 0; }
+  .list-text h3 { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .list-text p { font-size: 13px; color: var(--ink-mid); }
+  .list-btn { margin-left: auto; background: var(--sun); color: white; border: none; border-radius: var(--r-pill); padding: 12px 24px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.15s; white-space: nowrap; }
+  .list-btn:hover { background: var(--sun-dark); }
+
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,18,8,0.5); z-index: 200; align-items: center; justify-content: center; padding: 1rem; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: white; border-radius: 20px; padding: 2rem; max-width: 480px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 24px 80px rgba(0,0,0,0.2); animation: slideUp 0.25s ease; }
+  @keyframes slideUp { from{ transform: translateY(20px); opacity:0; } to{ transform:translateY(0); opacity:1; } }
+  .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; }
+  .modal-title { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); }
+  .modal-close { width: 32px; height: 32px; border-radius: 50%; background: var(--cream); border: none; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; color: var(--ink-mid); transition: background 0.15s; flex-shrink: 0; }
+  .modal-close:hover { background: var(--border); }
+  .modal-charity-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 0.75rem; }
+  .modal-charity-name { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.25rem; }
+  .modal-charity-loc { font-size: 13px; color: var(--ink-light); margin-bottom: 1.25rem; }
+  .modal-section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 0.5rem; }
+  .modal-desc { font-size: 13px; color: var(--ink-mid); line-height: 1.6; margin-bottom: 1.25rem; }
+  .modal-impact { background: var(--teal-light); border-radius: var(--r-sm); padding: 12px 14px; font-size: 13px; color: var(--teal-dark); margin-bottom: 1.25rem; border-left: 3px solid var(--teal); }
+  .modal-needs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .need-tag { font-size: 12px; padding: 5px 12px; border-radius: var(--r-pill); background: var(--sun-light); color: var(--sun-dark); border: 1px solid rgba(245,166,35,0.2); font-weight: 500; }
+  .modal-divider { height: 1px; background: var(--border); margin-bottom: 1.25rem; }
+  .modal-redirect-note { font-size: 12px; color: var(--ink-light); text-align: center; margin-bottom: 1rem; }
+  .modal-actions { display: flex; flex-direction: column; gap: 8px; }
+  .modal-btn { width: 100%; padding: 13px; border-radius: var(--r); font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s; text-align: center; text-decoration: none; display: block; border: none; }
+  .modal-btn-primary { background: var(--teal); color: white; }
+  .modal-btn-primary:hover { background: var(--teal-dark); }
+  .modal-btn-secondary { background: var(--cream); color: var(--ink-mid); border: 1px solid var(--border-strong); }
+  .modal-btn-secondary:hover { background: var(--teal-light); color: var(--teal-dark); }
+  .modal-btn-outline { background: white; color: var(--plum); border: 1px solid rgba(107,63,160,0.3); }
+  .modal-btn-outline:hover { background: var(--plum-light); }
+
+  /* MOBILE NAV */
+  .mobile-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: rgba(251,248,243,0.96); backdrop-filter: blur(12px); border-top: 1px solid var(--border); padding: 8px 0 env(safe-area-inset-bottom); z-index: 100; }
+  .mobile-nav-inner { display: flex; justify-content: space-around; }
+  .mobile-nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 6px 12px; border-radius: var(--r-sm); font-size: 10px; color: var(--ink-light); cursor: pointer; font-weight: 500; border: none; background: none; font-family: 'DM Sans', sans-serif; transition: color 0.15s; }
+  .mobile-nav-item.active { color: var(--teal); }
+  .mobile-nav-icon { font-size: 1.25rem; }
+
+  /* TOAST */
+  .toast { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--ink); color: white; padding: 12px 20px; border-radius: var(--r-pill); font-size: 14px; font-weight: 500; z-index: 300; opacity: 0; transition: all 0.3s; pointer-events: none; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* FOOTER */
+  footer { background: var(--ink); color: rgba(255,255,255,0.7); padding: 3rem 1.5rem 2rem; }
+  .footer-inner { max-width: 1140px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3,1fr); gap: 2rem; margin-bottom: 2rem; }
+  .footer-brand p { font-size: 13px; line-height: 1.6; }
+  .footer-col h4 { font-weight: 500; color: white; margin-bottom: 0.75rem; font-size: 14px; }
+  .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 0.4rem; transition: color 0.15s; }
+  .footer-col a:hover { color: white; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 12px; flex-wrap: wrap; gap: 0.5rem; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .spotlight { grid-template-columns: 1fr; }
+    .spotlight::after { display: none; }
+    .featured-row { grid-template-columns: 1fr; }
+    .dropoff-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .mobile-nav { display: block; }
+    body { padding-bottom: 80px; }
+    .hero { padding: 3rem 1.25rem 2.5rem; }
+    .stats-bar { gap: 1.5rem; }
+    .list-banner { flex-direction: column; text-align: center; }
+    .list-btn { margin-left: 0; width: 100%; }
+  }
+  @media (max-width: 480px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .charity-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">My Local <span>Charity</span></a>
+  <div class="nav-links">
+    <a href="#charities">Find Charities</a>
+    <a href="#volunteer">Volunteer</a>
+    <a href="#dropoff">Drop-Off Spots</a>
+    <a href="#list">List Your Charity</a>
+    <button class="nav-btn nav-btn-primary" onclick="openCharityModal(1)">Donate Now</button>
+  </div>
+  <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- GEO BANNER -->
+<div class="geo-banner" id="geoBanner">
+  <div class="geo-banner-text">
+    <span class="geo-pulse"></span>
+    Showing charities near <strong class="geo-city" id="geoCity">detecting your location…</strong>
+  </div>
+  <button class="geo-change" onclick="toggleGeoInput()">Not your city?</button>
+  <div class="geo-input-wrap" id="geoInputWrap">
+    <input class="geo-input" type="text" placeholder="Enter your city" id="geoManualInput" onkeydown="if(event.key==='Enter') applyManualCity()">
+    <button class="geo-submit" onclick="applyManualCity()">Go</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">🌱 Neighbors helping neighbors</div>
+  <h1>Give where it <em>matters</em> most — right here</h1>
+  <p>Discover local charities, make donations, and find volunteer opportunities in your neighborhood. Every contribution makes a real difference.</p>
+  <div class="search-wrap">
+    <div class="search-row">
+      <input type="text" id="searchInput" placeholder="Search charities, causes, or zip code…" oninput="filterCharities()">
+      <button class="search-btn" onclick="filterCharities()">🔍 Search</button>
+    </div>
+    <div class="filter-pills">
+      <button class="pill active" onclick="setFilter('all', this)">🌍 All Causes</button>
+      <button class="pill" onclick="setFilter('hygiene', this)">🧴 Hygiene</button>
+      <button class="pill" onclick="setFilter('food', this)">🥗 Food</button>
+      <button class="pill" onclick="setFilter('education', this)">📚 Education</button>
+      <button class="pill" onclick="setFilter('children', this)">👶 Children</button>
+      <button class="pill" onclick="setFilter('health', this)">❤️‍🩹 Health</button>
+      <button class="pill" onclick="setFilter('housing', this)">🏠 Housing</button>
+      <button class="pill" onclick="setFilter('animals', this)">🐾 Animals</button>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat"><span class="stat-num">2,847</span><span class="stat-label">Local Charities</span></div>
+  <div class="stat"><span class="stat-num">$4.2M</span><span class="stat-label">Donated This Year</span></div>
+  <div class="stat"><span class="stat-num">18,300</span><span class="stat-label">Active Volunteers</span></div>
+  <div class="stat"><span class="stat-num">340+</span><span class="stat-label">Drop-Off Locations</span></div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- SPOTLIGHT: WUNDIEUNDIES -->
+  <div class="spotlight" id="charities">
+    <div>
+      <div class="spotlight-badge">⭐ Community Spotlight — Miami, FL</div>
+      <h2>WundieUndies</h2>
+      <p>Founded by three determined young women, WundieUndies collects and distributes undergarments, feminine hygiene products, and diapers to individuals and partner organizations serving those in need. Because dignity is a basic human right.</p>
+      <div class="spotlight-tags">
+        <span class="spotlight-tag">👙 Undergarments</span>
+        <span class="spotlight-tag">🌸 Feminine Hygiene</span>
+        <span class="spotlight-tag">👶 Diapers</span>
+        <span class="spotlight-tag">📍 Miami, FL</span>
+      </div>
+      <div class="spotlight-actions">
+        <button class="btn-white" onclick="openCharityModal(1)">💚 Donate / Learn More</button>
+        <button class="btn-outline-white" onclick="showDropoff()">📦 Drop Off Items</button>
+        <button class="btn-outline-white" onclick="switchTab('volunteer')">🙋 Volunteer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURED: EDUCATE TOMORROW + SEED SCHOOL -->
+  <div style="margin-bottom:0.5rem;">
+    <div class="section-header" style="margin-bottom:0.75rem;">
+      <span class="section-title" style="font-size:1rem;color:var(--ink-mid);font-weight:400;">Also featured in Miami</span>
+    </div>
+  </div>
+  <div class="featured-row" style="margin-bottom:2rem;">
+    <div class="featured-card featured-card-edu">
+      <div class="featured-card-badge">⭐ Featured</div>
+      <h3>Educate Tomorrow</h3>
+      <p>Founded in Miami in 2003, Educate Tomorrow provides one-on-one mentoring, education support, and independent living assistance for foster youth and young people experiencing homelessness — helping them access college and build independent lives. A 4-Star Charity Navigator organization.</p>
+      <div class="featured-card-tags">
+        <span class="featured-tag">🎓 Foster Youth</span>
+        <span class="featured-tag">📖 Education</span>
+        <span class="featured-tag">🏠 Independence</span>
+        <span class="featured-tag">📍 Miami Shores, FL</span>
+      </div>
+      <div class="featured-card-footer">
+        <a href="https://www.educatetomorrow.org/who-we-are/get-involved/" target="_blank" rel="noopener" class="featured-btn featured-btn-white">💚 Donate / Volunteer ↗</a>
+        <a href="https://www.educatetomorrow.org" target="_blank" rel="noopener" class="featured-btn featured-btn-outline">🌐 Website ↗</a>
+      </div>
+    </div>
+    <div class="featured-card featured-card-seed">
+      <div class="featured-card-badge">⭐ Featured</div>
+      <h3>The SEED School of Miami</h3>
+      <p>South Florida's only public, college-preparatory boarding school — open to students in grades 6–12. SEED Miami serves scholars from the most vulnerable communities, 95% of whom qualify for public housing. Since 2021, every SEED senior has been accepted to college. Your support builds the home these students deserve.</p>
+      <div class="featured-card-tags">
+        <span class="featured-tag">🏫 Boarding School</span>
+        <span class="featured-tag">🎓 College Prep</span>
+        <span class="featured-tag">🌱 At-Risk Youth</span>
+        <span class="featured-tag">📍 Miami, FL</span>
+      </div>
+      <div class="featured-card-footer">
+        <a href="https://miami.seedschool.org/donation-page" target="_blank" rel="noopener" class="featured-btn featured-btn-white">💚 Donate ↗</a>
+        <a href="https://miami.seedschool.org" target="_blank" rel="noopener" class="featured-btn featured-btn-outline">🌐 Website ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('donate')" id="tab-donate">🎁 Donate</button>
+    <button class="tab-btn" onclick="switchTab('volunteer')" id="tab-volunteer">🙋 Volunteer</button>
+    <button class="tab-btn" onclick="switchTab('dropoff')" id="tab-dropoff">📦 Drop-Off</button>
+  </div>
+
+  <!-- DONATE TAB -->
+  <div class="tab-content active" id="content-donate">
+    <div class="results-bar">
+      <span class="results-count" id="resultsCount">Showing charities near Miami, FL</span>
+      <select class="sort-select"><option>Nearest first</option><option>Most urgent</option><option>Highest rated</option></select>
+    </div>
+    <div class="charity-grid" id="charityGrid"></div>
+  </div>
+
+  <!-- VOLUNTEER TAB -->
+  <div class="tab-content" id="content-volunteer">
+    <div class="section-header"><span class="section-title">Volunteer Opportunities</span><a href="#" class="section-link">View all →</a></div>
+    <div class="volunteer-grid">
+      <div class="vol-card">
+        <div class="vol-header"><div><div class="vol-role">Sorting &amp; Packing Volunteer</div><div class="vol-org">WundieUndies</div></div><span class="vol-badge badge-urgent">🔴 Urgent</span></div>
+        <div class="vol-details"><div class="vol-detail-row">📅 Saturdays 9am–12pm</div><div class="vol-detail-row">📍 Miami, FL (Wynwood)</div><div class="vol-detail-row">⏱ 3 hrs/week</div><div style="font-size:13px;color:var(--ink-mid);margin-top:6px;">Sort donated undergarments and pack hygiene kits for distribution to partner organizations.</div></div>
+        <button class="vol-apply" onclick="window.open('https://www.wundieundies.org/volunteer','_blank')">Apply to Volunteer ↗</button>
+      </div>
+      <div class="vol-card">
+        <div class="vol-header"><div><div class="vol-role">Youth Mentor</div><div class="vol-org">Educate Tomorrow</div></div><span class="vol-badge badge-urgent">🔴 Urgent</span></div>
+        <div class="vol-details"><div class="vol-detail-row">📅 Flexible schedule</div><div class="vol-detail-row">📍 Miami Shores, FL</div><div class="vol-detail-row">⏱ 2–4 hrs/week</div><div style="font-size:13px;color:var(--ink-mid);margin-top:6px;">Provide one-on-one mentoring to foster youth navigating college access and independent living.</div></div>
+        <button class="vol-apply" onclick="window.open('https://www.educatetomorrow.org/who-we-are/get-involved/','_blank')">Apply to Volunteer ↗</button>
+      </div>
+      <div class="vol-card">
+        <div class="vol-header"><div><div class="vol-role">Food Pantry Assistant</div><div class="vol-org">Feeding South Florida</div></div><span class="vol-badge badge-open">✅ Open</span></div>
+        <div class="vol-details"><div class="vol-detail-row">📅 Mon, Wed, Fri 8am–11am</div><div class="vol-detail-row">📍 Pembroke Park, FL</div><div class="vol-detail-row">⏱ Flexible hours</div><div style="font-size:13px;color:var(--ink-mid);margin-top:6px;">Distribute food boxes and assist families at one of South Florida's largest food banks.</div></div>
+        <button class="vol-apply" onclick="window.open('https://feedingsouthflorida.org/volunteer/','_blank')">Apply to Volunteer ↗</button>
+      </div>
+      <div class="vol-card">
+        <div class="vol-header"><div><div class="vol-role">SEED Mentor / Tutor</div><div class="vol-org">SEED School of Miami</div></div><span class="vol-badge badge-open">✅ Open</span></div>
+        <div class="vol-details"><div class="vol-detail-row">📅 Weekday evenings</div><div class="vol-detail-row">📍 Miami, FL (NW 127th St)</div><div class="vol-detail-row">⏱ 2 hrs/week</div><div style="font-size:13px;color:var(--ink-mid);margin-top:6px;">Mentor or tutor boarding school students preparing for college from Miami's most underserved communities.</div></div>
+        <button class="vol-apply" onclick="window.open('https://miami.seedschool.org','_blank')">Apply to Volunteer ↗</button>
+      </div>
+      <div class="vol-card">
+        <div class="vol-header"><div><div class="vol-role">Activity Leader</div><div class="vol-org">Little Lighthouse Foundation</div></div><span class="vol-badge badge-open">✅ Open</span></div>
+        <div class="vol-details"><div class="vol-detail-row">📅 Flexible — many programs</div><div class="vol-detail-row">📍 Multiple Miami sites</div><div class="vol-detail-row">⏱ 1–2 hrs/week</div><div style="font-size:13px;color:var(--ink-mid);margin-top:6px;">Lead Story Hour, Homework Helpers, Fit Club, or other programs for underserved children across South Florida.</div></div>
+        <button class="vol-apply" onclick="window.open('https://thelittlelighthouse.org','_blank')">Apply to Volunteer ↗</button>
+      </div>
+      <div class="vol-card">
+        <div class="vol-header"><div><div class="vol-role">Animal Shelter Dog Walker</div><div class="vol-org">Miami-Dade Animal Services</div></div><span class="vol-badge badge-urgent">🔴 Urgent</span></div>
+        <div class="vol-details"><div class="vol-detail-row">📅 Any day, 7am–10am</div><div class="vol-detail-row">📍 Doral, Miami</div><div class="vol-detail-row">⏱ 2–3 hrs/week</div><div style="font-size:13px;color:var(--ink-mid);margin-top:6px;">Walk and socialize shelter dogs to improve their wellbeing and adoptability.</div></div>
+        <button class="vol-apply" onclick="window.open('https://www.miamidade.gov/animals/volunteer-donate.asp','_blank')">Apply to Volunteer ↗</button>
+      </div>
+      <div class="vol-card">
+        <div class="vol-header"><div><div class="vol-role">Wish Granter</div><div class="vol-org">Make-A-Wish Southern Florida</div></div><span class="vol-badge badge-open">✅ Open</span></div>
+        <div class="vol-details"><div class="vol-detail-row">📅 Flexible schedule</div><div class="vol-detail-row">📍 Miami-Dade County</div><div class="vol-detail-row">⏱ As needed</div><div style="font-size:13px;color:var(--ink-mid);margin-top:6px;">Work directly with wish children and their families to discover and help grant a life-changing wish. Background check required.</div></div>
+        <button class="vol-apply" onclick="window.open('https://wish.org/sfla/volunteer','_blank')">Apply to Volunteer ↗</button>
+      </div>
+      <div class="vol-card">
+        <div class="vol-header"><div><div class="vol-role">Peer Support Volunteer</div><div class="vol-org">NAMI Miami-Dade</div></div><span class="vol-badge badge-open">✅ Open</span></div>
+        <div class="vol-details"><div class="vol-detail-row">📅 Flexible — various programs</div><div class="vol-detail-row">📍 Coral Gables, Miami</div><div class="vol-detail-row">⏱ 2–4 hrs/week</div><div style="font-size:13px;color:var(--ink-mid);margin-top:6px;">Provide peer support, facilitate support groups, or help with outreach and education events for individuals and families affected by mental illness.</div></div>
+        <button class="vol-apply" onclick="window.open('https://namimiami.org/volunteer','_blank')">Apply to Volunteer ↗</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DROP-OFF TAB -->
+  <div class="tab-content" id="content-dropoff">
+    <div class="section-header" id="dropoff"><span class="section-title">Nearby Drop-Off Locations</span><a href="#" class="section-link">View map →</a></div>
+    <div class="dropoff-grid">
+      <div class="dropoff-card"><div class="dropoff-icon">🏪</div><div><div class="dropoff-name">WundieUndies Collection Hub</div><div class="dropoff-addr">2241 NW 2nd Ave, Miami FL 33127</div><div style="display:flex;gap:8px;align-items:center;margin-top:4px;"><span class="dropoff-dist">0.4 mi</span><span class="dropoff-open">● Open until 6pm</span></div><div class="dropoff-accepts"><span class="accepts-tag">Underwear</span><span class="accepts-tag">Diapers</span><span class="accepts-tag">Fem. Hygiene</span></div></div></div>
+      <div class="dropoff-card"><div class="dropoff-icon">🏥</div><div><div class="dropoff-name">Camillus House</div><div class="dropoff-addr">1603 NW 7th Ave, Miami FL 33136</div><div style="display:flex;gap:8px;align-items:center;margin-top:4px;"><span class="dropoff-dist">1.2 mi</span><span class="dropoff-open">● Open 24/7</span></div><div class="dropoff-accepts"><span class="accepts-tag">Clothing</span><span class="accepts-tag">Hygiene Kits</span><span class="accepts-tag">Food</span></div></div></div>
+      <div class="dropoff-card"><div class="dropoff-icon">🏛</div><div><div class="dropoff-name">Miami Public Library (Brickell)</div><div class="dropoff-addr">128 SW 8th St, Miami FL 33130</div><div style="display:flex;gap:8px;align-items:center;margin-top:4px;"><span class="dropoff-dist">1.8 mi</span><span class="dropoff-open">● Open until 8pm</span></div><div class="dropoff-accepts"><span class="accepts-tag">Books</span><span class="accepts-tag">School Supplies</span><span class="accepts-tag">Clothing</span></div></div></div>
+      <div class="dropoff-card"><div class="dropoff-icon">⛪</div><div><div class="dropoff-name">St. John Bosco Parish</div><div class="dropoff-addr">1901 SW 4th St, Miami FL 33135</div><div style="display:flex;gap:8px;align-items:center;margin-top:4px;"><span class="dropoff-dist">2.1 mi</span><span class="dropoff-open">● Open Mon–Sat 9am–4pm</span></div><div class="dropoff-accepts"><span class="accepts-tag">Diapers</span><span class="accepts-tag">Baby Items</span><span class="accepts-tag">Food</span></div></div></div>
+      <div class="dropoff-card"><div class="dropoff-icon">🏢</div><div><div class="dropoff-name">Lotus House Women's Shelter</div><div class="dropoff-addr">130 NW North River Dr, Miami FL 33128</div><div style="display:flex;gap:8px;align-items:center;margin-top:4px;"><span class="dropoff-dist">2.3 mi</span><span class="dropoff-open">● Open Mon–Fri 8am–5pm</span></div><div class="dropoff-accepts"><span class="accepts-tag">Women's Clothing</span><span class="accepts-tag">Fem. Hygiene</span><span class="accepts-tag">Toiletries</span></div></div></div>
+      <div class="dropoff-card"><div class="dropoff-icon">🎗</div><div><div class="dropoff-name">Salvation Army Overtown</div><div class="dropoff-addr">550 NW 1st Ave, Miami FL 33128</div><div style="display:flex;gap:8px;align-items:center;margin-top:4px;"><span class="dropoff-dist">2.6 mi</span><span class="dropoff-open">● Open Mon–Sat 8am–6pm</span></div><div class="dropoff-accepts"><span class="accepts-tag">All Clothing</span><span class="accepts-tag">Household</span><span class="accepts-tag">Toys</span></div></div></div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="how-section" style="margin-top:2.5rem;">
+    <div class="section-title">How My Local Charity works</div>
+    <div class="how-grid">
+      <div class="how-step"><div class="how-icon">📍</div><div class="how-num">01</div><div class="how-title">We find your city</div><div class="how-desc">Your location is detected automatically — no account or sign-in needed.</div></div>
+      <div class="how-step"><div class="how-icon">🔍</div><div class="how-num">02</div><div class="how-title">Browse local charities</div><div class="how-desc">See vetted charities in your area, filtered by cause or distance.</div></div>
+      <div class="how-step"><div class="how-icon">💚</div><div class="how-num">03</div><div class="how-title">Choose how to give</div><div class="how-desc">Donate on the charity's own site, drop off items, or sign up to volunteer.</div></div>
+      <div class="how-step"><div class="how-icon">✨</div><div class="how-num">04</div><div class="how-title">100% goes to them</div><div class="how-desc">My Local Charity takes nothing — every dollar goes directly to the charity you choose.</div></div>
+    </div>
+  </div>
+
+  <!-- LIST YOUR CHARITY -->
+  <div class="list-banner" id="list">
+    <div class="list-icon">🏳</div>
+    <div class="list-text">
+      <h3>Running a local charity? List it for free.</h3>
+      <p>My Local Charity helps grassroots organizations like WundieUndies, Educate Tomorrow, and SEED School Miami reach donors and volunteers in their community. No fees, no algorithms — just genuine local connections.</p>
+    </div>
+    <a href="register.html" class="list-btn" style="text-decoration:none;display:inline-block;">List Your Charity →</a>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="color:white;margin-bottom:0.75rem;display:block;">My Local <span style="color:var(--coral)">Charity</span></a>
+        <p>Connecting communities with the causes that matter most to them. Built with ❤️ in Miami, FL — mylocalcharity.org</p>
+      </div>
+      <div class="footer-col"><h4>Discover</h4><a href="#">Find Charities</a><a href="#">Volunteer Roles</a><a href="#">Drop-Off Spots</a><a href="#">Cause Map</a></div>
+      <div class="footer-col"><h4>Organizations</h4><a href="#">List Your Charity</a><a href="#">Fundraising Tools</a><a href="#">Verification</a><a href="#">Partner Program</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="#">About Us</a><a href="#">Blog</a><a href="#">Press</a><a href="#">Privacy Policy</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 My Local Charity. All rights reserved.</span>
+      <span>mylocalcharity.org 🌴</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+  <div class="mobile-nav-inner">
+    <button class="mobile-nav-item active" onclick="switchTab('donate');setMobileActive(this)"><span class="mobile-nav-icon">🎁</span>Donate</button>
+    <button class="mobile-nav-item" onclick="switchTab('volunteer');setMobileActive(this)"><span class="mobile-nav-icon">🙋</span>Volunteer</button>
+    <button class="mobile-nav-item" onclick="switchTab('dropoff');setMobileActive(this)"><span class="mobile-nav-icon">📦</span>Drop-Off</button>
+    <button class="mobile-nav-item" onclick="openCharityModal(1)"><span class="mobile-nav-icon">💚</span>Give</button>
+  </div>
+</div>
+
+<!-- CHARITY REDIRECT MODAL -->
+<div class="modal-overlay" id="donateModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Support this charity</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div id="modalCharityIcon" class="modal-charity-icon card-icon-teal">🩲</div>
+    <div class="modal-charity-name" id="modalCharityName">WundieUndies</div>
+    <div class="modal-charity-loc" id="modalCharityLoc">📍 Wynwood, Miami, FL</div>
+    <div class="modal-section-label">About</div>
+    <div class="modal-desc" id="modalCharityDesc"></div>
+    <div class="modal-impact" id="modalImpact"></div>
+    <div class="modal-section-label">Current needs</div>
+    <div class="modal-needs" id="modalNeeds"></div>
+    <div class="modal-divider"></div>
+    <div class="modal-redirect-note">🔗 You'll be taken to this charity's own website to donate, volunteer, or learn more.</div>
+    <div class="modal-actions" id="modalActions"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const charities = [
+  {
+    id: 1, name: "WundieUndies", icon: "🩲", iconClass: "card-icon-teal",
+    location: "Wynwood, Miami, FL", distance: "0.4 mi",
+    desc: "Founded by three young women, WundieUndies collects and distributes undergarments, feminine hygiene products, and diapers to individuals and organizations serving those in need. Because dignity is a basic human right.",
+    tags: ["Hygiene", "Diapers", "Women's Health"], category: ["hygiene", "children"],
+    urgent: true,
+    needs: ["Underwear (all sizes)", "Feminine hygiene products", "Diapers (all sizes)", "Monetary donations"],
+    impact: "💡 100% of donations go directly to distributing essential hygiene items to people in need.",
+    donateUrl: "https://www.wundieundies.org/donate",
+    volunteerUrl: "https://www.wundieundies.org/volunteer",
+    website: "https://www.wundieundies.org", city: "miami"
+  },
+  {
+    id: 2, name: "Feeding South Florida", icon: "🥗", iconClass: "card-icon-sun",
+    location: "Pembroke Park, FL", distance: "1.3 mi",
+    desc: "One of the most efficient food banks in the country, providing food assistance to more than 700,000 people annually across four South Florida counties.",
+    tags: ["Food", "Seniors", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Every $1 donated provides 3 meals to a neighbor in need.",
+    donateUrl: "https://feedingsouthflorida.org/donate/",
+    volunteerUrl: "https://feedingsouthflorida.org/volunteer/",
+    website: "https://feedingsouthflorida.org", city: "miami"
+  },
+  {
+    id: 3, name: "Lotus House Women's Shelter", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Overtown, Miami, FL", distance: "2.2 mi",
+    desc: "The nation's largest shelter for women, children, and families experiencing homelessness, offering housing, healthcare, education, and trauma-informed care.",
+    tags: ["Housing", "Women", "Children"], category: ["housing", "children"],
+    urgent: true,
+    needs: ["Women's clothing", "Toiletries", "Children's items", "Monetary donations"],
+    impact: "💡 Lotus House shelters over 500 women and children every single night.",
+    donateUrl: "https://www.lotushouse.org/donate",
+    volunteerUrl: "https://www.lotushouse.org/get-involved/volunteer",
+    website: "https://www.lotushouse.org", city: "miami"
+  },
+  {
+    id: 4, name: "Little Lighthouse Foundation", icon: "🔦", iconClass: "card-icon-sky",
+    location: "Multiple Sites, Miami, FL", distance: "2.5 mi",
+    desc: "Founded in 2010, the Little Lighthouse Foundation positively impacts the lives of underserved children across South Florida through 20+ programs including homework help, fitness, story hours, and mentorship.",
+    tags: ["Children", "Education", "Mentorship"], category: ["children", "education"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer hours", "School supplies"],
+    impact: "💡 Over 30,000 children impacted through 20+ programs across South Florida.",
+    donateUrl: "https://thelittlelighthouse.org/donate",
+    volunteerUrl: "https://thelittlelighthouse.org/volunteer",
+    website: "https://thelittlelighthouse.org", city: "miami"
+  },
+  {
+    id: 5, name: "Camillus House", icon: "🌟", iconClass: "card-icon-sun",
+    location: "Overtown, Miami, FL", distance: "2.8 mi",
+    desc: "For over 60 years, Camillus House has provided meals, shelter, healthcare, and pathways out of homelessness for Miami's most vulnerable residents — serving over 1,000 people every day.",
+    tags: ["Homelessness", "Healthcare", "Food"], category: ["housing", "food"],
+    urgent: false,
+    needs: ["Clothing (all sizes)", "Hygiene kits", "Bottled water", "Monetary donations"],
+    impact: "💡 Camillus House serves over 1,000 people every day across its Miami programs.",
+    donateUrl: "https://www.camillus.org/donate/",
+    volunteerUrl: "https://www.camillus.org/volunteer/",
+    website: "https://www.camillus.org", city: "miami"
+  },
+  {
+    id: 6, name: "United Way Miami", icon: "🤝", iconClass: "card-icon-plum",
+    location: "Miami, FL", distance: "3.0 mi",
+    desc: "United Way Miami improves quality of life for all by bringing together people and resources committed to building a better community — with high ratings from charity watchdog organizations for efficient, effective operations.",
+    tags: ["Community", "Families", "Social Services"], category: ["children", "housing", "food"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer hours", "Corporate partnerships"],
+    impact: "💡 United Way Miami connects thousands of donors with hundreds of vetted local nonprofits.",
+    donateUrl: "https://unitedwaymiami.org/donate",
+    volunteerUrl: "https://unitedwaymiami.org/volunteermiami/",
+    website: "https://unitedwaymiami.org", city: "miami"
+  },
+  {
+    id: 7, name: "Miami-Dade Animal Services", icon: "🐾", iconClass: "card-icon-teal",
+    location: "Doral, Miami, FL", distance: "3.5 mi",
+    desc: "Miami-Dade's official animal shelter rescues, rehabilitates, and re-homes thousands of animals each year under a no-kill commitment.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Pet food", "Blankets & towels", "Monetary donations", "Foster homes"],
+    impact: "💡 Your support covers vet care, food, and housing for thousands of rescued animals.",
+    donateUrl: "https://www.miamidade.gov/animals/volunteer-donate.asp",
+    volunteerUrl: "https://www.miamidade.gov/animals/volunteer-donate.asp",
+    website: "https://www.miamidade.gov/animals", city: "miami"
+  },
+  {
+    id: 8, name: "Make-A-Wish Southern Florida", icon: "⭐", iconClass: "card-icon-sun",
+    location: "Fort Lauderdale / Miami-Dade, FL", distance: "1.8 mi",
+    desc: "Since 1983, Make-A-Wish Southern Florida has granted more than 15,000 life-changing wishes for children with critical illnesses across 22 Florida counties — now granting a wish every 14 hours.",
+    tags: ["Children's Health", "Critical Illness", "Wishes"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer wish granters", "Fundraising support"],
+    impact: "💡 Every wish costs around $10,000 — your donation helps grant a child's dream during their darkest days.",
+    donateUrl: "https://wish.org/sfla/ways-help-us",
+    volunteerUrl: "https://wish.org/sfla/volunteer",
+    website: "https://wish.org/sfla", city: "miami"
+  },
+  {
+    id: 9, name: "Nicklaus Children's Hospital Foundation", icon: "🏥", iconClass: "card-icon-coral",
+    location: "Miami, FL (Coral Gables area)", distance: "2.4 mi",
+    desc: "Founded by Jack and Barbara Nicklaus, this foundation supports South Florida's top-ranked children's hospital — funding pediatric research, advanced care units, and innovative treatments so no child has to leave South Florida for exceptional care.",
+    tags: ["Pediatric Care", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate sponsorships", "Volunteer event support"],
+    impact: "💡 Your gift helps fund critical care for children with heart conditions, cancer, brain disorders, and more.",
+    donateUrl: "https://give.nicklauschildrens.org/home",
+    volunteerUrl: "https://give.nicklauschildrens.org/home",
+    website: "https://www.nicklauschildrens.org", city: "miami"
+  },
+  {
+    id: 10, name: "Children's Cancer Fund — Miami", icon: "🎗", iconClass: "card-icon-plum",
+    location: "South Miami, FL", distance: "3.2 mi",
+    desc: "An all-volunteer organization supporting children and families battling cancer, sickle cell disease, and serious blood disorders at Holtz Children's Hospital and Sylvester Comprehensive Cancer Center since 1997.",
+    tags: ["Cancer", "Pediatric", "Hospital Support"], category: ["health", "children"],
+    urgent: true,
+    needs: ["Monetary donations", "Gift donations for patients", "Volunteer hours"],
+    impact: "💡 100% volunteer-run — every dollar goes directly to supporting young patients and their families.",
+    donateUrl: "https://jacksonhealthfoundation.org/donate",
+    volunteerUrl: "http://www.ccf-miami.org",
+    website: "http://www.ccf-miami.org", city: "miami"
+  },
+  {
+    id: 11, name: "NAMI Miami-Dade", icon: "🧠", iconClass: "card-icon-sky",
+    location: "Coral Gables, Miami, FL", distance: "2.9 mi",
+    desc: "The National Alliance on Mental Illness of Miami-Dade County offers free, confidential mental health support, education, and advocacy in English and Spanish — serving individuals, families, and caregivers affected by mental illness across Miami-Dade.",
+    tags: ["Mental Health", "Advocacy", "Support Groups"], category: ["health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer peer supporters", "Event volunteers"],
+    impact: "💡 1 in 5 Americans experiences mental illness — NAMI provides free support to those who can't afford care.",
+    donateUrl: "https://namimiami.org/donate",
+    volunteerUrl: "https://namimiami.org/volunteer",
+    website: "https://namimiami.org", city: "miami"
+  },
+  {
+    id: 12, name: "Miami Beach Community Health Center", icon: "💊", iconClass: "card-icon-teal",
+    location: "Miami Beach, FL", distance: "3.8 mi",
+    desc: "A federally qualified health center providing primary care, pediatrics, behavioral health, OB/GYN, and dental services to Miami residents regardless of income or insurance status — the front line of care for thousands of uninsured neighbors.",
+    tags: ["Primary Care", "Uninsured", "Community Health"], category: ["health"],
+    urgent: false,
+    needs: ["Monetary donations", "Medical volunteer professionals", "Community outreach volunteers"],
+    impact: "💡 No patient is turned away regardless of ability to pay — your support keeps that promise.",
+    donateUrl: "https://www.mbchc.org/donate",
+    volunteerUrl: "https://www.mbchc.org/volunteer",
+    website: "https://www.mbchc.org", city: "miami"
+  }
+];
+
+let activeFilter = 'all';
+let currentCity = 'Miami, FL';
+
+/* ---- IP GEOLOCATION ---- */
+async function detectLocation() {
+  try {
+    const res = await fetch('https://ipapi.co/json/');
+    const data = await res.json();
+    const city = data.city || 'Miami';
+    const region = data.region_code || 'FL';
+    currentCity = city + ', ' + region;
+    document.getElementById('geoCity').textContent = currentCity;
+    document.getElementById('resultsCount').textContent = 'Showing charities near ' + currentCity;
+    filterCharities();
+  } catch (e) {
+    document.getElementById('geoCity').textContent = 'Miami, FL';
+    document.getElementById('resultsCount').textContent = 'Showing charities near Miami, FL';
+    filterCharities();
+  }
+}
+
+function toggleGeoInput() {
+  const wrap = document.getElementById('geoInputWrap');
+  wrap.classList.toggle('open');
+  if (wrap.classList.contains('open')) document.getElementById('geoManualInput').focus();
+}
+
+function applyManualCity() {
+  const val = document.getElementById('geoManualInput').value.trim();
+  if (!val) return;
+  currentCity = val;
+  document.getElementById('geoCity').textContent = val;
+  document.getElementById('resultsCount').textContent = 'Showing charities near ' + val;
+  document.getElementById('geoInputWrap').classList.remove('open');
+  filterCharities();
+}
+
+/* ---- CHARITY RENDERING ---- */
+function renderCharities(list) {
+  const grid = document.getElementById('charityGrid');
+  if (list.length === 0) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--ink-light);font-size:14px;">
+      <div style="font-size:2.5rem;margin-bottom:0.75rem;">🌍</div>
+      No charities listed yet for <strong style="color:var(--ink)">${currentCity}</strong>.<br>
+      <span style="font-size:13px;">Know a great local charity? <a href="#list" style="color:var(--teal)">List it for free →</a></span>
+    </div>`;
+    return;
+  }
+  grid.innerHTML = list.map(c => `
+    <div class="charity-card">
+      <div class="card-top">
+        <div class="card-icon ${c.iconClass}">${c.icon}</div>
+        <div class="card-meta">
+          <div class="card-name">${c.name}</div>
+          <div class="card-location">📍 ${c.location}</div>
+        </div>
+        <span class="card-distance">${c.distance}</span>
+      </div>
+      <div class="card-desc">
+        ${c.urgent ? `<span class="urgency-dot"></span><strong style="font-size:12px;color:var(--coral)">Urgent need · </strong>` : ''}
+        ${c.desc}
+      </div>
+      <div class="card-tags">${c.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <div class="card-footer">
+        <button class="card-btn card-btn-primary" onclick="openCharityModal(${c.id})">💚 Donate</button>
+        <button class="card-btn card-btn-secondary" onclick="openCharityModal(${c.id})">Learn More</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterCharities() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const cityLower = currentCity.toLowerCase();
+  let list = charities;
+  // Filter by city — show miami charities for miami, empty state for others
+  const isMiami = cityLower.includes('miami') || cityLower.includes('coral gables') || cityLower.includes('hialeah') || cityLower.includes('doral') || cityLower.includes('pembroke') || cityLower.includes('homestead') || cityLower.includes('fl');
+  if (!isMiami) { list = []; renderCharities(list); return; }
+  if (activeFilter !== 'all') list = list.filter(c => c.category.includes(activeFilter));
+  if (q) list = list.filter(c =>
+    c.name.toLowerCase().includes(q) ||
+    c.tags.some(t => t.toLowerCase().includes(q)) ||
+    c.location.toLowerCase().includes(q)
+  );
+  renderCharities(list);
+}
+
+function setFilter(f, btn) {
+  activeFilter = f;
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  filterCharities();
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('content-' + tab).classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+  if (tab === 'dropoff') setTimeout(()=>document.getElementById('dropoff').scrollIntoView({behavior:'smooth'}), 50);
+}
+
+function setMobileActive(btn) {
+  document.querySelectorAll('.mobile-nav-item').forEach(el => el.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function showDropoff() { switchTab('dropoff'); }
+
+/* ---- MODAL ---- */
+function openCharityModal(id) {
+  const c = charities.find(x => x.id === id);
+  if (!c) return;
+  document.getElementById('modalCharityIcon').textContent = c.icon;
+  document.getElementById('modalCharityIcon').className = 'modal-charity-icon ' + c.iconClass;
+  document.getElementById('modalCharityName').textContent = c.name;
+  document.getElementById('modalCharityLoc').textContent = '📍 ' + c.location;
+  document.getElementById('modalCharityDesc').textContent = c.desc;
+  document.getElementById('modalImpact').textContent = c.impact;
+  document.getElementById('modalNeeds').innerHTML = c.needs.map(n=>`<span class="need-tag">${n}</span>`).join('');
+  document.getElementById('modalActions').innerHTML = `
+    <a href="${c.donateUrl}" target="_blank" rel="noopener" class="modal-btn modal-btn-primary">💚 Donate on ${c.name}'s Website ↗</a>
+    <a href="${c.volunteerUrl}" target="_blank" rel="noopener" class="modal-btn modal-btn-outline">🙋 Volunteer with ${c.name} ↗</a>
+    <a href="${c.website}" target="_blank" rel="noopener" class="modal-btn modal-btn-secondary">🌐 Visit ${c.name}'s Website ↗</a>
+  `;
+  document.getElementById('donateModal').classList.add('open');
+}
+
+function closeModal() { document.getElementById('donateModal').classList.remove('open'); }
+document.getElementById('donateModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// Boot
+detectLocation();
+</script>
+</body>
+</html>

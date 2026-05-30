@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>List Your Charity — My Local Charity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --sun: #F5A623; --sun-light: #FEF3DC; --sun-dark: #C57D0A;
+    --coral: #E8533A; --coral-light: #FDECEA;
+    --teal: #1D8F6E; --teal-light: #E0F4ED; --teal-dark: #0F5E48;
+    --plum: #6B3FA0; --plum-light: #F0EAF8;
+    --sky: #2E7DD1; --sky-light: #EAF2FB;
+    --cream: #FBF8F3; --warm-white: #FFFEF9;
+    --ink: #1A1208; --ink-mid: #4A3F32; --ink-light: #8A7B6C;
+    --border: rgba(26,18,8,0.1); --border-strong: rgba(26,18,8,0.2);
+    --shadow: 0 2px 16px rgba(26,18,8,0.08); --shadow-lg: 0 8px 40px rgba(26,18,8,0.14);
+    --r: 14px; --r-sm: 8px; --r-pill: 100px;
+    --success: #1D8F6E; --error: #E8533A;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; font-size: 15px; line-height: 1.6; }
+
+  /* NAV */
+  nav { background: rgba(251,248,243,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; color: var(--teal-dark); text-decoration: none; }
+  .nav-logo span { color: var(--coral); }
+  .nav-back { font-size: 13px; color: var(--ink-mid); text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: var(--r-pill); border: 1px solid var(--border-strong); transition: all 0.15s; }
+  .nav-back:hover { background: var(--teal-light); border-color: var(--teal); color: var(--teal-dark); }
+
+  /* HERO */
+  .hero { background: var(--warm-white); border-bottom: 1px solid var(--border); padding: 3.5rem 1.5rem 2.5rem; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(29,143,110,0.07) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 10% 0%, rgba(245,166,35,0.07) 0%, transparent 60%); pointer-events: none; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); background: var(--teal-light); padding: 5px 14px; border-radius: var(--r-pill); margin-bottom: 1rem; }
+  .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.15; color: var(--ink); max-width: 600px; margin: 0 auto 0.75rem; }
+  .hero h1 em { font-style: italic; color: var(--teal); }
+  .hero p { font-size: 1rem; color: var(--ink-mid); max-width: 480px; margin: 0 auto; font-weight: 300; }
+
+  /* PROGRESS BAR */
+  .progress-wrap { max-width: 720px; margin: 2rem auto 0; padding: 0 1.5rem; }
+  .progress-steps { display: flex; align-items: center; gap: 0; position: relative; }
+  .step-item { display: flex; flex-direction: column; align-items: center; flex: 1; position: relative; }
+  .step-item:not(:last-child)::after { content: ''; position: absolute; top: 16px; left: 50%; width: 100%; height: 2px; background: var(--border-strong); z-index: 0; }
+  .step-item.done:not(:last-child)::after, .step-item.active:not(:last-child)::after { background: var(--teal); }
+  .step-circle { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; border: 2px solid var(--border-strong); background: white; color: var(--ink-light); position: relative; z-index: 1; transition: all 0.3s; }
+  .step-item.done .step-circle { background: var(--teal); border-color: var(--teal); color: white; }
+  .step-item.active .step-circle { background: var(--teal-light); border-color: var(--teal); color: var(--teal-dark); font-weight: 600; }
+  .step-label { font-size: 11px; color: var(--ink-light); margin-top: 6px; text-align: center; font-weight: 400; white-space: nowrap; }
+  .step-item.active .step-label { color: var(--teal-dark); font-weight: 500; }
+  .step-item.done .step-label { color: var(--teal); }
+
+  /* FORM LAYOUT */
+  .form-outer { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .form-section { background: white; border-radius: 20px; border: 1px solid var(--border); padding: 2rem; margin-bottom: 1.25rem; display: none; animation: fadeIn 0.25s ease; }
+  .form-section.active { display: block; }
+  @keyframes fadeIn { from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:translateY(0); } }
+  .form-section-header { margin-bottom: 1.75rem; }
+  .form-section-num { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); margin-bottom: 4px; }
+  .form-section-title { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .form-section-desc { font-size: 13px; color: var(--ink-light); }
+
+  /* FORM FIELDS */
+  .field { margin-bottom: 1.25rem; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .field-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+  label { font-size: 13px; font-weight: 500; color: var(--ink-mid); display: block; margin-bottom: 6px; }
+  label .req { color: var(--coral); margin-left: 2px; }
+  label .opt { font-size: 11px; color: var(--ink-light); font-weight: 400; margin-left: 4px; }
+  input[type="text"], input[type="email"], input[type="url"], input[type="tel"], textarea, select {
+    width: 100%; padding: 11px 14px; border: 1.5px solid var(--border-strong);
+    border-radius: var(--r-sm); font-size: 14px; font-family: 'DM Sans', sans-serif;
+    color: var(--ink); background: white; outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(29,143,110,0.1); }
+  input.error, textarea.error, select.error { border-color: var(--coral); box-shadow: 0 0 0 3px rgba(232,83,58,0.1); }
+  textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+  select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A7B6C' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+  .field-hint { font-size: 12px; color: var(--ink-light); margin-top: 5px; }
+  .field-error { font-size: 12px; color: var(--coral); margin-top: 5px; display: none; }
+  .field-error.show { display: block; }
+  input::placeholder, textarea::placeholder { color: var(--ink-light); }
+
+  /* CHECKBOX / RADIO GROUPS */
+  .check-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .check-item { display: none; }
+  .check-label {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; padding: 7px 14px; border-radius: var(--r-pill);
+    border: 1.5px solid var(--border-strong); background: white;
+    cursor: pointer; transition: all 0.15s; color: var(--ink-mid);
+    user-select: none;
+  }
+  .check-item:checked + .check-label { background: var(--teal-light); border-color: var(--teal); color: var(--teal-dark); font-weight: 500; }
+  .check-label:hover { border-color: var(--teal); }
+
+  /* NEEDS ITEMS */
+  .needs-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .need-check { display: none; }
+  .need-label { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 6px 14px; border-radius: var(--r-pill); border: 1.5px solid var(--border-strong); background: white; cursor: pointer; transition: all 0.15s; color: var(--ink-mid); user-select: none; }
+  .need-check:checked + .need-label { background: var(--sun-light); border-color: var(--sun); color: var(--sun-dark); font-weight: 500; }
+  .need-label:hover { border-color: var(--sun); }
+
+  /* PHOTO UPLOAD */
+  .upload-zone { border: 2px dashed var(--border-strong); border-radius: var(--r); padding: 2rem; text-align: center; cursor: pointer; transition: all 0.15s; background: var(--cream); }
+  .upload-zone:hover { border-color: var(--teal); background: var(--teal-light); }
+  .upload-zone.dragover { border-color: var(--teal); background: var(--teal-light); }
+  .upload-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+  .upload-text { font-size: 14px; color: var(--ink-mid); margin-bottom: 4px; }
+  .upload-text strong { color: var(--teal); }
+  .upload-hint { font-size: 12px; color: var(--ink-light); }
+  .upload-preview { display: none; flex-wrap: wrap; gap: 10px; margin-top: 1rem; }
+  .upload-preview.show { display: flex; }
+  .preview-item { position: relative; width: 72px; height: 72px; border-radius: var(--r-sm); overflow: hidden; border: 1px solid var(--border); }
+  .preview-item img { width: 100%; height: 100%; object-fit: cover; }
+  .preview-remove { position: absolute; top: 3px; right: 3px; width: 18px; height: 18px; background: rgba(0,0,0,0.6); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 10px; color: white; border: none; }
+
+  /* FORM NAVIGATION */
+  .form-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  .btn { font-size: 14px; font-weight: 500; padding: 11px 24px; border-radius: var(--r-pill); cursor: pointer; font-family: 'DM Sans', sans-serif; border: none; transition: all 0.15s; }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-dark); }
+  .btn-secondary { background: var(--cream); color: var(--ink-mid); border: 1px solid var(--border-strong); }
+  .btn-secondary:hover { background: var(--teal-light); color: var(--teal-dark); border-color: var(--teal); }
+  .btn-submit { background: var(--teal); color: white; font-size: 15px; padding: 14px 32px; }
+  .btn-submit:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(29,143,110,0.3); }
+  .step-indicator { font-size: 13px; color: var(--ink-light); }
+
+  /* REVIEW PANEL */
+  .review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .review-block { background: var(--cream); border-radius: var(--r-sm); padding: 1rem; }
+  .review-block-title { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-light); margin-bottom: 0.5rem; }
+  .review-field { margin-bottom: 0.5rem; }
+  .review-key { font-size: 12px; color: var(--ink-light); }
+  .review-val { font-size: 13px; color: var(--ink); font-weight: 400; }
+  .review-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+  .review-tag { font-size: 11px; padding: 3px 10px; border-radius: var(--r-pill); background: var(--teal-light); color: var(--teal-dark); }
+
+  /* SUCCESS STATE */
+  .success-screen { display: none; text-align: center; padding: 3rem 1.5rem; max-width: 560px; margin: 2rem auto; background: white; border-radius: 20px; border: 1px solid var(--border); }
+  .success-screen.show { display: block; animation: fadeIn 0.4s ease; }
+  .success-icon { font-size: 4rem; margin-bottom: 1rem; }
+  .success-title { font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 700; color: var(--ink); margin-bottom: 0.75rem; }
+  .success-body { font-size: 14px; color: var(--ink-mid); line-height: 1.7; margin-bottom: 1.5rem; }
+  .success-steps { text-align: left; background: var(--cream); border-radius: var(--r); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; }
+  .success-step { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; color: var(--ink-mid); margin-bottom: 0.75rem; }
+  .success-step:last-child { margin-bottom: 0; }
+  .success-step-num { width: 22px; height: 22px; border-radius: 50%; background: var(--teal); color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 1px; }
+  .success-btn { display: inline-block; background: var(--teal); color: white; padding: 12px 28px; border-radius: var(--r-pill); text-decoration: none; font-weight: 500; font-size: 14px; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.15s; }
+  .success-btn:hover { background: var(--teal-dark); }
+
+  /* SIDEBAR INFO */
+  .aside-tip { background: var(--teal-light); border-radius: var(--r); padding: 1rem 1.25rem; margin-bottom: 1.25rem; border-left: 3px solid var(--teal); }
+  .aside-tip-title { font-size: 13px; font-weight: 500; color: var(--teal-dark); margin-bottom: 4px; }
+  .aside-tip-body { font-size: 12px; color: var(--teal-dark); line-height: 1.55; opacity: 0.85; }
+
+  /* CHARACTER COUNT */
+  .char-count { font-size: 11px; color: var(--ink-light); text-align: right; margin-top: 4px; }
+  .char-count.warn { color: var(--sun-dark); }
+  .char-count.over { color: var(--coral); }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .field-row, .field-row-3, .review-grid { grid-template-columns: 1fr; }
+    .form-section { padding: 1.5rem; }
+    .hero { padding: 2.5rem 1.25rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">My Local <span>Charity</span></a>
+  <a href="index.html" class="nav-back">← Back to directory</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">🏳 Free listing</div>
+  <h1>List your charity on <em>My Local Charity</em></h1>
+  <p>Help donors and volunteers in your community find you. Registration is free, takes about 5 minutes, and your listing goes live within 48 hours.</p>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <div class="progress-steps">
+      <div class="step-item active" id="si-1">
+        <div class="step-circle">1</div>
+        <div class="step-label">Organization</div>
+      </div>
+      <div class="step-item" id="si-2">
+        <div class="step-circle">2</div>
+        <div class="step-label">Mission & Needs</div>
+      </div>
+      <div class="step-item" id="si-3">
+        <div class="step-circle">3</div>
+        <div class="step-label">Contact & Links</div>
+      </div>
+      <div class="step-item" id="si-4">
+        <div class="step-circle">4</div>
+        <div class="step-label">Drop-Off Info</div>
+      </div>
+      <div class="step-item" id="si-5">
+        <div class="step-circle">5</div>
+        <div class="step-label">Review & Submit</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-outer">
+
+  <!-- STEP 1: ORGANIZATION -->
+  <div class="form-section active" id="step-1">
+    <div class="form-section-header">
+      <div class="form-section-num">Step 1 of 5</div>
+      <div class="form-section-title">Tell us about your organization</div>
+      <div class="form-section-desc">Basic information that will appear on your public listing.</div>
+    </div>
+
+    <div class="aside-tip">
+      <div class="aside-tip-title">💡 Tip</div>
+      <div class="aside-tip-body">Your charity name and description are the first things donors see — make them clear and specific about who you help and how.</div>
+    </div>
+
+    <div class="field">
+      <label>Charity / Organization Name <span class="req">*</span></label>
+      <input type="text" id="orgName" placeholder="e.g. WundieUndies" oninput="syncReview()">
+      <div class="field-error" id="err-orgName">Please enter your organization's name.</div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Organization Type <span class="req">*</span></label>
+        <select id="orgType" onchange="syncReview()">
+          <option value="">Select type…</option>
+          <option>501(c)(3) Nonprofit</option>
+          <option>Charitable Foundation</option>
+          <option>Community Organization</option>
+          <option>Religious Organization</option>
+          <option>School / Educational Institution</option>
+          <option>Government Agency</option>
+          <option>Other</option>
+        </select>
+        <div class="field-error" id="err-orgType">Please select an organization type.</div>
+      </div>
+      <div class="field">
+        <label>Year Founded <span class="opt">(optional)</span></label>
+        <input type="text" id="orgYear" placeholder="e.g. 2019" maxlength="4">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Short Description <span class="req">*</span> <span class="opt">— appears on the charity card (max 200 chars)</span></label>
+      <textarea id="orgShortDesc" rows="3" placeholder="One or two sentences describing what your charity does and who it serves…" maxlength="200" oninput="updateCharCount(this,'cc-short',200); syncReview()"></textarea>
+      <div class="char-count" id="cc-short">0 / 200</div>
+      <div class="field-error" id="err-orgShortDesc">Please add a short description (at least 30 characters).</div>
+    </div>
+
+    <div class="field">
+      <label>Full Description <span class="opt">(optional — shown in the detail popup)</span></label>
+      <textarea id="orgFullDesc" rows="5" placeholder="Tell donors more about your mission, history, and impact. Who do you serve? How does the money or donations help?" maxlength="800" oninput="updateCharCount(this,'cc-full',800)"></textarea>
+      <div class="char-count" id="cc-full">0 / 800</div>
+    </div>
+
+    <div class="field">
+      <label>Primary Cause Category <span class="req">*</span></label>
+      <div class="check-group">
+        <input type="checkbox" class="check-item cat-check" id="cat-hygiene" value="hygiene"><label class="check-label" for="cat-hygiene">🧴 Hygiene</label>
+        <input type="checkbox" class="check-item cat-check" id="cat-food" value="food"><label class="check-label" for="cat-food">🥗 Food</label>
+        <input type="checkbox" class="check-item cat-check" id="cat-education" value="education"><label class="check-label" for="cat-education">📚 Education</label>
+        <input type="checkbox" class="check-item cat-check" id="cat-children" value="children"><label class="check-label" for="cat-children">👶 Children</label>
+        <input type="checkbox" class="check-item cat-check" id="cat-health" value="health"><label class="check-label" for="cat-health">❤️‍🩹 Health</label>
+        <input type="checkbox" class="check-item cat-check" id="cat-housing" value="housing"><label class="check-label" for="cat-housing">🏠 Housing</label>
+        <input type="checkbox" class="check-item cat-check" id="cat-animals" value="animals"><label class="check-label" for="cat-animals">🐾 Animals</label>
+        <input type="checkbox" class="check-item cat-check" id="cat-community" value="community"><label class="check-label" for="cat-community">🤝 Community</label>
+        <input type="checkbox" class="check-item cat-check" id="cat-other" value="other"><label class="check-label" for="cat-other">➕ Other</label>
+      </div>
+      <div class="field-error" id="err-cats">Please select at least one category.</div>
+    </div>
+
+    <div class="field">
+      <label>Charity Logo or Photo <span class="opt">(optional — shown on your listing)</span></label>
+      <div class="upload-zone" id="uploadZone" onclick="document.getElementById('logoInput').click()" ondragover="handleDrag(event)" ondrop="handleDrop(event)">
+        <div class="upload-icon">📷</div>
+        <div class="upload-text"><strong>Click to upload</strong> or drag and drop</div>
+        <div class="upload-hint">PNG, JPG, or GIF · Max 5MB · Recommended: square image</div>
+      </div>
+      <input type="file" id="logoInput" accept="image/*" multiple style="display:none" onchange="handleFiles(this.files)">
+      <div class="upload-preview" id="uploadPreview"></div>
+    </div>
+
+    <div class="form-nav">
+      <span class="step-indicator">Step 1 of 5</span>
+      <button class="btn btn-primary" onclick="goStep(2)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- STEP 2: MISSION & NEEDS -->
+  <div class="form-section" id="step-2">
+    <div class="form-section-header">
+      <div class="form-section-num">Step 2 of 5</div>
+      <div class="form-section-title">Mission, needs & impact</div>
+      <div class="form-section-desc">Help donors understand exactly what you need and how their support makes a difference.</div>
+    </div>
+
+    <div class="field">
+      <label>What does your charity currently need most? <span class="req">*</span></label>
+      <div class="needs-group">
+        <input type="checkbox" class="need-check" id="need-money" value="Monetary donations"><label class="need-label" for="need-money">💵 Monetary donations</label>
+        <input type="checkbox" class="need-check" id="need-clothing" value="Clothing"><label class="need-label" for="need-clothing">👕 Clothing</label>
+        <input type="checkbox" class="need-check" id="need-hygiene" value="Hygiene products"><label class="need-label" for="need-hygiene">🧴 Hygiene products</label>
+        <input type="checkbox" class="need-check" id="need-diapers" value="Diapers"><label class="need-label" for="need-diapers">👶 Diapers</label>
+        <input type="checkbox" class="need-check" id="need-food" value="Food / non-perishables"><label class="need-label" for="need-food">🥫 Food / non-perishables</label>
+        <input type="checkbox" class="need-check" id="need-books" value="Books & school supplies"><label class="need-label" for="need-books">📚 Books & school supplies</label>
+        <input type="checkbox" class="need-check" id="need-toys" value="Toys & games"><label class="need-label" for="need-toys">🧸 Toys & games</label>
+        <input type="checkbox" class="need-check" id="need-furniture" value="Furniture & household items"><label class="need-label" for="need-furniture">🛋 Furniture & household</label>
+        <input type="checkbox" class="need-check" id="need-volunteers" value="Volunteer hours"><label class="need-label" for="need-volunteers">🙋 Volunteer hours</label>
+        <input type="checkbox" class="need-check" id="need-medical" value="Medical supplies"><label class="need-label" for="need-medical">💊 Medical supplies</label>
+        <input type="checkbox" class="need-check" id="need-petfood" value="Pet food & supplies"><label class="need-label" for="need-petfood">🐾 Pet food & supplies</label>
+        <input type="checkbox" class="need-check" id="need-other" value="Other items"><label class="need-label" for="need-other">➕ Other items</label>
+      </div>
+      <div class="field-error" id="err-needs">Please select at least one item your charity needs.</div>
+    </div>
+
+    <div class="field">
+      <label>Other specific items needed <span class="opt">(optional)</span></label>
+      <input type="text" id="needsOther" placeholder="e.g. underwear sizes XS–3XL, feminine hygiene products, size 3 diapers">
+      <div class="field-hint">Be specific — this helps donors bring exactly what you need.</div>
+    </div>
+
+    <div class="field">
+      <label>Impact statement <span class="req">*</span> <span class="opt">— one sentence showing what a donation achieves</span></label>
+      <input type="text" id="impactStatement" placeholder="e.g. $25 provides one month of feminine hygiene products for one person in need." oninput="syncReview()">
+      <div class="field-hint">Keep it concrete and personal. Numbers make it real.</div>
+      <div class="field-error" id="err-impact">Please add an impact statement.</div>
+    </div>
+
+    <div class="field">
+      <label>Is there currently an urgent need? <span class="opt">(optional)</span></label>
+      <div class="check-group">
+        <input type="radio" class="check-item" name="urgent" id="urg-yes" value="yes"><label class="check-label" for="urg-yes">🔴 Yes — mark as urgent</label>
+        <input type="radio" class="check-item" name="urgent" id="urg-no" value="no" checked><label class="check-label" for="urg-no">No urgent need right now</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Urgent need description <span class="opt">(optional — shown if marked urgent)</span></label>
+      <input type="text" id="urgentDesc" placeholder="e.g. Critically low on size 2–4 diapers this month">
+    </div>
+
+    <div class="field">
+      <label>EIN / Tax ID Number <span class="opt">(optional — helps donors verify 501(c)(3) status)</span></label>
+      <input type="text" id="orgEIN" placeholder="e.g. 12-3456789" maxlength="11">
+      <div class="field-hint">Your EIN appears on your IRS determination letter. Listing it builds donor trust.</div>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn btn-secondary" onclick="goStep(1)">← Back</button>
+      <span class="step-indicator">Step 2 of 5</span>
+      <button class="btn btn-primary" onclick="goStep(3)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: CONTACT & LINKS -->
+  <div class="form-section" id="step-3">
+    <div class="form-section-header">
+      <div class="form-section-num">Step 3 of 5</div>
+      <div class="form-section-title">Contact information & links</div>
+      <div class="form-section-desc">Where should donors go to give, volunteer, or learn more?</div>
+    </div>
+
+    <div class="aside-tip">
+      <div class="aside-tip-title">🔗 How links work on My Local Charity</div>
+      <div class="aside-tip-body">When someone clicks "Donate" on your listing, they'll be taken directly to your donation URL. We never process payments ourselves — 100% of donations go straight to you.</div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Contact First Name <span class="req">*</span></label>
+        <input type="text" id="contactFirst" placeholder="First name" oninput="syncReview()">
+        <div class="field-error" id="err-contactFirst">Please enter a first name.</div>
+      </div>
+      <div class="field">
+        <label>Contact Last Name <span class="req">*</span></label>
+        <input type="text" id="contactLast" placeholder="Last name" oninput="syncReview()">
+        <div class="field-error" id="err-contactLast">Please enter a last name.</div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Contact Title / Role <span class="opt">(optional)</span></label>
+        <input type="text" id="contactRole" placeholder="e.g. Executive Director">
+      </div>
+      <div class="field">
+        <label>Contact Email <span class="req">*</span></label>
+        <input type="email" id="contactEmail" placeholder="you@yourcharity.org" oninput="syncReview()">
+        <div class="field-hint">Only used to verify your listing — not shown publicly.</div>
+        <div class="field-error" id="err-contactEmail">Please enter a valid email address.</div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Phone Number <span class="opt">(optional)</span></label>
+        <input type="tel" id="contactPhone" placeholder="(305) 000-0000">
+      </div>
+      <div class="field">
+        <label>Public Email <span class="opt">(shown on listing)</span></label>
+        <input type="email" id="publicEmail" placeholder="info@yourcharity.org">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Organization Website <span class="req">*</span></label>
+      <input type="url" id="orgWebsite" placeholder="https://www.yourcharity.org" oninput="syncReview()">
+      <div class="field-error" id="err-orgWebsite">Please enter your website URL (include https://).</div>
+    </div>
+
+    <div class="field">
+      <label>Donation Page URL <span class="req">*</span></label>
+      <input type="url" id="donateUrl" placeholder="https://www.yourcharity.org/donate">
+      <div class="field-hint">This is where the "Donate" button on your listing will send visitors. Can be the same as your website if you don't have a separate donation page.</div>
+      <div class="field-error" id="err-donateUrl">Please enter your donation page URL.</div>
+    </div>
+
+    <div class="field">
+      <label>Volunteer Sign-Up URL <span class="opt">(optional)</span></label>
+      <input type="url" id="volunteerUrl" placeholder="https://www.yourcharity.org/volunteer">
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Instagram <span class="opt">(optional)</span></label>
+        <input type="text" id="socialIG" placeholder="@yourcharity">
+      </div>
+      <div class="field">
+        <label>Facebook <span class="opt">(optional)</span></label>
+        <input type="url" id="socialFB" placeholder="https://facebook.com/yourcharity">
+      </div>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn btn-secondary" onclick="goStep(2)">← Back</button>
+      <span class="step-indicator">Step 3 of 5</span>
+      <button class="btn btn-primary" onclick="goStep(4)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- STEP 4: DROP-OFF INFO -->
+  <div class="form-section" id="step-4">
+    <div class="form-section-header">
+      <div class="form-section-num">Step 4 of 5</div>
+      <div class="form-section-title">Drop-off location & hours</div>
+      <div class="form-section-desc">Let donors know where and when they can bring physical donations. You can list multiple locations.</div>
+    </div>
+
+    <div class="field">
+      <label>Do you accept physical drop-off donations? <span class="req">*</span></label>
+      <div class="check-group">
+        <input type="radio" class="check-item" name="acceptDropoff" id="drop-yes" value="yes" onclick="toggleDropoff(true)"><label class="check-label" for="drop-yes">✅ Yes — we have a drop-off location</label>
+        <input type="radio" class="check-item" name="acceptDropoff" id="drop-no" value="no" checked onclick="toggleDropoff(false)"><label class="check-label" for="drop-no">No — monetary donations only</label>
+      </div>
+    </div>
+
+    <div id="dropoffDetails" style="display:none;">
+      <div id="locations-container">
+        <div class="dropoff-location" id="loc-0">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+            <div style="font-size:13px;font-weight:500;color:var(--ink-mid);">📍 Location 1</div>
+          </div>
+          <div class="field">
+            <label>Location Name <span class="opt">(optional — e.g. "Main Office" or "Wynwood Hub")</span></label>
+            <input type="text" id="loc0-name" placeholder="e.g. WundieUndies Collection Hub">
+          </div>
+          <div class="field">
+            <label>Street Address <span class="req">*</span></label>
+            <input type="text" id="loc0-addr" placeholder="e.g. 2241 NW 2nd Ave">
+          </div>
+          <div class="field-row-3">
+            <div class="field">
+              <label>City <span class="req">*</span></label>
+              <input type="text" id="loc0-city" placeholder="Miami">
+            </div>
+            <div class="field">
+              <label>State <span class="req">*</span></label>
+              <select id="loc0-state">
+                <option value="">State…</option>
+                <option selected>FL</option>
+                <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>ZIP Code <span class="req">*</span></label>
+              <input type="text" id="loc0-zip" placeholder="33127" maxlength="5">
+            </div>
+          </div>
+          <div class="field">
+            <label>Drop-off Hours</label>
+            <input type="text" id="loc0-hours" placeholder="e.g. Mon–Fri 9am–5pm, Sat 10am–2pm">
+          </div>
+          <div class="field">
+            <label>Drop-off Instructions <span class="opt">(optional)</span></label>
+            <input type="text" id="loc0-notes" placeholder="e.g. Ring bell at side entrance, ask for Maria">
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-secondary" style="margin-top:0.5rem;font-size:13px;" onclick="addLocation()">+ Add another location</button>
+    </div>
+
+    <div class="field" style="margin-top:1.5rem;">
+      <label>Do you offer pickup service? <span class="opt">(optional)</span></label>
+      <div class="check-group">
+        <input type="radio" class="check-item" name="pickup" id="pick-yes" value="yes"><label class="check-label" for="pick-yes">🚗 Yes — we can arrange pickup</label>
+        <input type="radio" class="check-item" name="pickup" id="pick-no" value="no" checked><label class="check-label" for="pick-no">No pickup available</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Pickup area / details <span class="opt">(optional)</span></label>
+      <input type="text" id="pickupDetails" placeholder="e.g. Miami-Dade County only, min. 20 lbs — contact us to arrange">
+    </div>
+
+    <div class="form-nav">
+      <button class="btn btn-secondary" onclick="goStep(3)">← Back</button>
+      <span class="step-indicator">Step 4 of 5</span>
+      <button class="btn btn-primary" onclick="goStep(5)">Review →</button>
+    </div>
+  </div>
+
+  <!-- STEP 5: REVIEW -->
+  <div class="form-section" id="step-5">
+    <div class="form-section-header">
+      <div class="form-section-num">Step 5 of 5</div>
+      <div class="form-section-title">Review & submit</div>
+      <div class="form-section-desc">Please check everything looks correct before submitting. You can go back to edit any section.</div>
+    </div>
+
+    <div class="review-grid" id="reviewPanel">
+      <!-- Populated by JS -->
+    </div>
+
+    <div style="background:var(--sun-light);border-radius:var(--r);padding:1.25rem;margin-top:1.5rem;border-left:3px solid var(--sun);">
+      <div style="font-size:13px;font-weight:500;color:var(--sun-dark);margin-bottom:6px;">📋 What happens after you submit?</div>
+      <div style="font-size:13px;color:var(--sun-dark);opacity:0.85;line-height:1.6;">Our team reviews every listing within 48 hours to verify your organization. You'll receive a confirmation email once your charity is live on My Local Charity. We may reach out if we have any questions.</div>
+    </div>
+
+    <div class="field" style="margin-top:1.5rem;">
+      <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-weight:400;">
+        <input type="checkbox" id="agreeTerms" style="width:16px;height:16px;flex-shrink:0;margin-top:3px;accent-color:var(--teal);">
+        <span style="font-size:13px;color:var(--ink-mid);">I confirm that I am an authorized representative of this organization, that the information provided is accurate, and I agree to <a href="#" style="color:var(--teal);">My Local Charity's listing terms</a>.</span>
+      </label>
+      <div class="field-error" id="err-terms">Please confirm you agree to the terms before submitting.</div>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn btn-secondary" onclick="goStep(4)">← Back</button>
+      <span class="step-indicator">Step 5 of 5</span>
+      <button class="btn btn-primary btn-submit" onclick="submitForm()">Submit Listing 🎉</button>
+    </div>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">🎉</div>
+    <div class="success-title">You're submitted!</div>
+    <div class="success-body">Thank you for listing your charity on My Local Charity. Your submission is now in review. Here's what to expect next:</div>
+    <div class="success-steps">
+      <div class="success-step"><div class="success-step-num">1</div><div>You'll receive a confirmation email within a few minutes at the address you provided.</div></div>
+      <div class="success-step"><div class="success-step-num">2</div><div>Our team reviews every listing within <strong>48 hours</strong> to verify your organization and check all links.</div></div>
+      <div class="success-step"><div class="success-step-num">3</div><div>Once approved, your charity goes live on <strong>mylocalcharity.org</strong> and is immediately searchable by donors and volunteers in your area.</div></div>
+      <div class="success-step"><div class="success-step-num">4</div><div>We'll send you a final email with a direct link to your public listing so you can share it with your community.</div></div>
+    </div>
+    <button class="success-btn" onclick="window.location.href='index.html'">← Return to My Local Charity</button>
+  </div>
+
+</div>
+
+<script>
+let currentStep = 1;
+let locationCount = 1;
+
+/* ---- NAVIGATION ---- */
+function goStep(n) {
+  if (n > currentStep && !validateStep(currentStep)) return;
+  document.getElementById('step-' + currentStep).classList.remove('active');
+  document.getElementById('si-' + currentStep).classList.remove('active');
+  document.getElementById('si-' + currentStep).classList.add('done');
+  if (n < currentStep) {
+    for (let i = n; i <= currentStep; i++) {
+      document.getElementById('si-' + i).classList.remove('done');
+    }
+  }
+  currentStep = n;
+  document.getElementById('step-' + currentStep).classList.add('active');
+  document.getElementById('si-' + currentStep).classList.add('active');
+  if (n === 5) buildReview();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ---- VALIDATION ---- */
+function validateStep(step) {
+  let valid = true;
+  const clear = id => { document.getElementById(id).classList.remove('show'); };
+  const show = (id, inputId) => {
+    document.getElementById(id).classList.add('show');
+    if (inputId) { const el = document.getElementById(inputId); if(el) el.classList.add('error'); }
+    valid = false;
+  };
+  const val = id => (document.getElementById(id)?.value || '').trim();
+
+  if (step === 1) {
+    ['err-orgName','err-orgType','err-orgShortDesc','err-cats'].forEach(clear);
+    ['orgName','orgType','orgShortDesc'].forEach(id => document.getElementById(id)?.classList.remove('error'));
+    if (!val('orgName')) show('err-orgName','orgName');
+    if (!val('orgType')) show('err-orgType','orgType');
+    if (val('orgShortDesc').length < 30) show('err-orgShortDesc','orgShortDesc');
+    const cats = document.querySelectorAll('.cat-check:checked');
+    if (cats.length === 0) show('err-cats', null);
+  }
+  if (step === 2) {
+    ['err-needs','err-impact'].forEach(clear);
+    if (document.getElementById('impactStatement')) document.getElementById('impactStatement').classList.remove('error');
+    const needs = document.querySelectorAll('.need-check:checked');
+    if (needs.length === 0) show('err-needs', null);
+    if (!val('impactStatement')) show('err-impact','impactStatement');
+  }
+  if (step === 3) {
+    ['err-contactFirst','err-contactLast','err-contactEmail','err-orgWebsite','err-donateUrl'].forEach(clear);
+    ['contactFirst','contactLast','contactEmail','orgWebsite','donateUrl'].forEach(id => document.getElementById(id)?.classList.remove('error'));
+    if (!val('contactFirst')) show('err-contactFirst','contactFirst');
+    if (!val('contactLast')) show('err-contactLast','contactLast');
+    const email = val('contactEmail');
+    if (!email || !email.includes('@')) show('err-contactEmail','contactEmail');
+    if (!val('orgWebsite')) show('err-orgWebsite','orgWebsite');
+    if (!val('donateUrl')) show('err-donateUrl','donateUrl');
+  }
+  if (step === 5) {
+    document.getElementById('err-terms').classList.remove('show');
+    if (!document.getElementById('agreeTerms').checked) { show('err-terms', null); }
+  }
+  return valid;
+}
+
+/* ---- REVIEW PANEL ---- */
+function buildReview() {
+  const cats = [...document.querySelectorAll('.cat-check:checked')].map(c => c.nextElementSibling.textContent).join(', ');
+  const needs = [...document.querySelectorAll('.need-check:checked')].map(c => c.nextElementSibling.textContent).join(', ');
+  const v = id => (document.getElementById(id)?.value || '').trim() || '—';
+  document.getElementById('reviewPanel').innerHTML = `
+    <div class="review-block">
+      <div class="review-block-title">Organization</div>
+      <div class="review-field"><div class="review-key">Name</div><div class="review-val">${v('orgName')}</div></div>
+      <div class="review-field"><div class="review-key">Type</div><div class="review-val">${v('orgType')}</div></div>
+      <div class="review-field"><div class="review-key">Founded</div><div class="review-val">${v('orgYear')}</div></div>
+      <div class="review-field"><div class="review-key">Description</div><div class="review-val">${v('orgShortDesc')}</div></div>
+      <div class="review-field"><div class="review-key">Categories</div><div class="review-tags">${cats.split(', ').map(c=>`<span class="review-tag">${c}</span>`).join('')}</div></div>
+    </div>
+    <div class="review-block">
+      <div class="review-block-title">Mission & Needs</div>
+      <div class="review-field"><div class="review-key">Impact statement</div><div class="review-val">${v('impactStatement')}</div></div>
+      <div class="review-field"><div class="review-key">EIN / Tax ID</div><div class="review-val">${v('orgEIN')}</div></div>
+      <div class="review-field"><div class="review-key">Current needs</div><div class="review-tags">${needs ? needs.split(', ').map(n=>`<span class="review-tag">${n}</span>`).join('') : '—'}</div></div>
+    </div>
+    <div class="review-block">
+      <div class="review-block-title">Contact</div>
+      <div class="review-field"><div class="review-key">Name</div><div class="review-val">${v('contactFirst')} ${v('contactLast')}</div></div>
+      <div class="review-field"><div class="review-key">Role</div><div class="review-val">${v('contactRole')}</div></div>
+      <div class="review-field"><div class="review-key">Email</div><div class="review-val">${v('contactEmail')}</div></div>
+      <div class="review-field"><div class="review-key">Phone</div><div class="review-val">${v('contactPhone')}</div></div>
+    </div>
+    <div class="review-block">
+      <div class="review-block-title">Links</div>
+      <div class="review-field"><div class="review-key">Website</div><div class="review-val" style="word-break:break-all;">${v('orgWebsite')}</div></div>
+      <div class="review-field"><div class="review-key">Donate URL</div><div class="review-val" style="word-break:break-all;">${v('donateUrl')}</div></div>
+      <div class="review-field"><div class="review-key">Volunteer URL</div><div class="review-val" style="word-break:break-all;">${v('volunteerUrl')}</div></div>
+      <div class="review-field"><div class="review-key">Instagram</div><div class="review-val">${v('socialIG')}</div></div>
+    </div>
+  `;
+}
+
+function syncReview() { if (currentStep === 5) buildReview(); }
+
+/* ---- CHAR COUNT ---- */
+function updateCharCount(el, counterId, max) {
+  const len = el.value.length;
+  const el2 = document.getElementById(counterId);
+  el2.textContent = len + ' / ' + max;
+  el2.className = 'char-count' + (len > max * 0.9 ? ' warn' : '') + (len >= max ? ' over' : '');
+}
+
+/* ---- DROP-OFF TOGGLE ---- */
+function toggleDropoff(show) {
+  document.getElementById('dropoffDetails').style.display = show ? 'block' : 'none';
+}
+
+/* ---- ADD LOCATION ---- */
+function addLocation() {
+  const i = locationCount++;
+  const div = document.createElement('div');
+  div.className = 'dropoff-location';
+  div.id = 'loc-' + i;
+  div.style.marginTop = '1.5rem';
+  div.style.paddingTop = '1.5rem';
+  div.style.borderTop = '1px solid var(--border)';
+  div.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+      <div style="font-size:13px;font-weight:500;color:var(--ink-mid);">📍 Location ${i+1}</div>
+      <button type="button" onclick="document.getElementById('loc-${i}').remove()" style="font-size:12px;color:var(--coral);background:none;border:none;cursor:pointer;">Remove</button>
+    </div>
+    <div class="field"><label>Location Name <span class="opt">(optional)</span></label><input type="text" id="loc${i}-name" placeholder="e.g. Satellite Drop-Off"></div>
+    <div class="field"><label>Street Address</label><input type="text" id="loc${i}-addr" placeholder="Street address"></div>
+    <div class="field-row-3">
+      <div class="field"><label>City</label><input type="text" id="loc${i}-city" placeholder="City"></div>
+      <div class="field"><label>State</label><input type="text" id="loc${i}-state" placeholder="FL" maxlength="2"></div>
+      <div class="field"><label>ZIP</label><input type="text" id="loc${i}-zip" placeholder="ZIP" maxlength="5"></div>
+    </div>
+    <div class="field"><label>Drop-off Hours</label><input type="text" id="loc${i}-hours" placeholder="e.g. Weekdays 9am–5pm"></div>
+  `;
+  document.getElementById('locations-container').appendChild(div);
+}
+
+/* ---- FILE UPLOAD ---- */
+function handleFiles(files) {
+  const preview = document.getElementById('uploadPreview');
+  preview.classList.add('show');
+  [...files].forEach(file => {
+    if (!file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      const div = document.createElement('div');
+      div.className = 'preview-item';
+      div.innerHTML = `<img src="${e.target.result}" alt="preview"><button class="preview-remove" onclick="this.parentElement.remove()">✕</button>`;
+      preview.appendChild(div);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+function handleDrag(e) { e.preventDefault(); document.getElementById('uploadZone').classList.add('dragover'); }
+function handleDrop(e) { e.preventDefault(); document.getElementById('uploadZone').classList.remove('dragover'); handleFiles(e.dataTransfer.files); }
+
+/* ---- SUBMIT ---- */
+function submitForm() {
+  if (!validateStep(5)) return;
+  // In production, this would POST to a backend/Formspree/Netlify Forms
+  // For now, show success screen
+  document.getElementById('step-5').classList.remove('active');
+  document.getElementById('si-5').classList.remove('active');
+  document.getElementById('si-5').classList.add('done');
+  document.getElementById('successScreen').classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
