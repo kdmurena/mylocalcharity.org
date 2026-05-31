@@ -298,7 +298,7 @@
   <p>Discover local charities, make donations, and find volunteer opportunities in your neighborhood. Every contribution makes a real difference.</p>
   <div class="search-wrap">
     <div class="search-row">
-      <input type="text" id="searchInput" placeholder="Search by zip code, city, charity name, or cause…" oninput="filterCharitiesOnInput()" onkeydown="if(event.key==='Enter') filterCharities()">
+      <input type="text" id="searchInput" placeholder="Search by zip code, city, charity name, or cause…" oninput="onSearchInput()" onkeydown="if(event.key==='Enter') filterCharities()">
       <button class="search-btn" onclick="filterCharities()">🔍 Search</button>
     </div>
     <div class="filter-pills">
@@ -1390,37 +1390,38 @@ function renderCharities(list, searchedCity) {
 }
 
 function isSouthFlorida(cityStr) {
-  const s = cityStr.toLowerCase();
+  const s = cityStr.toLowerCase().trim();
   // Miami-Dade
-  if (s.includes('miami') || s.includes('coral gables') || s.includes('hialeah') || s.includes('doral') || s.includes('homestead') || s.includes('aventura') || s.includes('kendall') || s.includes('brickell') || s.includes('wynwood') || s.includes('miami-dade') || s.includes('south miami') || s.includes('miami beach') || s.includes('north miami') || s.includes('miami gardens') || s.includes('miami shores') || s.includes('opa-locka') || s.includes('cutler bay') || s.includes('florida city') || s.includes('key biscayne')) return true;
+  if (s.includes('miami') || s.includes('coral gables') || s.includes('hialeah') || s.includes('doral, fl') || s.includes('homestead, fl') || s.includes('aventura') || s.includes('kendall, fl') || s.includes('brickell') || s.includes('wynwood') || s.includes('miami-dade') || s.includes('south miami') || s.includes('miami beach') || s.includes('north miami') || s.includes('miami gardens') || s.includes('miami shores') || s.includes('opa-locka') || s.includes('cutler bay') || s.includes('florida city') || s.includes('key biscayne')) return true;
   // Broward County
-  if (s.includes('fort lauderdale') || s.includes('ft lauderdale') || s.includes('pompano') || s.includes('hollywood, fl') || s.includes('miramar') || s.includes('pembroke pines') || s.includes('coral springs') || s.includes('sunrise') || s.includes('plantation') || s.includes('davie') || s.includes('weston') || s.includes('deerfield beach') || s.includes('hallandale') || s.includes('broward')) return true;
+  if (s.includes('fort lauderdale') || s.includes('ft. lauderdale') || s.includes('ft lauderdale') || s.includes('pompano beach') || s.includes('hollywood, fl') || s.includes('miramar, fl') || s.includes('pembroke pines') || s.includes('coral springs') || s.includes('sunrise, fl') || s.includes('plantation, fl') || s.includes('davie, fl') || s.includes('weston, fl') || s.includes('deerfield beach') || s.includes('hallandale') || s.includes('broward')) return true;
   // Palm Beach County
-  if (s.includes('west palm beach') || s.includes('boca raton') || s.includes('delray beach') || s.includes('boynton beach') || s.includes('lake worth') || s.includes('palm beach gardens') || s.includes('palm beach') || s.includes('wellington') || s.includes('jupiter')) return true;
+  if (s.includes('west palm beach') || s.includes('boca raton') || s.includes('delray beach') || s.includes('boynton beach') || s.includes('lake worth') || s.includes('palm beach gardens') || s.includes('palm beach, fl') || s.includes('wellington, fl') || s.includes('jupiter, fl')) return true;
   // Monroe County / Keys
-  if (s.includes('key west') || s.includes('key largo') || s.includes('marathon, fl') || s.includes('islamorada') || s.includes('monroe')) return true;
+  if (s.includes('key west') || s.includes('key largo') || s.includes('marathon, fl') || s.includes('islamorada') || s.includes('monroe county')) return true;
   return false;
 }
 
 function getCityKey(cityStr) {
-  const s = cityStr.toLowerCase();
+  const s = cityStr.toLowerCase().trim();
+  if (!s || s.length < 3) return null;
   if (isSouthFlorida(cityStr)) return 'miami';
-  if (s.includes('new york') || s.includes('nyc') || s.includes('brooklyn') || s.includes('manhattan') || s.includes('queens') || s.includes('bronx') || s.includes('staten island')) return 'new york';
-  if (s.includes('los angeles') || s === 'la' || s.startsWith('la,') || s.includes('la, ca') || s.includes('west hollywood') || s.includes('santa monica') || s.includes('venice, ca') || s.includes('culver city') || s.includes('pasadena') || s.includes('compton') || s.includes('inglewood')) return 'los angeles';
-  if (s.includes('chicago') || s.includes('evanston') || s.includes('oak park') || s.includes('wicker park') || s.includes('lincoln park, il')) return 'chicago';
-  if (s.includes('san francisco') || s === 'sf' || s.startsWith('sf,') || s.includes('sf, ca') || s.includes('tenderloin') || s.includes('mission district') || s.includes('potrero hill') || s.includes('castro') || s.includes('haight')) return 'san francisco';
-  if (s.includes('houston') || s.includes('katy, tx') || s.includes('sugar land') || s.includes('pearland') || s.includes('the woodlands')) return 'houston';
-  if (s.includes('boston') || s.includes('cambridge, ma') || s.includes('somerville, ma') || s.includes('brookline') || s.includes('roxbury') || s.includes('dorchester') || s.includes('south end, ma')) return 'boston';
-  if (s.includes('washington') || s.includes(' dc') || s.includes('d.c.') || s.includes('foggy bottom') || s.includes('columbia heights') || s.includes('adams morgan') || s.includes('capitol hill, dc')) return 'washington';
-  if (s.includes('orlando') || s.includes('kissimmee') || s.includes('sanford, fl') || s.includes('winter park') || s.includes('ocoee') || s.includes('altamonte')) return 'orlando';
-  if (s.includes('tampa') || s.includes('st. petersburg') || s.includes('st pete') || s.includes('clearwater') || s.includes('brandon, fl') || s.includes('lakeland') || s.includes('ybor')) return 'tampa';
-  if (s.includes('long island') || s.includes('nassau') || s.includes('suffolk') || s.includes('hempstead') || s.includes('huntington') || s.includes('babylon') || s.includes('islip') || s.includes('smithtown') || s.includes('melville') || s.includes('hauppauge') || s.includes('garden city') || s.includes('great neck') || s.includes('brentwood, ny')) return 'long island';
-  if (s.includes('las vegas') || s.includes('henderson, nv') || s.includes('north las vegas') || s.includes('summerlin') || s.includes('paradise, nv')) return 'las vegas';
-  if (s.includes('phoenix') || s.includes('scottsdale') || s.includes('tempe') || s.includes('mesa, az') || s.includes('chandler, az') || s.includes('gilbert, az') || s.includes('glendale, az')) return 'phoenix';
-  if (s.includes('st. louis') || s.includes('st louis') || s.includes('saint louis') || s.includes('clayton, mo') || s.includes('kirkwood') || s.includes('webster groves')) return 'st louis';
-  if (s.includes('philadelphia') || s.includes('philly') || s.includes('camden, nj') || s.includes('chester, pa') || s.includes('norristown') || s.includes('bucks county')) return 'philadelphia';
-  if (s.includes('atlanta') || s.includes('decatur, ga') || s.includes('marietta') || s.includes('sandy springs') || s.includes('alpharetta') || s.includes('buckhead') || s.includes('midtown atlanta')) return 'atlanta';
-  if (s.includes('nashville') || s.includes('brentwood, tn') || s.includes('franklin, tn') || s.includes('murfreesboro') || s.includes('hendersonville') || s.includes('davidson county')) return 'nashville';
+  if (s.includes('new york') || s === 'nyc' || s.includes('brooklyn') || s.includes('manhattan') || s.includes('queens, ny') || s.includes('bronx') || s.includes('staten island')) return 'new york';
+  if (s.includes('los angeles') || s === 'la' || s === 'la, ca' || s.includes('west hollywood') || s.includes('santa monica') || s.includes('culver city') || s.includes('pasadena, ca') || s.includes('compton, ca') || s.includes('inglewood, ca')) return 'los angeles';
+  if (s.includes('chicago') || s.includes('evanston, il') || s.includes('oak park, il') || s.includes('wicker park') || s.includes('lincoln park, il')) return 'chicago';
+  if (s.includes('san francisco') || s === 'sf' || s === 'sf, ca' || s.includes('tenderloin') || s.includes('mission district') || s.includes('potrero hill') || s.includes('haight-ashbury')) return 'san francisco';
+  if (s.includes('houston') || s.includes('katy, tx') || s.includes('sugar land') || s.includes('pearland, tx') || s.includes('the woodlands, tx')) return 'houston';
+  if (s.includes('boston') || s.includes('cambridge, ma') || s.includes('somerville, ma') || s.includes('brookline, ma') || s.includes('roxbury') || s.includes('dorchester, ma')) return 'boston';
+  if (s.includes('washington, dc') || s.includes('washington dc') || s === 'dc' || s === 'd.c.' || s.includes('foggy bottom') || s.includes('columbia heights, dc') || s.includes('capitol hill, dc') || s.includes('adams morgan, dc')) return 'washington';
+  if (s.includes('orlando') || s.includes('kissimmee') || s.includes('sanford, fl') || s.includes('winter park, fl') || s.includes('ocoee, fl') || s.includes('altamonte springs')) return 'orlando';
+  if (s.includes('tampa') || s.includes('st. petersburg, fl') || s.includes('st pete') || s.includes('clearwater, fl') || s.includes('brandon, fl') || s.includes('lakeland, fl') || s.includes('ybor city')) return 'tampa';
+  if (s.includes('long island') || s.includes('nassau county') || s.includes('suffolk county') || s.includes('hempstead, ny') || s.includes('huntington, ny') || s.includes('babylon, ny') || s.includes('islip, ny') || s.includes('smithtown') || s.includes('melville, ny') || s.includes('hauppauge') || s.includes('garden city, ny') || s.includes('great neck') || s.includes('brentwood, ny') || s.includes('commack') || s.includes('levittown')) return 'long island';
+  if (s.includes('las vegas') || s.includes('henderson, nv') || s.includes('north las vegas') || s.includes('summerlin, nv') || s.includes('paradise, nv') || s.includes('enterprise, nv')) return 'las vegas';
+  if (s.includes('phoenix') || s.includes('scottsdale') || s.includes('tempe, az') || s.includes('mesa, az') || s.includes('chandler, az') || s.includes('gilbert, az') || s.includes('glendale, az') || s.includes('peoria, az') || s.includes('avondale, az')) return 'phoenix';
+  if (s.includes('st. louis') || s.includes('st louis') || s.includes('saint louis') || s.includes('clayton, mo') || s.includes('kirkwood, mo') || s.includes('webster groves')) return 'st louis';
+  if (s.includes('philadelphia') || s === 'philly' || s.includes('philly, pa') || s.includes('camden, nj') || s.includes('chester, pa') || s.includes('norristown, pa') || s.includes('bucks county')) return 'philadelphia';
+  if (s.includes('atlanta') || s.includes('decatur, ga') || s.includes('marietta, ga') || s.includes('sandy springs') || s.includes('alpharetta') || s.includes('buckhead') || s.includes('smyrna, ga')) return 'atlanta';
+  if (s.includes('nashville') || s.includes('brentwood, tn') || s.includes('franklin, tn') || s.includes('murfreesboro') || s.includes('hendersonville, tn') || s.includes('davidson county, tn') || s.includes('antioch, tn') || s.includes('hermitage, tn')) return 'nashville';
   return null;
 }
 
@@ -1454,11 +1455,25 @@ function applyFilters(cityStr, q, shouldScroll) {
   }
 }
 
+let isProcessingSearch = false;
+
+function clearSearchInput() {
+  // Remove event listener temporarily, clear, then restore
+  const input = document.getElementById('searchInput');
+  input.removeEventListener('input', onSearchInput);
+  input.value = '';
+  input.addEventListener('input', onSearchInput);
+}
+
 async function filterCharities() {
+  if (isProcessingSearch) return;
+  isProcessingSearch = true;
   const raw = document.getElementById('searchInput').value.trim();
   const q   = raw.toLowerCase();
 
-  // Detect a US zip code (5 digits)
+  if (!raw) { isProcessingSearch = false; return; }
+
+  // 1. Zip code (5 digits) — look up city via API
   if (/^\d{5}$/.test(raw)) {
     showToast('🔍 Looking up zip code ' + raw + '…');
     try {
@@ -1466,44 +1481,47 @@ async function filterCharities() {
       if (!res.ok) throw new Error('Zip not found');
       const data = await res.json();
       const place = data.places[0];
-      const city  = place['place name'];
-      const state = place['state abbreviation'];
-      const label = city + ', ' + state;
+      const label = place['place name'] + ', ' + place['state abbreviation'];
       currentCity = label;
       document.getElementById('geoCity').textContent = label;
       document.getElementById('resultsCount').textContent = 'Showing charities near ' + label;
       showToast('📍 Showing results for ' + label);
       applyFilters(label, '', true);
-      document.getElementById('searchInput').value = '';
+      clearSearchInput();
     } catch(e) {
       showToast('❌ Zip code not found — try a city name instead');
     }
+    isProcessingSearch = false;
     return;
   }
 
-  // Detect a city name — try it as a city first if it matches a known city
+  // 2. Known city name — match and display
   const cityKey = getCityKey(raw);
   if (cityKey) {
     currentCity = raw;
     document.getElementById('geoCity').textContent = raw;
     document.getElementById('resultsCount').textContent = 'Showing charities near ' + raw;
     applyFilters(raw, '', true);
-    document.getElementById('searchInput').value = '';
+    clearSearchInput();
+    isProcessingSearch = false;
     return;
   }
 
-  // Otherwise filter by keyword within current city
+  // 3. Keyword — filter within current city
   applyFilters(currentCity, q, false);
+  isProcessingSearch = false;
 }
 
-function filterCharitiesOnInput() {
+function onSearchInput() {
+  if (isProcessingSearch) return;
   const raw = document.getElementById('searchInput').value.trim();
-  // Don't live-filter partial zip codes or recognized city names —
-  // those only trigger when the user explicitly clicks Search or presses Enter
-  if (/^\d{1,4}$/.test(raw)) return;
-  if (getCityKey(raw)) return;
+  if (!raw) { applyFilters(currentCity, '', false); return; }
+  if (/^\d{1,4}$/.test(raw)) return; // partial zip — wait for Search
+  if (getCityKey(raw)) return;        // city name — wait for Search
   applyFilters(currentCity, raw.toLowerCase(), false);
 }
+
+function filterCharitiesOnInput() { onSearchInput(); }
 
 function setFilter(f, btn) {
   activeFilter = f;
