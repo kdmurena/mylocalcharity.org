@@ -256,6 +256,8 @@
     .stats-bar { gap: 1.5rem; }
     .list-banner { flex-direction: column; text-align: center; }
     .list-btn { margin-left: 0; width: 100%; }
+    .dante-section { flex-direction: column; align-items: center; text-align: center; }
+    .dante-photo { width: 90px !important; height: 90px !important; }
   }
   @media (max-width: 480px) {
     .footer-grid { grid-template-columns: 1fr; }
@@ -324,6 +326,27 @@
 
 <!-- MAIN -->
 <main class="main">
+
+  <!-- DANTE'S STORY -->
+  <div style="background:var(--warm-white);border:1px solid var(--border);border-radius:20px;padding:1.75rem;margin-bottom:1.5rem;display:flex;gap:1.5rem;align-items:flex-start;">
+    <!-- Photo placeholder -->
+    <div style="flex-shrink:0;width:110px;height:110px;border-radius:16px;background:var(--teal-light);border:2px dashed var(--teal);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;" title="Add a photo of Dante here">
+      <div style="font-size:2rem;">🧒</div>
+      <div style="font-size:10px;color:var(--teal);font-weight:500;text-align:center;line-height:1.3;">Dante<br>Murena</div>
+    </div>
+    <!-- Story text -->
+    <div style="flex:1;min-width:0;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.5rem;flex-wrap:wrap;">
+        <span style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--ink);">A Note from Dante, Age 12</span>
+        <span style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.07em;background:var(--coral-light);color:var(--coral);padding:3px 10px;border-radius:var(--r-pill);">Founder</span>
+      </div>
+      <p style="font-size:13.5px;color:var(--ink-mid);line-height:1.75;font-style:italic;">
+        "My name is Dante Murena, and I'm a 12-year-old sixth grader. I created My Local Charity because I was inspired by my sister Leila and her friends Bella and Reese, who started a charity called <a href="https://www.wundieundies.com" target="_blank" rel="noopener" style="color:var(--teal);font-weight:500;text-decoration:none;">WundieUndies</a> when they were my age. Watching them collect and donate thousands of undergarments, diapers, and hygiene products to people who really needed them made me want to help spread the word and get as many people as possible to donate to their charity — and to charities like it all over the country.
+        <br><br>
+        I was also inspired by Mr. Beast, who has shown me that helping others in need isn't just something adults do — it's something any of us can do, at any age. I believe that helping others is one of the greatest purposes and goals a person can have in life. My Local Charity is my way of making it easier for everyone to find a cause they care about and take action right in their own neighborhood."
+      </p>
+    </div>
+  </div>
 
   <!-- SPOTLIGHT: WUNDIEUNDIES -->
   <div class="spotlight" id="charities">
