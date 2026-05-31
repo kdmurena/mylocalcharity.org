@@ -274,7 +274,7 @@
     <a href="#charities">Find Charities</a>
     <a href="#volunteer">Volunteer</a>
     <a href="#dropoff">Drop-Off Spots</a>
-    <a href="#list">List Your Charity</a>
+    <a href="#list">List Your Charity for Free</a>
     <button class="nav-btn nav-btn-primary" onclick="openCharityModal(1)">Donate Now</button>
   </div>
   <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -317,11 +317,46 @@
 </section>
 
 <!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stat"><span class="stat-num" id="statCharities">81</span><span class="stat-label" id="statCharitiesLabel">Charities Listed</span></div>
-  <div class="stat"><span class="stat-num" id="statCities">23</span><span class="stat-label" id="statCitiesLabel">Cities Covered</span></div>
-  <div class="stat"><span class="stat-num" id="statCategories">7</span><span class="stat-label" id="statCategoriesLabel">Cause Categories</span></div>
-  <div class="stat"><span class="stat-num">Free</span><span class="stat-label">To List Your Charity</span></div>
+<div class="stats-bar" style="flex-direction:column;gap:0;padding:0;font-family:'DM Sans',sans-serif;">
+
+  <!-- ROW 1: Dynamic — changes per city -->
+  <div style="display:flex;align-items:center;gap:0;padding:0.8rem 1.5rem;width:100%;border-bottom:1px solid rgba(29,143,110,0.25);">
+    <div style="font-size:11px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--teal-dark);white-space:nowrap;width:90px;flex-shrink:0;opacity:0.85;">In This City</div>
+    <div style="display:flex;flex:1;justify-content:space-around;flex-wrap:wrap;gap:0.5rem;">
+      <div class="stat" style="text-align:center;min-width:90px;">
+        <span class="stat-num" id="statCharities" style="font-size:1.6rem;">146</span>
+        <span class="stat-label" id="statCharitiesLabel">Charities</span>
+      </div>
+      <div class="stat" style="text-align:center;min-width:90px;">
+        <span class="stat-num" id="statCities" style="font-size:1.6rem;">23</span>
+        <span class="stat-label" id="statCitiesLabel">Cities</span>
+      </div>
+      <div class="stat" style="text-align:center;min-width:90px;">
+        <span class="stat-num" id="statCategories" style="font-size:1.6rem;">7</span>
+        <span class="stat-label" id="statCategoriesLabel">Cause Categories</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 2: Fixed site-wide totals -->
+  <div style="display:flex;align-items:center;gap:0;padding:0.8rem 1.5rem;width:100%;background:rgba(15,94,72,0.18);">
+    <div style="font-size:11px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--teal-dark);white-space:nowrap;width:90px;flex-shrink:0;opacity:0.85;">Site-Wide</div>
+    <div style="display:flex;flex:1;justify-content:space-around;flex-wrap:wrap;gap:0.5rem;">
+      <div class="stat" style="text-align:center;min-width:90px;">
+        <span class="stat-num" id="totalCharities" style="font-size:1.6rem;">146</span>
+        <span class="stat-label">Charities</span>
+      </div>
+      <div class="stat" style="text-align:center;min-width:90px;">
+        <span class="stat-num" style="font-size:1.6rem;">7</span>
+        <span class="stat-label">Cause Categories</span>
+      </div>
+      <div class="stat" style="text-align:center;min-width:90px;">
+        <span class="stat-num" id="totalCities" style="font-size:1.6rem;">23</span>
+        <span class="stat-label">Cities</span>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- MAIN -->
@@ -753,6 +788,18 @@ const charities = [
     donateUrl: "https://www.mbchc.org/donate",
     volunteerUrl: "https://www.mbchc.org/volunteer",
     website: "https://www.mbchc.org", city: "miami"
+  },
+  {
+    id: 13, name: "Ronald McDonald House Charities of South Florida", icon: "🏠", iconClass: "card-icon-sky",
+    location: "Miami, FL (near Holtz Children's Hospital)", distance: "2.6 mi",
+    desc: "For over 43 years, RMHC of South Florida has provided a warm 'home-away-from-home' just steps from the hospital for families of seriously ill or injured children — offering lodging, meals, and community support so families can stay together during the hardest moments of their lives.",
+    tags: ["Children's Health", "Families", "Hospital Support"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Meal preparation volunteers", "Household supply donations"],
+    impact: "💡 The nightly cost to support a family is $150, but RMHC asks only $20 — ensuring no family is ever turned away regardless of their ability to pay.",
+    donateUrl: "https://rmhcsouthflorida.org/donate/",
+    volunteerUrl: "https://apps.rmhcsouthflorida.org/volunteer-opportunities",
+    website: "https://rmhcsouthflorida.org", city: "miami"
   },
 
   // ── NEW YORK CITY ──
@@ -2464,6 +2511,8 @@ function animateStat(el, target) {
   }, duration / steps);
 }
 
+let statsInitialized = false;
+
 function updateStats(cityKey) {
   const numEl     = document.getElementById('statCharities');
   const numLbl    = document.getElementById('statCharitiesLabel');
@@ -2472,18 +2521,27 @@ function updateStats(cityKey) {
   const catsEl    = document.getElementById('statCategories');
   const catsLbl   = document.getElementById('statCategoriesLabel');
 
+  // Set fixed site-wide totals once on first call — these never change
+  if (!statsInitialized) {
+    const totalChEl  = document.getElementById('totalCharities');
+    const totalCtEl  = document.getElementById('totalCities');
+    if (totalChEl) totalChEl.textContent = TOTAL_CHARITIES;
+    if (totalCtEl) totalCtEl.textContent = TOTAL_CITIES;
+    statsInitialized = true;
+  }
+
   if (cityKey) {
     const cityList  = charities.filter(c => c.city === cityKey);
     const cityCount = cityList.length;
     const catCount  = [...new Set(cityList.flatMap(c => c.category))].length;
     const urgent    = cityList.filter(c => c.urgent).length;
-    animateStat(numEl,  cityCount);  numLbl.textContent  = cityCount === 1 ? 'Charity in This City' : 'Charities in This City';
+    animateStat(numEl,  cityCount);  numLbl.textContent  = cityCount === 1 ? 'Charity' : 'Charities';
     animateStat(midEl,  catCount);   midLbl.textContent  = 'Cause Categories';
     animateStat(catsEl, urgent);     catsLbl.textContent = urgent === 1 ? 'Urgent Need' : 'Urgent Needs';
   } else {
-    animateStat(numEl,  TOTAL_CHARITIES); numLbl.textContent  = 'Charities Listed';
-    animateStat(midEl,  TOTAL_CITIES);    midLbl.textContent  = 'Cities Covered';
-    animateStat(catsEl, TOTAL_CATS);      catsLbl.textContent = 'Cause Categories';
+    animateStat(numEl,  TOTAL_CHARITIES); numLbl.textContent  = 'Charities';
+    animateStat(midEl,  TOTAL_CATS);      midLbl.textContent  = 'Cause Categories';
+    animateStat(catsEl, TOTAL_CITIES);    catsLbl.textContent = 'Cities';
   }
 }
 
