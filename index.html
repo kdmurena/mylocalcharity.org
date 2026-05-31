@@ -318,10 +318,10 @@
 
 <!-- STATS BAR -->
 <div class="stats-bar">
-  <div class="stat"><span class="stat-num">2,847</span><span class="stat-label">Local Charities</span></div>
-  <div class="stat"><span class="stat-num">$4.2M</span><span class="stat-label">Donated This Year</span></div>
-  <div class="stat"><span class="stat-num">18,300</span><span class="stat-label">Active Volunteers</span></div>
-  <div class="stat"><span class="stat-num">340+</span><span class="stat-label">Drop-Off Locations</span></div>
+  <div class="stat"><span class="stat-num" id="statCharities">81</span><span class="stat-label" id="statCharitiesLabel">Charities Listed</span></div>
+  <div class="stat"><span class="stat-num" id="statCities">23</span><span class="stat-label" id="statCitiesLabel">Cities Covered</span></div>
+  <div class="stat"><span class="stat-num" id="statCategories">7</span><span class="stat-label" id="statCategoriesLabel">Cause Categories</span></div>
+  <div class="stat"><span class="stat-num">Free</span><span class="stat-label">To List Your Charity</span></div>
 </div>
 
 <!-- MAIN -->
@@ -1601,11 +1601,891 @@ const charities = [
     donateUrl: "https://www.samaritanministriesws.org/donate/",
     volunteerUrl: "https://www.samaritanministriesws.org/volunteer/",
     website: "https://www.samaritanministriesws.org", city: "winston-salem"
+  },
+
+  // ── NEW YORK (3 more) ──
+  {
+    id: 79, name: "Robin Hood Foundation", icon: "🏹", iconClass: "card-icon-sun",
+    location: "Broadway, New York, NY", distance: "—",
+    desc: "New York City's largest poverty-fighting organization since 1988, Robin Hood funds and creates over 200 of the most effective schools, food pantries, homeless shelters, job training centers, and health facilities in the city's poorest neighborhoods. 100% of public donations go directly to programs — board members cover all overhead.",
+    tags: ["Poverty", "Education", "Community"], category: ["food", "education", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Event support", "Volunteer hours"],
+    impact: "💡 Robin Hood has distributed over $3 billion to poverty-fighting programs in NYC — with 100% of public donations going directly to those in need.",
+    donateUrl: "https://www.robinhood.org/donate/",
+    volunteerUrl: "https://www.robinhood.org/get-involved/",
+    website: "https://www.robinhood.org", city: "new york"
+  },
+  {
+    id: 80, name: "God's Love We Deliver", icon: "🍲", iconClass: "card-icon-teal",
+    location: "Manhattan, New York, NY", distance: "—",
+    desc: "Since 1985, God's Love We Deliver cooks and home-delivers medically tailored meals — free of charge — to New Yorkers living with severe illness including HIV/AIDS, cancer, and over 200 other diagnoses. Over 40 million meals delivered in 40 years.",
+    tags: ["Health", "Nutrition", "HIV/AIDS"], category: ["health", "food"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer kitchen helpers", "Food donations"],
+    impact: "💡 God's Love We Deliver has delivered over 40 million medically tailored meals to seriously ill New Yorkers — free of charge, no questions asked.",
+    donateUrl: "https://www.glwd.org/donate/",
+    volunteerUrl: "https://www.glwd.org/volunteer/",
+    website: "https://www.glwd.org", city: "new york"
+  },
+  {
+    id: 81, name: "Bowery Mission", icon: "🌿", iconClass: "card-icon-coral",
+    location: "Lower East Side, New York, NY", distance: "—",
+    desc: "New York City's oldest homeless shelter, serving the city's most vulnerable neighbors since 1879 — providing meals, emergency shelter, recovery programs, job training, and housing to men, women, and children on the streets of NYC.",
+    tags: ["Homelessness", "Food", "Recovery"], category: ["housing", "food"],
+    urgent: false,
+    needs: ["Monetary donations", "Clothing donations", "Volunteer meal servers"],
+    impact: "💡 The Bowery Mission has served New York City's most vulnerable neighbors for over 145 years — offering meals, shelter, and pathways to recovery.",
+    donateUrl: "https://www.bowery.org/donate/",
+    volunteerUrl: "https://www.bowery.org/volunteer/",
+    website: "https://www.bowery.org", city: "new york"
+  },
+
+  // ── LOS ANGELES (3 more) ──
+  {
+    id: 82, name: "Midnight Mission", icon: "🌙", iconClass: "card-icon-plum",
+    location: "Skid Row, Los Angeles, CA", distance: "—",
+    desc: "Since 1914, Midnight Mission has provided meals, shelter, and recovery programs on Skid Row — helping homeless men, women, and children break the cycle of homelessness through a structured residential recovery program, job training, and life skills.",
+    tags: ["Homelessness", "Recovery", "Skid Row"], category: ["housing", "health"],
+    urgent: true,
+    needs: ["Monetary donations", "Clothing (all sizes)", "Hygiene items", "Volunteer meal servers"],
+    impact: "💡 Midnight Mission has served over 110 years on LA's Skid Row — providing meals, shelter, and recovery to LA's most vulnerable neighbors.",
+    donateUrl: "https://www.midnightmission.org/donate/",
+    volunteerUrl: "https://www.midnightmission.org/volunteer/",
+    website: "https://www.midnightmission.org", city: "los angeles"
+  },
+  {
+    id: 83, name: "St. Joseph Center", icon: "❤️", iconClass: "card-icon-teal",
+    location: "Venice, Los Angeles, CA", distance: "—",
+    desc: "A compassionate LA nonprofit serving homeless and low-income individuals and families since 1976 — providing case management, mental health services, job training, housing placement, and food assistance across the LA region with a focus on the Westside and Skid Row.",
+    tags: ["Homelessness", "Mental Health", "Housing"], category: ["housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer hours", "Hygiene items"],
+    impact: "💡 St. Joseph Center has helped thousands of LA residents move from homelessness to stable housing through compassionate, long-term case management.",
+    donateUrl: "https://www.stjosephctr.org/donate/",
+    volunteerUrl: "https://www.stjosephctr.org/volunteer/",
+    website: "https://www.stjosephctr.org", city: "los angeles"
+  },
+  {
+    id: 84, name: "Children's Hospital LA Foundation", icon: "🏥", iconClass: "card-icon-coral",
+    location: "Los Angeles, CA", distance: "—",
+    desc: "The philanthropic arm of one of the nation's top-ranked children's hospitals, supporting groundbreaking pediatric research, advanced care, and community health programs for children across Southern California regardless of ability to pay.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Event support", "Corporate partnerships"],
+    impact: "💡 Children's Hospital LA is ranked among the best children's hospitals in the US — your gift helps ensure every child gets world-class care.",
+    donateUrl: "https://www.chla.org/give",
+    volunteerUrl: "https://www.chla.org/volunteer",
+    website: "https://www.chla.org", city: "los angeles"
+  },
+
+  // ── CHICAGO (3 more) ──
+  {
+    id: 85, name: "Chicago Cares", icon: "🤝", iconClass: "card-icon-teal",
+    location: "Chicago, IL", distance: "—",
+    desc: "Since 1991, Chicago Cares has mobilized volunteers to serve their city — organizing thousands of service projects each year in schools, parks, shelters, and community organizations across Chicago's most underserved neighborhoods.",
+    tags: ["Volunteering", "Community", "Education"], category: ["children", "education"],
+    urgent: false,
+    needs: ["Volunteer hours", "Monetary donations", "Event support"],
+    impact: "💡 Chicago Cares mobilizes over 10,000 volunteers annually to serve communities across Chicago through education, housing, and hunger relief projects.",
+    donateUrl: "https://www.chicagocares.org/donate/",
+    volunteerUrl: "https://www.chicagocares.org/volunteer/",
+    website: "https://www.chicagocares.org", city: "chicago"
+  },
+  {
+    id: 86, name: "Lurie Children's Hospital Foundation", icon: "🏥", iconClass: "card-icon-coral",
+    location: "Streeterville, Chicago, IL", distance: "—",
+    desc: "Supporting Ann & Robert H. Lurie Children's Hospital of Chicago — one of the nation's top pediatric hospitals — funding cutting-edge research, specialized care, and community health programs for children across the Midwest regardless of their family's ability to pay.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Event support", "Corporate partnerships"],
+    impact: "💡 Lurie Children's is ranked among America's best children's hospitals — serving 220,000+ patients each year from across the Midwest.",
+    donateUrl: "https://www.luriechildrens.org/en/ways-to-give/",
+    volunteerUrl: "https://www.luriechildrens.org/en/ways-to-give/",
+    website: "https://www.luriechildrens.org", city: "chicago"
+  },
+  {
+    id: 87, name: "Anti-Cruelty Society Chicago", icon: "🐾", iconClass: "card-icon-sky",
+    location: "River North, Chicago, IL", distance: "—",
+    desc: "One of Chicago's oldest and most respected animal welfare organizations since 1899, the Anti-Cruelty Society provides shelter, adoption, veterinary care, behavior training, and humane education for animals and the people who love them.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Pet supplies", "Volunteer hours", "Foster homes"],
+    impact: "💡 The Anti-Cruelty Society has protected and rehomed Chicago animals for over 125 years — with adoption, education, and free community vet clinics.",
+    donateUrl: "https://anticruelty.org/donate/",
+    volunteerUrl: "https://anticruelty.org/volunteer/",
+    website: "https://anticruelty.org", city: "chicago"
+  },
+
+  // ── SAN FRANCISCO (3 more) ──
+  {
+    id: 88, name: "SF SPCA", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Mission District, San Francisco, CA", distance: "—",
+    desc: "The SF SPCA has been protecting and finding homes for San Francisco's animals since 1868 — providing adoption services, veterinary care, spay/neuter programs, humane education, and community programs that keep pets with their families.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer hours", "Foster homes", "Pet supplies"],
+    impact: "💡 The SF SPCA has saved hundreds of thousands of animals in its 150+ year history — and operates the largest low-cost vet clinic in San Francisco.",
+    donateUrl: "https://www.sfspca.org/donate/",
+    volunteerUrl: "https://www.sfspca.org/volunteer/",
+    website: "https://www.sfspca.org", city: "san francisco"
+  },
+  {
+    id: 89, name: "Larkin Street Youth Services", icon: "🌟", iconClass: "card-icon-sky",
+    location: "Tenderloin, San Francisco, CA", distance: "—",
+    desc: "Providing housing, food, healthcare, education, and employment opportunities to youth ages 12–24 experiencing homelessness in San Francisco since 1984 — with a bold goal to end youth homelessness in the Bay Area within a generation.",
+    tags: ["Youth", "Homelessness", "Housing"], category: ["housing", "children"],
+    urgent: true,
+    needs: ["Monetary donations", "Clothing (youth sizes)", "Volunteer hours"],
+    impact: "💡 Larkin Street serves 2,000+ homeless youth in SF each year — and has helped over 19,000 young people transform their lives since 1984.",
+    donateUrl: "https://larkinstreetyouth.org/donate/",
+    volunteerUrl: "https://larkinstreetyouth.org/get-involved/",
+    website: "https://larkinstreetyouth.org", city: "san francisco"
+  },
+  {
+    id: 90, name: "Habitat for Humanity Greater San Francisco", icon: "🏠", iconClass: "card-icon-teal",
+    location: "San Francisco, CA", distance: "—",
+    desc: "Building affordable homes and community in the Bay Area — Habitat for Humanity Greater San Francisco partners with volunteers and low-income families to create affordable homeownership opportunities across San Francisco, Marin, and Sonoma counties.",
+    tags: ["Housing", "Homeownership", "Volunteers"], category: ["housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer build days", "ReStore donations"],
+    impact: "💡 Habitat for Humanity Greater SF has built and repaired hundreds of affordable homes across the Bay Area — one family at a time.",
+    donateUrl: "https://www.habitatgsf.org/donate/",
+    volunteerUrl: "https://www.habitatgsf.org/volunteer/",
+    website: "https://www.habitatgsf.org", city: "san francisco"
+  },
+
+  // ── HOUSTON (3 more) ──
+  {
+    id: 91, name: "Houston SPCA", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Houston, TX", distance: "—",
+    desc: "The oldest and largest animal welfare organization in Texas, the Houston SPCA rescues, rehabilitates, and rehomes thousands of animals each year — providing shelter, veterinary care, cruelty investigation, and community programs across Harris County.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Pet food & supplies", "Foster homes", "Volunteer hours"],
+    impact: "💡 The Houston SPCA is Texas's oldest animal welfare organization — rescuing and rehoming thousands of animals across Houston every year.",
+    donateUrl: "https://www.houstonspca.org/donate/",
+    volunteerUrl: "https://www.houstonspca.org/volunteer/",
+    website: "https://www.houstonspca.org", city: "houston"
+  },
+  {
+    id: 92, name: "Houston Children's Charity", icon: "🌟", iconClass: "card-icon-sky",
+    location: "Houston, TX", distance: "—",
+    desc: "Alleviating suffering, providing hope, and inspiring the lives of disadvantaged and at-risk children in Houston through educational, recreational, and social programs — including wheelchair distribution, school supplies, holiday gifts, and summer camps.",
+    tags: ["Children", "Education", "Disabilities"], category: ["children", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Toy & supply donations", "Event support"],
+    impact: "💡 Houston Children's Charity has distributed over 10,000 wheelchairs to children with disabilities and served hundreds of thousands of Houston kids.",
+    donateUrl: "https://www.houstonchildrenscharity.org/donate/",
+    volunteerUrl: "https://www.houstonchildrenscharity.org/volunteer/",
+    website: "https://www.houstonchildrenscharity.org", city: "houston"
+  },
+  {
+    id: 93, name: "Avenue CDC Houston", icon: "🏘", iconClass: "card-icon-coral",
+    location: "Houston, TX", distance: "—",
+    desc: "A community development corporation building affordable homes, providing financial coaching, and offering workforce development programs in Houston's historic Near Northwest neighborhoods — helping low-to-moderate income families achieve economic stability.",
+    tags: ["Housing", "Community", "Financial Coaching"], category: ["housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer hours", "Skilled volunteer mentors"],
+    impact: "💡 Avenue CDC has built hundreds of affordable homes and served thousands of Houston families with financial coaching and homeownership support.",
+    donateUrl: "https://www.avenuecdc.org/donate/",
+    volunteerUrl: "https://www.avenuecdc.org/volunteer/",
+    website: "https://www.avenuecdc.org", city: "houston"
+  },
+
+  // ── BOSTON (3 more) ──
+  {
+    id: 94, name: "MSPCA-Angell", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Jamaica Plain, Boston, MA", distance: "—",
+    desc: "One of the oldest and most comprehensive animal protection organizations in the world, the MSPCA-Angell provides shelter, adoption, veterinary care, cruelty investigation, and advocacy for animals across Massachusetts since 1868.",
+    tags: ["Animals", "Rescue", "Veterinary Care"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Pet supplies", "Foster homes", "Volunteer hours"],
+    impact: "💡 The MSPCA-Angell has protected Massachusetts animals for over 155 years — operating the only 24/7 emergency animal hospital in New England.",
+    donateUrl: "https://www.mspca.org/donate/",
+    volunteerUrl: "https://www.mspca.org/volunteer/",
+    website: "https://www.mspca.org", city: "boston"
+  },
+  {
+    id: 95, name: "Boston Children's Hospital Trust", icon: "🏥", iconClass: "card-icon-coral",
+    location: "Longwood Medical Area, Boston, MA", distance: "—",
+    desc: "The philanthropic arm of the #1 ranked children's hospital in the US, supporting breakthrough pediatric research, specialized clinical care, and community health programs that serve children from Boston and around the world.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Boston Children's Hospital is ranked #1 in the nation — your donation funds research that saves children's lives around the world.",
+    donateUrl: "https://giving.childrenshospital.org/",
+    volunteerUrl: "https://giving.childrenshospital.org/",
+    website: "https://www.childrenshospital.org", city: "boston"
+  },
+  {
+    id: 96, name: "Rosie's Place", icon: "🌹", iconClass: "card-icon-teal",
+    location: "South End, Boston, MA", distance: "—",
+    desc: "The first women's shelter in the US, Rosie's Place has provided meals, shelter, and a broad range of services to poor and homeless women in Boston since 1974 — welcoming over 12,000 women each year with dignity, compassion, and practical help.",
+    tags: ["Women", "Homelessness", "Housing"], category: ["housing", "food"],
+    urgent: false,
+    needs: ["Monetary donations", "Clothing (women's)", "Volunteer meal servers"],
+    impact: "💡 Rosie's Place — the first women's shelter in America — has served over 12,000 Boston women each year for 50 years with meals, shelter, and support.",
+    donateUrl: "https://www.rosiesplace.org/donate/",
+    volunteerUrl: "https://www.rosiesplace.org/volunteer/",
+    website: "https://www.rosiesplace.org", city: "boston"
+  },
+
+  // ── WASHINGTON DC (3 more) ──
+  {
+    id: 97, name: "DC Central Kitchen", icon: "🍳", iconClass: "card-icon-sun",
+    location: "Washington, DC", distance: "—",
+    desc: "DC Central Kitchen fights hunger and poverty simultaneously — using food as a tool to nourish communities, fuel job training programs, and change lives since 1989. They cook 10,000+ meals daily using recovered food, while training unemployed adults for culinary careers.",
+    tags: ["Food", "Job Training", "Recovery"], category: ["food", "housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer hours", "Food donations"],
+    impact: "💡 DC Central Kitchen cooks 10,000+ meals a day and has graduated 2,000+ culinary students — turning hunger relief into economic opportunity.",
+    donateUrl: "https://dccentralkitchen.org/donate/",
+    volunteerUrl: "https://dccentralkitchen.org/volunteer/",
+    website: "https://dccentralkitchen.org", city: "washington"
+  },
+  {
+    id: 98, name: "Washington Humane Society / Washington Animal Rescue League", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Washington, DC", distance: "—",
+    desc: "The Humane Rescue Alliance serves DC's animals through adoption, cruelty investigation, low-cost veterinary services, and community programs — working to ensure every DC resident can keep and care for the pets they love.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Pet food & supplies", "Foster homes", "Volunteer hours"],
+    impact: "💡 The Humane Rescue Alliance has made DC a leader in humane animal care — saving thousands of animals each year through adoption and community support.",
+    donateUrl: "https://www.humanerescuealliance.org/donate/",
+    volunteerUrl: "https://www.humanerescuealliance.org/volunteer/",
+    website: "https://www.humanerescuealliance.org", city: "washington"
+  },
+  {
+    id: 99, name: "Children's Law Center DC", icon: "⚖️", iconClass: "card-icon-sky",
+    location: "Washington, DC", distance: "—",
+    desc: "Providing free legal help to DC children and families — Children's Law Center fights for children's rights in school, healthcare, and housing, ensuring every child in DC has the legal support they need to thrive regardless of income.",
+    tags: ["Children", "Legal Aid", "Education"], category: ["children", "education"],
+    urgent: false,
+    needs: ["Monetary donations", "Pro bono legal volunteers", "Event support"],
+    impact: "💡 Children's Law Center provides free legal help to over 5,000 DC children and families each year — fighting for their rights in school, health, and housing.",
+    donateUrl: "https://www.childrenslawcenter.org/donate/",
+    volunteerUrl: "https://www.childrenslawcenter.org/volunteer/",
+    website: "https://www.childrenslawcenter.org", city: "washington"
+  },
+
+  // ── ORLANDO (3 more) ──
+  {
+    id: 100, name: "Coalition for the Homeless of Central Florida", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Orlando, FL", distance: "—",
+    desc: "Central Florida's leading provider of homeless services, offering emergency shelter, transitional housing, rapid rehousing, and permanent supportive housing for men, women, children, and veterans experiencing homelessness across Orange County.",
+    tags: ["Homelessness", "Housing", "Veterans"], category: ["housing"],
+    urgent: true,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Volunteer hours"],
+    impact: "💡 The Coalition for the Homeless of Central Florida shelters hundreds of Orlando-area residents each night and has housed thousands over its history.",
+    donateUrl: "https://www.centralfloridahomeless.org/donate/",
+    volunteerUrl: "https://www.centralfloridahomeless.org/volunteer/",
+    website: "https://www.centralfloridahomeless.org", city: "orlando"
+  },
+  {
+    id: 103, name: "Humane Society of Greater Orlando", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Orlando, FL", distance: "—",
+    desc: "Providing shelter, adoption, and community programs for thousands of animals across Central Florida — the Humane Society of Greater Orlando operates a no-kill shelter and offers low-cost veterinary care and humane education programs.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Pet food & supplies", "Foster homes", "Volunteer hours"],
+    impact: "💡 The Humane Society of Greater Orlando saves thousands of Central Florida animals each year through adoption, foster programs, and community vet care.",
+    donateUrl: "https://www.humanesocietyoforlando.org/donate/",
+    volunteerUrl: "https://www.humanesocietyoforlando.org/volunteer/",
+    website: "https://www.humanesocietyoforlando.org", city: "orlando"
+  },
+  {
+    id: 104, name: "Mustard Seed of Central Florida", icon: "🌱", iconClass: "card-icon-teal",
+    location: "Orlando, FL", distance: "—",
+    desc: "A faith-based community serving Orlando's most vulnerable neighbors since 1988 — providing free meals, clothing, showers, haircuts, and medical care at their Tuesday/Thursday community days, along with emergency financial assistance for rent and utilities.",
+    tags: ["Homelessness", "Food", "Community"], category: ["housing", "food"],
+    urgent: false,
+    needs: ["Monetary donations", "Clothing donations", "Hygiene items", "Volunteer hours"],
+    impact: "💡 Mustard Seed serves hundreds of Orlando's most vulnerable neighbors every week with free meals, clothing, medical care, and community support.",
+    donateUrl: "https://www.mustardseedfla.org/donate/",
+    volunteerUrl: "https://www.mustardseedfla.org/volunteer/",
+    website: "https://www.mustardseedfla.org", city: "orlando"
+  },
+
+  // ── TAMPA (3 more) ──
+  {
+    id: 105, name: "Humane Society of Tampa Bay", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Tampa, FL", distance: "—",
+    desc: "One of Tampa Bay's largest animal welfare organizations, providing shelter, adoption, veterinary care, and community programs for thousands of dogs, cats, and other animals across Hillsborough County — with a commitment to ending animal homelessness.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Pet food & supplies", "Foster homes", "Volunteer hours"],
+    impact: "💡 The Humane Society of Tampa Bay saves thousands of animals each year and operates the largest pet adoption center in the Tampa Bay area.",
+    donateUrl: "https://humanesocietytampabay.org/donate/",
+    volunteerUrl: "https://humanesocietytampabay.org/volunteer/",
+    website: "https://humanesocietytampabay.org", city: "tampa"
+  },
+  {
+    id: 106, name: "Big Brothers Big Sisters of Tampa Bay", icon: "👫", iconClass: "card-icon-sky",
+    location: "Tampa, FL", distance: "—",
+    desc: "Creating and supporting one-to-one mentoring relationships between caring adult volunteers and Tampa Bay youth — helping young people ages 6–18 achieve their full potential through professionally supported mentorship that ignites their power and promise.",
+    tags: ["Youth", "Mentorship", "Education"], category: ["children", "education"],
+    urgent: false,
+    needs: ["Volunteer Bigs (mentors)", "Monetary donations", "Event support"],
+    impact: "💡 Big Brothers Big Sisters mentored youth are more likely to graduate high school and pursue higher education — one match at a time in Tampa Bay.",
+    donateUrl: "https://www.bbbstampabay.org/donate/",
+    volunteerUrl: "https://www.bbbstampabay.org/volunteer/",
+    website: "https://www.bbbstampabay.org", city: "tampa"
+  },
+  {
+    id: 107, name: "Children's Cancer Center Tampa", icon: "🎗", iconClass: "card-icon-coral",
+    location: "Tampa, FL", distance: "—",
+    desc: "Providing free emotional, financial, and educational support to children with cancer and their families across the Tampa Bay area — including support groups, tutoring, financial assistance, and fun programs that bring joy during difficult treatment journeys.",
+    tags: ["Cancer", "Children's Health", "Families"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer hours", "Activity & gift donations"],
+    impact: "💡 Children's Cancer Center has supported Tampa Bay families facing childhood cancer since 1981 — free of charge, for as long as they need it.",
+    donateUrl: "https://childrenscancercenter.org/donate/",
+    volunteerUrl: "https://childrenscancercenter.org/volunteer/",
+    website: "https://childrenscancercenter.org", city: "tampa"
+  },
+
+  // ── LONG ISLAND (3 more) ──
+  {
+    id: 108, name: "Long Island Animal Rescue & Rehoming", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Long Island, NY", distance: "—",
+    desc: "A grassroots Long Island animal rescue network pulling dogs and cats from high-kill shelters and matching them with loving foster and forever homes across Nassau and Suffolk counties — all run by dedicated volunteers.",
+    tags: ["Animals", "Rescue", "Foster"], category: ["animals"],
+    urgent: true,
+    needs: ["Foster homes", "Monetary donations", "Pet food & supplies", "Volunteer drivers"],
+    impact: "💡 Long Island animal rescues save thousands of dogs and cats from euthanasia each year — every foster home makes a life-saving difference.",
+    donateUrl: "https://www.licares.org/donate/",
+    volunteerUrl: "https://www.licares.org/volunteer/",
+    website: "https://www.islandharvest.org", city: "long island"
+  },
+  {
+    id: 109, name: "Hofstra University Hunger Coalition", icon: "🥗", iconClass: "card-icon-sun",
+    location: "Hempstead, Long Island, NY", distance: "—",
+    desc: "A community-based food access initiative serving Long Island neighbors facing hunger — working with island Harvest and local partners to connect food-insecure families with pantries, mobile distributions, and nutritional resources across Nassau County.",
+    tags: ["Food", "Hunger Relief", "Education"], category: ["food", "education"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 1 in 9 Long Islanders faces food insecurity — local food initiatives ensure neighbors in Nassau and Suffolk have access to nutritious meals.",
+    donateUrl: "https://www.islandharvest.org/donate/",
+    volunteerUrl: "https://www.islandharvest.org/ways-to-give/volunteer/",
+    website: "https://www.islandharvest.org", city: "long island"
+  },
+  {
+    id: 110, name: "Long Island Crisis Center", icon: "🧠", iconClass: "card-icon-sky",
+    location: "Bellmore, Long Island, NY", distance: "—",
+    desc: "Providing free mental health counseling, crisis intervention, and support groups to Long Island residents since 1971 — including a 24/7 crisis hotline, LGBTQ+ counseling, suicide prevention, and grief support across Nassau and Suffolk counties.",
+    tags: ["Mental Health", "Crisis Support", "LGBTQ+"], category: ["health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer counselors", "Event support"],
+    impact: "💡 Long Island Crisis Center's 24/7 hotline has helped hundreds of thousands of Long Islanders through mental health crises since 1971.",
+    donateUrl: "https://www.longislandcrisiscenter.org/donate/",
+    volunteerUrl: "https://www.longislandcrisiscenter.org/volunteer/",
+    website: "https://www.longislandcrisiscenter.org", city: "long island"
+  },
+
+  // ── LAS VEGAS (3 more) ──
+  {
+    id: 111, name: "Nevada SPCA", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Las Vegas, NV", distance: "—",
+    desc: "A no-kill animal shelter in Las Vegas providing adoption, foster, and rescue services for dogs, cats, and small animals — with low-cost veterinary clinics and humane education programs that help Las Vegas families keep their pets through difficult times.",
+    tags: ["Animals", "No-Kill", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Pet food & supplies", "Foster homes", "Volunteer hours"],
+    impact: "💡 Nevada SPCA is Las Vegas's leading no-kill shelter — saving thousands of animals and offering low-cost vet care to keep pets with their families.",
+    donateUrl: "https://nevadaspca.org/donate/",
+    volunteerUrl: "https://nevadaspca.org/volunteer/",
+    website: "https://nevadaspca.org", city: "las vegas"
+  },
+  {
+    id: 112, name: "Big Brothers Big Sisters of Southern Nevada", icon: "👫", iconClass: "card-icon-sky",
+    location: "Las Vegas, NV", distance: "—",
+    desc: "Igniting the power and promise of Las Vegas youth through one-to-one mentoring relationships — matching adult volunteer mentors with children ages 5–18 to help them achieve academic success, avoid risky behaviors, and build confidence.",
+    tags: ["Youth", "Mentorship", "Education"], category: ["children", "education"],
+    urgent: false,
+    needs: ["Volunteer Bigs (mentors)", "Monetary donations", "Event support"],
+    impact: "💡 Big Brothers Big Sisters mentored youth are significantly more likely to graduate high school and pursue higher education — changing Las Vegas lives.",
+    donateUrl: "https://www.bbbsnevada.org/donate/",
+    volunteerUrl: "https://www.bbbsnevada.org/get-involved/",
+    website: "https://www.bbbsnevada.org", city: "las vegas"
+  },
+  {
+    id: 113, name: "Nathan Adelson Hospice", icon: "❤️", iconClass: "card-icon-coral",
+    location: "Las Vegas, NV", distance: "—",
+    desc: "Nevada's largest and most experienced nonprofit hospice, providing compassionate end-of-life care, grief support, and palliative services to Southern Nevada patients and families since 1978 — regardless of their ability to pay.",
+    tags: ["Healthcare", "Hospice", "Grief Support"], category: ["health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer companions", "Event support"],
+    impact: "💡 Nathan Adelson Hospice has provided compassionate end-of-life care to over 60,000 Southern Nevada patients and families since 1978.",
+    donateUrl: "https://www.nah.org/donate/",
+    volunteerUrl: "https://www.nah.org/volunteer/",
+    website: "https://www.nah.org", city: "las vegas"
+  },
+
+  // ── PHOENIX (3 more) ──
+  {
+    id: 114, name: "Arizona Humane Society", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Phoenix, AZ", distance: "—",
+    desc: "Arizona's largest animal welfare organization, rescuing over 20,000 animals each year and providing emergency animal medical services, cruelty investigations, adoption, foster programs, and community outreach across Maricopa County.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Pet food & supplies", "Foster homes", "Volunteer hours"],
+    impact: "💡 Arizona Humane Society rescues 20,000+ animals annually and operates the only emergency animal medical hospital in Arizona open 24/7.",
+    donateUrl: "https://www.azhumane.org/donate/",
+    volunteerUrl: "https://www.azhumane.org/volunteer/",
+    website: "https://www.azhumane.org", city: "phoenix"
+  },
+  {
+    id: 115, name: "Phoenix Children's Foundation", icon: "🏥", iconClass: "card-icon-coral",
+    location: "Phoenix, AZ", distance: "—",
+    desc: "Supporting Phoenix Children's Hospital — one of the nation's largest and most comprehensive children's hospitals — funding pediatric research, specialized care, and community health programs so every Arizona child receives world-class medical care regardless of ability to pay.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Event support", "Corporate partnerships"],
+    impact: "💡 Phoenix Children's is one of the top children's hospitals in the US — your gift ensures Arizona kids get the specialized care they need.",
+    donateUrl: "https://www.phoenixchildrensfoundation.org/donate/",
+    volunteerUrl: "https://www.phoenixchildrensfoundation.org/",
+    website: "https://www.phoenixchildrens.org", city: "phoenix"
+  },
+  {
+    id: 116, name: "Paz de Cristo", icon: "🌮", iconClass: "card-icon-teal",
+    location: "Mesa, Phoenix, AZ", distance: "—",
+    desc: "Serving the hungry and homeless in the East Valley since 1981, Paz de Cristo provides free meals, groceries, clothing, showers, and social services to thousands of Arizona neighbors each week — treating every guest with dignity and respect.",
+    tags: ["Food", "Homelessness", "Dignity"], category: ["food", "housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Food donations", "Clothing", "Volunteer meal servers"],
+    impact: "💡 Paz de Cristo serves 2,000+ free meals each week to Phoenix-area neighbors in need — with compassion, dignity, and no questions asked.",
+    donateUrl: "https://www.pazdechristo.org/donate/",
+    volunteerUrl: "https://www.pazdechristo.org/volunteer/",
+    website: "https://www.pazdechristo.org", city: "phoenix"
+  },
+
+  // ── ST. LOUIS (3 more) ──
+  {
+    id: 117, name: "Humane Society of Missouri", icon: "🐾", iconClass: "card-icon-plum",
+    location: "St. Louis, MO", distance: "—",
+    desc: "One of the oldest and largest humane societies in the US, providing animal rescue, adoption, cruelty investigation, veterinary care, and humane education for animals across Missouri and beyond since 1870.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Pet food & supplies", "Foster homes", "Volunteer hours"],
+    impact: "💡 The Humane Society of Missouri has protected animals for over 150 years — finding homes for thousands of pets each year across the St. Louis region.",
+    donateUrl: "https://www.hsmo.org/donate/",
+    volunteerUrl: "https://www.hsmo.org/volunteer/",
+    website: "https://www.hsmo.org", city: "st louis"
+  },
+  {
+    id: 118, name: "St. Louis Children's Hospital Foundation", icon: "🏥", iconClass: "card-icon-coral",
+    location: "St. Louis, MO", distance: "—",
+    desc: "Supporting St. Louis Children's Hospital — one of the nation's top children's hospitals — with funding for pediatric research, specialized care, and community health programs that serve children from across the Midwest regardless of their ability to pay.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Event support", "Corporate partnerships"],
+    impact: "💡 St. Louis Children's Hospital is consistently ranked among the best in the US — your gift directly funds care for Missouri's most vulnerable kids.",
+    donateUrl: "https://giving.stlouischildrens.org/",
+    volunteerUrl: "https://giving.stlouischildrens.org/",
+    website: "https://www.stlouischildrens.org", city: "st louis"
+  },
+  {
+    id: 119, name: "Kids in the Middle", icon: "👨‍👩‍👧", iconClass: "card-icon-sky",
+    location: "St. Louis, MO", distance: "—",
+    desc: "Helping children cope with family separation and divorce since 1983 — Kids in the Middle provides counseling, education, and support groups for children, parents, and grandparents navigating the emotional challenges of family transition in the St. Louis area.",
+    tags: ["Children", "Mental Health", "Family"], category: ["children", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer facilitators", "Event support"],
+    impact: "💡 Kids in the Middle has helped over 75,000 children and families in St. Louis navigate divorce and family transition with professional counseling.",
+    donateUrl: "https://www.kidsinthemiddle.org/donate/",
+    volunteerUrl: "https://www.kidsinthemiddle.org/volunteer/",
+    website: "https://www.kidsinthemiddle.org", city: "st louis"
+  },
+
+  // ── PHILADELPHIA (3 more) ──
+  {
+    id: 120, name: "PSPCA (Pennsylvania SPCA)", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Philadelphia, PA", distance: "—",
+    desc: "Pennsylvania's oldest and largest animal welfare organization, providing shelter, adoption, cruelty investigation, low-cost veterinary care, and humane law enforcement across the Philadelphia region since 1867.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Pet food & supplies", "Foster homes", "Volunteer hours"],
+    impact: "💡 The PSPCA has protected Pennsylvania animals for over 155 years — finding homes for thousands of pets and investigating cruelty cases across the state.",
+    donateUrl: "https://www.pspca.org/donate/",
+    volunteerUrl: "https://www.pspca.org/volunteer/",
+    website: "https://www.pspca.org", city: "philadelphia"
+  },
+  {
+    id: 121, name: "Children's Hospital of Philadelphia Foundation", icon: "🏥", iconClass: "card-icon-coral",
+    location: "Philadelphia, PA", distance: "—",
+    desc: "Supporting CHOP — consistently ranked the #1 children's hospital in the nation — with funding for groundbreaking pediatric research, specialized clinical care, and community health programs that serve children from Philadelphia and around the world.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 CHOP is the #1 children's hospital in America — your donation directly funds research breakthroughs that save children's lives worldwide.",
+    donateUrl: "https://give.chop.edu/",
+    volunteerUrl: "https://give.chop.edu/",
+    website: "https://www.chop.edu", city: "philadelphia"
+  },
+  {
+    id: 122, name: "Sunday Breakfast Mission", icon: "🍳", iconClass: "card-icon-teal",
+    location: "Philadelphia, PA", distance: "—",
+    desc: "Serving Philadelphia's homeless and hungry neighbors since 1878 — Sunday Breakfast Mission provides emergency shelter, hot meals, recovery programs, job training, and transitional housing to men, women, and children in the heart of the city.",
+    tags: ["Homelessness", "Food", "Recovery"], category: ["housing", "food"],
+    urgent: false,
+    needs: ["Monetary donations", "Food donations", "Clothing", "Volunteer hours"],
+    impact: "💡 Sunday Breakfast Mission has served Philadelphia's most vulnerable neighbors for nearly 150 years — providing meals, shelter, and recovery support.",
+    donateUrl: "https://www.sundaybreakfastmission.org/donate/",
+    volunteerUrl: "https://www.sundaybreakfastmission.org/volunteer/",
+    website: "https://www.sundaybreakfastmission.org", city: "philadelphia"
+  },
+
+  // ── ATLANTA (3 more) ──
+  {
+    id: 123, name: "LifeLine Animal Project", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Atlanta, GA", distance: "—",
+    desc: "Managing Atlanta's two largest public animal shelters, LifeLine Animal Project has transformed Atlanta into a no-kill city — providing adoption, foster, veterinary care, and community support programs that have saved over 90% of shelter animals.",
+    tags: ["Animals", "No-Kill", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet supplies", "Volunteer hours"],
+    impact: "💡 LifeLine Animal Project helped make Atlanta a no-kill city — saving over 90% of animals in Atlanta's public shelters through adoption and community programs.",
+    donateUrl: "https://www.lifelineanimalproject.org/donate/",
+    volunteerUrl: "https://www.lifelineanimalproject.org/volunteer/",
+    website: "https://www.lifelineanimalproject.org", city: "atlanta"
+  },
+  {
+    id: 124, name: "Children's Healthcare of Atlanta Foundation", icon: "🏥", iconClass: "card-icon-coral",
+    location: "Atlanta, GA", distance: "—",
+    desc: "Supporting one of the largest and most comprehensive pediatric healthcare systems in the US — Children's Healthcare of Atlanta serves 1 million patient visits per year and is dedicated to making kids better today and healthier tomorrow.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Children's Healthcare of Atlanta serves 1 million+ patient visits a year — ranked among the nation's best children's hospitals for over a decade.",
+    donateUrl: "https://www.choa.org/give",
+    volunteerUrl: "https://www.choa.org/give",
+    website: "https://www.choa.org", city: "atlanta"
+  },
+  {
+    id: 125, name: "Open Hand Atlanta", icon: "🍱", iconClass: "card-icon-teal",
+    location: "Atlanta, GA", distance: "—",
+    desc: "Providing medically tailored meals and nutrition services to critically ill and homebound Atlanta neighbors since 1988 — including HIV/AIDS, cancer, diabetes, and heart disease patients — ensuring nutrition as medicine reaches those who need it most.",
+    tags: ["Health", "Nutrition", "HIV/AIDS"], category: ["health", "food"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer meal packers & drivers", "Food donations"],
+    impact: "💡 Open Hand Atlanta delivers 5,000+ medically tailored meals every day to critically ill neighbors who are too sick to shop or cook for themselves.",
+    donateUrl: "https://www.openhandatlanta.org/donate/",
+    volunteerUrl: "https://www.openhandatlanta.org/volunteer/",
+    website: "https://www.openhandatlanta.org", city: "atlanta"
+  },
+
+  // ── NASHVILLE (3 more) ──
+  {
+    id: 126, name: "Nashville Humane Association", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Nashville, TN", distance: "—",
+    desc: "Nashville's no-kill animal shelter providing rescue, adoption, foster programs, and community veterinary services for dogs, cats, and small animals across Davidson County — with a mission to end unnecessary euthanasia in Middle Tennessee.",
+    tags: ["Animals", "No-Kill", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet supplies", "Volunteer hours"],
+    impact: "💡 Nashville Humane Association saves thousands of Middle Tennessee animals each year through adoption, foster, and community support programs.",
+    donateUrl: "https://www.nashvillehumane.org/donate/",
+    volunteerUrl: "https://www.nashvillehumane.org/volunteer/",
+    website: "https://www.nashvillehumane.org", city: "nashville"
+  },
+  {
+    id: 127, name: "Monroe Carell Jr. Children's Hospital at Vanderbilt Foundation", icon: "🏥", iconClass: "card-icon-coral",
+    location: "Nashville, TN", distance: "—",
+    desc: "Supporting one of the Southeast's premier children's hospitals — Monroe Carell Jr. Children's Hospital at Vanderbilt provides specialized pediatric care to children across Tennessee and the region, funded in part by a foundation committed to making care accessible to all.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Monroe Carell Jr. Children's Hospital at Vanderbilt is the leading pediatric hospital in Tennessee — your gift ensures every child gets expert care.",
+    donateUrl: "https://www.vanderbilthealth.com/childrenshospital/give",
+    volunteerUrl: "https://www.vanderbilthealth.com/childrenshospital/give",
+    website: "https://www.vanderbilthealth.com/childrenshospital", city: "nashville"
+  },
+  {
+    id: 128, name: "Tennessee Voices for Children", icon: "🧠", iconClass: "card-icon-sky",
+    location: "Nashville, TN", distance: "—",
+    desc: "Tennessee's leading children's mental health advocacy organization, providing direct mental health services, family support, and systemic advocacy to ensure children and youth across Tennessee have access to the mental healthcare they need to thrive.",
+    tags: ["Mental Health", "Children", "Advocacy"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer advocates", "Event support"],
+    impact: "💡 Tennessee Voices for Children advocates for 250,000+ Tennessee children with mental health needs — ensuring they get care, support, and a voice.",
+    donateUrl: "https://tnvoices.org/donate/",
+    volunteerUrl: "https://tnvoices.org/get-involved/",
+    website: "https://tnvoices.org", city: "nashville"
+  },
+
+  // ── CHARLOTTE (3 more) ──
+  {
+    id: 129, name: "Humane Society of Charlotte", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Charlotte, NC", distance: "—",
+    desc: "Providing shelter, adoption, foster care, and community programs for thousands of dogs, cats, and small animals across Mecklenburg County — the Humane Society of Charlotte is committed to a compassionate community where every pet has a loving home.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet supplies", "Volunteer hours"],
+    impact: "💡 The Humane Society of Charlotte saves thousands of animals each year through adoption, foster programs, and community support across Mecklenburg County.",
+    donateUrl: "https://www.humanesocietyofcharlotte.org/donate/",
+    volunteerUrl: "https://www.humanesocietyofcharlotte.org/volunteer/",
+    website: "https://www.humanesocietyofcharlotte.org", city: "charlotte"
+  },
+  {
+    id: 130, name: "Levine Children's Hospital Foundation", icon: "🏥", iconClass: "card-icon-coral",
+    location: "Charlotte, NC", distance: "—",
+    desc: "Supporting Levine Children's Hospital — the Carolinas' most comprehensive children's hospital — with funding for advanced pediatric care, research, and community health programs that serve children across the region regardless of their ability to pay.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Levine Children's Hospital is the most comprehensive pediatric hospital in the Carolinas — your gift funds care for the region's most vulnerable children.",
+    donateUrl: "https://www.carolinashealthcare.org/give/levine-childrens-hospital",
+    volunteerUrl: "https://www.carolinashealthcare.org/give/levine-childrens-hospital",
+    website: "https://www.carolinashealthcare.org/medical-services/childrens", city: "charlotte"
+  },
+  {
+    id: 131, name: "Men of Valor Charlotte", icon: "💪", iconClass: "card-icon-sky",
+    location: "Charlotte, NC", distance: "—",
+    desc: "Transforming incarcerated men into productive citizens through intensive in-prison mentoring, Bible study, and transitional housing programs in Charlotte — providing housing, employment, and community support to men reentering society after incarceration.",
+    tags: ["Reentry", "Housing", "Mentorship"], category: ["housing", "education"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer mentors", "Job connections"],
+    impact: "💡 Men of Valor has dramatically reduced recidivism for Charlotte-area men — proving that mentorship, housing, and community transform lives after incarceration.",
+    donateUrl: "https://menofvalor.org/donate/",
+    volunteerUrl: "https://menofvalor.org/volunteer/",
+    website: "https://menofvalor.org", city: "charlotte"
+  },
+
+  // ── RALEIGH (3 more) ──
+  {
+    id: 132, name: "SPCA of Wake County", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Raleigh, NC", distance: "—",
+    desc: "Wake County's leading animal welfare organization, providing no-kill shelter, adoption, foster, low-cost veterinary clinics, and humane education programs for thousands of dogs, cats, and small animals across the Triangle each year.",
+    tags: ["Animals", "No-Kill", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet supplies", "Volunteer hours"],
+    impact: "💡 The SPCA of Wake County saves thousands of Triangle animals each year — and its low-cost vet clinics help families keep their beloved pets.",
+    donateUrl: "https://spcawake.org/donate/",
+    volunteerUrl: "https://spcawake.org/volunteer/",
+    website: "https://spcawake.org", city: "raleigh"
+  },
+  {
+    id: 133, name: "UNC Children's Hospital Foundation", icon: "🏥", iconClass: "card-icon-coral",
+    location: "Chapel Hill / Raleigh, NC", distance: "—",
+    desc: "Supporting UNC Children's Hospital — North Carolina's only comprehensive children's hospital within a major research university — funding pediatric research, specialized care, and community programs for children across the Triangle and beyond.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 UNC Children's is the only pediatric hospital in NC within a research university — your gift funds breakthrough treatments for NC's children.",
+    donateUrl: "https://www.uncchildrens.org/give",
+    volunteerUrl: "https://www.uncchildrens.org/give",
+    website: "https://www.uncchildrens.org", city: "raleigh"
+  },
+  {
+    id: 134, name: "Families Together NC", icon: "🏠", iconClass: "card-icon-teal",
+    location: "Raleigh, NC", distance: "—",
+    desc: "Providing transitional and permanent supportive housing to families experiencing homelessness across Wake County — Families Together offers safe housing, case management, and wraparound services to help families achieve lasting stability.",
+    tags: ["Homelessness", "Housing", "Families"], category: ["housing", "children"],
+    urgent: true,
+    needs: ["Monetary donations", "Household items", "Volunteer hours"],
+    impact: "💡 Families Together NC has housed hundreds of Wake County families — helping parents and children move from homelessness to permanent stability.",
+    donateUrl: "https://www.familiestogethernc.org/donate/",
+    volunteerUrl: "https://www.familiestogethernc.org/volunteer/",
+    website: "https://www.familiestogethernc.org", city: "raleigh"
+  },
+
+  // ── GREENSBORO (3 more) ──
+  {
+    id: 135, name: "Guilford County Animal Services", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Greensboro, NC", distance: "—",
+    desc: "Guilford County's public animal shelter working toward no-kill through adoption, foster, rescue partners, and community veterinary programs — serving thousands of dogs, cats, and small animals across Greensboro and High Point each year.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: true,
+    needs: ["Foster homes", "Monetary donations", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 Guilford County Animal Services saves thousands of Piedmont Triad animals each year — every foster home helps a pet find its forever family.",
+    donateUrl: "https://www.guilfordcountync.gov/our-county/animal-services",
+    volunteerUrl: "https://www.guilfordcountync.gov/our-county/animal-services",
+    website: "https://www.guilfordcountync.gov/our-county/animal-services", city: "greensboro"
+  },
+  {
+    id: 136, name: "Family Service of the Piedmont", icon: "🧠", iconClass: "card-icon-sky",
+    location: "Greensboro, NC", distance: "—",
+    desc: "Providing mental health counseling, family support, and crisis intervention across the Piedmont Triad since 1914 — helping individuals and families in Guilford County navigate depression, anxiety, trauma, and family challenges with professional, affordable care.",
+    tags: ["Mental Health", "Family", "Counseling"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer hours", "Event support"],
+    impact: "💡 Family Service of the Piedmont has served Guilford County families for over 110 years — providing affordable mental health care to those who need it most.",
+    donateUrl: "https://www.familyservicepiedmont.org/donate/",
+    volunteerUrl: "https://www.familyservicepiedmont.org/volunteer/",
+    website: "https://www.familyservicepiedmont.org", city: "greensboro"
+  },
+  {
+    id: 137, name: "Habitat for Humanity of Greater Greensboro", icon: "🏗", iconClass: "card-icon-coral",
+    location: "Greensboro, NC", distance: "—",
+    desc: "Building strength, stability, and self-reliance through affordable homeownership in Guilford County — partnering with volunteers and families to build, renovate, and repair homes so that everyone in the Greensboro area can have a decent place to live.",
+    tags: ["Housing", "Homeownership", "Community"], category: ["housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer build days", "ReStore donations"],
+    impact: "💡 Habitat for Humanity of Greater Greensboro has helped hundreds of Guilford County families achieve the stability of affordable homeownership.",
+    donateUrl: "https://www.habitatgreensboro.org/donate/",
+    volunteerUrl: "https://www.habitatgreensboro.org/volunteer/",
+    website: "https://www.habitatgreensboro.org", city: "greensboro"
+  },
+
+  // ── DURHAM (3 more) ──
+  {
+    id: 138, name: "Durham County Animal Services", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Durham, NC", distance: "—",
+    desc: "Durham County's public animal shelter working toward no-kill through adoption, foster partnerships, rescue collaborations, and community programs — saving thousands of dogs, cats, and small animals across Durham each year.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: true,
+    needs: ["Foster homes", "Monetary donations", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 Durham County Animal Services saves thousands of animals each year — every adoption and foster placement helps end unnecessary euthanasia in Durham.",
+    donateUrl: "https://www.dconc.gov/government/departments-f-z/general-services/animal-services",
+    volunteerUrl: "https://www.dconc.gov/government/departments-f-z/general-services/animal-services",
+    website: "https://www.dconc.gov/government/departments-f-z/general-services/animal-services", city: "durham"
+  },
+  {
+    id: 139, name: "Duke Children's Hospital & Health Center", icon: "🏥", iconClass: "card-icon-coral",
+    location: "Durham, NC", distance: "—",
+    desc: "Supporting Duke Children's Hospital — one of the Southeast's leading pediatric hospitals and research institutions — providing specialized care to children across North Carolina and funding breakthrough research that benefits children worldwide.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Duke Children's provides specialized pediatric care to children from across NC and beyond — your gift funds research that saves young lives.",
+    donateUrl: "https://giving.duke.edu/dukechildrens",
+    volunteerUrl: "https://giving.duke.edu/dukechildrens",
+    website: "https://www.dukehealth.org/hospitals/dukes-childrens-hospital", city: "durham"
+  },
+  {
+    id: 140, name: "Habitat for Humanity of Durham", icon: "🏗", iconClass: "card-icon-teal",
+    location: "Durham, NC", distance: "—",
+    desc: "Building affordable homes and transforming lives in Durham County — Habitat for Humanity partners with volunteers and local families to provide affordable homeownership opportunities, helping create stable, safe communities across Durham.",
+    tags: ["Housing", "Homeownership", "Community"], category: ["housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer build days", "ReStore donations"],
+    impact: "💡 Habitat for Humanity of Durham has helped hundreds of Durham families achieve the stability and pride of owning an affordable home.",
+    donateUrl: "https://www.durhamhabitat.org/donate/",
+    volunteerUrl: "https://www.durhamhabitat.org/volunteer/",
+    website: "https://www.durhamhabitat.org", city: "durham"
+  },
+
+  // ── GREENVILLE NC (3 more) ──
+  {
+    id: 141, name: "Greenville-Pitt County Humane Society", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Greenville, NC", distance: "—",
+    desc: "Pitt County's animal welfare advocate, providing shelter, adoption, foster programs, and community outreach for dogs, cats, and small animals in Eastern North Carolina — working toward a community where every adoptable pet finds a loving home.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Foster homes", "Monetary donations", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 The Greenville-Pitt County Humane Society saves Eastern NC animals through adoption, foster programs, and community education across Pitt County.",
+    donateUrl: "https://www.pitthumane.org/donate/",
+    volunteerUrl: "https://www.pitthumane.org/volunteer/",
+    website: "https://www.pitthumane.org", city: "greenville nc"
+  },
+  {
+    id: 142, name: "ECU Health Foundation", icon: "🏥", iconClass: "card-icon-coral",
+    location: "Greenville, NC", distance: "—",
+    desc: "Supporting ECU Health Medical Center — Eastern North Carolina's largest hospital and academic medical center — funding research, specialized care, and community health programs that serve hundreds of thousands of patients across 29 rural Eastern NC counties.",
+    tags: ["Healthcare", "Hospital", "Community"], category: ["health"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 ECU Health is the lifeline for 29 Eastern NC counties — your gift funds care for rural neighbors who have nowhere else to turn for specialized treatment.",
+    donateUrl: "https://www.ecuhealth.org/foundation/",
+    volunteerUrl: "https://www.ecuhealth.org/foundation/",
+    website: "https://www.ecuhealth.org", city: "greenville nc"
+  },
+  {
+    id: 143, name: "Pitt County Schools Foundation", icon: "📚", iconClass: "card-icon-sky",
+    location: "Greenville, NC", distance: "—",
+    desc: "Supporting educational excellence in Pitt County Schools — the same school system that shaped MrBeast and the founders of WundieUndies — by funding classroom grants, teacher resources, scholarships, and innovative programs for students across Greenville and Pitt County.",
+    tags: ["Education", "Children", "Teachers"], category: ["education", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer tutors & mentors", "School supplies"],
+    impact: "💡 The Pitt County Schools Foundation invests in the same classrooms that shaped future innovators and philanthropists from Greenville, NC.",
+    donateUrl: "https://www.pittcountyschools.org/foundation",
+    volunteerUrl: "https://www.pittcountyschools.org/foundation",
+    website: "https://www.pittcountyschools.org", city: "greenville nc"
+  },
+
+  // ── WINSTON-SALEM (3 more) ──
+  {
+    id: 144, name: "Forsyth Humane Society", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Winston-Salem, NC", distance: "—",
+    desc: "Forsyth County's no-kill animal shelter providing adoption, foster care, low-cost veterinary services, and humane education programs for dogs, cats, and small animals across the Winston-Salem area — committed to a community where no adoptable pet is euthanized.",
+    tags: ["Animals", "No-Kill", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet supplies", "Volunteer hours"],
+    impact: "💡 Forsyth Humane Society saves thousands of Forsyth County animals each year and helped make Winston-Salem one of NC's leading no-kill communities.",
+    donateUrl: "https://www.forsythhumane.org/donate/",
+    volunteerUrl: "https://www.forsythhumane.org/volunteer/",
+    website: "https://www.forsythhumane.org", city: "winston-salem"
+  },
+  {
+    id: 145, name: "Brenner Children's Hospital Foundation", icon: "🏥", iconClass: "card-icon-coral",
+    location: "Winston-Salem, NC", distance: "—",
+    desc: "Supporting Brenner Children's Hospital at Wake Forest Baptist Medical Center — the only children's hospital in northwest North Carolina — funding pediatric care, research, and community programs for children across the Triad and beyond.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Brenner Children's is the only pediatric hospital serving northwest NC — your donation ensures Triad kids get specialized care close to home.",
+    donateUrl: "https://www.wakehealth.edu/brenner/ways-to-give",
+    volunteerUrl: "https://www.wakehealth.edu/brenner/ways-to-give",
+    website: "https://www.brennerchildrens.org", city: "winston-salem"
+  },
+  {
+    id: 146, name: "Big Brothers Big Sisters of Northwest NC", icon: "👫", iconClass: "card-icon-sky",
+    location: "Winston-Salem, NC", distance: "—",
+    desc: "Igniting the potential of Winston-Salem youth through professionally supported one-to-one mentoring — matching caring adult volunteers with children ages 5–18 across Forsyth County to help them build confidence, improve academics, and achieve their goals.",
+    tags: ["Youth", "Mentorship", "Education"], category: ["children", "education"],
+    urgent: false,
+    needs: ["Volunteer Bigs (mentors)", "Monetary donations", "Event support"],
+    impact: "💡 BBBS of Northwest NC mentored youth are more likely to succeed in school and avoid risky behaviors — one match changes everything in Winston-Salem.",
+    donateUrl: "https://www.bbbsnwnc.org/donate/",
+    volunteerUrl: "https://www.bbbsnwnc.org/get-involved/",
+    website: "https://www.bbbsnwnc.org", city: "winston-salem"
   }
 ];
 
 let activeFilter = 'all';
 let currentCity = 'Miami, FL';
+
+// Derived site-wide totals — always accurate
+const TOTAL_CHARITIES = charities.length;
+const TOTAL_CITIES    = [...new Set(charities.map(c => c.city))].length;
+const TOTAL_CATS      = 7;
+
+function animateStat(el, target) {
+  if (!el) return;
+  const start = parseInt(el.textContent.replace(/\D/g,'')) || 0;
+  if (start === target) return;
+  const steps = 20, duration = 500;
+  let step = 0;
+  const inc = (target - start) / steps;
+  let current = start;
+  const timer = setInterval(() => {
+    step++;
+    current += inc;
+    el.textContent = step === steps ? target : Math.round(current);
+    if (step >= steps) clearInterval(timer);
+  }, duration / steps);
+}
+
+function updateStats(cityKey) {
+  const numEl     = document.getElementById('statCharities');
+  const numLbl    = document.getElementById('statCharitiesLabel');
+  const midEl     = document.getElementById('statCities');
+  const midLbl    = document.getElementById('statCitiesLabel');
+  const catsEl    = document.getElementById('statCategories');
+  const catsLbl   = document.getElementById('statCategoriesLabel');
+
+  if (cityKey) {
+    const cityList  = charities.filter(c => c.city === cityKey);
+    const cityCount = cityList.length;
+    const catCount  = [...new Set(cityList.flatMap(c => c.category))].length;
+    const urgent    = cityList.filter(c => c.urgent).length;
+    animateStat(numEl,  cityCount);  numLbl.textContent  = cityCount === 1 ? 'Charity in This City' : 'Charities in This City';
+    animateStat(midEl,  catCount);   midLbl.textContent  = 'Cause Categories';
+    animateStat(catsEl, urgent);     catsLbl.textContent = urgent === 1 ? 'Urgent Need' : 'Urgent Needs';
+  } else {
+    animateStat(numEl,  TOTAL_CHARITIES); numLbl.textContent  = 'Charities Listed';
+    animateStat(midEl,  TOTAL_CITIES);    midLbl.textContent  = 'Cities Covered';
+    animateStat(catsEl, TOTAL_CATS);      catsLbl.textContent = 'Cause Categories';
+  }
+}
 
 /* ---- IP GEOLOCATION ---- */
 async function detectLocation() {
@@ -1733,12 +2613,12 @@ function applyFilters(cityStr, q, shouldScroll) {
 
   if (q) {
     // For keyword searches, first look for name/tag matches across ALL cities
-    // so "Beast" finds Beast Philanthropy regardless of current city
     const globalNameMatches = charities.filter(c =>
       c.name.toLowerCase().includes(q) ||
       c.tags.some(t => t.toLowerCase().includes(q))
     );
     if (globalNameMatches.length > 0) {
+      updateStats(null);
       renderCharities(globalNameMatches, globalNameMatches.length === 1 ? globalNameMatches[0].location : 'matching charities');
       if (shouldScroll) setTimeout(() => {
         const el = document.getElementById('charityTabs');
@@ -1747,18 +2627,20 @@ function applyFilters(cityStr, q, shouldScroll) {
       return;
     }
     // Fall back to keyword search within current city
-    if (!cityKey) { renderCharities([], cityStr); return; }
+    if (!cityKey) { updateStats(null); renderCharities([], cityStr); return; }
     list = list.filter(c => c.city === cityKey);
     if (activeFilter !== 'all') list = list.filter(c => c.category.includes(activeFilter));
     list = list.filter(c =>
       c.location.toLowerCase().includes(q) ||
       c.desc.toLowerCase().includes(q)
     );
+    updateStats(cityKey);
     renderCharities(list, cityStr);
   } else {
-    if (!cityKey) { renderCharities([], cityStr); return; }
+    if (!cityKey) { updateStats(null); renderCharities([], cityStr); return; }
     list = list.filter(c => c.city === cityKey);
     if (activeFilter !== 'all') list = list.filter(c => c.category.includes(activeFilter));
+    updateStats(cityKey);
     renderCharities(list, cityStr);
   }
 
