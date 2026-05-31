@@ -339,8 +339,8 @@
       </div>
       <div class="spotlight-actions">
         <button class="btn-white" onclick="openCharityModal(1)">💚 Donate / Learn More</button>
-        <button class="btn-outline-white" onclick="showDropoff()">📦 Drop Off Items</button>
-        <button class="btn-outline-white" onclick="switchTab('volunteer')">🙋 Volunteer</button>
+        <a href="mailto:team@wundieundies.com?subject=Drop-Off Inquiry" class="btn-outline-white">📦 Drop Off Items</a>
+        <a href="mailto:team@wundieundies.com?subject=Volunteering with WundieUndies" class="btn-outline-white">🙋 Volunteer</a>
       </div>
     </div>
   </div>
@@ -407,7 +407,7 @@
       <div class="vol-card">
         <div class="vol-header"><div><div class="vol-role">Sorting &amp; Packing Volunteer</div><div class="vol-org">WundieUndies</div></div><span class="vol-badge badge-urgent">🔴 Urgent</span></div>
         <div class="vol-details"><div class="vol-detail-row">📅 Saturdays 9am–12pm</div><div class="vol-detail-row">📍 Miami, FL (Wynwood)</div><div class="vol-detail-row">⏱ 3 hrs/week</div><div style="font-size:13px;color:var(--ink-mid);margin-top:6px;">Sort donated undergarments and pack hygiene kits for distribution to partner organizations.</div></div>
-        <button class="vol-apply" onclick="window.open('https://www.wundieundies.org/volunteer','_blank')">Apply to Volunteer ↗</button>
+        <button class="vol-apply" onclick="window.open('mailto:team@wundieundies.com?subject=Volunteering with WundieUndies','_blank')">Contact WundieUndies to Volunteer ↗</button>
       </div>
       <div class="vol-card">
         <div class="vol-header"><div><div class="vol-role">Youth Mentor</div><div class="vol-org">Educate Tomorrow</div></div><span class="vol-badge badge-urgent">🔴 Urgent</span></div>
@@ -539,15 +539,15 @@
 const charities = [
   {
     id: 1, name: "WundieUndies", icon: "🩲", iconClass: "card-icon-teal",
-    location: "Wynwood, Miami, FL", distance: "0.4 mi",
-    desc: "Founded by three young women, WundieUndies collects and distributes undergarments, feminine hygiene products, and diapers to individuals and organizations serving those in need. Because dignity is a basic human right.",
+    location: "Miami, FL", distance: "0.4 mi",
+    desc: "Founded by three young women (Bella, Leila, and Reese) when they were just 12 years old, WundieUndies collects and distributes undergarments, feminine hygiene products, and diapers to local shelters and food banks. Because dignity is a basic human right.",
     tags: ["Hygiene", "Diapers", "Women's Health"], category: ["hygiene", "children"],
     urgent: true,
     needs: ["Underwear (all sizes)", "Feminine hygiene products", "Diapers (all sizes)", "Monetary donations"],
     impact: "💡 100% of donations go directly to distributing essential hygiene items to people in need.",
-    donateUrl: "https://www.wundieundies.org/donate",
-    volunteerUrl: "https://www.wundieundies.org/volunteer",
-    website: "https://www.wundieundies.org", city: "miami"
+    donateUrl: "https://www.zeffy.com/en-US/donation-form/donate-to-wundie-undies",
+    volunteerUrl: "mailto:team@wundieundies.com?subject=Volunteering with WundieUndies",
+    website: "https://www.wundieundies.com", city: "miami"
   },
   {
     id: 2, name: "Feeding South Florida", icon: "🥗", iconClass: "card-icon-sun",
@@ -803,9 +803,10 @@ function openCharityModal(id) {
   document.getElementById('modalCharityDesc').textContent = c.desc;
   document.getElementById('modalImpact').textContent = c.impact;
   document.getElementById('modalNeeds').innerHTML = c.needs.map(n=>`<span class="need-tag">${n}</span>`).join('');
+  const volunteerLabel = c.volunteerUrl.startsWith('mailto:') ? `📧 Email ${c.name} to Volunteer` : `🙋 Volunteer with ${c.name} ↗`;
   document.getElementById('modalActions').innerHTML = `
     <a href="${c.donateUrl}" target="_blank" rel="noopener" class="modal-btn modal-btn-primary">💚 Donate on ${c.name}'s Website ↗</a>
-    <a href="${c.volunteerUrl}" target="_blank" rel="noopener" class="modal-btn modal-btn-outline">🙋 Volunteer with ${c.name} ↗</a>
+    <a href="${c.volunteerUrl}" target="_blank" rel="noopener" class="modal-btn modal-btn-outline">${volunteerLabel}</a>
     <a href="${c.website}" target="_blank" rel="noopener" class="modal-btn modal-btn-secondary">🌐 Visit ${c.name}'s Website ↗</a>
   `;
   document.getElementById('donateModal').classList.add('open');
