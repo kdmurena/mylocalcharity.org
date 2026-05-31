@@ -298,7 +298,7 @@
   <p>Discover local charities, make donations, and find volunteer opportunities in your neighborhood. Every contribution makes a real difference.</p>
   <div class="search-wrap">
     <div class="search-row">
-      <input type="text" id="searchInput" placeholder="Search charities, causes, or zip code…" oninput="filterCharities()">
+      <input type="text" id="searchInput" placeholder="Search by zip code, city, charity name, or cause…" oninput="filterCharitiesOnInput()" onkeydown="if(event.key==='Enter') filterCharities()">
       <button class="search-btn" onclick="filterCharities()">🔍 Search</button>
     </div>
     <div class="filter-pills">
@@ -660,7 +660,7 @@ const charities = [
   {
     id: 11, name: "NAMI Miami-Dade", icon: "🧠", iconClass: "card-icon-sky",
     location: "Coral Gables, Miami, FL", distance: "2.9 mi",
-    desc: "The National Alliance on Mental Illness of Miami-Dade County offers free, confidential mental health support, education, and advocacy in English and Spanish — serving individuals, families, and caregivers affected by mental illness across Miami-Dade.",
+    desc: "The National Alliance on Mental Illness of Miami-Dade County offers free, confidential mental health support, education, and advocacy in English and Spanish — serving individuals, families, and caregivers affected by mental illness.",
     tags: ["Mental Health", "Advocacy", "Support Groups"], category: ["health"],
     urgent: false,
     needs: ["Monetary donations", "Volunteer peer supporters", "Event volunteers"],
@@ -672,7 +672,7 @@ const charities = [
   {
     id: 12, name: "Miami Beach Community Health Center", icon: "💊", iconClass: "card-icon-teal",
     location: "Miami Beach, FL", distance: "3.8 mi",
-    desc: "A federally qualified health center providing primary care, pediatrics, behavioral health, OB/GYN, and dental services to Miami residents regardless of income or insurance status — the front line of care for thousands of uninsured neighbors.",
+    desc: "A federally qualified health center providing primary care, pediatrics, behavioral health, OB/GYN, and dental services to Miami residents regardless of income or insurance status.",
     tags: ["Primary Care", "Uninsured", "Community Health"], category: ["health"],
     urgent: false,
     needs: ["Monetary donations", "Medical volunteer professionals", "Community outreach volunteers"],
@@ -680,6 +680,272 @@ const charities = [
     donateUrl: "https://www.mbchc.org/donate",
     volunteerUrl: "https://www.mbchc.org/volunteer",
     website: "https://www.mbchc.org", city: "miami"
+  },
+
+  // ── NEW YORK CITY ──
+  {
+    id: 13, name: "City Harvest", icon: "🍎", iconClass: "card-icon-sun",
+    location: "Midtown, New York, NY", distance: "—",
+    desc: "New York City's largest food rescue organization, rescuing over 111 million pounds of food each year and delivering it free of charge to more than 400 community food programs serving 1.5 million New Yorkers struggling with hunger.",
+    tags: ["Food", "Hunger Relief", "Food Rescue"], category: ["food"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer hours", "Food donations"],
+    impact: "💡 $27 feeds two hungry New Yorkers for an entire month.",
+    donateUrl: "https://www.cityharvest.org/donate/",
+    volunteerUrl: "https://www.cityharvest.org/volunteer/",
+    website: "https://www.cityharvest.org", city: "new york"
+  },
+  {
+    id: 14, name: "New York Cares", icon: "🤝", iconClass: "card-icon-teal",
+    location: "New York, NY", distance: "—",
+    desc: "New York City's largest volunteer network, mobilizing over 50,000 volunteers each year to tackle pressing social issues — from tutoring children and serving meals to running coat drives and job readiness programs.",
+    tags: ["Volunteering", "Community", "Youth"], category: ["children", "food", "education"],
+    urgent: false,
+    needs: ["Volunteer hours", "Coat donations", "Monetary donations"],
+    impact: "💡 New York Cares volunteers contribute over 500,000 hours of service to NYC communities each year.",
+    donateUrl: "https://www.newyorkcares.org/donate",
+    volunteerUrl: "https://www.newyorkcares.org/volunteer",
+    website: "https://www.newyorkcares.org", city: "new york"
+  },
+  {
+    id: 15, name: "Coalition for the Homeless", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Flatiron, New York, NY", distance: "—",
+    desc: "The nation's oldest advocacy and direct service organization helping homeless New Yorkers, providing hot meals, shelter, job training, and housing placement to over 1,700 men, women, and children every night.",
+    tags: ["Homelessness", "Housing", "Advocacy"], category: ["housing"],
+    urgent: true,
+    needs: ["Monetary donations", "Clothing", "Hygiene products", "Volunteer hours"],
+    impact: "💡 NYC has more than 50,000 people experiencing homelessness on any given night — your support helps end that.",
+    donateUrl: "https://www.coalitionforthehomeless.org/donate/",
+    volunteerUrl: "https://www.coalitionforthehomeless.org/get-involved/volunteer/",
+    website: "https://www.coalitionforthehomeless.org", city: "new york"
+  },
+
+  // ── LOS ANGELES ──
+  {
+    id: 16, name: "LA Regional Food Bank", icon: "🥗", iconClass: "card-icon-sun",
+    location: "Commerce, Los Angeles, CA", distance: "—",
+    desc: "One of the largest food banks in the US, the Los Angeles Regional Food Bank distributes over 100 million pounds of food annually to nearly 900,000 people in need across Los Angeles County through a network of 700+ partner agencies.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Every $1 donated provides 2 meals to someone in need across LA County.",
+    donateUrl: "https://www.lafoodbank.org/donate/",
+    volunteerUrl: "https://www.lafoodbank.org/get-involved/volunteer/",
+    website: "https://www.lafoodbank.org", city: "los angeles"
+  },
+  {
+    id: 17, name: "Downtown Women's Center", icon: "🏠", iconClass: "card-icon-plum",
+    location: "Downtown Los Angeles, CA", distance: "—",
+    desc: "The only organization in Los Angeles exclusively dedicated to serving and empowering women experiencing homelessness — providing housing, wellness programs, and economic opportunities to help women rebuild their lives.",
+    tags: ["Women", "Homelessness", "Housing"], category: ["housing", "health"],
+    urgent: true,
+    needs: ["Women's clothing", "Hygiene products", "Monetary donations", "Volunteer hours"],
+    impact: "💡 DWC serves 2,000+ women experiencing homelessness each year — the only LA org focused exclusively on them.",
+    donateUrl: "https://www.downtownwomenscenter.org/donate/",
+    volunteerUrl: "https://www.downtownwomenscenter.org/get-involved/volunteer/",
+    website: "https://www.downtownwomenscenter.org", city: "los angeles"
+  },
+  {
+    id: 18, name: "PAWS Los Angeles", icon: "🐾", iconClass: "card-icon-sky",
+    location: "Hollywood, Los Angeles, CA", distance: "—",
+    desc: "PAWS LA provides free pet care and support services to low-income seniors and people with disabilities or illness, helping them keep their beloved animal companions while maintaining their own independence and dignity.",
+    tags: ["Animals", "Seniors", "Pet Care"], category: ["animals", "health"],
+    urgent: false,
+    needs: ["Pet food", "Monetary donations", "Volunteer dog walkers", "Foster homes"],
+    impact: "💡 Keeping pets with their owners reduces isolation and improves mental health outcomes for vulnerable Angelenos.",
+    donateUrl: "https://pawsla.org/donate/",
+    volunteerUrl: "https://pawsla.org/volunteer/",
+    website: "https://pawsla.org", city: "los angeles"
+  },
+
+  // ── CHICAGO ──
+  {
+    id: 19, name: "Greater Chicago Food Depository", icon: "🥣", iconClass: "card-icon-sun",
+    location: "Archer Heights, Chicago, IL", distance: "—",
+    desc: "Chicago's food bank, distributing donated and purchased food through a network of 700 pantries, soup kitchens, and shelters — serving more than 800,000 adults and children across Cook County every year since 1979.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 One in six Cook County residents benefits from the Food Depository's services each year.",
+    donateUrl: "https://www.chicagosfoodbank.org/donate/",
+    volunteerUrl: "https://www.chicagosfoodbank.org/volunteer/",
+    website: "https://www.chicagosfoodbank.org", city: "chicago"
+  },
+  {
+    id: 20, name: "PAWS Chicago", icon: "🐾", iconClass: "card-icon-teal",
+    location: "Lincoln Park, Chicago, IL", distance: "—",
+    desc: "A nationally recognized no-kill animal shelter and humane organization that has saved over 60,000 lives since 1997, providing veterinary care, adoption services, and community programs to end the killing of homeless pets in Chicago.",
+    tags: ["Animals", "Rescue", "No-Kill"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet supplies", "Volunteer hours"],
+    impact: "💡 PAWS Chicago has saved over 60,000 animals — helping Chicago become one of the largest no-kill cities in the US.",
+    donateUrl: "https://www.pawschicago.org/donate",
+    volunteerUrl: "https://www.pawschicago.org/volunteer",
+    website: "https://www.pawschicago.org", city: "chicago"
+  },
+  {
+    id: 21, name: "Chicago Coalition for the Homeless", icon: "🏘", iconClass: "card-icon-coral",
+    location: "Chicago, IL", distance: "—",
+    desc: "Advocates for the wellbeing of people experiencing homelessness by fighting for public policies on housing, healthcare, education, and jobs — and organizing homeless individuals as leaders in their own advocacy.",
+    tags: ["Homelessness", "Housing", "Advocacy"], category: ["housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer advocates", "Clothing donations"],
+    impact: "💡 CCH has helped pass major policy wins that have moved thousands of Chicagoans from homelessness into housing.",
+    donateUrl: "https://www.chicagohomeless.org/donate/",
+    volunteerUrl: "https://www.chicagohomeless.org/get-involved/",
+    website: "https://www.chicagohomeless.org", city: "chicago"
+  },
+
+  // ── SAN FRANCISCO ──
+  {
+    id: 22, name: "SF-Marin Food Bank", icon: "🍞", iconClass: "card-icon-sun",
+    location: "Potrero Hill, San Francisco, CA", distance: "—",
+    desc: "One of the largest food banks in the US, the SF-Marin Food Bank distributes over 60 million pounds of food annually — enough for 175,000 meals per day — to families, seniors, and individuals across San Francisco and Marin County.",
+    tags: ["Food", "Hunger Relief", "Seniors"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Every $1 donated provides 2 meals — and the Food Bank turns every dollar into enough food for two meals.",
+    donateUrl: "https://www.sfmfoodbank.org/donate/",
+    volunteerUrl: "https://www.sfmfoodbank.org/volunteer/",
+    website: "https://www.sfmfoodbank.org", city: "san francisco"
+  },
+  {
+    id: 23, name: "Glide Memorial", icon: "🌟", iconClass: "card-icon-plum",
+    location: "Tenderloin, San Francisco, CA", distance: "—",
+    desc: "A radical center of social justice, Glide serves 2,000 free meals daily, 365 days a year, while providing recovery programs, housing services, women's support, and mental health care to San Francisco's most marginalized residents.",
+    tags: ["Food", "Homelessness", "Recovery"], category: ["food", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer meal servers", "Clothing donations"],
+    impact: "💡 Glide has served more than 1 million meals a year for decades — no questions asked, no one turned away.",
+    donateUrl: "https://www.glide.org/give/",
+    volunteerUrl: "https://www.glide.org/volunteer/",
+    website: "https://www.glide.org", city: "san francisco"
+  },
+  {
+    id: 24, name: "Project Open Hand", icon: "🍱", iconClass: "card-icon-teal",
+    location: "Tenderloin, San Francisco, CA", distance: "—",
+    desc: "Provides medically tailored meals and groceries to critically ill and elderly neighbors in San Francisco and Alameda County — delivering nutrition as medicine to 2,500+ people daily who are too ill to shop or cook for themselves.",
+    tags: ["Health", "Seniors", "Nutrition"], category: ["health", "food"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer meal packers", "Food donations"],
+    impact: "💡 Nutrition as medicine — meals from Project Open Hand help clients manage HIV/AIDS, cancer, diabetes and more.",
+    donateUrl: "https://www.openhand.org/donate/",
+    volunteerUrl: "https://www.openhand.org/volunteer/",
+    website: "https://www.openhand.org", city: "san francisco"
+  },
+
+  // ── HOUSTON ──
+  {
+    id: 25, name: "Houston Food Bank", icon: "🥘", iconClass: "card-icon-sun",
+    location: "East Downtown, Houston, TX", distance: "—",
+    desc: "America's largest food bank by distribution, the Houston Food Bank serves 18 southeast Texas counties through a network of 1,600+ community partners — providing 207 million nutritious meals annually with a 4-star Charity Navigator rating.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 The Houston Food Bank is America's largest food bank — serving 800,000 people across 18 Texas counties.",
+    donateUrl: "https://www.houstonfoodbank.org/donate/",
+    volunteerUrl: "https://www.houstonfoodbank.org/volunteer/",
+    website: "https://www.houstonfoodbank.org", city: "houston"
+  },
+  {
+    id: 26, name: "Star of Hope Mission", icon: "🌟", iconClass: "card-icon-coral",
+    location: "Downtown Houston, TX", distance: "—",
+    desc: "Houston's largest provider of homeless services, Star of Hope offers emergency shelter, transitional living, recovery programs, job training, and permanent supportive housing to homeless men, women, and families across Houston.",
+    tags: ["Homelessness", "Housing", "Recovery"], category: ["housing"],
+    urgent: true,
+    needs: ["Clothing (all sizes)", "Hygiene kits", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Star of Hope serves 1,200+ people every day — helping them move from homelessness to sustainable independence.",
+    donateUrl: "https://www.sohmission.org/donate/",
+    volunteerUrl: "https://www.sohmission.org/get-involved/volunteer/",
+    website: "https://www.sohmission.org", city: "houston"
+  },
+  {
+    id: 27, name: "Covenant House Texas", icon: "🏠", iconClass: "card-icon-sky",
+    location: "Midtown Houston, TX", distance: "—",
+    desc: "Provides shelter, food, immediate crisis care, and longer-term support to youth experiencing homelessness — serving young people ages 18–24 in Houston with housing, education, job training, and trauma-informed care.",
+    tags: ["Youth", "Homelessness", "Housing"], category: ["housing", "children"],
+    urgent: false,
+    needs: ["Clothing (sizes XS–XL)", "Hygiene products", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Covenant House Texas helps young people escaping homelessness, trafficking, and abuse rebuild their lives.",
+    donateUrl: "https://www.covenanthousehouston.org/donate",
+    volunteerUrl: "https://www.covenanthousehouston.org/get-involved/volunteer/",
+    website: "https://www.covenanthousehouston.org", city: "houston"
+  },
+
+  // ── BOSTON ──
+  {
+    id: 28, name: "Greater Boston Food Bank", icon: "🥖", iconClass: "card-icon-sun",
+    location: "South End, Boston, MA", distance: "—",
+    desc: "The largest hunger-relief organization in New England, distributing over 100 million pounds of food annually to 190 cities and towns across Eastern Massachusetts through a network of 600+ food pantries, meal programs, and schools.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 1 in 9 people in Eastern Massachusetts faces hunger — the Greater Boston Food Bank helps feed them all.",
+    donateUrl: "https://www.gbfb.org/donate/",
+    volunteerUrl: "https://www.gbfb.org/get-involved/volunteer/",
+    website: "https://www.gbfb.org", city: "boston"
+  },
+  {
+    id: 29, name: "Pine Street Inn", icon: "🏠", iconClass: "card-icon-coral",
+    location: "South End, Boston, MA", distance: "—",
+    desc: "The largest provider of homeless services in New England, Pine Street Inn serves over 2,000 people per day through emergency shelter, outreach, permanent supportive housing, and workforce development programs across Boston.",
+    tags: ["Homelessness", "Housing", "Workforce"], category: ["housing"],
+    urgent: false,
+    needs: ["Clothing", "Hygiene items", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Pine Street Inn has been Boston's frontline response to homelessness since 1969 — serving 2,000+ people daily.",
+    donateUrl: "https://www.pinestreetinn.org/give/",
+    volunteerUrl: "https://www.pinestreetinn.org/get-involved/volunteer/",
+    website: "https://www.pinestreetinn.org", city: "boston"
+  },
+  {
+    id: 30, name: "Project Bread", icon: "🌾", iconClass: "card-icon-teal",
+    location: "Boston, MA", distance: "—",
+    desc: "Massachusetts' leading anti-hunger nonprofit, connecting people to federal nutrition programs through advocacy, outreach, and a free FoodSource Hotline in 160 languages — and organizing Boston's annual Walk for Hunger.",
+    tags: ["Food", "Hunger Relief", "Advocacy"], category: ["food"],
+    urgent: false,
+    needs: ["Monetary donations", "Walk for Hunger participants", "Advocacy volunteers"],
+    impact: "💡 Project Bread's FoodSource Hotline connects thousands of Massachusetts families to food assistance each year.",
+    donateUrl: "https://www.projectbread.org/donate/",
+    volunteerUrl: "https://www.projectbread.org/get-involved/",
+    website: "https://www.projectbread.org", city: "boston"
+  },
+
+  // ── WASHINGTON, DC ──
+  {
+    id: 31, name: "Capital Area Food Bank", icon: "🥫", iconClass: "card-icon-sun",
+    location: "Washington, DC", distance: "—",
+    desc: "The largest hunger-relief organization in the DC metro area, distributing over 45 million meals a year to more than 400,000 people across DC, Maryland, and Virginia through a network of 450+ community partners.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 1 in 8 DC residents faces hunger — the Capital Area Food Bank works to ensure no neighbor goes without a meal.",
+    donateUrl: "https://www.capitalareafoodbank.org/donate/",
+    volunteerUrl: "https://www.capitalareafoodbank.org/get-involved/volunteer/",
+    website: "https://www.capitalareafoodbank.org", city: "washington"
+  },
+  {
+    id: 32, name: "Miriam's Kitchen", icon: "🍲", iconClass: "card-icon-plum",
+    location: "Foggy Bottom, Washington, DC", distance: "—",
+    desc: "Provides chef-prepared meals and comprehensive social services to chronically homeless neighbors in DC — working toward a DC where homelessness is rare, brief, and nonrecurring through housing placement and wraparound care.",
+    tags: ["Homelessness", "Food", "Housing"], category: ["housing", "food"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer meal servers", "Hygiene items"],
+    impact: "💡 Miriam's Kitchen has helped end chronic homelessness for over 800 DC residents through meals and housing support.",
+    donateUrl: "https://www.miriamskitchen.org/give/",
+    volunteerUrl: "https://www.miriamskitchen.org/get-involved/volunteer/",
+    website: "https://www.miriamskitchen.org", city: "washington"
+  },
+  {
+    id: 33, name: "So Others Might Eat (SOME)", icon: "🤲", iconClass: "card-icon-coral",
+    location: "Columbia Heights, Washington, DC", distance: "—",
+    desc: "SOME has served DC's most vulnerable neighbors since 1970 — providing daily meals, affordable housing, healthcare, addiction recovery, job training, and education to homeless and low-income residents of the nation's capital.",
+    tags: ["Homelessness", "Food", "Recovery"], category: ["housing", "food", "health"],
+    urgent: false,
+    needs: ["Clothing", "Hygiene kits", "Monetary donations", "Volunteer hours"],
+    impact: "💡 SOME serves 1,400+ meals every day and has helped thousands of DC residents rebuild their lives from homelessness.",
+    donateUrl: "https://some.org/donate/",
+    volunteerUrl: "https://some.org/get-involved/volunteer/",
+    website: "https://some.org", city: "washington"
   }
 ];
 
@@ -696,11 +962,11 @@ async function detectLocation() {
     currentCity = city + ', ' + region;
     document.getElementById('geoCity').textContent = currentCity;
     document.getElementById('resultsCount').textContent = 'Showing charities near ' + currentCity;
-    filterCharities();
+    applyFilters(currentCity, '');
   } catch (e) {
     document.getElementById('geoCity').textContent = 'Miami, FL';
     document.getElementById('resultsCount').textContent = 'Showing charities near Miami, FL';
-    filterCharities();
+    applyFilters('Miami, FL', '');
   }
 }
 
@@ -717,17 +983,18 @@ function applyManualCity() {
   document.getElementById('geoCity').textContent = val;
   document.getElementById('resultsCount').textContent = 'Showing charities near ' + val;
   document.getElementById('geoInputWrap').classList.remove('open');
-  filterCharities();
+  applyFilters(val, '');
 }
 
 /* ---- CHARITY RENDERING ---- */
-function renderCharities(list) {
+function renderCharities(list, searchedCity) {
   const grid = document.getElementById('charityGrid');
+  const displayCity = searchedCity || currentCity;
   if (list.length === 0) {
     grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--ink-light);font-size:14px;">
       <div style="font-size:2.5rem;margin-bottom:0.75rem;">🌍</div>
-      No charities listed yet for <strong style="color:var(--ink)">${currentCity}</strong>.<br>
-      <span style="font-size:13px;">Know a great local charity? <a href="#list" style="color:var(--teal)">List it for free →</a></span>
+      No charities listed yet for <strong style="color:var(--ink)">${displayCity}</strong>.<br>
+      <span style="font-size:13px;">Know a great local charity? <a href="register.html" style="color:var(--teal)">List it for free →</a></span>
     </div>`;
     return;
   }
@@ -754,27 +1021,85 @@ function renderCharities(list) {
   `).join('');
 }
 
-function filterCharities() {
-  const q = document.getElementById('searchInput').value.toLowerCase();
-  const cityLower = currentCity.toLowerCase();
+function getCityKey(cityStr) {
+  const s = cityStr.toLowerCase();
+  if (s.includes('miami') || s.includes('coral gables') || s.includes('hialeah') || s.includes('doral') || s.includes('pembroke') || s.includes('homestead') || s.includes('aventura') || s.includes('kendall') || s.includes('brickell') || s.includes('wynwood')) return 'miami';
+  if (s.includes('new york') || s.includes('nyc') || s.includes('brooklyn') || s.includes('manhattan') || s.includes('queens') || s.includes('bronx') || s.includes('staten island')) return 'new york';
+  if (s.includes('los angeles') || s.includes(' la ') || s.startsWith('la,') || s.includes('hollywood') || s.includes('santa monica') || s.includes('venice') || s.includes('culver city') || s.includes('pasadena')) return 'los angeles';
+  if (s.includes('chicago') || s.includes('evanston') || s.includes('oak park') || s.includes('wicker park') || s.includes('lincoln park')) return 'chicago';
+  if (s.includes('san francisco') || s.includes(' sf ') || s.startsWith('sf,') || s.includes('tenderloin') || s.includes('mission district') || s.includes('soma') || s.includes('potrero')) return 'san francisco';
+  if (s.includes('houston') || s.includes('katy') || s.includes('sugar land') || s.includes('pearland') || s.includes('the woodlands')) return 'houston';
+  if (s.includes('boston') || s.includes('cambridge') || s.includes('somerville') || s.includes('brookline') || s.includes('roxbury') || s.includes('south end') || s.includes('dorchester')) return 'boston';
+  if (s.includes('washington') || s.includes(' dc') || s.includes('d.c.') || s.includes('foggy bottom') || s.includes('columbia heights') || s.includes('adams morgan')) return 'washington';
+  return null;
+}
+
+function applyFilters(cityStr, q) {
+  const cityKey = getCityKey(cityStr);
   let list = charities;
-  // Filter by city — show miami charities for miami, empty state for others
-  const isMiami = cityLower.includes('miami') || cityLower.includes('coral gables') || cityLower.includes('hialeah') || cityLower.includes('doral') || cityLower.includes('pembroke') || cityLower.includes('homestead') || cityLower.includes('fl');
-  if (!isMiami) { list = []; renderCharities(list); return; }
+  if (!cityKey) { renderCharities([], cityStr); return; }
+  list = list.filter(c => c.city === cityKey);
   if (activeFilter !== 'all') list = list.filter(c => c.category.includes(activeFilter));
   if (q) list = list.filter(c =>
     c.name.toLowerCase().includes(q) ||
     c.tags.some(t => t.toLowerCase().includes(q)) ||
-    c.location.toLowerCase().includes(q)
+    c.location.toLowerCase().includes(q) ||
+    c.desc.toLowerCase().includes(q)
   );
-  renderCharities(list);
+  renderCharities(list, cityStr);
+}
+
+async function filterCharities() {
+  const raw = document.getElementById('searchInput').value.trim();
+  const q   = raw.toLowerCase();
+
+  // Detect a US zip code (5 digits)
+  if (/^\d{5}$/.test(raw)) {
+    showToast('🔍 Looking up zip code ' + raw + '…');
+    try {
+      const res  = await fetch(`https://api.zippopotam.us/us/${raw}`);
+      if (!res.ok) throw new Error('Zip not found');
+      const data = await res.json();
+      const place = data.places[0];
+      const city  = place['place name'];
+      const state = place['state abbreviation'];
+      const label = city + ', ' + state;
+      currentCity = label;
+      document.getElementById('geoCity').textContent = label;
+      document.getElementById('resultsCount').textContent = 'Showing charities near ' + label;
+      showToast('📍 Showing results for ' + label);
+      applyFilters(label, '');
+      document.getElementById('searchInput').value = '';
+    } catch(e) {
+      showToast('❌ Zip code not found — try a city name instead');
+    }
+    return;
+  }
+
+  // Detect a city name typed manually
+  if (raw.length > 2 && !q.includes(' ')) {
+    applyFilters(raw, '');
+    document.getElementById('resultsCount').textContent = 'Searching for charities near "' + raw + '"';
+    return;
+  }
+
+  // Otherwise filter by keyword within current city
+  applyFilters(currentCity, q);
+}
+
+function filterCharitiesOnInput() {
+  const raw = document.getElementById('searchInput').value.trim();
+  // Only live-filter keywords, not zip codes (those need the lookup button)
+  if (/^\d{1,5}$/.test(raw)) return;
+  filterCharities();
 }
 
 function setFilter(f, btn) {
   activeFilter = f;
   document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
-  filterCharities();
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  applyFilters(currentCity, q);
 }
 
 function switchTab(tab) {
