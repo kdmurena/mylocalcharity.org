@@ -343,16 +343,16 @@
     <div style="font-size:11px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--teal-dark);white-space:nowrap;width:90px;flex-shrink:0;opacity:0.85;">Site-Wide</div>
     <div style="display:flex;flex:1;justify-content:space-around;flex-wrap:wrap;gap:0.5rem;">
       <div class="stat" style="text-align:center;min-width:90px;">
-        <span class="stat-num" id="totalCharities" style="font-size:1.6rem;">147</span>
+        <span class="stat-num" id="totalCharities" style="font-size:1.6rem;">166</span>
         <span class="stat-label">Charities</span>
-      </div>
-      <div class="stat" style="text-align:center;min-width:90px;">
-        <span class="stat-num" id="totalCities" style="font-size:1.6rem;">23</span>
-        <span class="stat-label">Cities</span>
       </div>
       <div class="stat" style="text-align:center;min-width:90px;">
         <span class="stat-num" style="font-size:1.6rem;">7</span>
         <span class="stat-label">Cause Categories</span>
+      </div>
+      <div class="stat" style="text-align:center;min-width:90px;">
+        <span class="stat-num" id="totalCities" style="font-size:1.6rem;">229</span>
+        <span class="stat-label">Cities & Towns</span>
       </div>
     </div>
   </div>
@@ -2732,7 +2732,7 @@ let currentCity = 'Miami, FL';
 
 // Derived site-wide totals — always accurate
 const TOTAL_CHARITIES = charities.length;
-const TOTAL_CITIES    = [...new Set(charities.map(c => c.city))].length;
+const TOTAL_CITIES    = 229;
 const TOTAL_CATS      = 7;
 
 function animateStat(el, target) {
@@ -2780,7 +2780,7 @@ function updateStats(cityKey) {
     animateStat(catsEl, catCount);  catsLbl.textContent = 'Cause Categories';
   } else {
     animateStat(numEl,  TOTAL_CHARITIES); numLbl.textContent  = 'Charities';
-    animateStat(midEl,  TOTAL_CITIES);    midLbl.textContent  = 'Cities';
+    animateStat(midEl,  TOTAL_CITIES);    midLbl.textContent  = 'Cities & Towns';
     animateStat(catsEl, TOTAL_CATS);      catsLbl.textContent = 'Cause Categories';
   }
   }
