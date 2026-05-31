@@ -1076,10 +1076,14 @@ async function filterCharities() {
     return;
   }
 
-  // Detect a city name typed manually
-  if (raw.length > 2 && !q.includes(' ')) {
+  // Detect a city name — try it as a city first if it matches a known city
+  const cityKey = getCityKey(raw);
+  if (cityKey) {
+    currentCity = raw;
+    document.getElementById('geoCity').textContent = raw;
+    document.getElementById('resultsCount').textContent = 'Showing charities near ' + raw;
     applyFilters(raw, '');
-    document.getElementById('resultsCount').textContent = 'Searching for charities near "' + raw + '"';
+    document.getElementById('searchInput').value = '';
     return;
   }
 
@@ -1089,8 +1093,8 @@ async function filterCharities() {
 
 function filterCharitiesOnInput() {
   const raw = document.getElementById('searchInput').value.trim();
-  // Only live-filter keywords, not zip codes (those need the lookup button)
-  if (/^\d{1,5}$/.test(raw)) return;
+  // Don't live-filter partial zip codes
+  if (/^\d{1,4}$/.test(raw)) return;
   filterCharities();
 }
 
