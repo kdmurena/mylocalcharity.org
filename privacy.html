@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — My Local Charity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --coral: #E8533A; --coral-light: #FDECEA;
+    --teal: #1D8F6E; --teal-light: #E0F4ED; --teal-dark: #0F5E48;
+    --cream: #FBF8F3; --warm-white: #FFFEF9;
+    --ink: #1A1208; --ink-mid: #4A3F32; --ink-light: #8A7B6C;
+    --border: rgba(26,18,8,0.1);
+    --r: 14px; --r-pill: 100px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; font-size: 15px; line-height: 1.8; }
+
+  nav { background: rgba(251,248,243,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; color: var(--teal-dark); text-decoration: none; }
+  .nav-logo span { color: var(--coral); }
+  .back-btn { font-size: 13px; color: var(--ink-mid); text-decoration: none; padding: 7px 14px; border-radius: var(--r-pill); border: 1px solid var(--border); transition: all 0.15s; }
+  .back-btn:hover { background: var(--teal-light); border-color: var(--teal); color: var(--teal-dark); }
+
+  .hero { background: var(--warm-white); border-bottom: 1px solid var(--border); padding: 3rem 1.5rem 2.5rem; text-align: center; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); background: var(--teal-light); padding: 5px 14px; border-radius: var(--r-pill); margin-bottom: 1rem; }
+  .hero h1 { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
+  .hero p { font-size: 14px; color: var(--ink-light); }
+
+  .main { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+  .toc { background: var(--warm-white); border: 1px solid var(--border); border-radius: var(--r); padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; }
+  .toc-title { font-weight: 600; color: var(--ink); margin-bottom: 0.75rem; font-size: 14px; }
+  .toc ol { padding-left: 1.25rem; }
+  .toc li { margin-bottom: 0.3rem; }
+  .toc a { color: var(--teal); text-decoration: none; font-size: 13px; }
+  .toc a:hover { text-decoration: underline; }
+
+  .policy-section { margin-bottom: 2.5rem; }
+  .policy-section h2 { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 600; color: var(--ink); margin-bottom: 0.75rem; padding-top: 0.5rem; }
+  .policy-section p { color: var(--ink-mid); margin-bottom: 0.875rem; font-size: 14px; }
+  .policy-section ul { padding-left: 1.25rem; color: var(--ink-mid); font-size: 14px; }
+  .policy-section li { margin-bottom: 0.4rem; }
+  .policy-section .highlight { background: var(--teal-light); border-left: 3px solid var(--teal); border-radius: 0 var(--r-sm) var(--r-sm) 0; padding: 12px 16px; font-size: 14px; color: var(--teal-dark); margin-bottom: 1rem; }
+
+  .divider { height: 1px; background: var(--border); margin: 2rem 0; }
+
+  footer { background: var(--ink); color: rgba(255,255,255,0.7); padding: 2rem 1.5rem; }
+  .footer-inner { max-width: 760px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 13px; }
+  .footer-logo { font-family: 'Fraunces', serif; color: white; font-size: 1.1rem; font-weight: 700; text-decoration: none; }
+  .footer-logo span { color: var(--coral); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; }
+  .footer-links a:hover { color: white; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">My Local <span>Charity</span></a>
+  <a href="index.html" class="back-btn">← Back to Home</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">🔒 Legal</div>
+  <h1>Privacy Policy</h1>
+  <p>Last updated: January 1, 2026 &nbsp;·&nbsp; mylocalcharity.org</p>
+</div>
+
+<main class="main">
+
+  <div class="toc">
+    <div class="toc-title">Table of Contents</div>
+    <ol>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#information-we-collect">Information We Collect</a></li>
+      <li><a href="#geolocation">Geolocation & IP Address</a></li>
+      <li><a href="#charity-registration">Charity Registration Forms</a></li>
+      <li><a href="#donations">Donations</a></li>
+      <li><a href="#third-parties">Third-Party Services</a></li>
+      <li><a href="#cookies">Cookies</a></li>
+      <li><a href="#children">Children's Privacy</a></li>
+      <li><a href="#your-rights">Your Rights</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ol>
+  </div>
+
+  <div class="policy-section" id="overview">
+    <h2>1. Overview</h2>
+    <div class="highlight">My Local Charity never processes donations. Every donation goes directly from you to the charity of your choice, through that charity's own website and payment system. We have no access to your payment information.</div>
+    <p>My Local Charity ("we", "us", or "our") operates the website mylocalcharity.org. This Privacy Policy explains what information we collect, how we use it, and your rights regarding that information.</p>
+    <p>We are committed to protecting your privacy. We collect only what we need, we never sell your data, and we never share it with third parties for marketing purposes.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="policy-section" id="information-we-collect">
+    <h2>2. Information We Collect</h2>
+    <p>We collect minimal information. Specifically:</p>
+    <ul>
+      <li><strong>IP address</strong> — used only to detect your approximate city for displaying local charities. It is not stored beyond your session.</li>
+      <li><strong>Search queries</strong> — city names, zip codes, or charity keywords you type into the search bar. These are processed locally in your browser and not sent to our servers.</li>
+      <li><strong>Charity registration information</strong> — if you submit the "List Your Charity" form, we collect the details you provide (organization name, contact information, website URLs, etc.) via Formspree. See Section 4 below.</li>
+    </ul>
+    <p>We do <strong>not</strong> collect names, email addresses, payment information, or personal data from general visitors browsing the site.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="policy-section" id="geolocation">
+    <h2>3. Geolocation & IP Address</h2>
+    <p>When you visit mylocalcharity.org, we make a request to <strong>ipapi.co</strong> — a third-party IP geolocation service — to determine your approximate city. This allows us to automatically show charities near you without requiring you to type your location.</p>
+    <ul>
+      <li>Your IP address is sent to ipapi.co solely to determine your city and region.</li>
+      <li>We do not store your IP address on our servers.</li>
+      <li>Geolocation is accurate to the city level — we cannot determine your street address, neighborhood, or precise location.</li>
+      <li>If you prefer not to use geolocation, you can manually enter any city or zip code in the search bar at any time.</li>
+    </ul>
+    <p>ipapi.co's own privacy policy is available at <a href="https://ipapi.co/privacy/" target="_blank" rel="noopener" style="color:var(--teal);">ipapi.co/privacy</a>.</p>
+    <p>For zip code lookups, we use <strong>zippopotam.us</strong>, a free public API. Your zip code query is sent to this service to look up the associated city. No personal information is transmitted.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="policy-section" id="charity-registration">
+    <h2>4. Charity Registration Forms</h2>
+    <p>If you submit the "List Your Charity" form at mylocalcharity.org/register.html, the information you provide is processed by <strong>Formspree</strong> (formspree.io) and delivered to our team by email. This information may include:</p>
+    <ul>
+      <li>Organization name, type, and description</li>
+      <li>Contact person's name, email address, and phone number</li>
+      <li>Website and donation page URLs</li>
+      <li>Drop-off location addresses and hours</li>
+      <li>Current donation needs and impact information</li>
+    </ul>
+    <p>This information is used solely to review and approve your charity listing on My Local Charity. We do not share it with any third parties. We retain it only as long as necessary to manage your listing.</p>
+    <p>Formspree's privacy policy is available at <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener" style="color:var(--teal);">formspree.io/legal/privacy-policy</a>.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="policy-section" id="donations">
+    <h2>5. Donations</h2>
+    <p>My Local Charity does not process, handle, or have any involvement in donations. When you click a "Donate" button on our site, you are redirected to the charity's own website and donation platform.</p>
+    <p>All payment information you enter on a charity's website is governed by that charity's privacy policy and their payment processor. We have no access to this information and no involvement in the transaction.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="policy-section" id="third-parties">
+    <h2>6. Third-Party Services</h2>
+    <p>My Local Charity uses the following third-party services:</p>
+    <ul>
+      <li><strong>ipapi.co</strong> — IP-based geolocation to detect your approximate city.</li>
+      <li><strong>zippopotam.us</strong> — ZIP code to city lookup.</li>
+      <li><strong>Formspree</strong> — Charity registration form processing and delivery.</li>
+      <li><strong>Google Fonts</strong> — Font loading (Fraunces and DM Sans). Google may log font requests per their privacy policy.</li>
+      <li><strong>GitHub Pages</strong> — Website hosting. GitHub may collect server logs including IP addresses per their privacy policy.</li>
+    </ul>
+    <p>We do not use advertising networks, tracking pixels, social media buttons, or analytics tools that collect personal data.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="policy-section" id="cookies">
+    <h2>7. Cookies</h2>
+    <p>My Local Charity does not use cookies for tracking or advertising purposes. We do not set any first-party cookies. Some third-party services (such as Google Fonts or GitHub Pages) may set cookies per their own policies, but we do not control or access these.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="policy-section" id="children">
+    <h2>8. Children's Privacy</h2>
+    <p>My Local Charity was founded by a 12-year-old and is designed to be appropriate for all ages. We do not knowingly collect personal information from children under 13. The site requires no account creation, no login, and no personal information from general visitors.</p>
+    <p>If you are under 13 and would like to submit a charity registration form, please do so with a parent or guardian's assistance and consent.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="policy-section" id="your-rights">
+    <h2>9. Your Rights</h2>
+    <p>Since we collect minimal personal information, there is little to request. However:</p>
+    <ul>
+      <li><strong>Access:</strong> You may request a copy of any personal information we hold about you (primarily charity registration submissions).</li>
+      <li><strong>Deletion:</strong> You may request deletion of any personal information you have submitted to us.</li>
+      <li><strong>Correction:</strong> You may request that we correct any inaccurate information.</li>
+    </ul>
+    <p>To exercise any of these rights, please contact us at the email below.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="policy-section" id="contact">
+    <h2>10. Contact Us</h2>
+    <p>If you have any questions about this Privacy Policy or how we handle your information, please contact us:</p>
+    <ul>
+      <li><strong>Email:</strong> <a href="mailto:kdmurena@gmail.com" style="color:var(--teal);">kdmurena@gmail.com</a></li>
+      <li><strong>Website:</strong> <a href="https://www.mylocalcharity.org" style="color:var(--teal);">mylocalcharity.org</a></li>
+    </ul>
+    <p style="margin-top:1rem;">We may update this Privacy Policy from time to time. The date at the top of this page indicates when it was last revised. Continued use of the site after any changes constitutes acceptance of the updated policy.</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">My Local <span>Charity</span></a>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="register.html">List Your Charity</a>
+    </div>
+    <span>© 2026 My Local Charity. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>
