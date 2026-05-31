@@ -324,12 +324,12 @@
     <div style="font-size:11px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--teal-dark);white-space:nowrap;width:90px;flex-shrink:0;opacity:0.85;">In This City</div>
     <div style="display:flex;flex:1;justify-content:space-around;flex-wrap:wrap;gap:0.5rem;">
       <div class="stat" style="text-align:center;min-width:90px;">
-        <span class="stat-num" id="statCharities" style="font-size:1.6rem;">146</span>
+        <span class="stat-num" id="statCharities" style="font-size:1.6rem;">15</span>
         <span class="stat-label" id="statCharitiesLabel">Charities</span>
       </div>
       <div class="stat" style="text-align:center;min-width:90px;">
-        <span class="stat-num" id="statCities" style="font-size:1.6rem;">23</span>
-        <span class="stat-label" id="statCitiesLabel">Cities</span>
+        <span class="stat-num" id="statCities" style="font-size:1.6rem;">7</span>
+        <span class="stat-label" id="statCitiesLabel">Urgent Needs</span>
       </div>
       <div class="stat" style="text-align:center;min-width:90px;">
         <span class="stat-num" id="statCategories" style="font-size:1.6rem;">7</span>
@@ -343,16 +343,16 @@
     <div style="font-size:11px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--teal-dark);white-space:nowrap;width:90px;flex-shrink:0;opacity:0.85;">Site-Wide</div>
     <div style="display:flex;flex:1;justify-content:space-around;flex-wrap:wrap;gap:0.5rem;">
       <div class="stat" style="text-align:center;min-width:90px;">
-        <span class="stat-num" id="totalCharities" style="font-size:1.6rem;">146</span>
+        <span class="stat-num" id="totalCharities" style="font-size:1.6rem;">147</span>
         <span class="stat-label">Charities</span>
-      </div>
-      <div class="stat" style="text-align:center;min-width:90px;">
-        <span class="stat-num" style="font-size:1.6rem;">7</span>
-        <span class="stat-label">Cause Categories</span>
       </div>
       <div class="stat" style="text-align:center;min-width:90px;">
         <span class="stat-num" id="totalCities" style="font-size:1.6rem;">23</span>
         <span class="stat-label">Cities</span>
+      </div>
+      <div class="stat" style="text-align:center;min-width:90px;">
+        <span class="stat-num" style="font-size:1.6rem;">7</span>
+        <span class="stat-label">Cause Categories</span>
       </div>
     </div>
   </div>
@@ -2535,13 +2535,14 @@ function updateStats(cityKey) {
     const cityCount = cityList.length;
     const catCount  = [...new Set(cityList.flatMap(c => c.category))].length;
     const urgent    = cityList.filter(c => c.urgent).length;
-    animateStat(numEl,  cityCount);  numLbl.textContent  = cityCount === 1 ? 'Charity' : 'Charities';
-    animateStat(midEl,  catCount);   midLbl.textContent  = 'Cause Categories';
-    animateStat(catsEl, urgent);     catsLbl.textContent = urgent === 1 ? 'Urgent Need' : 'Urgent Needs';
+    animateStat(numEl,  cityCount); numLbl.textContent  = 'Charities';
+    animateStat(midEl,  urgent);    midLbl.textContent  = urgent === 1 ? 'Urgent Need' : 'Urgent Needs';
+    animateStat(catsEl, catCount);  catsLbl.textContent = 'Cause Categories';
   } else {
     animateStat(numEl,  TOTAL_CHARITIES); numLbl.textContent  = 'Charities';
-    animateStat(midEl,  TOTAL_CATS);      midLbl.textContent  = 'Cause Categories';
-    animateStat(catsEl, TOTAL_CITIES);    catsLbl.textContent = 'Cities';
+    animateStat(midEl,  TOTAL_CITIES);    midLbl.textContent  = 'Cities';
+    animateStat(catsEl, TOTAL_CATS);      catsLbl.textContent = 'Cause Categories';
+  }
   }
 }
 
