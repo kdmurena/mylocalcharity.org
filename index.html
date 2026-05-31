@@ -386,7 +386,32 @@
   </div>
   </div>
 
-  <!-- TABS -->
+  <!-- FEATURED: POINT SOURCE YOUTH (NYC) -->
+  <div id="featuredNYC" style="display:none;">
+  <div style="margin-bottom:0.5rem;">
+    <div class="section-header" style="margin-bottom:0.75rem;">
+      <span class="section-title" style="font-size:1rem;color:var(--ink-mid);font-weight:400;">Also featured in New York</span>
+    </div>
+  </div>
+  <div class="featured-row" style="margin-bottom:2rem;">
+    <div class="featured-card" style="background:linear-gradient(135deg,#0a3d62 0%,#1a6fa8 100%);color:white;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:4rem;opacity:0.12;pointer-events:none;">🏠</div>
+      <div class="featured-card-badge">⭐ Featured in New York</div>
+      <h3 style="color:white;">Point Source Youth</h3>
+      <p style="color:rgba(255,255,255,0.85);">A national 501(c)(3) headquartered in New York City, Point Source Youth is dedicated to ending youth homelessness — with a special focus on LGBTQ+, Black, Brown, and Indigenous youth who face the highest risk. Their evidence-based approach includes direct cash transfers, rapid rehousing, family reconnection, and short-term host homes. New Johns Hopkins research shows 92% of participants stayed out of the homelessness system within 6 months.</p>
+      <div class="featured-card-tags">
+        <span class="featured-tag">🏠 Youth Homelessness</span>
+        <span class="featured-tag">🏳️‍🌈 LGBTQ+ Youth</span>
+        <span class="featured-tag">💵 Direct Cash Transfers</span>
+        <span class="featured-tag">📍 New York, NY</span>
+      </div>
+      <div class="featured-card-footer">
+        <a href="https://www.pointsourceyouth.org/donate" target="_blank" rel="noopener" class="featured-btn featured-btn-white">💚 Donate ↗</a>
+        <a href="https://www.pointsourceyouth.org" target="_blank" rel="noopener" class="featured-btn featured-btn-outline">🌐 Website ↗</a>
+      </div>
+    </div>
+  </div>
+  </div>
   <div class="tabs" id="charityTabs">
     <button class="tab-btn active" onclick="switchTab('donate')" id="tab-donate">🎁 Donate</button>
     <button class="tab-btn" onclick="switchTab('volunteer')" id="tab-volunteer">🙋 Volunteer</button>
@@ -744,6 +769,18 @@ const charities = [
     donateUrl: "https://www.coalitionforthehomeless.org/donate/",
     volunteerUrl: "https://www.coalitionforthehomeless.org/get-involved/volunteer/",
     website: "https://www.coalitionforthehomeless.org", city: "new york"
+  },
+  {
+    id: 16, name: "Point Source Youth", icon: "🌟", iconClass: "card-icon-sky",
+    location: "Park Avenue South, New York, NY", distance: "—",
+    desc: "A national 501(c)(3) headquartered in NYC dedicated to ending youth homelessness — with a special focus on LGBTQ+, Black, Brown, and Indigenous youth. Their approach includes direct cash transfers, rapid rehousing, and family reconnection. 92% of participants stayed housed within 6 months.",
+    tags: ["Youth Homelessness", "LGBTQ+", "Direct Cash Transfers"], category: ["housing", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Advocacy support", "Volunteer hours"],
+    impact: "💡 Point Source Youth's direct cash transfer model keeps 92% of at-risk youth stably housed within 6 months — proven by Johns Hopkins research.",
+    donateUrl: "https://www.pointsourceyouth.org/donate",
+    volunteerUrl: "https://www.pointsourceyouth.org/contact-us",
+    website: "https://www.pointsourceyouth.org", city: "new york"
   },
 
   // ── LOS ANGELES ──
@@ -1662,11 +1699,13 @@ function getCityKey(cityStr) {
 function applyFilters(cityStr, q, shouldScroll) {
   const cityKey = getCityKey(cityStr);
 
-  // Show/hide Educate Tomorrow + SEED School featured section
+  // Show/hide Educate Tomorrow + SEED School featured section (Miami only)
   const featuredEl = document.getElementById('featuredMiami');
-  if (featuredEl) {
-    featuredEl.style.display = isSouthFlorida(cityStr) ? '' : 'none';
-  }
+  if (featuredEl) featuredEl.style.display = isSouthFlorida(cityStr) ? '' : 'none';
+
+  // Show/hide Point Source Youth featured section (NYC only)
+  const featuredNYC = document.getElementById('featuredNYC');
+  if (featuredNYC) featuredNYC.style.display = (cityKey === 'new york') ? '' : 'none';
 
   let list = charities;
 
