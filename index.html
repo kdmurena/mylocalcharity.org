@@ -2793,14 +2793,22 @@ async function detectLocation() {
     const data = await res.json();
     const city = data.city || 'Miami';
     const region = data.region_code || 'FL';
-    currentCity = city + ', ' + region;
-    document.getElementById('geoCity').textContent = currentCity;
-    document.getElementById('resultsCount').textContent = 'Showing charities near ' + currentCity;
-    applyFilters(currentCity, '', false);
+    const detected = city + ', ' + region;
+    currentCity = detected;
+    document.getElementById('geoCity').textContent = detected;
+    document.getElementById('resultsCount').textContent = 'Showing charities near ' + detected;
+    // Only re-render if geolocation found a different city than the default Miami
+    const key = getCityKey(detected);
+    if (key !== 'miami') {
+      applyFilters(detected, '', false);
+    } else {
+      // Still Miami — just update the banner text, grid already rendered
+      updateStats('miami');
+    }
   } catch (e) {
+    // Geolocation failed — Miami default already rendered, just update banner
     document.getElementById('geoCity').textContent = 'Miami, FL';
     document.getElementById('resultsCount').textContent = 'Showing charities near Miami, FL';
-    applyFilters('Miami, FL', '', false);
   }
 }
 
@@ -3074,7 +3082,9 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-// Boot
+// Boot — render Miami immediately so the grid is never blank,
+// then update via geolocation if visitor is elsewhere
+applyFilters('Miami, FL', '', false);
 detectLocation();
 </script>
 </body>
