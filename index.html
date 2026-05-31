@@ -346,6 +346,7 @@
   </div>
 
   <!-- FEATURED: EDUCATE TOMORROW + SEED SCHOOL -->
+  <div id="featuredMiami">
   <div style="margin-bottom:0.5rem;">
     <div class="section-header" style="margin-bottom:0.75rem;">
       <span class="section-title" style="font-size:1rem;color:var(--ink-mid);font-weight:400;">Also featured in Miami</span>
@@ -383,9 +384,10 @@
       </div>
     </div>
   </div>
+  </div>
 
   <!-- TABS -->
-  <div class="tabs">
+  <div class="tabs" id="charityTabs">
     <button class="tab-btn active" onclick="switchTab('donate')" id="tab-donate">🎁 Donate</button>
     <button class="tab-btn" onclick="switchTab('volunteer')" id="tab-volunteer">🙋 Volunteer</button>
     <button class="tab-btn" onclick="switchTab('dropoff')" id="tab-dropoff">📦 Drop-Off</button>
@@ -962,11 +964,11 @@ async function detectLocation() {
     currentCity = city + ', ' + region;
     document.getElementById('geoCity').textContent = currentCity;
     document.getElementById('resultsCount').textContent = 'Showing charities near ' + currentCity;
-    applyFilters(currentCity, '');
+    applyFilters(currentCity, '', false);
   } catch (e) {
     document.getElementById('geoCity').textContent = 'Miami, FL';
     document.getElementById('resultsCount').textContent = 'Showing charities near Miami, FL';
-    applyFilters('Miami, FL', '');
+    applyFilters('Miami, FL', '', false);
   }
 }
 
@@ -983,7 +985,7 @@ function applyManualCity() {
   document.getElementById('geoCity').textContent = val;
   document.getElementById('resultsCount').textContent = 'Showing charities near ' + val;
   document.getElementById('geoInputWrap').classList.remove('open');
-  applyFilters(val, '');
+  applyFilters(val, '', false);
 }
 
 /* ---- CHARITY RENDERING ---- */
@@ -1021,21 +1023,41 @@ function renderCharities(list, searchedCity) {
   `).join('');
 }
 
+function isSouthFlorida(cityStr) {
+  const s = cityStr.toLowerCase();
+  // Miami-Dade
+  if (s.includes('miami') || s.includes('coral gables') || s.includes('hialeah') || s.includes('doral') || s.includes('homestead') || s.includes('aventura') || s.includes('kendall') || s.includes('brickell') || s.includes('wynwood') || s.includes('miami-dade') || s.includes('south miami') || s.includes('miami beach') || s.includes('north miami') || s.includes('miami gardens') || s.includes('miami shores') || s.includes('opa-locka') || s.includes('cutler bay') || s.includes('florida city') || s.includes('key biscayne')) return true;
+  // Broward County
+  if (s.includes('fort lauderdale') || s.includes('ft lauderdale') || s.includes('pompano') || s.includes('hollywood, fl') || s.includes('miramar') || s.includes('pembroke pines') || s.includes('coral springs') || s.includes('sunrise') || s.includes('plantation') || s.includes('davie') || s.includes('weston') || s.includes('deerfield beach') || s.includes('hallandale') || s.includes('broward')) return true;
+  // Palm Beach County
+  if (s.includes('west palm beach') || s.includes('boca raton') || s.includes('delray beach') || s.includes('boynton beach') || s.includes('lake worth') || s.includes('palm beach gardens') || s.includes('palm beach') || s.includes('wellington') || s.includes('jupiter')) return true;
+  // Monroe County / Keys
+  if (s.includes('key west') || s.includes('key largo') || s.includes('marathon, fl') || s.includes('islamorada') || s.includes('monroe')) return true;
+  return false;
+}
+
 function getCityKey(cityStr) {
   const s = cityStr.toLowerCase();
-  if (s.includes('miami') || s.includes('coral gables') || s.includes('hialeah') || s.includes('doral') || s.includes('pembroke') || s.includes('homestead') || s.includes('aventura') || s.includes('kendall') || s.includes('brickell') || s.includes('wynwood')) return 'miami';
+  if (isSouthFlorida(cityStr)) return 'miami';
   if (s.includes('new york') || s.includes('nyc') || s.includes('brooklyn') || s.includes('manhattan') || s.includes('queens') || s.includes('bronx') || s.includes('staten island')) return 'new york';
-  if (s.includes('los angeles') || s.includes(' la ') || s.startsWith('la,') || s.includes('hollywood') || s.includes('santa monica') || s.includes('venice') || s.includes('culver city') || s.includes('pasadena')) return 'los angeles';
-  if (s.includes('chicago') || s.includes('evanston') || s.includes('oak park') || s.includes('wicker park') || s.includes('lincoln park')) return 'chicago';
-  if (s.includes('san francisco') || s.includes(' sf ') || s.startsWith('sf,') || s.includes('tenderloin') || s.includes('mission district') || s.includes('soma') || s.includes('potrero')) return 'san francisco';
-  if (s.includes('houston') || s.includes('katy') || s.includes('sugar land') || s.includes('pearland') || s.includes('the woodlands')) return 'houston';
-  if (s.includes('boston') || s.includes('cambridge') || s.includes('somerville') || s.includes('brookline') || s.includes('roxbury') || s.includes('south end') || s.includes('dorchester')) return 'boston';
-  if (s.includes('washington') || s.includes(' dc') || s.includes('d.c.') || s.includes('foggy bottom') || s.includes('columbia heights') || s.includes('adams morgan')) return 'washington';
+  if (s.includes('los angeles') || s === 'la' || s.startsWith('la,') || s.includes('la, ca') || s.includes('west hollywood') || s.includes('santa monica') || s.includes('venice, ca') || s.includes('culver city') || s.includes('pasadena') || s.includes('compton') || s.includes('inglewood')) return 'los angeles';
+  if (s.includes('chicago') || s.includes('evanston') || s.includes('oak park') || s.includes('wicker park') || s.includes('lincoln park, il')) return 'chicago';
+  if (s.includes('san francisco') || s === 'sf' || s.startsWith('sf,') || s.includes('sf, ca') || s.includes('tenderloin') || s.includes('mission district') || s.includes('potrero hill') || s.includes('castro') || s.includes('haight')) return 'san francisco';
+  if (s.includes('houston') || s.includes('katy, tx') || s.includes('sugar land') || s.includes('pearland') || s.includes('the woodlands')) return 'houston';
+  if (s.includes('boston') || s.includes('cambridge, ma') || s.includes('somerville, ma') || s.includes('brookline') || s.includes('roxbury') || s.includes('dorchester') || s.includes('south end, ma')) return 'boston';
+  if (s.includes('washington') || s.includes(' dc') || s.includes('d.c.') || s.includes('foggy bottom') || s.includes('columbia heights') || s.includes('adams morgan') || s.includes('capitol hill, dc')) return 'washington';
   return null;
 }
 
-function applyFilters(cityStr, q) {
+function applyFilters(cityStr, q, shouldScroll) {
   const cityKey = getCityKey(cityStr);
+
+  // Show/hide Educate Tomorrow + SEED School featured section
+  const featuredEl = document.getElementById('featuredMiami');
+  if (featuredEl) {
+    featuredEl.style.display = isSouthFlorida(cityStr) ? '' : 'none';
+  }
+
   let list = charities;
   if (!cityKey) { renderCharities([], cityStr); return; }
   list = list.filter(c => c.city === cityKey);
@@ -1047,6 +1069,14 @@ function applyFilters(cityStr, q) {
     c.desc.toLowerCase().includes(q)
   );
   renderCharities(list, cityStr);
+
+  // Auto-scroll to charity grid when triggered by a search
+  if (shouldScroll) {
+    setTimeout(() => {
+      const el = document.getElementById('charityTabs');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
 }
 
 async function filterCharities() {
@@ -1068,7 +1098,7 @@ async function filterCharities() {
       document.getElementById('geoCity').textContent = label;
       document.getElementById('resultsCount').textContent = 'Showing charities near ' + label;
       showToast('📍 Showing results for ' + label);
-      applyFilters(label, '');
+      applyFilters(label, '', true);
       document.getElementById('searchInput').value = '';
     } catch(e) {
       showToast('❌ Zip code not found — try a city name instead');
@@ -1082,13 +1112,13 @@ async function filterCharities() {
     currentCity = raw;
     document.getElementById('geoCity').textContent = raw;
     document.getElementById('resultsCount').textContent = 'Showing charities near ' + raw;
-    applyFilters(raw, '');
+    applyFilters(raw, '', true);
     document.getElementById('searchInput').value = '';
     return;
   }
 
   // Otherwise filter by keyword within current city
-  applyFilters(currentCity, q);
+  applyFilters(currentCity, q, false);
 }
 
 function filterCharitiesOnInput() {
@@ -1103,7 +1133,7 @@ function setFilter(f, btn) {
   document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
   const q = document.getElementById('searchInput').value.toLowerCase();
-  applyFilters(currentCity, q);
+  applyFilters(currentCity, q, false);
 }
 
 function switchTab(tab) {
