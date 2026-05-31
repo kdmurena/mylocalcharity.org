@@ -743,15 +743,71 @@ function handleDrag(e) { e.preventDefault(); document.getElementById('uploadZone
 function handleDrop(e) { e.preventDefault(); document.getElementById('uploadZone').classList.remove('dragover'); handleFiles(e.dataTransfer.files); }
 
 /* ---- SUBMIT ---- */
-function submitForm() {
+async function submitForm() {
   if (!validateStep(5)) return;
-  // In production, this would POST to a backend/Formspree/Netlify Forms
-  // For now, show success screen
-  document.getElementById('step-5').classList.remove('active');
-  document.getElementById('si-5').classList.remove('active');
-  document.getElementById('si-5').classList.add('done');
-  document.getElementById('successScreen').classList.add('show');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const submitBtn = document.querySelector('.btn-submit');
+  submitBtn.textContent = 'Submitting…';
+  submitBtn.disabled = true;
+
+  // Gather all form data
+  const cats = [...document.querySelectorAll('.cat-check:checked')].map(c => c.value).join(', ');
+  const needs = [...document.querySelectorAll('.need-check:checked')].map(c => c.value).join(', ');
+  const v = id => (document.getElementById(id)?.value || '').trim();
+
+  const formData = {
+    orgName: v('orgName'),
+    orgType: v('orgType'),
+    orgYear: v('orgYear'),
+    shortDesc: v('orgShortDesc'),
+    fullDesc: v('orgFullDesc'),
+    categories: cats,
+    contactName: v('contactFirst') + ' ' + v('contactLast'),
+    contactRole: v('contactRole'),
+    contactEmail: v('contactEmail'),
+    contactPhone: v('contactPhone'),
+    publicEmail: v('publicEmail'),
+    website: v('orgWebsite'),
+    donateUrl: v('donateUrl'),
+    volunteerUrl: v('volunteerUrl'),
+    instagram: v('socialIG'),
+    facebook: v('socialFB'),
+    impactStatement: v('impactStatement'),
+    currentNeeds: needs,
+    otherNeeds: v('needsOther'),
+    urgentNeed: document.getElementById('urg-yes')?.checked ? 'Yes — ' + v('urgentDesc') : 'No',
+    ein: v('orgEIN'),
+    dropoff: document.getElementById('drop-yes')?.checked ? 'Yes' : 'No',
+    dropoffAddress: v('loc0-addr') + ', ' + v('loc0-city') + ' ' + v('loc0-state') + ' ' + v('loc0-zip'),
+    dropoffHours: v('loc0-hours'),
+    dropoffNotes: v('loc0-notes'),
+    pickup: document.getElementById('pick-yes')?.checked ? 'Yes — ' + v('pickupDetails') : 'No',
+    _subject: 'New Charity Listing: ' + v('orgName'),
+    _replyto: v('contactEmail')
+  };
+
+  try {
+    // Replace YOUR_FORM_ID below with your actual Formspree form ID
+    const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+
+    if (res.ok) {
+      document.getElementById('step-5').classList.remove('active');
+      document.getElementById('si-5').classList.remove('active');
+      document.getElementById('si-5').classList.add('done');
+      document.getElementById('successScreen').classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      throw new Error('Submission failed');
+    }
+  } catch (err) {
+    submitBtn.textContent = 'Submit Listing 🎉';
+    submitBtn.disabled = false;
+    alert('Something went wrong — please try again or email us directly at hello@mylocalcharity.org');
+  }
 }
 </script>
 </body>
