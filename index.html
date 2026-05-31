@@ -1589,7 +1589,7 @@ function renderCharities(list, searchedCity) {
   if (list.length === 0) {
     grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--ink-light);font-size:14px;">
       <div style="font-size:2.5rem;margin-bottom:0.75rem;">🌍</div>
-      No charities listed yet for <strong style="color:var(--ink)">${displayCity}</strong>.<br>
+      No charities found for <strong style="color:var(--ink)">${displayCity}</strong>.<br>
       <span style="font-size:13px;">Know a great local charity? <a href="register.html" style="color:var(--teal)">List it for free →</a></span>
     </div>`;
     return;
@@ -1652,9 +1652,9 @@ function getCityKey(cityStr) {
   if (s.includes('nashville') || s.includes('brentwood, tn') || s.includes('franklin, tn') || s.includes('murfreesboro') || s.includes('hendersonville, tn') || s.includes('davidson county, tn') || s.includes('antioch, tn') || s.includes('hermitage, tn')) return 'nashville';
   if (s.includes('charlotte') || s.includes('matthews, nc') || s.includes('concord, nc') || s.includes('gastonia') || s.includes('mecklenburg') || s.includes('kannapolis') || s.includes('huntersville') || s.includes('mooresville, nc')) return 'charlotte';
   if (s.includes('raleigh') || s.includes('cary, nc') || s.includes('apex, nc') || s.includes('wake county') || s.includes('chapel hill') || s.includes('morrisville, nc') || s.includes('garner, nc') || s.includes('wake forest, nc')) return 'raleigh';
-  if (s.includes('greensboro') || s.includes('guilford county') || s.includes('high point') || s.includes('kernersville')) return 'greensboro';
+  if (s.includes('greensboro') || s.includes('guilford county') || s.includes('high point, nc') || s.includes('kernersville')) return 'greensboro';
   if (s.includes('durham') || s.includes('durham county') || s.includes('research triangle') || s.includes('triangle, nc')) return 'durham';
-  if (s.includes('greenville, nc') || s.includes('greenville nc') || s.includes('pitt county') || s.includes('winterville, nc') || s.includes('ayden, nc')) return 'greenville nc';
+  if (s.includes('greenville') || s.includes('pitt county') || s.includes('winterville, nc') || s.includes('ayden, nc')) return 'greenville nc';
   if (s.includes('winston-salem') || s.includes('winston salem') || s.includes('forsyth county') || s.includes('clemmons, nc') || s.includes('kernersville, nc') || s.includes('lewisville, nc')) return 'winston-salem';
   return null;
 }
@@ -1669,18 +1669,38 @@ function applyFilters(cityStr, q, shouldScroll) {
   }
 
   let list = charities;
-  if (!cityKey) { renderCharities([], cityStr); return; }
-  list = list.filter(c => c.city === cityKey);
-  if (activeFilter !== 'all') list = list.filter(c => c.category.includes(activeFilter));
-  if (q) list = list.filter(c =>
-    c.name.toLowerCase().includes(q) ||
-    c.tags.some(t => t.toLowerCase().includes(q)) ||
-    c.location.toLowerCase().includes(q) ||
-    c.desc.toLowerCase().includes(q)
-  );
-  renderCharities(list, cityStr);
 
-  // Auto-scroll to charity grid when triggered by a search
+  if (q) {
+    // For keyword searches, first look for name/tag matches across ALL cities
+    // so "Beast" finds Beast Philanthropy regardless of current city
+    const globalNameMatches = charities.filter(c =>
+      c.name.toLowerCase().includes(q) ||
+      c.tags.some(t => t.toLowerCase().includes(q))
+    );
+    if (globalNameMatches.length > 0) {
+      renderCharities(globalNameMatches, globalNameMatches.length === 1 ? globalNameMatches[0].location : 'matching charities');
+      if (shouldScroll) setTimeout(() => {
+        const el = document.getElementById('charityTabs');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+      return;
+    }
+    // Fall back to keyword search within current city
+    if (!cityKey) { renderCharities([], cityStr); return; }
+    list = list.filter(c => c.city === cityKey);
+    if (activeFilter !== 'all') list = list.filter(c => c.category.includes(activeFilter));
+    list = list.filter(c =>
+      c.location.toLowerCase().includes(q) ||
+      c.desc.toLowerCase().includes(q)
+    );
+    renderCharities(list, cityStr);
+  } else {
+    if (!cityKey) { renderCharities([], cityStr); return; }
+    list = list.filter(c => c.city === cityKey);
+    if (activeFilter !== 'all') list = list.filter(c => c.category.includes(activeFilter));
+    renderCharities(list, cityStr);
+  }
+
   if (shouldScroll) {
     setTimeout(() => {
       const el = document.getElementById('charityTabs');
