@@ -1690,13 +1690,12 @@ function applyFilters(cityStr, q, shouldScroll) {
 }
 
 let isProcessingSearch = false;
+let suppressInput = false;
 
 function clearSearchInput() {
-  // Remove event listener temporarily, clear, then restore
-  const input = document.getElementById('searchInput');
-  input.removeEventListener('input', onSearchInput);
-  input.value = '';
-  input.addEventListener('input', onSearchInput);
+  suppressInput = true;
+  document.getElementById('searchInput').value = '';
+  suppressInput = false;
 }
 
 async function filterCharities() {
@@ -1747,11 +1746,11 @@ async function filterCharities() {
 }
 
 function onSearchInput() {
-  if (isProcessingSearch) return;
+  if (suppressInput || isProcessingSearch) return;
   const raw = document.getElementById('searchInput').value.trim();
   if (!raw) { applyFilters(currentCity, '', false); return; }
-  if (/^\d{1,4}$/.test(raw)) return; // partial zip — wait for Search
-  if (getCityKey(raw)) return;        // city name — wait for Search
+  if (/^\d{1,4}$/.test(raw)) return;
+  if (getCityKey(raw)) return;
   applyFilters(currentCity, raw.toLowerCase(), false);
 }
 
