@@ -1123,9 +1123,11 @@ async function filterCharities() {
 
 function filterCharitiesOnInput() {
   const raw = document.getElementById('searchInput').value.trim();
-  // Don't live-filter partial zip codes
+  // Don't live-filter partial zip codes or recognized city names —
+  // those only trigger when the user explicitly clicks Search or presses Enter
   if (/^\d{1,4}$/.test(raw)) return;
-  filterCharities();
+  if (getCityKey(raw)) return;
+  applyFilters(currentCity, raw.toLowerCase(), false);
 }
 
 function setFilter(f, btn) {
