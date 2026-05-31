@@ -743,73 +743,69 @@ function handleDrag(e) { e.preventDefault(); document.getElementById('uploadZone
 function handleDrop(e) { e.preventDefault(); document.getElementById('uploadZone').classList.remove('dragover'); handleFiles(e.dataTransfer.files); }
 
 /* ---- SUBMIT ---- */
-async function submitForm() {
+function submitForm() {
   if (!validateStep(5)) return;
 
-  const submitBtn = document.querySelector('.btn-submit');
-  submitBtn.textContent = 'Submitting…';
-  submitBtn.disabled = true;
-
-  const cats = [...document.querySelectorAll('.cat-check:checked')].map(c => c.value).join(', ');
+  const cats  = [...document.querySelectorAll('.cat-check:checked')].map(c => c.value).join(', ');
   const needs = [...document.querySelectorAll('.need-check:checked')].map(c => c.value).join(', ');
   const v = id => (document.getElementById(id)?.value || '').trim();
 
-  const payload = {
-    'Charity Name':        v('orgName'),
-    'Organization Type':   v('orgType'),
-    'Year Founded':        v('orgYear'),
-    'Short Description':   v('orgShortDesc'),
-    'Full Description':    v('orgFullDesc'),
-    'Categories':          cats,
-    'Contact Name':        v('contactFirst') + ' ' + v('contactLast'),
-    'Contact Role':        v('contactRole'),
-    'email':               v('contactEmail'),   // Formspree uses 'email' for reply-to
-    'Contact Phone':       v('contactPhone'),
-    'Public Email':        v('publicEmail'),
-    'Website':             v('orgWebsite'),
-    'Donate URL':          v('donateUrl'),
-    'Volunteer URL':       v('volunteerUrl'),
-    'Instagram':           v('socialIG'),
-    'Facebook':            v('socialFB'),
-    'Impact Statement':    v('impactStatement'),
-    'Current Needs':       needs,
-    'Other Needs':         v('needsOther'),
-    'Urgent Need':         document.getElementById('urg-yes')?.checked ? 'Yes — ' + v('urgentDesc') : 'No',
-    'EIN / Tax ID':        v('orgEIN'),
-    'Accepts Drop-Off':    document.getElementById('drop-yes')?.checked ? 'Yes' : 'No',
-    'Drop-Off Address':    v('loc0-addr') + ', ' + v('loc0-city') + ' ' + (document.getElementById('loc0-state')?.value || '') + ' ' + v('loc0-zip'),
-    'Drop-Off Hours':      v('loc0-hours'),
-    'Drop-Off Notes':      v('loc0-notes'),
-    'Pickup Available':    document.getElementById('pick-yes')?.checked ? 'Yes — ' + v('pickupDetails') : 'No',
-    '_subject':            '🏳 New Charity Listing: ' + v('orgName')
+  // Build a native form and POST it directly to Formspree
+  // This completely avoids any CORS / fetch issues on GitHub Pages
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = 'https://formspree.io/f/mojbzwjv';
+
+  const fields = {
+    'email':             v('contactEmail'),
+    '_subject':          '🏳 New Charity Listing: ' + v('orgName'),
+    '_next':             window.location.origin + '/register.html?success=true',
+    'Charity Name':      v('orgName'),
+    'Organization Type': v('orgType'),
+    'Year Founded':      v('orgYear'),
+    'Short Description': v('orgShortDesc'),
+    'Full Description':  v('orgFullDesc'),
+    'Categories':        cats,
+    'Contact Name':      v('contactFirst') + ' ' + v('contactLast'),
+    'Contact Role':      v('contactRole'),
+    'Contact Phone':     v('contactPhone'),
+    'Public Email':      v('publicEmail'),
+    'Website':           v('orgWebsite'),
+    'Donate URL':        v('donateUrl'),
+    'Volunteer URL':     v('volunteerUrl'),
+    'Instagram':         v('socialIG'),
+    'Facebook':          v('socialFB'),
+    'Impact Statement':  v('impactStatement'),
+    'Current Needs':     needs,
+    'Other Needs':       v('needsOther'),
+    'Urgent Need':       document.getElementById('urg-yes')?.checked ? 'Yes — ' + v('urgentDesc') : 'No',
+    'EIN / Tax ID':      v('orgEIN'),
+    'Accepts Drop-Off':  document.getElementById('drop-yes')?.checked ? 'Yes' : 'No',
+    'Drop-Off Address':  v('loc0-addr') + ', ' + v('loc0-city') + ' ' + (document.getElementById('loc0-state')?.value||'') + ' ' + v('loc0-zip'),
+    'Drop-Off Hours':    v('loc0-hours'),
+    'Drop-Off Notes':    v('loc0-notes'),
+    'Pickup Available':  document.getElementById('pick-yes')?.checked ? 'Yes — ' + v('pickupDetails') : 'No'
   };
 
-  try {
-    const res = await fetch('https://formspree.io/f/mojbzwjv', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+  // Add each field as a hidden input
+  Object.entries(fields).forEach(([name, value]) => {
+    const input = document.createElement('input');
+    input.type  = 'hidden';
+    input.name  = name;
+    input.value = value;
+    form.appendChild(input);
+  });
 
-    const data = await res.json();
+  document.body.appendChild(form);
+  form.submit();
+}
 
-    if (res.ok) {
-      // Show success screen
-      document.getElementById('step-5').classList.remove('active');
-      document.getElementById('si-5').classList.remove('active');
-      document.getElementById('si-5').classList.add('done');
-      document.getElementById('successScreen').classList.add('show');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      // Formspree returned a validation error — show it
-      const msg = data?.errors?.map(e => e.message).join(', ') || 'Submission failed. Please try again.';
-      throw new Error(msg);
-    }
-  } catch (err) {
-    submitBtn.textContent = 'Submit Listing 🎉';
-    submitBtn.disabled = false;
-    alert('Something went wrong: ' + err.message + '\n\nYou can also email us directly at team@wundieundies.com');
-  }
+// Show success screen if redirected back after Formspree submission
+if (window.location.search.includes('success=true')) {
+  document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.step-item').forEach(s => { s.classList.remove('active'); s.classList.add('done'); });
+  document.getElementById('successScreen').classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
 </body>
