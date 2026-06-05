@@ -3033,6 +3033,7 @@ function updateStats(cityKey) {
 
 /* ---- IP GEOLOCATION ---- */
 async function detectLocation() {
+  userHasSearchedCity = false;
   try {
     const res = await fetch('https://ipapi.co/json/');
     const data = await res.json();
@@ -3296,6 +3297,7 @@ async function filterCharities() {
         document.getElementById('geoCity').textContent = label;
         document.getElementById('resultsCount').textContent = 'Showing charities near ' + label;
         showToast('📍 Showing results for ' + label);
+        userHasSearchedCity = true;
         applyFilters(label, '', true);
         clearSearchInput();
       } else {
@@ -3308,6 +3310,7 @@ async function filterCharities() {
         document.getElementById('resultsCount').textContent =
           `No charities in ${label} yet — showing nearest: ${nearest.label} (${nearest.miles} mi away)`;
         showToast(`📍 Nearest city: ${nearest.label} (${nearest.miles} mi)`);
+        userHasSearchedCity = true;
         applyFilters(nearest.label, '', true);
         clearSearchInput();
       }
@@ -3324,6 +3327,7 @@ async function filterCharities() {
     currentCity = raw;
     document.getElementById('geoCity').textContent = raw;
     document.getElementById('resultsCount').textContent = 'Showing charities near ' + raw;
+    userHasSearchedCity = true;
     applyFilters(raw, '', true);
     clearSearchInput();
     isProcessingSearch = false;
@@ -3350,6 +3354,7 @@ async function filterCharities() {
         document.getElementById('resultsCount').textContent =
           `No charities in ${raw} yet — showing nearest: ${nearest.label} (${nearest.miles} mi away)`;
         showToast(`📍 Nearest city: ${nearest.label} (${nearest.miles} mi)`);
+        userHasSearchedCity = true;
         applyFilters(nearest.label, '', true);
         clearSearchInput();
         isProcessingSearch = false;
@@ -3374,12 +3379,31 @@ function onSearchInput() {
 
 function filterCharitiesOnInput() { onSearchInput(); }
 
+let userHasSearchedCity = false;
+
 function setFilter(f, btn) {
   activeFilter = f;
   document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
-  const q = document.getElementById('searchInput').value.toLowerCase();
-  applyFilters(currentCity, q, false);
+
+  if (f === 'all') {
+    // All Causes — always revert to current city (geolocated or searched)
+    userHasSearchedCity = false;
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    applyFilters(currentCity, q, false);
+  } else if (userHasSearchedCity) {
+    // User typed a city — filter that cause within their city
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    applyFilters(currentCity, q, false);
+  } else {
+    // No city typed — show this cause site-wide
+    const filtered = charities.filter(c => c.category.includes(f));
+    const label = btn.textContent.trim().replace(/^[^\w]+/, '').trim();
+    updateStats(null);
+    renderCharities(filtered, 'all cities');
+    document.getElementById('resultsCount').textContent =
+      'Showing ' + filtered.length + ' ' + label + ' charities across all cities';
+  }
 }
 
 function switchTab(tab) {
