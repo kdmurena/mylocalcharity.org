@@ -343,11 +343,11 @@
     <div style="font-size:11px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--teal-dark);white-space:nowrap;width:90px;flex-shrink:0;opacity:0.85;">Site-Wide</div>
     <div style="display:flex;flex:1;justify-content:space-around;flex-wrap:wrap;gap:0.5rem;">
       <div class="stat" style="text-align:center;min-width:90px;">
-        <span class="stat-num" id="totalCharities" style="font-size:1.6rem;">186</span>
+        <span class="stat-num" id="totalCharities" style="font-size:1.6rem;">246</span>
         <span class="stat-label">Charities</span>
       </div>
       <div class="stat" style="text-align:center;min-width:90px;">
-        <span class="stat-num" id="totalCities" style="font-size:1.6rem;">250</span>
+        <span class="stat-num" id="totalCities" style="font-size:1.6rem;">333</span>
         <span class="stat-label">Cities & Towns</span>
       </div>
       <div class="stat" style="text-align:center;min-width:90px;">
@@ -375,9 +375,9 @@
         <span style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.07em;background:var(--coral-light);color:var(--coral);padding:3px 10px;border-radius:var(--r-pill);">Founder</span>
       </div>
       <p style="font-size:13.5px;color:var(--ink-mid);line-height:1.75;font-style:italic;">
-        "My name is Dante Murena, and I'm a 12-year-old sixth grader. I created My Local Charity because I was inspired by my sister Leila and her friends Bella and Reese, who started a charity called <a href="https://www.wundieundies.com" target="_blank" rel="noopener" style="color:var(--teal);font-weight:500;text-decoration:none;">WundieUndies</a> when they were my age. Watching them collect and donate thousands of undergarments, diapers, and hygiene products to people who really needed them made me want to help spread the word and get as many people as possible to donate to their charity — and to charities like it all over the country.
+        "Hi, I'm Dante Murena and I'm 12 years old and just finished sixth grade. I built this website because of my sister Leila and her two best friends Bella and Reese. When they were my age, they started a charity called <a href="https://www.wundieundies.com" target="_blank" rel="noopener" style="color:var(--teal);font-weight:500;text-decoration:none;">WundieUndies</a> that collects and donates underwear, diapers, and hygiene products to shelters and food banks around Miami. Watching them actually do something that helped real people made me want to do something too — and I figured the best thing I could do was help spread the word and get as many people as possible to donate to WundieUndies.
         <br><br>
-        I was also inspired by Mr. Beast, who has shown me that helping others in need isn't just something adults do — it's something any of us can do, at any age. I believe that helping others is one of the greatest purposes and goals a person can have in life. My Local Charity is my way of making it easier for everyone to find a cause they care about and take action right in their own neighborhood."
+        I'm also a huge fan of Mr. Beast. He's shown me that you don't have to be an adult or have a lot of money to help people — you just have to actually try. I think helping others is the most important thing a person can do. So I made My Local Charity to make it easy for anyone to find a charity they actually care about right in their own neighborhood."
       </p>
     </div>
   </div>
@@ -2970,6 +2970,746 @@ const charities = [
     donateUrl: "https://www.speakupnow.org/donate/",
     volunteerUrl: "https://www.speakupnow.org/volunteer/",
     website: "https://www.speakupnow.org", city: "san diego"
+  },
+
+  // ── DETROIT ──
+  {
+    id: 183, name: "Gleaners Community Food Bank", icon: "🥗", iconClass: "card-icon-sun",
+    location: "Detroit, MI", distance: "—",
+    desc: "One of the nation's leading food banks, Gleaners has fought hunger in southeastern Michigan since 1977 — distributing over 42 million pounds of food annually through a network of hundreds of pantries, soup kitchens, and community programs across five counties.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Gleaners provides over 42 million pounds of food a year to southeastern Michigan neighbors — every $1 donated equals six healthy meals.",
+    donateUrl: "https://www.gcfb.org/donate/",
+    volunteerUrl: "https://www.gcfb.org/volunteer/",
+    website: "https://www.gcfb.org", city: "detroit"
+  },
+  {
+    id: 184, name: "Detroit Rescue Mission Ministries", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Detroit, MI", distance: "—",
+    desc: "For over a century, Detroit Rescue Mission Ministries has been a lifeline for Detroit's most vulnerable — providing emergency shelter, meals, addiction recovery, job training, and transitional housing to homeless men, women, and children across the metro area.",
+    tags: ["Homelessness", "Recovery", "Food"], category: ["housing", "food", "health"],
+    urgent: true,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Volunteer hours"],
+    impact: "💡 Detroit Rescue Mission has served the city's most vulnerable neighbors for over 100 years — providing meals, shelter, and recovery to thousands each year.",
+    donateUrl: "https://www.drmm.org/donate/",
+    volunteerUrl: "https://www.drmm.org/volunteer/",
+    website: "https://www.drmm.org", city: "detroit"
+  },
+  {
+    id: 185, name: "Michigan Humane", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Detroit, MI", distance: "—",
+    desc: "Michigan's oldest and largest nonprofit animal welfare organization since 1877, Michigan Humane provides shelter, adoption, cruelty investigation, veterinary care, and community programs — protecting animals across the Metro Detroit region for nearly 150 years.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 Michigan Humane has protected animals for nearly 150 years — finding homes for thousands of Metro Detroit pets and investigating every cruelty case.",
+    donateUrl: "https://www.michiganhumane.org/donate/",
+    volunteerUrl: "https://www.michiganhumane.org/volunteer/",
+    website: "https://www.michiganhumane.org", city: "detroit"
+  },
+  {
+    id: 186, name: "Children's Hospital of Michigan Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Detroit, MI", distance: "—",
+    desc: "Supporting Children's Hospital of Michigan — one of the nation's oldest and most comprehensive freestanding children's hospitals — funding pediatric research, specialized care, and community health programs for children across the Detroit metro and the entire Great Lakes region.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Children's Hospital of Michigan is one of America's oldest children's hospitals — your gift funds specialized care for kids across the Great Lakes region.",
+    donateUrl: "https://www.chmfoundation.org/donate/",
+    volunteerUrl: "https://www.chmfoundation.org/",
+    website: "https://www.childrensdmc.org", city: "detroit"
+  },
+  {
+    id: 187, name: "Forgotten Harvest", icon: "🌽", iconClass: "card-icon-sky",
+    location: "Oak Park, Detroit, MI", distance: "—",
+    desc: "Rescuing nutritious surplus food from restaurants, grocery stores, and farms and delivering it — free of charge — to over 250 emergency food providers across southeastern Michigan. Forgotten Harvest has a 98% score on Charity Navigator and has redistributed over 1 billion pounds of food since 1990.",
+    tags: ["Food", "Food Rescue", "Hunger Relief"], category: ["food"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer drivers", "Food donations"],
+    impact: "💡 Forgotten Harvest has rescued and redistributed over 1 billion pounds of food since 1990 — turning surplus into sustenance for hundreds of thousands of Detroiters.",
+    donateUrl: "https://www.forgottenharvest.org/donate/",
+    volunteerUrl: "https://www.forgottenharvest.org/volunteer/",
+    website: "https://www.forgottenharvest.org", city: "detroit"
+  },
+  {
+    id: 188, name: "Covenant House Michigan", icon: "🌟", iconClass: "card-icon-coral",
+    location: "Detroit, MI", distance: "—",
+    desc: "Providing shelter, crisis care, transitional housing, job training, and education to young people ages 18–24 experiencing homelessness in Detroit — with a trauma-informed, youth-centered approach that helps young Detroiters rebuild their lives with dignity.",
+    tags: ["Youth", "Homelessness", "Housing"], category: ["housing", "children"],
+    urgent: true,
+    needs: ["Monetary donations", "Clothing (youth sizes)", "Hygiene items", "Volunteer hours"],
+    impact: "💡 Covenant House Michigan gives Detroit's homeless youth a safe haven and a path forward — providing shelter, education, and job training to hundreds each year.",
+    donateUrl: "https://www.covenanthousingmi.org/donate/",
+    volunteerUrl: "https://www.covenanthousingmi.org/get-involved/",
+    website: "https://www.covenanthousingmi.org", city: "detroit"
+  },
+
+  // ── MINNEAPOLIS ──
+  {
+    id: 189, name: "Second Harvest Heartland", icon: "🌾", iconClass: "card-icon-sun",
+    location: "Brooklyn Park, Minneapolis, MN", distance: "—",
+    desc: "One of the nation's largest food banks, Second Harvest Heartland fights hunger across Minnesota and Wisconsin — distributing food through a network of 1,000+ community partners with remarkable efficiency: for every $1 donated, they provide 3 meals and 91.6% goes directly to programs.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Second Harvest Heartland turns every $1 into 3 meals — with 91.6% of donations going directly to programs serving Minnesota and Wisconsin neighbors.",
+    donateUrl: "https://www.2harvest.org/ways-to-give/",
+    volunteerUrl: "https://www.2harvest.org/volunteer/",
+    website: "https://www.2harvest.org", city: "minneapolis"
+  },
+  {
+    id: 190, name: "Simpson Housing Services", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Minneapolis, MN", distance: "—",
+    desc: "A leading Twin Cities nonprofit providing emergency shelter, transitional housing, and permanent supportive housing to adults experiencing homelessness in Minneapolis — offering a continuum of care that helps people move from the streets to stable, lasting homes.",
+    tags: ["Homelessness", "Housing", "Mental Health"], category: ["housing", "health"],
+    urgent: true,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Volunteer hours"],
+    impact: "💡 Simpson Housing Services has helped thousands of Minneapolis neighbors move from homelessness to permanent housing through compassionate, comprehensive care.",
+    donateUrl: "https://www.simpsonhousing.org/donate/",
+    volunteerUrl: "https://www.simpsonhousing.org/volunteer/",
+    website: "https://www.simpsonhousing.org", city: "minneapolis"
+  },
+  {
+    id: 191, name: "Animal Humane Society Minnesota", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Golden Valley, Minneapolis, MN", distance: "—",
+    desc: "One of the nation's largest and most innovative humane societies, Animal Humane Society cares for over 23,000 animals each year across six Twin Cities locations — providing adoption, veterinary care, behavior support, and community programs that keep pets with their families.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 Animal Humane Society cares for 23,000+ animals a year across six Twin Cities locations — one of the most comprehensive humane organizations in the nation.",
+    donateUrl: "https://www.animalhumanesociety.org/donate/",
+    volunteerUrl: "https://www.animalhumanesociety.org/volunteer/",
+    website: "https://www.animalhumanesociety.org", city: "minneapolis"
+  },
+  {
+    id: 192, name: "Children's Minnesota Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Minneapolis & St. Paul, MN", distance: "—",
+    desc: "Supporting Children's Minnesota — one of the largest freestanding pediatric health systems in the US — funding breakthrough research, specialized care, and community health programs that serve children from across Minnesota, the Dakotas, and the Upper Midwest.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Children's Minnesota is the region's top pediatric health system — your gift funds specialized care for kids from across the entire Upper Midwest.",
+    donateUrl: "https://www.childrensmn.org/give/",
+    volunteerUrl: "https://www.childrensmn.org/give/",
+    website: "https://www.childrensmn.org", city: "minneapolis"
+  },
+  {
+    id: 193, name: "Avenues for Homeless Youth Minneapolis", icon: "🌙", iconClass: "card-icon-sky",
+    location: "Minneapolis, MN", distance: "—",
+    desc: "Providing a safe haven, life skills, education, and housing support to homeless youth ages 16–23 in the Twin Cities — helping young Minnesotans who have nowhere else to turn rebuild their lives with the stability, skills, and confidence they need to thrive.",
+    tags: ["Youth", "Homelessness", "Education"], category: ["housing", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Clothing (youth sizes)", "Hygiene items", "Volunteer hours"],
+    impact: "💡 Avenues for Homeless Youth has provided safe shelter and life-changing support to thousands of homeless young people in the Twin Cities.",
+    donateUrl: "https://www.avenuesforhomelessyouth.org/donate/",
+    volunteerUrl: "https://www.avenuesforhomelessyouth.org/volunteer/",
+    website: "https://www.avenuesforhomelessyouth.org", city: "minneapolis"
+  },
+  {
+    id: 194, name: "Greater Twin Cities United Way", icon: "🤝", iconClass: "card-icon-coral",
+    location: "Minneapolis, MN", distance: "—",
+    desc: "Fighting poverty across the Twin Cities metro by investing in over 90 local nonprofit partners focused on basic needs, financial stability, and student success — mobilizing thousands of donors, volunteers, and advocates to create lasting change in Minnesota communities.",
+    tags: ["Poverty", "Community", "Education"], category: ["food", "housing", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer hours", "Workplace giving"],
+    impact: "💡 Greater Twin Cities United Way invests in 90+ nonprofits — touching the lives of hundreds of thousands of Minnesotans facing poverty each year.",
+    donateUrl: "https://www.gtcuw.org/donate/",
+    volunteerUrl: "https://www.gtcuw.org/volunteer/",
+    website: "https://www.gtcuw.org", city: "minneapolis"
+  },
+
+  // ── PORTLAND ──
+  {
+    id: 195, name: "Oregon Food Bank", icon: "🥖", iconClass: "card-icon-sun",
+    location: "Portland, OR", distance: "—",
+    desc: "Oregon's largest hunger-relief organization, distributing food through a statewide network of 1,400+ partner agencies while advocating for long-term solutions to hunger — serving over 1 million Oregonians and Southwest Washingtonians who face food insecurity each year.",
+    tags: ["Food", "Hunger Relief", "Advocacy"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Oregon Food Bank reaches 1 million+ people through 1,400+ partners — and advocates for the policy changes needed to end hunger for good.",
+    donateUrl: "https://www.oregonfoodbank.org/donate/",
+    volunteerUrl: "https://www.oregonfoodbank.org/volunteer/",
+    website: "https://www.oregonfoodbank.org", city: "portland"
+  },
+  {
+    id: 196, name: "JOIN PDX", icon: "🏘", iconClass: "card-icon-coral",
+    location: "Portland, OR", distance: "—",
+    desc: "Portland's trusted pathway from homelessness to housing — JOIN meets people where they are, literally on the streets, and provides individualized support, rapid rehousing, and case management to help homeless Portlanders find and keep stable housing.",
+    tags: ["Homelessness", "Housing", "Outreach"], category: ["housing"],
+    urgent: true,
+    needs: ["Monetary donations", "Hygiene items", "Volunteer hours"],
+    impact: "💡 JOIN PDX has helped thousands of Portlanders move from homelessness to housing through street outreach, rapid rehousing, and dedicated case management.",
+    donateUrl: "https://www.joinpdx.org/donate/",
+    volunteerUrl: "https://www.joinpdx.org/volunteer/",
+    website: "https://www.joinpdx.org", city: "portland"
+  },
+  {
+    id: 197, name: "Oregon Humane Society", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Portland, OR", distance: "—",
+    desc: "The Pacific Northwest's most comprehensive humane organization since 1868 — Oregon Humane finds homes for nearly 12,000 pets each year with no time limits, operates a community veterinary hospital serving 40,000 patients annually, and provides low-cost spay/neuter for 13,000+ pets.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 Oregon Humane finds homes for 12,000 pets a year with no time limits — and its community vet hospital provides $1M+ in financial assistance annually.",
+    donateUrl: "https://www.oregonhumane.org/ways-to-give/",
+    volunteerUrl: "https://www.oregonhumane.org/volunteer/",
+    website: "https://www.oregonhumane.org", city: "portland"
+  },
+  {
+    id: 198, name: "Doernbecher Children's Hospital Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Portland, OR", distance: "—",
+    desc: "Supporting OHSU Doernbecher Children's Hospital — Oregon's only comprehensive academic children's hospital — funding cutting-edge pediatric research, specialized care, and community health programs that serve children from across Oregon and the Pacific Northwest.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Doernbecher is Oregon's only comprehensive academic children's hospital — your gift funds research and care for kids across the entire Pacific Northwest.",
+    donateUrl: "https://www.ohsu.edu/doernbecher/give",
+    volunteerUrl: "https://www.ohsu.edu/doernbecher/give",
+    website: "https://www.ohsu.edu/doernbecher", city: "portland"
+  },
+  {
+    id: 199, name: "Outside In Portland", icon: "🌿", iconClass: "card-icon-sky",
+    location: "Portland, OR", distance: "—",
+    desc: "Helping homeless youth and young adults ages 14–25 move toward stability and self-sufficiency in Portland since 1968 — providing drop-in services, medical care, mental health support, job training, and housing assistance to Portland's most vulnerable young people.",
+    tags: ["Youth", "Homelessness", "Health"], category: ["housing", "children", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Clothing (youth sizes)", "Hygiene items", "Volunteer hours"],
+    impact: "💡 Outside In has served Portland's homeless youth for over 55 years — providing medical care, mental health support, and job training to help young people thrive.",
+    donateUrl: "https://www.outsidein.org/donate/",
+    volunteerUrl: "https://www.outsidein.org/volunteer/",
+    website: "https://www.outsidein.org", city: "portland"
+  },
+  {
+    id: 200, name: "Meals on Wheels People Portland", icon: "🍱", iconClass: "card-icon-coral",
+    location: "Portland, OR", distance: "—",
+    desc: "Delivering nutritious meals and compassionate visits to homebound seniors and adults with disabilities across the Portland metro area since 1970 — serving over 5,000 people daily across Multnomah, Washington, Clackamas, and Clark counties.",
+    tags: ["Seniors", "Food", "Community"], category: ["food", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer drivers", "Meal sponsors"],
+    impact: "💡 Meals on Wheels People delivers 5,000+ meals daily to homebound Portland seniors — often the only daily human contact they receive.",
+    donateUrl: "https://www.mowp.org/donate/",
+    volunteerUrl: "https://www.mowp.org/volunteer/",
+    website: "https://www.mowp.org", city: "portland"
+  },
+
+  // ── AUSTIN ──
+  {
+    id: 201, name: "Central Texas Food Bank", icon: "🌮", iconClass: "card-icon-sun",
+    location: "Austin, TX", distance: "—",
+    desc: "The largest hunger-relief charity in Central Texas, providing nearly 54 million meals last year across 21 counties through a network of 260+ community partner agencies — with a mission to nourish hungry people and lead the community in the fight against hunger.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Central Texas Food Bank delivered nearly 54 million meals last year — the largest hunger-relief organization in Central Texas.",
+    donateUrl: "https://www.centraltexasfoodbank.org/donate",
+    volunteerUrl: "https://www.centraltexasfoodbank.org/volunteer",
+    website: "https://www.centraltexasfoodbank.org", city: "austin"
+  },
+  {
+    id: 202, name: "Front Steps Austin", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Austin, TX", distance: "—",
+    desc: "Austin's premier homeless services provider, operating the city's flagship emergency shelter and providing a full continuum of care — from street outreach and emergency beds to case management, rapid rehousing, and supportive services — to help Austin neighbors end their homelessness.",
+    tags: ["Homelessness", "Housing", "Outreach"], category: ["housing"],
+    urgent: true,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Volunteer hours"],
+    impact: "💡 Front Steps operates Austin's largest emergency shelter — helping thousands of homeless Austinites each year find a path from crisis to stable housing.",
+    donateUrl: "https://www.frontsteps.org/donate/",
+    volunteerUrl: "https://www.frontsteps.org/volunteer/",
+    website: "https://www.frontsteps.org", city: "austin"
+  },
+  {
+    id: 203, name: "Austin Pets Alive!", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Austin, TX", distance: "—",
+    desc: "The pioneering force behind Austin's transformation into America's largest no-kill city — Austin Pets Alive! has saved over 150,000 animals since 2008, operating innovative lifesaving programs that have been replicated by hundreds of shelters across the country.",
+    tags: ["Animals", "No-Kill", "Rescue"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 Austin Pets Alive! helped make Austin America's largest no-kill city — and their model has saved 150,000+ animals and inspired shelters nationwide.",
+    donateUrl: "https://www.austinpetsalive.org/donate/",
+    volunteerUrl: "https://www.austinpetsalive.org/volunteer/",
+    website: "https://www.austinpetsalive.org", city: "austin"
+  },
+  {
+    id: 204, name: "Dell Children's Medical Center Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Austin, TX", distance: "—",
+    desc: "Supporting Dell Children's Medical Center — Central Texas's only freestanding children's hospital — funding pediatric research, specialized care, and community health programs that serve children from across the region regardless of their family's ability to pay.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Dell Children's is Central Texas's only freestanding children's hospital — your gift ensures every Austin-area child gets world-class pediatric care.",
+    donateUrl: "https://www.dellchildrens.net/give/",
+    volunteerUrl: "https://www.dellchildrens.net/give/",
+    website: "https://www.dellchildrens.net", city: "austin"
+  },
+  {
+    id: 205, name: "Caritas of Austin", icon: "🌱", iconClass: "card-icon-sky",
+    location: "Austin, TX", distance: "—",
+    desc: "Providing innovative solutions to end homelessness in Austin through emergency assistance, permanent supportive housing, veteran services, and employment programs — with a data-driven approach that focuses on moving people directly from homelessness into permanent homes.",
+    tags: ["Homelessness", "Housing", "Veterans"], category: ["housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Household items", "Volunteer hours"],
+    impact: "💡 Caritas of Austin's Housing First approach has helped thousands of Central Texans — including veterans — achieve permanent housing and lasting stability.",
+    donateUrl: "https://www.caritasofaustin.org/donate/",
+    volunteerUrl: "https://www.caritasofaustin.org/volunteer/",
+    website: "https://www.caritasofaustin.org", city: "austin"
+  },
+  {
+    id: 206, name: "Any Baby Can Austin", icon: "👶", iconClass: "card-icon-coral",
+    location: "Austin, TX", distance: "—",
+    desc: "Strengthening Central Texas families by providing early childhood education, family support, and disability services to children from birth through age five — ensuring that Austin's most vulnerable young children and their families have the support they need to thrive.",
+    tags: ["Children", "Early Childhood", "Families"], category: ["children", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer mentors", "Baby supplies"],
+    impact: "💡 Any Baby Can has strengthened thousands of Central Texas families — ensuring Austin's youngest and most vulnerable children get the best possible start in life.",
+    donateUrl: "https://www.anybabycan.org/donate/",
+    volunteerUrl: "https://www.anybabycan.org/volunteer/",
+    website: "https://www.anybabycan.org", city: "austin"
+  },
+
+  // ── SAN ANTONIO ──
+  {
+    id: 207, name: "San Antonio Food Bank", icon: "🥘", iconClass: "card-icon-sun",
+    location: "San Antonio, TX", distance: "—",
+    desc: "Founded in 1980, the San Antonio Food Bank serves one of the largest and most diverse service areas in Southwest Texas — providing food to over 58,000 households weekly across 16 counties, with every $1 donated providing 7 meals to neighbors in need.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 San Antonio Food Bank turns every $1 into 7 meals — serving 58,000+ households weekly across 16 Southwest Texas counties.",
+    donateUrl: "https://safoodbank.org/donate/",
+    volunteerUrl: "https://safoodbank.org/volunteer/",
+    website: "https://safoodbank.org", city: "san antonio"
+  },
+  {
+    id: 208, name: "Haven for Hope", icon: "🌅", iconClass: "card-icon-coral",
+    location: "San Antonio, TX", distance: "—",
+    desc: "One of the most comprehensive homeless service campuses in the US, Haven for Hope provides emergency shelter, transitional housing, mental health services, job training, and wraparound support — serving over 1,600 homeless neighbors every day on a 22-acre downtown campus.",
+    tags: ["Homelessness", "Housing", "Recovery"], category: ["housing", "health"],
+    urgent: true,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Volunteer hours"],
+    impact: "💡 Haven for Hope serves 1,600+ homeless San Antonians every day on a 22-acre campus — one of the most comprehensive homeless service centers in the entire US.",
+    donateUrl: "https://www.havenforhope.org/donate/",
+    volunteerUrl: "https://www.havenforhope.org/volunteer/",
+    website: "https://www.havenforhope.org", city: "san antonio"
+  },
+  {
+    id: 209, name: "San Antonio Humane Society", icon: "🐾", iconClass: "card-icon-plum",
+    location: "San Antonio, TX", distance: "—",
+    desc: "Providing shelter, adoption, spay/neuter programs, veterinary care, and community education for thousands of dogs, cats, and small animals across the San Antonio metro — committed to a compassionate community where every adoptable animal finds a loving home.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 San Antonio Humane Society saves thousands of Alamo City animals each year through adoption, foster programs, and community spay/neuter services.",
+    donateUrl: "https://www.sahumane.org/donate/",
+    volunteerUrl: "https://www.sahumane.org/volunteer/",
+    website: "https://www.sahumane.org", city: "san antonio"
+  },
+  {
+    id: 210, name: "Children's Hospital of San Antonio Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "San Antonio, TX", distance: "—",
+    desc: "Supporting Children's Hospital of San Antonio — South Texas's leading pediatric hospital — funding specialized care, research, and community health programs that serve children from across the San Antonio metro and the broader South Texas region.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Children's Hospital of San Antonio is South Texas's pediatric leader — your gift ensures every child in the region gets the specialized care they need.",
+    donateUrl: "https://www.christushealth.org/give/",
+    volunteerUrl: "https://www.christushealth.org/give/",
+    website: "https://www.christushealth.org/locations/children-hospital-san-antonio", city: "san antonio"
+  },
+  {
+    id: 211, name: "Roy Maas Youth Alternatives", icon: "🌟", iconClass: "card-icon-sky",
+    location: "San Antonio, TX", distance: "—",
+    desc: "San Antonio's leading provider of services for at-risk and abused youth — Roy Maas offers residential care, emergency shelter, counseling, foster care, and community-based programs to children and teenagers who have experienced abuse, neglect, or family crisis.",
+    tags: ["Youth", "Foster Care", "Mental Health"], category: ["children", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster parents", "Clothing & school supply donations"],
+    impact: "💡 Roy Maas Youth Alternatives has provided safety and healing to thousands of San Antonio's most vulnerable children for over 45 years.",
+    donateUrl: "https://www.roymaas.org/donate/",
+    volunteerUrl: "https://www.roymaas.org/volunteer/",
+    website: "https://www.roymaas.org", city: "san antonio"
+  },
+  {
+    id: 212, name: "Junior League of San Antonio", icon: "🤝", iconClass: "card-icon-coral",
+    location: "San Antonio, TX", distance: "—",
+    desc: "A women's organization committed to promoting voluntarism, developing the potential of women, and improving the San Antonio community through effective action and leadership since 1924 — funding and volunteering for dozens of community programs focused on children and families.",
+    tags: ["Community", "Women", "Children"], category: ["children", "education"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer hours", "Event support"],
+    impact: "💡 The Junior League of San Antonio has invested millions and hundreds of thousands of volunteer hours into San Antonio community programs since 1924.",
+    donateUrl: "https://www.jlsa.org/donate/",
+    volunteerUrl: "https://www.jlsa.org/get-involved/",
+    website: "https://www.jlsa.org", city: "san antonio"
+  },
+
+  // ── BALTIMORE ──
+  {
+    id: 213, name: "Maryland Food Bank", icon: "🥫", iconClass: "card-icon-sun",
+    location: "Baltimore, MD", distance: "—",
+    desc: "Fighting hunger across Maryland since 1979, the Maryland Food Bank distributes over 55 million pounds of food annually through a network of 1,200+ partner organizations in all 24 Maryland jurisdictions — serving more than 700,000 Marylanders facing food insecurity each year.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Maryland Food Bank distributes 55 million pounds of food a year to 700,000+ Marylanders — the state's largest hunger-relief organization.",
+    donateUrl: "https://www.mdfoodbank.org/donate/",
+    volunteerUrl: "https://www.mdfoodbank.org/volunteer/",
+    website: "https://www.mdfoodbank.org", city: "baltimore"
+  },
+  {
+    id: 214, name: "Healthcare for the Homeless Baltimore", icon: "🏥", iconClass: "card-icon-coral",
+    location: "Baltimore, MD", distance: "—",
+    desc: "Providing comprehensive medical, dental, behavioral health, and substance abuse services to homeless men, women, and children in Baltimore — treating patients with dignity and addressing the full range of health needs that arise from homelessness and poverty.",
+    tags: ["Health", "Homelessness", "Dental"], category: ["health", "housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Medical volunteer professionals", "Hygiene items"],
+    impact: "💡 Healthcare for the Homeless provides comprehensive medical and mental health care to thousands of Baltimore's homeless neighbors — with dignity and without barriers.",
+    donateUrl: "https://www.hchmd.org/donate/",
+    volunteerUrl: "https://www.hchmd.org/volunteer/",
+    website: "https://www.hchmd.org", city: "baltimore"
+  },
+  {
+    id: 215, name: "Maryland SPCA", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Baltimore, MD", distance: "—",
+    desc: "One of the oldest humane societies in the US since 1869, Maryland SPCA provides shelter, adoption, cruelty investigation, low-cost veterinary care, and community programs for animals across the Baltimore region — committed to a community where every animal is treated with compassion.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 Maryland SPCA has protected Baltimore's animals for over 155 years — finding loving homes for thousands of pets and investigating every cruelty case.",
+    donateUrl: "https://www.mdspca.org/donate/",
+    volunteerUrl: "https://www.mdspca.org/volunteer/",
+    website: "https://www.mdspca.org", city: "baltimore"
+  },
+  {
+    id: 216, name: "Johns Hopkins Children's Center", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Baltimore, MD", distance: "—",
+    desc: "Supporting Johns Hopkins Children's Center — consistently ranked among the nation's best children's hospitals — funding breakthrough pediatric research, specialized clinical care, and community health programs that serve children from Baltimore and around the world.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Johns Hopkins Children's Center is consistently ranked among the best children's hospitals in the US — your gift funds care and research that saves young lives.",
+    donateUrl: "https://www.hopkinsmedicine.org/the_johns_hopkins_hospital/childrens_center/give/",
+    volunteerUrl: "https://www.hopkinsmedicine.org/the_johns_hopkins_hospital/childrens_center/give/",
+    website: "https://www.hopkinsmedicine.org/childrens_center", city: "baltimore"
+  },
+  {
+    id: 217, name: "Paul's Place Baltimore", icon: "🌿", iconClass: "card-icon-sky",
+    location: "Southwest Baltimore, MD", distance: "—",
+    desc: "A comprehensive community services organization in Southwest Baltimore providing food, emergency financial assistance, workforce development, youth programs, and senior services — meeting the immediate needs of low-income neighbors while building pathways to lasting self-sufficiency.",
+    tags: ["Food", "Community", "Youth"], category: ["food", "children", "housing"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Paul's Place strengthens Southwest Baltimore through food, emergency aid, job training, and youth programs — serving thousands of neighbors each year.",
+    donateUrl: "https://www.paulsplace.org/donate/",
+    volunteerUrl: "https://www.paulsplace.org/volunteer/",
+    website: "https://www.paulsplace.org", city: "baltimore"
+  },
+  {
+    id: 218, name: "Marian House Baltimore", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Baltimore, MD", distance: "—",
+    desc: "Providing long-term transitional housing, case management, and wraparound support to women and children experiencing homelessness in Baltimore — helping women rebuild their lives through stable housing, employment support, and a compassionate community of care.",
+    tags: ["Women", "Homelessness", "Housing"], category: ["housing", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Household items", "Volunteer hours"],
+    impact: "💡 Marian House has provided safe, stable housing and transformative support to Baltimore women and children experiencing homelessness for over 40 years.",
+    donateUrl: "https://www.marianhouse.org/donate/",
+    volunteerUrl: "https://www.marianhouse.org/volunteer/",
+    website: "https://www.marianhouse.org", city: "baltimore"
+  },
+
+  // ── PITTSBURGH ──
+  {
+    id: 219, name: "Greater Pittsburgh Community Food Bank", icon: "🥗", iconClass: "card-icon-sun",
+    location: "Pittsburgh, PA", distance: "—",
+    desc: "Serving 11 counties across southwestern Pennsylvania, the Greater Pittsburgh Community Food Bank bridges communities and resources to help neighbors overcome food insecurity — distributing enough food for over 35 million meals annually through 400+ partner agencies.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Greater Pittsburgh Community Food Bank provides every $1 donated the equivalent of 3 meals — serving 11 SW Pennsylvania counties through 400+ partner agencies.",
+    donateUrl: "https://pittsburghfoodbank.org/donate/",
+    volunteerUrl: "https://pittsburghfoodbank.org/volunteer/",
+    website: "https://pittsburghfoodbank.org", city: "pittsburgh"
+  },
+  {
+    id: 220, name: "Light of Life Rescue Mission Pittsburgh", icon: "💡", iconClass: "card-icon-coral",
+    location: "North Side, Pittsburgh, PA", distance: "—",
+    desc: "Serving Pittsburgh's homeless and recovering community since 1952, Light of Life provides emergency shelter, hot meals, addiction recovery, job training, and transitional housing — offering hope and healing to men, women, and children experiencing homelessness in the Pittsburgh area.",
+    tags: ["Homelessness", "Recovery", "Food"], category: ["housing", "food", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Volunteer meal servers"],
+    impact: "💡 Light of Life has served Pittsburgh's most vulnerable neighbors for over 70 years — providing meals, shelter, and recovery support to thousands each year.",
+    donateUrl: "https://www.lightoflife.org/donate/",
+    volunteerUrl: "https://www.lightoflife.org/volunteer/",
+    website: "https://www.lightoflife.org", city: "pittsburgh"
+  },
+  {
+    id: 221, name: "Western PA Humane Society", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Pittsburgh, PA", distance: "—",
+    desc: "One of the oldest humane societies in the US, Western PA Humane Society has protected Pittsburgh's animals since 1874 — providing shelter, adoption, cruelty investigation, veterinary care, and community programs that help families keep their beloved pets.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 Western PA Humane Society has protected Pittsburgh animals for 150 years — finding homes for thousands of pets and offering low-cost vet services to the community.",
+    donateUrl: "https://www.westernpahumane.org/donate/",
+    volunteerUrl: "https://www.westernpahumane.org/volunteer/",
+    website: "https://www.westernpahumane.org", city: "pittsburgh"
+  },
+  {
+    id: 222, name: "UPMC Children's Hospital of Pittsburgh Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Pittsburgh, PA", distance: "—",
+    desc: "Supporting UPMC Children's Hospital of Pittsburgh — consistently ranked among the nation's best children's hospitals — funding breakthrough pediatric research, specialized clinical care, and community programs that serve children from Western Pennsylvania and the broader region.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 UPMC Children's is consistently ranked among the best children's hospitals in America — your gift funds breakthrough care and research for Pittsburgh's kids.",
+    donateUrl: "https://www.chpfoundation.org/donate/",
+    volunteerUrl: "https://www.chpfoundation.org/",
+    website: "https://www.chp.edu", city: "pittsburgh"
+  },
+  {
+    id: 223, name: "412 Food Rescue Pittsburgh", icon: "🍎", iconClass: "card-icon-sky",
+    location: "Pittsburgh, PA", distance: "—",
+    desc: "Using technology to rescue surplus food and redirect it to communities facing hunger across the Pittsburgh region — 412 Food Rescue mobilizes a volunteer network to move rescued food from donors to nonprofits, keeping nutritious food out of landfills and in the hands of neighbors in need.",
+    tags: ["Food", "Food Rescue", "Technology"], category: ["food"],
+    urgent: false,
+    needs: ["Volunteer food runners", "Monetary donations", "Food donations"],
+    impact: "💡 412 Food Rescue has rescued over 30 million pounds of food in Pittsburgh — turning tech and volunteers into a powerful force against hunger and food waste.",
+    donateUrl: "https://412foodrescue.org/donate/",
+    volunteerUrl: "https://412foodrescue.org/volunteer/",
+    website: "https://412foodrescue.org", city: "pittsburgh"
+  },
+  {
+    id: 224, name: "Auberle Pittsburgh", icon: "👨‍👩‍👧", iconClass: "card-icon-coral",
+    location: "McKeesport / Pittsburgh, PA", distance: "—",
+    desc: "Providing comprehensive services to children, youth, and families in crisis across Western Pennsylvania — Auberle offers foster care, behavioral health treatment, workforce development, housing, and family preservation services to help young people and families build better futures.",
+    tags: ["Children", "Foster Care", "Families"], category: ["children", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster families", "Volunteer hours"],
+    impact: "💡 Auberle serves thousands of Western Pennsylvania children and families each year — providing foster care, mental health treatment, and family support services.",
+    donateUrl: "https://www.auberle.org/donate/",
+    volunteerUrl: "https://www.auberle.org/volunteer/",
+    website: "https://www.auberle.org", city: "pittsburgh"
+  },
+
+  // ── KANSAS CITY ──
+  {
+    id: 225, name: "Harvesters — The Community Food Network", icon: "🌾", iconClass: "card-icon-sun",
+    location: "Kansas City, MO", distance: "—",
+    desc: "The regional food bank for northwest Missouri and northeast Kansas, Harvesters distributes food to more than 620 nonprofit agencies — including food pantries, soup kitchens, and shelters — serving over 66,000 people weekly across a 26-county service area.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Harvesters serves 66,000+ Kansas City area neighbors weekly — distributing food through 620+ agencies across a 26-county region in Missouri and Kansas.",
+    donateUrl: "https://www.harvesters.org/donate/",
+    volunteerUrl: "https://www.harvesters.org/volunteer/",
+    website: "https://www.harvesters.org", city: "kansas city"
+  },
+  {
+    id: 226, name: "reStart Kansas City", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Kansas City, MO", distance: "—",
+    desc: "Providing emergency shelter, transitional housing, and supportive services to homeless men, women, youth, and families in Kansas City since 1984 — with a focus on rapid rehousing and recovery that helps people move from homelessness to permanent stability.",
+    tags: ["Homelessness", "Housing", "Youth"], category: ["housing", "children"],
+    urgent: true,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Volunteer hours"],
+    impact: "💡 reStart has helped thousands of Kansas City residents escape homelessness — providing shelter, housing, and recovery services for over 40 years.",
+    donateUrl: "https://www.restartinc.org/donate/",
+    volunteerUrl: "https://www.restartinc.org/volunteer/",
+    website: "https://www.restartinc.org", city: "kansas city"
+  },
+  {
+    id: 227, name: "Kansas City Pet Project", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Kansas City, MO", distance: "—",
+    desc: "Operating Kansas City's municipal animal shelter as a no-kill lifesaving organization — Kansas City Pet Project has achieved a 95%+ save rate while providing adoption, foster, rescue, spay/neuter, and community programs that make Kansas City one of the nation's leading no-kill cities.",
+    tags: ["Animals", "No-Kill", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 Kansas City Pet Project runs KC's municipal shelter with a 95%+ save rate — helping make Kansas City one of America's most progressive no-kill cities.",
+    donateUrl: "https://www.kcpetproject.org/donate/",
+    volunteerUrl: "https://www.kcpetproject.org/volunteer/",
+    website: "https://www.kcpetproject.org", city: "kansas city"
+  },
+  {
+    id: 228, name: "Children's Mercy Kansas City Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Kansas City, MO", distance: "—",
+    desc: "Supporting Children's Mercy — one of the nation's top-ranked freestanding children's hospitals, consistently ranked in the top 10 by US News — funding pediatric research, specialized care, and community health programs for children across the Kansas City region and the Great Plains.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Children's Mercy is consistently ranked in the nation's top 10 children's hospitals — your gift funds research and care for kids across the Great Plains.",
+    donateUrl: "https://www.childrensmercy.org/give/",
+    volunteerUrl: "https://www.childrensmercy.org/give/",
+    website: "https://www.childrensmercy.org", city: "kansas city"
+  },
+  {
+    id: 229, name: "Hope Faith Ministries Kansas City", icon: "🤲", iconClass: "card-icon-sky",
+    location: "Kansas City, MO", distance: "—",
+    desc: "Serving Kansas City's homeless and hungry neighbors daily with meals, emergency supplies, medical care, and connection to community resources — Hope Faith is a welcoming, non-judgmental place of refuge for over 200 people every day in the heart of the city.",
+    tags: ["Homelessness", "Food", "Healthcare"], category: ["housing", "food", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Food donations", "Hygiene items", "Volunteer hours"],
+    impact: "💡 Hope Faith serves 200+ Kansas City neighbors every single day — providing meals, medical care, and supplies with dignity and without judgment.",
+    donateUrl: "https://www.hopefaithkc.org/donate/",
+    volunteerUrl: "https://www.hopefaithkc.org/volunteer/",
+    website: "https://www.hopefaithkc.org", city: "kansas city"
+  },
+  {
+    id: 230, name: "Della Lamb Community Services KC", icon: "👨‍👩‍👧", iconClass: "card-icon-coral",
+    location: "Kansas City, MO", distance: "—",
+    desc: "Empowering low-income families and immigrants in Kansas City through early childhood education, adult ESL classes, food assistance, emergency financial help, and workforce development — serving over 3,000 people annually in one of KC's most underserved neighborhoods.",
+    tags: ["Families", "Immigration", "Education"], category: ["food", "children", "education"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer tutors", "Baby & household supply donations"],
+    impact: "💡 Della Lamb serves 3,000+ Kansas City families and immigrants annually — providing childcare, ESL, food, and financial assistance in one of KC's most underserved areas.",
+    donateUrl: "https://www.dellalamb.org/donate/",
+    volunteerUrl: "https://www.dellalamb.org/volunteer/",
+    website: "https://www.dellalamb.org", city: "kansas city"
+  },
+
+  // ── INDIANAPOLIS ──
+  {
+    id: 231, name: "Gleaners Food Bank of Indiana", icon: "🥣", iconClass: "card-icon-sun",
+    location: "Indianapolis, IN", distance: "—",
+    desc: "Indiana's largest hunger-relief organization, Gleaners distributes over 70 million pounds of food annually — enough for 175,000 meals a day — through a network of 400+ community partner agencies across 21 central and southeastern Indiana counties.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Gleaners Food Bank of Indiana distributes 70 million pounds of food a year — providing 175,000 meals daily to Indiana neighbors facing hunger.",
+    donateUrl: "https://www.gleaners.org/donate/",
+    volunteerUrl: "https://www.gleaners.org/volunteer/",
+    website: "https://www.gleaners.org", city: "indianapolis"
+  },
+  {
+    id: 232, name: "Horizon House Indianapolis", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Indianapolis, IN", distance: "—",
+    desc: "Indianapolis's downtown day center for adults experiencing homelessness — providing meals, showers, laundry, mail service, medical care, mental health services, and housing navigation to help Indianapolis neighbors move from the streets to stable housing.",
+    tags: ["Homelessness", "Housing", "Health"], category: ["housing", "health", "food"],
+    urgent: false,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Volunteer hours"],
+    impact: "💡 Horizon House is Indianapolis's frontline for homeless neighbors — providing 700+ daily visits with meals, showers, medical care, and housing support.",
+    donateUrl: "https://www.horizonhouse.cc/donate/",
+    volunteerUrl: "https://www.horizonhouse.cc/volunteer/",
+    website: "https://www.horizonhouse.cc", city: "indianapolis"
+  },
+  {
+    id: 233, name: "Humane Society of Indianapolis", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Indianapolis, IN", distance: "—",
+    desc: "Central Indiana's leading animal welfare organization since 1905, the Humane Society of Indianapolis provides shelter, adoption, cruelty investigation, veterinary care, and community programs — helping thousands of animals find loving homes across the Indianapolis metro each year.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 The Humane Society of Indianapolis has protected Indiana animals for 120 years — finding loving homes for thousands of Indy-area pets each year.",
+    donateUrl: "https://www.indyhumane.org/donate/",
+    volunteerUrl: "https://www.indyhumane.org/volunteer/",
+    website: "https://www.indyhumane.org", city: "indianapolis"
+  },
+  {
+    id: 234, name: "Riley Children's Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Indianapolis, IN", distance: "—",
+    desc: "Supporting Riley Hospital for Children — Indiana's only comprehensive children's hospital and one of the nation's best — funding pediatric research, specialized care, and the Riley Child Development Centers that serve children from across Indiana and the Midwest.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Riley Hospital for Children is Indiana's only comprehensive children's hospital — consistently ranked among the nation's best for pediatric care and research.",
+    donateUrl: "https://www.rileykids.org/donate/",
+    volunteerUrl: "https://www.rileykids.org/",
+    website: "https://www.rileykids.org", city: "indianapolis"
+  },
+  {
+    id: 235, name: "Wheeler Mission Indianapolis", icon: "🌙", iconClass: "card-icon-sky",
+    location: "Indianapolis, IN", distance: "—",
+    desc: "Indiana's largest faith-based provider of homeless services since 1893, Wheeler Mission provides emergency shelter, meals, recovery programs, job training, and transitional housing to men, women, and children experiencing homelessness across Indianapolis.",
+    tags: ["Homelessness", "Recovery", "Food"], category: ["housing", "food", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Volunteer meal servers"],
+    impact: "💡 Wheeler Mission has served Indianapolis's most vulnerable neighbors for over 130 years — providing meals, shelter, and recovery support to thousands each year.",
+    donateUrl: "https://www.wheelermission.org/donate/",
+    volunteerUrl: "https://www.wheelermission.org/volunteer/",
+    website: "https://www.wheelermission.org", city: "indianapolis"
+  },
+  {
+    id: 236, name: "John H. Boner Community Center Indianapolis", icon: "🏘", iconClass: "card-icon-coral",
+    location: "Near Eastside, Indianapolis, IN", distance: "—",
+    desc: "Building a thriving near eastside community in Indianapolis through workforce development, youth programs, senior services, food assistance, financial coaching, and community organizing — serving thousands of Indianapolis neighbors each year with dignity and respect.",
+    tags: ["Community", "Youth", "Education"], category: ["food", "children", "education"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer tutors & mentors", "Food donations"],
+    impact: "💡 Boner Community Center has strengthened Indianapolis's near eastside for over 50 years — providing comprehensive services to thousands of neighbors each year.",
+    donateUrl: "https://www.bonercenter.org/donate/",
+    volunteerUrl: "https://www.bonercenter.org/volunteer/",
+    website: "https://www.bonercenter.org", city: "indianapolis"
+  },
+
+  // ── JACKSONVILLE ──
+  {
+    id: 237, name: "Feeding Northeast Florida", icon: "🥗", iconClass: "card-icon-sun",
+    location: "Jacksonville, FL", distance: "—",
+    desc: "The Feeding America food bank serving 8 Northeast Florida counties — rescuing and distributing food to address food insecurity, poverty, and poor health across Baker, Bradford, Clay, Duval, Flagler, Nassau, Putnam, and St. Johns counties through 200+ community partner agencies.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Feeding Northeast Florida serves 8 counties across Northeast Florida — distributing millions of pounds of food annually through 200+ local partner agencies.",
+    donateUrl: "https://feedingnefl.org/donate/",
+    volunteerUrl: "https://feedingnefl.org/volunteer/",
+    website: "https://feedingnefl.org", city: "jacksonville"
+  },
+  {
+    id: 238, name: "Clara White Mission Jacksonville", icon: "🏘", iconClass: "card-icon-coral",
+    location: "Downtown Jacksonville, FL", distance: "—",
+    desc: "Jacksonville's beloved community institution since 1904 — Clara White Mission provides over 400 hot meals daily, transitional housing for veterans, job training, and wraparound support to help Jacksonville's homeless and hungry neighbors achieve lasting independence.",
+    tags: ["Homelessness", "Food", "Veterans"], category: ["housing", "food"],
+    urgent: false,
+    needs: ["Monetary donations", "Food donations", "Clothing", "Volunteer hours"],
+    impact: "💡 Clara White Mission has fed Jacksonville's hungry neighbors for over 120 years — serving 400+ hot meals every single day with compassion and dignity.",
+    donateUrl: "https://www.clarawhitemission.org/donate/",
+    volunteerUrl: "https://www.clarawhitemission.org/volunteer/",
+    website: "https://www.clarawhitemission.org", city: "jacksonville"
+  },
+  {
+    id: 239, name: "Jacksonville Humane Society", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Jacksonville, FL", distance: "—",
+    desc: "Northeast Florida's leading animal welfare organization — the Jacksonville Humane Society provides shelter, adoption, foster care, low-cost veterinary services, and community programs that save thousands of animals each year across Duval and surrounding counties.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 Jacksonville Humane Society saves thousands of Northeast Florida animals each year — with low-cost vet clinics that help families keep their beloved pets.",
+    donateUrl: "https://www.jaxhumane.org/donate/",
+    volunteerUrl: "https://www.jaxhumane.org/volunteer/",
+    website: "https://www.jaxhumane.org", city: "jacksonville"
+  },
+  {
+    id: 240, name: "Wolfson Children's Hospital Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Jacksonville, FL", distance: "—",
+    desc: "Supporting Wolfson Children's Hospital — the only freestanding children's hospital in Northeast Florida and South Georgia — funding pediatric research, specialized care, and community health programs for children across the region regardless of their family's ability to pay.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Wolfson Children's is the only freestanding children's hospital in Northeast Florida — your gift ensures every regional child gets expert pediatric care.",
+    donateUrl: "https://www.wolfsonchildrens.com/giving/",
+    volunteerUrl: "https://www.wolfsonchildrens.com/giving/",
+    website: "https://www.wolfsonchildrens.com", city: "jacksonville"
+  },
+  {
+    id: 241, name: "Changing Homelessness Jacksonville", icon: "🌅", iconClass: "card-icon-sky",
+    location: "Jacksonville, FL", distance: "—",
+    desc: "The coordinating organization for Northeast Florida's homeless response system — Changing Homelessness leads a collaborative of 60+ organizations working to ensure that homelessness in the region is rare, brief, and non-recurring through housing-focused, data-driven solutions.",
+    tags: ["Homelessness", "Housing", "Advocacy"], category: ["housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer advocates", "Household items"],
+    impact: "💡 Changing Homelessness coordinates 60+ Jacksonville organizations to end homelessness — focusing on permanent housing solutions that make homelessness brief and rare.",
+    donateUrl: "https://www.changinghomelessness.org/donate/",
+    volunteerUrl: "https://www.changinghomelessness.org/volunteer/",
+    website: "https://www.changinghomelessness.org", city: "jacksonville"
+  },
+  {
+    id: 242, name: "HabiJax — Habitat for Humanity Jacksonville", icon: "🏗", iconClass: "card-icon-coral",
+    location: "Jacksonville, FL", distance: "—",
+    desc: "Building strength, stability, and self-reliance through affordable homeownership in Jacksonville — HabiJax partners with volunteers and families to build and renovate affordable homes across Duval County, helping low-income families achieve the stability of owning their own home.",
+    tags: ["Housing", "Homeownership", "Community"], category: ["housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer build days", "ReStore donations"],
+    impact: "💡 HabiJax has built hundreds of affordable homes across Jacksonville — giving low-income families the stability and pride of homeownership.",
+    donateUrl: "https://www.habijax.org/donate/",
+    volunteerUrl: "https://www.habijax.org/volunteer/",
+    website: "https://www.habijax.org", city: "jacksonville"
   }
 ];
 
@@ -2978,7 +3718,7 @@ let currentCity = 'Miami, FL';
 
 // Derived site-wide totals — always accurate
 const TOTAL_CHARITIES = charities.length;
-const TOTAL_CITIES    = 250;
+const TOTAL_CITIES    = 333;
 const TOTAL_CATS      = 7;
 
 function animateStat(el, target) {
@@ -3140,6 +3880,16 @@ const CITY_COORDS = {
   'new orleans':   { lat: 29.9511, lng: -90.0715,  label: 'New Orleans, LA' },
   'columbus':      { lat: 39.9612, lng: -82.9988,  label: 'Columbus, OH' },
   'san diego':     { lat: 32.7157, lng: -117.1611, label: 'San Diego, CA' },
+  'detroit':       { lat: 42.3314, lng: -83.0458,  label: 'Detroit, MI' },
+  'minneapolis':   { lat: 44.9778, lng: -93.2650,  label: 'Minneapolis, MN' },
+  'portland':      { lat: 45.5051, lng: -122.6750, label: 'Portland, OR' },
+  'austin':        { lat: 30.2672, lng: -97.7431,  label: 'Austin, TX' },
+  'san antonio':   { lat: 29.4241, lng: -98.4936,  label: 'San Antonio, TX' },
+  'baltimore':     { lat: 39.2904, lng: -76.6122,  label: 'Baltimore, MD' },
+  'pittsburgh':    { lat: 40.4406, lng: -79.9959,  label: 'Pittsburgh, PA' },
+  'kansas city':   { lat: 39.0997, lng: -94.5786,  label: 'Kansas City, MO' },
+  'indianapolis':  { lat: 39.7684, lng: -86.1581,  label: 'Indianapolis, IN' },
+  'jacksonville':  { lat: 30.3322, lng: -81.6557,  label: 'Jacksonville, FL' },
 };
 
 function haversineDistance(lat1, lng1, lat2, lng2) {
@@ -3200,6 +3950,16 @@ function getCityKey(cityStr) {
   if (s.includes('new orleans') || s.includes('nola') || s.includes('metairie') || s.includes('kenner, la') || s.includes('jefferson parish') || s.includes('st. bernard') || s.includes('algiers') || s.includes('marrero') || s.includes('harvey, la')) return 'new orleans';
   if (s.includes('columbus') || s.includes('columbus, oh') || s.includes('dublin, oh') || s.includes('westerville') || s.includes('grove city, oh') || s.includes('hilliard, oh') || s.includes('gahanna') || s.includes('bexley') || s.includes('upper arlington') || s.includes('franklin county, oh')) return 'columbus';
   if (s.includes('san diego') || s.includes('chula vista') || s.includes('oceanside') || s.includes('escondido') || s.includes('el cajon') || s.includes('santee, ca') || s.includes('la mesa, ca') || s.includes('national city, ca') || s.includes('encinitas') || s.includes('carlsbad, ca')) return 'san diego';
+  if (s.includes('detroit') || s.includes('dearborn') || s.includes('warren, mi') || s.includes('sterling heights') || s.includes('livonia') || s.includes('westland, mi') || s.includes('ann arbor') || s.includes('troy, mi') || s.includes('southfield') || s.includes('wayne county, mi')) return 'detroit';
+  if (s.includes('minneapolis') || s.includes('st. paul') || s.includes('saint paul') || s.includes('bloomington, mn') || s.includes('brooklyn park, mn') || s.includes('plymouth, mn') || s.includes('eden prairie') || s.includes('maple grove') || s.includes('twin cities') || s.includes('hennepin county')) return 'minneapolis';
+  if (s.includes('portland') || s.includes('beaverton') || s.includes('gresham, or') || s.includes('hillsboro, or') || s.includes('lake oswego') || s.includes('tigard') || s.includes('tualatin') || s.includes('milwaukie, or') || s.includes('multnomah county')) return 'portland';
+  if (s.includes('austin') || s.includes('round rock') || s.includes('cedar park') || s.includes('pflugerville') || s.includes('georgetown, tx') || s.includes('kyle, tx') || s.includes('buda, tx') || s.includes('travis county')) return 'austin';
+  if (s.includes('san antonio') || s.includes('new braunfels') || s.includes('schertz') || s.includes('converse, tx') || s.includes('universal city, tx') || s.includes('bexar county') || s.includes('leon valley')) return 'san antonio';
+  if (s.includes('baltimore') || s.includes('towson') || s.includes('catonsville') || s.includes('dundalk') || s.includes('essex, md') || s.includes('parkville, md') || s.includes('baltimore county') || s.includes('anne arundel')) return 'baltimore';
+  if (s.includes('pittsburgh') || s.includes('mckeesport') || s.includes('bethel park') || s.includes('mount lebanon') || s.includes('cranberry township') || s.includes('monroeville') || s.includes('allegheny county')) return 'pittsburgh';
+  if (s.includes('kansas city') || s.includes('overland park') || s.includes('olathe') || s.includes('lenexa') || s.includes('shawnee, ks') || s.includes('lee\'s summit') || s.includes('independence, mo') || s.includes('blue springs, mo') || s.includes('johnson county, ks')) return 'kansas city';
+  if (s.includes('indianapolis') || s.includes('carmel, in') || s.includes('fishers, in') || s.includes('noblesville') || s.includes('greenwood, in') || s.includes('lawrence, in') || s.includes('marion county, in') || s.includes('hamilton county, in')) return 'indianapolis';
+  if (s.includes('jacksonville') || s.includes('jacksonville, fl') || s.includes('duval county') || s.includes('orange park') || s.includes('neptune beach') || s.includes('atlantic beach, fl') || s.includes('jacksonville beach') || s.includes('ponte vedra')) return 'jacksonville';
   if (s.includes('charlotte') || s.includes('matthews, nc') || s.includes('concord, nc') || s.includes('gastonia') || s.includes('mecklenburg') || s.includes('kannapolis') || s.includes('huntersville') || s.includes('mooresville, nc')) return 'charlotte';
   if (s.includes('raleigh') || s.includes('cary, nc') || s.includes('apex, nc') || s.includes('wake county') || s.includes('chapel hill') || s.includes('morrisville, nc') || s.includes('garner, nc') || s.includes('wake forest, nc')) return 'raleigh';
   if (s.includes('greensboro') || s.includes('guilford county') || s.includes('high point, nc') || s.includes('kernersville')) return 'greensboro';
