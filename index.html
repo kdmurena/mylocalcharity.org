@@ -343,11 +343,11 @@
     <div style="font-size:11px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--teal-dark);white-space:nowrap;width:90px;flex-shrink:0;opacity:0.85;">Site-Wide</div>
     <div style="display:flex;flex:1;justify-content:space-around;flex-wrap:wrap;gap:0.5rem;">
       <div class="stat" style="text-align:center;min-width:90px;">
-        <span class="stat-num" id="totalCharities" style="font-size:1.6rem;">246</span>
+        <span class="stat-num" id="totalCharities" style="font-size:1.6rem;">312</span>
         <span class="stat-label">Charities</span>
       </div>
       <div class="stat" style="text-align:center;min-width:90px;">
-        <span class="stat-num" id="totalCities" style="font-size:1.6rem;">333</span>
+        <span class="stat-num" id="totalCities" style="font-size:1.6rem;">637</span>
         <span class="stat-label">Cities & Towns</span>
       </div>
       <div class="stat" style="text-align:center;min-width:90px;">
@@ -1241,7 +1241,7 @@ const charities = [
     id: 45, name: "Opportunity Village", icon: "🌟", iconClass: "card-icon-sky",
     location: "Las Vegas, NV", distance: "—",
     desc: "A beloved Las Vegas nonprofit providing vocational training, employment, and residential support for adults with intellectual and developmental disabilities — empowering them to lead meaningful, productive, and dignified lives in the community.",
-    tags: ["Disabilities", "Employment", "Community"], category: ["health", "community"],
+    tags: ["Disabilities", "Employment", "Community"], category: ["health", "education"],
     urgent: false,
     needs: ["Monetary donations", "Volunteer hours", "Event support"],
     impact: "💡 Opportunity Village supports 3,000+ adults with disabilities in Las Vegas — helping them work, thrive, and belong.",
@@ -3710,6 +3710,820 @@ const charities = [
     donateUrl: "https://www.habijax.org/donate/",
     volunteerUrl: "https://www.habijax.org/volunteer/",
     website: "https://www.habijax.org", city: "jacksonville"
+  },
+
+  // ── SACRAMENTO ──
+  {
+    id: 243, name: "Sacramento Food Bank & Family Services", icon: "🥗", iconClass: "card-icon-sun",
+    location: "Sacramento, CA", distance: "—",
+    desc: "Sacramento's most comprehensive hunger-relief organization, providing food, clothing, adult education, employment services, and family support to over 150,000 people annually — serving neighbors in need with dignity and compassion at multiple sites across the Sacramento region.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Sacramento Food Bank & Family Services provides food, clothing, and education to 150,000+ Sacramento neighbors every year — a true one-stop resource for families in need.",
+    donateUrl: "https://www.sacramentofoodbank.org/donate/",
+    volunteerUrl: "https://www.sacramentofoodbank.org/volunteer/",
+    website: "https://www.sacramentofoodbank.org", city: "sacramento"
+  },
+  {
+    id: 244, name: "Sacramento Loaves & Fishes", icon: "🍞", iconClass: "card-icon-coral",
+    location: "North Sacramento, CA", distance: "—",
+    desc: "Since 1983, Sacramento Loaves & Fishes has been an oasis of dignity and welcome for homeless men, women, and children — providing daily hot meals, showers, medical care, a day shelter, and the Mustard Seed School for children experiencing homelessness, all without government funding.",
+    tags: ["Homelessness", "Food", "Children"], category: ["housing", "food", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer meal servers", "Clothing donations"],
+    impact: "💡 Loaves & Fishes serves thousands of Sacramento's homeless neighbors daily — 100% funded by community donations, accepting no government funds.",
+    donateUrl: "https://www.sacloaves.org/donate-information",
+    volunteerUrl: "https://www.sacloaves.org/volunteer",
+    website: "https://www.sacloaves.org", city: "sacramento"
+  },
+  {
+    id: 245, name: "Front Street Animal Shelter", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Sacramento, CA", distance: "—",
+    desc: "Sacramento's municipal animal shelter, adopting out over 5,000 companion animals in a normal year — providing adoption, foster programs, cruelty investigation, and community outreach to improve the lives of animals across the Sacramento region.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Foster homes", "Monetary donations", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 Front Street Animal Shelter places 5,000+ companion animals in loving homes each year and investigates every animal abuse case across Sacramento County.",
+    donateUrl: "https://www.bigdayofgiving.org/organization/FrontStreetFriends",
+    volunteerUrl: "https://www.cityofsacramento.org/Community-Development/Animal-Care/Volunteer",
+    website: "https://www.cityofsacramento.org/Community-Development/Animal-Care", city: "sacramento"
+  },
+  {
+    id: 246, name: "UC Davis Children's Hospital Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Sacramento, CA", distance: "—",
+    desc: "Supporting UC Davis Children's Hospital — Northern California's only nationally ranked academic medical center dedicated to children — funding breakthrough pediatric research, specialized care, and community health programs for children across the Sacramento Valley and beyond.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 UC Davis Children's Hospital is Northern California's only nationally ranked children's academic medical center — your gift funds care for the region's kids.",
+    donateUrl: "https://www.ucdavis.edu/giving/",
+    volunteerUrl: "https://health.ucdavis.edu/children/",
+    website: "https://health.ucdavis.edu/children/", city: "sacramento"
+  },
+  {
+    id: 247, name: "WEAVE Sacramento", icon: "🌸", iconClass: "card-icon-sky",
+    location: "Sacramento, CA", distance: "—",
+    desc: "Sacramento's premier provider of crisis intervention and support services for survivors of domestic violence, sexual assault, and human trafficking since 1978 — offering emergency shelter, legal advocacy, counseling, and youth education programs that break the cycle of violence.",
+    tags: ["Domestic Violence", "Women", "Crisis Support"], category: ["housing", "health"],
+    urgent: true,
+    needs: ["Monetary donations", "Household items", "Hygiene products", "Volunteer hours"],
+    impact: "💡 WEAVE has supported Sacramento survivors of domestic violence and sexual assault for over 45 years — providing crisis shelter, legal help, and long-term healing.",
+    donateUrl: "https://www.weaveinc.org/donate/",
+    volunteerUrl: "https://www.weaveinc.org/volunteer/",
+    website: "https://www.weaveinc.org", city: "sacramento"
+  },
+  {
+    id: 248, name: "Habitat for Humanity of Greater Sacramento", icon: "🏗", iconClass: "card-icon-coral",
+    location: "Sacramento, CA", distance: "—",
+    desc: "Building strength, stability, and self-reliance through affordable homeownership in the Sacramento region — partnering with volunteers and low-income families to build and renovate homes, and operating ReStore locations whose proceeds fund the mission.",
+    tags: ["Housing", "Homeownership", "Community"], category: ["housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer build days", "ReStore donations"],
+    impact: "💡 Habitat for Humanity Greater Sacramento has helped hundreds of families achieve affordable homeownership — breaking the cycle of poverty one home at a time.",
+    donateUrl: "https://www.habitatsacramento.org/donate/",
+    volunteerUrl: "https://www.habitatsacramento.org/volunteer/",
+    website: "https://www.habitatsacramento.org", city: "sacramento"
+  },
+
+  // ── CINCINNATI ──
+  {
+    id: 249, name: "Freestore Foodbank", icon: "🥫", iconClass: "card-icon-sun",
+    location: "Cincinnati, OH", distance: "—",
+    desc: "The largest emergency food and services provider in Greater Cincinnati, Northern Kentucky, and Southeast Indiana since 1971 — distributing food through a network of 600+ partner agencies while running innovative programs like Cincinnati COOKS! culinary job training and Kids Café.",
+    tags: ["Food", "Hunger Relief", "Job Training"], category: ["food", "education"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Freestore Foodbank is the tristate region's largest food charity — distributing millions of meals and running Cincinnati COOKS!, a life-changing culinary job training program.",
+    donateUrl: "https://freestorefoodbank.org/donate/",
+    volunteerUrl: "https://freestorefoodbank.org/volunteer/",
+    website: "https://freestorefoodbank.org", city: "cincinnati"
+  },
+  {
+    id: 250, name: "Shelterhouse Cincinnati", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Cincinnati, OH", distance: "—",
+    desc: "Providing emergency shelter, meals, basic human services, and case management to homeless men and women in Cincinnati — Shelterhouse is a critical safety net for adults in crisis, offering a compassionate pathway from homelessness to stability.",
+    tags: ["Homelessness", "Housing", "Food"], category: ["housing", "food"],
+    urgent: true,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Volunteer hours"],
+    impact: "💡 Shelterhouse is Cincinnati's frontline emergency shelter — providing safety, meals, and case management to hundreds of homeless adults each night.",
+    donateUrl: "https://www.shelterhousecincinnati.org/donate/",
+    volunteerUrl: "https://www.shelterhousecincinnati.org/volunteer/",
+    website: "https://www.shelterhousecincinnati.org", city: "cincinnati"
+  },
+  {
+    id: 251, name: "Cincinnati Animal Care", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Cincinnati, OH", distance: "—",
+    desc: "Hamilton County's open-admission animal shelter providing medical care, adoption services, community outreach, and rescue partnerships to enhance animal welfare across Greater Cincinnati — working with a network of rescue organizations to find loving homes for every adoptable animal.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: true,
+    needs: ["Foster homes", "Monetary donations", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 Cincinnati Animal Care serves Hamilton County's animals through adoption, community outreach, and rescue partnerships — every foster home saves a life.",
+    donateUrl: "https://www.cincinnatianimalcare.org/donate/",
+    volunteerUrl: "https://www.cincinnatianimalcare.org/volunteer/",
+    website: "https://www.cincinnatianimalcare.org", city: "cincinnati"
+  },
+  {
+    id: 252, name: "Cincinnati Children's Hospital Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Cincinnati, OH", distance: "—",
+    desc: "Supporting Cincinnati Children's Hospital Medical Center — one of the oldest and most distinguished pediatric hospitals in the US, consistently ranked #1 or #2 nationally — funding groundbreaking research and specialized care that serves children from across the region and around the world.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Cincinnati Children's is consistently ranked #1 or #2 in the nation — your gift funds research breakthroughs that improve pediatric care worldwide.",
+    donateUrl: "https://www.cincinnatichildrens.org/giving",
+    volunteerUrl: "https://www.cincinnatichildrens.org/giving",
+    website: "https://www.cincinnatichildrens.org", city: "cincinnati"
+  },
+  {
+    id: 253, name: "Cincinnati Works", icon: "💼", iconClass: "card-icon-sky",
+    location: "Cincinnati, OH", distance: "—",
+    desc: "Breaking the cycle of poverty in Cincinnati through employment and career development — Cincinnati Works provides job placement, skills training, financial coaching, and long-term retention support to adults facing significant barriers to employment, with an 80%+ job retention rate.",
+    tags: ["Employment", "Poverty", "Education"], category: ["education", "housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer mentors", "Employer partnerships"],
+    impact: "💡 Cincinnati Works achieves an 80%+ job retention rate — helping Cincinnati adults break the cycle of poverty through employment, skills training, and long-term support.",
+    donateUrl: "https://www.cincinnatiworks.org/donate/",
+    volunteerUrl: "https://www.cincinnatiworks.org/volunteer/",
+    website: "https://www.cincinnatiworks.org", city: "cincinnati"
+  },
+  {
+    id: 254, name: "Bethany House Services Cincinnati", icon: "🌿", iconClass: "card-icon-coral",
+    location: "Cincinnati, OH", distance: "—",
+    desc: "The largest provider of family homeless shelter services in Greater Cincinnati since 1983 — Bethany House provides emergency shelter, transitional housing, and support services to homeless families with children, helping them achieve stability and prevent future homelessness.",
+    tags: ["Homelessness", "Families", "Children"], category: ["housing", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Household items", "Children's items", "Volunteer hours"],
+    impact: "💡 Bethany House is Greater Cincinnati's largest family homeless shelter — helping hundreds of families with children find safe housing and lasting stability each year.",
+    donateUrl: "https://www.bethanyhouse.org/donate/",
+    volunteerUrl: "https://www.bethanyhouse.org/volunteer/",
+    website: "https://www.bethanyhouse.org", city: "cincinnati"
+  },
+
+  // ── CLEVELAND ──
+  {
+    id: 255, name: "Greater Cleveland Food Bank", icon: "🥖", iconClass: "card-icon-sun",
+    location: "Cleveland, OH", distance: "—",
+    desc: "The largest hunger-relief organization in Northeast Ohio, the Greater Cleveland Food Bank ensures that everyone in the community has the nutritious food they need — distributing over 60 million meals annually through a network of 1,000+ partner programs across six counties.",
+    tags: ["Food", "Hunger Relief", "Seniors"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Greater Cleveland Food Bank distributes 60 million+ meals a year to Northeast Ohio neighbors — 1 in 7 Cuyahoga County residents relies on their network.",
+    donateUrl: "https://www.greaterclevelandfoodbank.org/donate/",
+    volunteerUrl: "https://www.greaterclevelandfoodbank.org/volunteer/",
+    website: "https://www.greaterclevelandfoodbank.org", city: "cleveland"
+  },
+  {
+    id: 256, name: "The City Mission Cleveland", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Cleveland, OH", distance: "—",
+    desc: "Serving all ages in Greater Cleveland for over 100 years, The City Mission provides emergency shelter, transitional housing, recovery programs, and Laura's Home — a comprehensive residential program for women and children escaping homelessness and addiction.",
+    tags: ["Homelessness", "Recovery", "Women"], category: ["housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Volunteer hours"],
+    impact: "💡 The City Mission has served Cleveland's most vulnerable neighbors for over 100 years — its Laura's Home program is a nationally recognized model for women's recovery.",
+    donateUrl: "https://www.thecitymission.org/donate/",
+    volunteerUrl: "https://www.thecitymission.org/volunteer/",
+    website: "https://www.thecitymission.org", city: "cleveland"
+  },
+  {
+    id: 257, name: "Cleveland APL", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Cleveland, OH", distance: "—",
+    desc: "The Cleveland Animal Protective League has been protecting animals from cruelty and neglect since 1913 — providing shelter, adoption, cruelty investigation, low-cost veterinary care, and community programs that keep pets with their families across Greater Cleveland.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 Cleveland APL has protected animals for over 110 years — investigating cruelty cases and finding loving homes for thousands of Northeast Ohio pets each year.",
+    donateUrl: "https://www.clevelandapl.org/donate/",
+    volunteerUrl: "https://www.clevelandapl.org/volunteer/",
+    website: "https://www.clevelandapl.org", city: "cleveland"
+  },
+  {
+    id: 258, name: "Rainbow Babies & Children's Hospital Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Cleveland, OH", distance: "—",
+    desc: "Supporting Rainbow Babies & Children's Hospital — one of the nation's top-ranked children's hospitals, part of University Hospitals — funding pediatric research, specialized care, and community health programs for children across Northeast Ohio and the Great Lakes region.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Rainbow Babies & Children's Hospital is consistently ranked among the nation's best — your gift funds specialized care and research for Northeast Ohio's children.",
+    donateUrl: "https://www.uhhospitals.org/rainbow/giving",
+    volunteerUrl: "https://www.uhhospitals.org/rainbow/giving",
+    website: "https://www.uhhospitals.org/rainbow", city: "cleveland"
+  },
+  {
+    id: 259, name: "West Side Catholic Center Cleveland", icon: "🤲", iconClass: "card-icon-sky",
+    location: "Ohio City, Cleveland, OH", distance: "—",
+    desc: "Combating poverty on Cleveland's West Side since 1948 through food assistance, emergency shelter, mental health services, and its Ohio City Pizzeria — a social enterprise that employs people in recovery and serves delicious pizza while funding the mission.",
+    tags: ["Food", "Homelessness", "Mental Health"], category: ["food", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Food donations", "Volunteer hours"],
+    impact: "💡 West Side Catholic Center has fought poverty on Cleveland's West Side for over 75 years — its Ohio City Pizzeria is a beloved social enterprise funding vital services.",
+    donateUrl: "https://www.westsidecatholic.net/donate/",
+    volunteerUrl: "https://www.westsidecatholic.net/volunteer/",
+    website: "https://www.westsidecatholic.net", city: "cleveland"
+  },
+  {
+    id: 260, name: "Habitat for Humanity of Greater Cleveland", icon: "🏗", iconClass: "card-icon-coral",
+    location: "Cleveland, OH", distance: "—",
+    desc: "Building affordable homes and transforming neighborhoods across Greater Cleveland — Habitat for Humanity partners with low-income families, volunteers, and community partners to create homeownership opportunities and revitalize Cleveland's historic neighborhoods.",
+    tags: ["Housing", "Homeownership", "Community"], category: ["housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer build days", "ReStore donations"],
+    impact: "💡 Habitat for Humanity of Greater Cleveland has helped hundreds of families achieve homeownership — revitalizing neighborhoods and building community strength across the city.",
+    donateUrl: "https://www.habitatcleveland.org/donate/",
+    volunteerUrl: "https://www.habitatcleveland.org/volunteer/",
+    website: "https://www.habitatcleveland.org", city: "cleveland"
+  },
+
+  // ── LOUISVILLE ──
+  {
+    id: 261, name: "Dare to Care Food Bank", icon: "🥘", iconClass: "card-icon-sun",
+    location: "Louisville, KY", distance: "—",
+    desc: "The leading hunger relief organization in Kentuckiana since 1969 — founded after a young child died of malnutrition — Dare to Care distributes over 22 million meals annually across 13 counties in Kentucky and Indiana through 400+ nonprofit partners, with a 4-star Charity Navigator rating.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Dare to Care turns every $1 into 4 meals — distributing 22 million meals a year across 13 Kentuckiana counties through 400+ partner agencies.",
+    donateUrl: "https://daretocare.org/donate/",
+    volunteerUrl: "https://daretocare.org/volunteer/",
+    website: "https://daretocare.org", city: "louisville"
+  },
+  {
+    id: 262, name: "Louisville Rescue Mission", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Louisville, KY", distance: "—",
+    desc: "Providing emergency shelter, meals, addiction recovery, job training, and transitional housing to homeless men, women, and families in Louisville since 1957 — offering a comprehensive continuum of care that helps Louisville neighbors move from crisis to lasting independence.",
+    tags: ["Homelessness", "Recovery", "Food"], category: ["housing", "food", "health"],
+    urgent: true,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Volunteer meal servers"],
+    impact: "💡 Louisville Rescue Mission has served the city's most vulnerable neighbors for over 65 years — providing meals, shelter, and recovery to thousands each year.",
+    donateUrl: "https://www.louisvillerescuemission.org/donate/",
+    volunteerUrl: "https://www.louisvillerescuemission.org/volunteer/",
+    website: "https://www.louisvillerescuemission.org", city: "louisville"
+  },
+  {
+    id: 263, name: "Kentucky Humane Society", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Louisville, KY", distance: "—",
+    desc: "Kentucky's largest pet adoption agency and largest no-kill animal shelter — the Kentucky Humane Society provides adoption, foster programs, spay/neuter services, veterinary care, and community programs that keep pets with their Louisville families through difficult times.",
+    tags: ["Animals", "No-Kill", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 Kentucky Humane Society is Kentucky's largest no-kill shelter — saving thousands of animals and helping Louisville families keep their pets through hard times.",
+    donateUrl: "https://www.kyhumane.org/donate/",
+    volunteerUrl: "https://www.kyhumane.org/volunteer/",
+    website: "https://www.kyhumane.org", city: "louisville"
+  },
+  {
+    id: 264, name: "Norton Children's Hospital Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Louisville, KY", distance: "—",
+    desc: "Supporting Norton Children's Hospital — Kentucky's largest freestanding children's hospital — funding pediatric research, specialized care, and community health programs that serve children from across Kentucky and Southern Indiana regardless of their family's ability to pay.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Norton Children's is Kentucky's largest freestanding children's hospital — your gift ensures every Kentucky child gets expert, specialized pediatric care.",
+    donateUrl: "https://nortonhealthcare.com/giving/",
+    volunteerUrl: "https://nortonhealthcare.com/giving/",
+    website: "https://nortonhealthcare.com/norton-childrens/", city: "louisville"
+  },
+  {
+    id: 265, name: "Family & Children's Place Louisville", icon: "👨‍👩‍👧", iconClass: "card-icon-sky",
+    location: "Louisville, KY", distance: "—",
+    desc: "Stopping and healing the trauma of abuse, violence, and neglect for over 135 years — Family & Children's Place provides counseling, advocacy, crisis intervention, and a nationally recognized Child Advocacy Center for Louisville children who have experienced sexual abuse.",
+    tags: ["Children", "Abuse Recovery", "Mental Health"], category: ["children", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer hours", "Children's item donations"],
+    impact: "💡 Family & Children's Place has protected Louisville children from abuse for 135+ years — its Child Advocacy Center is a national model for healing childhood trauma.",
+    donateUrl: "https://www.familyandchildrensplace.org/donate/",
+    volunteerUrl: "https://www.familyandchildrensplace.org/volunteer/",
+    website: "https://www.familyandchildrensplace.org", city: "louisville"
+  },
+  {
+    id: 266, name: "Louisville Urban League", icon: "🤝", iconClass: "card-icon-coral",
+    location: "Louisville, KY", distance: "—",
+    desc: "Empowering Louisville's African American and underserved communities through economic self-reliance, educational programs, and civil rights advocacy since 1920 — including workforce development, housing counseling, youth programs, and the transformative Norton Healthcare Sports & Learning Center.",
+    tags: ["Community", "Education", "Employment"], category: ["education", "children", "housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer mentors", "Event support"],
+    impact: "💡 Louisville Urban League has championed equity and opportunity for Louisville's underserved communities for over 100 years — from civil rights to workforce development.",
+    donateUrl: "https://www.lul.org/donate/",
+    volunteerUrl: "https://www.lul.org/volunteer/",
+    website: "https://www.lul.org", city: "louisville"
+  },
+
+  // ── MILWAUKEE ──
+  {
+    id: 267, name: "Hunger Task Force Milwaukee", icon: "🌾", iconClass: "card-icon-sun",
+    location: "Milwaukee, WI", distance: "—",
+    desc: "Milwaukee's free and local food bank — Hunger Task Force is fiercely independent, accepting no government funds and no canned food drives, focusing instead on providing healthy, nutritious food through a farm, mobile markets, and a network of 80+ partner agencies across Milwaukee County.",
+    tags: ["Food", "Hunger Relief", "Nutrition"], category: ["food"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer hours", "Fresh produce donations"],
+    impact: "💡 Hunger Task Force is Milwaukee's free and local food bank — 100% donor-funded, operating its own farm to provide the freshest, most nutritious food to Milwaukee neighbors.",
+    donateUrl: "https://www.hungertaskforce.org/donate/",
+    volunteerUrl: "https://www.hungertaskforce.org/volunteer/",
+    website: "https://www.hungertaskforce.org", city: "milwaukee"
+  },
+  {
+    id: 268, name: "Milwaukee Rescue Mission", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Milwaukee, WI", distance: "—",
+    desc: "Serving Milwaukee's homeless and hungry neighbors since 1893 — Milwaukee Rescue Mission provides emergency shelter, hot meals, addiction recovery programs, job training, and transitional housing to men, women, and children experiencing homelessness across the Milwaukee metro.",
+    tags: ["Homelessness", "Recovery", "Food"], category: ["housing", "food", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Volunteer meal servers"],
+    impact: "💡 Milwaukee Rescue Mission has served the city's most vulnerable neighbors for over 130 years — providing meals, shelter, and recovery to thousands each year.",
+    donateUrl: "https://www.milwaukeerescuemission.org/donate/",
+    volunteerUrl: "https://www.milwaukeerescuemission.org/volunteer/",
+    website: "https://www.milwaukeerescuemission.org", city: "milwaukee"
+  },
+  {
+    id: 269, name: "Wisconsin Humane Society", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Milwaukee, WI", distance: "—",
+    desc: "One of the most respected animal welfare organizations in the US since 1879, Wisconsin Humane Society provides shelter, adoption, cruelty investigation, veterinary care, and community programs for animals across Milwaukee and Southeast Wisconsin — with a lifesaving rate consistently above 90%.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 Wisconsin Humane Society achieves a 90%+ lifesaving rate — one of the nation's most respected humane organizations, serving Milwaukee animals since 1879.",
+    donateUrl: "https://www.wihumane.org/donate/",
+    volunteerUrl: "https://www.wihumane.org/volunteer/",
+    website: "https://www.wihumane.org", city: "milwaukee"
+  },
+  {
+    id: 270, name: "Children's Wisconsin Hospital Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Milwaukee, WI", distance: "—",
+    desc: "Supporting Children's Wisconsin — the state's only independent health care system dedicated solely to the health and well-being of children — funding pediatric research, specialized care, and community health programs for children from across Wisconsin and the Upper Midwest.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Children's Wisconsin is the state's only independent children's health system — your gift funds specialized care for kids from across Wisconsin and the Upper Midwest.",
+    donateUrl: "https://childrenswi.org/giving/",
+    volunteerUrl: "https://childrenswi.org/giving/",
+    website: "https://childrenswi.org", city: "milwaukee"
+  },
+  {
+    id: 271, name: "Meta House Milwaukee", icon: "🌸", iconClass: "card-icon-sky",
+    location: "Milwaukee, WI", distance: "—",
+    desc: "The only residential treatment program in Wisconsin specifically designed for women and children affected by alcohol and drug addiction — Meta House provides trauma-informed recovery care, family counseling, housing support, and aftercare to help Milwaukee women and their families heal.",
+    tags: ["Women", "Recovery", "Children"], category: ["health", "housing", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Household items", "Children's item donations", "Volunteer hours"],
+    impact: "💡 Meta House is Wisconsin's only residential addiction treatment program designed specifically for women and children — helping Milwaukee families heal and thrive together.",
+    donateUrl: "https://www.metahouse.org/donate/",
+    volunteerUrl: "https://www.metahouse.org/volunteer/",
+    website: "https://www.metahouse.org", city: "milwaukee"
+  },
+  {
+    id: 272, name: "Habitat for Humanity of Dane County & Milwaukee", icon: "🏗", iconClass: "card-icon-coral",
+    location: "Milwaukee, WI", distance: "—",
+    desc: "Building strength, stability, and self-reliance through affordable homeownership in Milwaukee — Habitat for Humanity partners with volunteers and low-income families to build, renovate, and repair homes, helping Milwaukee's most vulnerable families achieve the stability of homeownership.",
+    tags: ["Housing", "Homeownership", "Community"], category: ["housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer build days", "ReStore donations"],
+    impact: "💡 Habitat for Humanity has helped hundreds of Milwaukee families achieve the stability and pride of affordable homeownership — one home at a time.",
+    donateUrl: "https://www.milwaukeehabitat.org/donate/",
+    volunteerUrl: "https://www.milwaukeehabitat.org/volunteer/",
+    website: "https://www.milwaukeehabitat.org", city: "milwaukee"
+  },
+
+  // ── SALT LAKE CITY ──
+  {
+    id: 273, name: "Utah Food Bank", icon: "🥗", iconClass: "card-icon-sun",
+    location: "Salt Lake City, UT", distance: "—",
+    desc: "Fighting hunger statewide since 1904, the Utah Food Bank distributes over 58 million meals annually to every county in Utah — with an extraordinary efficiency ratio where every $1 donated provides $7.23 worth of food and services to neighbors facing food insecurity.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Every $1 donated to Utah Food Bank provides $7.23 in food and services — distributing 58 million meals a year to every county in Utah.",
+    donateUrl: "https://www.utahfoodbank.org/donate/",
+    volunteerUrl: "https://www.utahfoodbank.org/volunteer/",
+    website: "https://www.utahfoodbank.org", city: "salt lake city"
+  },
+  {
+    id: 274, name: "The Road Home", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Salt Lake City, UT", distance: "—",
+    desc: "Utah's leading comprehensive homeless services provider, offering emergency shelter, transitional housing, rapid rehousing, and supportive services to men, women, families, and individuals — helping Salt Lake City neighbors move from homelessness to permanent, stable housing.",
+    tags: ["Homelessness", "Housing", "Families"], category: ["housing"],
+    urgent: true,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Household items", "Volunteer hours"],
+    impact: "💡 The Road Home is Utah's go-to homeless shelter — providing emergency shelter and housing support to thousands of Salt Lake City neighbors each year.",
+    donateUrl: "https://theroadhome.org/donate/",
+    volunteerUrl: "https://theroadhome.org/volunteer/",
+    website: "https://theroadhome.org", city: "salt lake city"
+  },
+  {
+    id: 275, name: "Humane Society of Utah", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Murray, Salt Lake City, UT", distance: "—",
+    desc: "Utah's largest open-admission animal welfare organization since 1960, recently celebrating its 200,000th adoption — providing shelter, adoption, spay/neuter, veterinary care, and community programs entirely through private donations, with no government funding.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 The Humane Society of Utah just celebrated its 200,000th adoption — saving 12,000+ animals annually with a 90%+ placement rate, entirely from private donations.",
+    donateUrl: "https://www.utahhumane.org/donate/",
+    volunteerUrl: "https://www.utahhumane.org/volunteer/",
+    website: "https://www.utahhumane.org", city: "salt lake city"
+  },
+  {
+    id: 276, name: "Primary Children's Hospital Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Salt Lake City, UT", distance: "—",
+    desc: "Supporting Primary Children's Hospital — the Intermountain West's premier pediatric hospital, ranked among the nation's best — funding breakthrough research, specialized care, and community health programs for children from across Utah, Idaho, Nevada, Wyoming, and Montana.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Primary Children's Hospital serves five states across the Intermountain West — your gift funds specialized pediatric care for children across the entire region.",
+    donateUrl: "https://intermountainhealthcare.org/giving/primary-childrens/",
+    volunteerUrl: "https://intermountainhealthcare.org/giving/primary-childrens/",
+    website: "https://intermountainhealthcare.org/primary-childrens/", city: "salt lake city"
+  },
+  {
+    id: 277, name: "Rescue Mission of Salt Lake", icon: "🌙", iconClass: "card-icon-sky",
+    location: "Salt Lake City & Ogden, UT", distance: "—",
+    desc: "Assisting homeless neighbors across Salt Lake City and Ogden by providing meals, shelter, addiction recovery programs, and job resources — helping people break free from homelessness through compassionate support and practical pathways to independence.",
+    tags: ["Homelessness", "Recovery", "Food"], category: ["housing", "food", "health"],
+    urgent: false,
+    needs: ["Hygiene kits", "Clothing donations", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Rescue Mission of Salt Lake serves homeless neighbors across Salt Lake City and Ogden — providing meals, shelter, and recovery support to thousands each year.",
+    donateUrl: "https://www.rescuemission.org/donate/",
+    volunteerUrl: "https://www.rescuemission.org/volunteer/",
+    website: "https://www.rescuemission.org", city: "salt lake city"
+  },
+  {
+    id: 278, name: "Salt Lake Valley Habitat for Humanity", icon: "🏗", iconClass: "card-icon-coral",
+    location: "Salt Lake City, UT", distance: "—",
+    desc: "Building and repairing homes to create affordable housing and revitalize communities across Salt Lake Valley — partnering with volunteers, donors, and families to provide affordable homeownership opportunities and emergency home repairs for seniors and veterans.",
+    tags: ["Housing", "Homeownership", "Veterans"], category: ["housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer build days", "ReStore donations"],
+    impact: "💡 Salt Lake Valley Habitat has built hundreds of affordable homes and completed thousands of critical home repairs for Utah families, seniors, and veterans.",
+    donateUrl: "https://www.habitatslv.org/donate/",
+    volunteerUrl: "https://www.habitatslv.org/volunteer/",
+    website: "https://www.habitatslv.org", city: "salt lake city"
+  },
+
+  // ── OKLAHOMA CITY ──
+  {
+    id: 279, name: "Regional Food Bank of Oklahoma", icon: "🌾", iconClass: "card-icon-sun",
+    location: "Oklahoma City, OK", distance: "—",
+    desc: "One of Oklahoma's largest hunger-relief organizations, the Regional Food Bank distributes over 70.7 million meals annually across 53 central and western Oklahoma counties — serving children, seniors, and families in one of America's most food-insecure states.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Regional Food Bank of Oklahoma distributes 70.7 million meals a year — serving 53 counties in one of the nation's most food-insecure states.",
+    donateUrl: "https://www.regionalfoodbank.org/donate/",
+    volunteerUrl: "https://www.regionalfoodbank.org/volunteer/",
+    website: "https://www.regionalfoodbank.org", city: "oklahoma city"
+  },
+  {
+    id: 280, name: "City Rescue Mission OKC", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Oklahoma City, OK", distance: "—",
+    desc: "Oklahoma City's trusted provider of emergency shelter, hot meals, addiction recovery, and job training since 1946 — the Bridge to Life initiative helps people transition from homelessness to stable employment and permanent housing through individualized case management.",
+    tags: ["Homelessness", "Recovery", "Food"], category: ["housing", "food", "health"],
+    urgent: true,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Food donations", "Volunteer hours"],
+    impact: "💡 City Rescue Mission OKC has served Oklahoma's homeless neighbors for nearly 80 years — its Bridge to Life program creates lasting pathways from homelessness to independence.",
+    donateUrl: "https://www.cityrescuemission.com/donate/",
+    volunteerUrl: "https://www.cityrescuemission.com/volunteer/",
+    website: "https://www.cityrescuemission.com", city: "oklahoma city"
+  },
+  {
+    id: 281, name: "Oklahoma Humane Society", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Oklahoma City, OK", distance: "—",
+    desc: "Reducing pet overpopulation and saving animal lives across Oklahoma City through adoption, a Spay + Neuter Clinic, community outreach, and owner support programs — working closely with the OKC Animal Welfare division to increase adoptions and keep pets with their families.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 Oklahoma Humane saves thousands of OKC animals each year through adoption, a dedicated Spay + Neuter Clinic, and community programs that keep pets with their families.",
+    donateUrl: "https://www.oklahomahumane.org/donate/",
+    volunteerUrl: "https://www.oklahomahumane.org/volunteer/",
+    website: "https://www.oklahomahumane.org", city: "oklahoma city"
+  },
+  {
+    id: 282, name: "OU Children's Hospital Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Oklahoma City, OK", distance: "—",
+    desc: "Supporting OU Children's Hospital — Oklahoma's premier academic children's hospital, part of OU Health — funding pediatric research, specialized care, and community health programs for children from across Oklahoma and the surrounding region.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 OU Children's Hospital is Oklahoma's leading academic pediatric hospital — your gift funds specialized care and research for Oklahoma's children.",
+    donateUrl: "https://www.ouhealth.com/giving/",
+    volunteerUrl: "https://www.ouhealth.com/giving/",
+    website: "https://www.ouhealth.com/childrens/", city: "oklahoma city"
+  },
+  {
+    id: 283, name: "Homeless Alliance OKC", icon: "🌅", iconClass: "card-icon-sky",
+    location: "Oklahoma City, OK", distance: "—",
+    desc: "Ending long-term homelessness in Oklahoma City through a Housing First approach — the Homeless Alliance operates the WestTown Homeless Resource Campus with day shelter, meals, health clinics, legal aid, veterans services, and employment programs, plus four low-barrier housing programs.",
+    tags: ["Homelessness", "Housing", "Veterans"], category: ["housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer hours", "Household items"],
+    impact: "💡 Homeless Alliance's WestTown Campus serves OKC's homeless neighbors with comprehensive day services and four housing programs — creating real pathways off the streets.",
+    donateUrl: "https://www.homelessalliance.org/donate/",
+    volunteerUrl: "https://www.homelessalliance.org/get-involved/",
+    website: "https://www.homelessalliance.org", city: "oklahoma city"
+  },
+  {
+    id: 284, name: "Infant Crisis Services OKC", icon: "👶", iconClass: "card-icon-coral",
+    location: "Oklahoma City, OK", distance: "—",
+    desc: "The only organization in central Oklahoma dedicated specifically to providing emergency supplies to families with children under age 4 — distributing diapers, formula, baby food, clothing, and hygiene items to families in crisis who have nowhere else to turn.",
+    tags: ["Children", "Hygiene", "Families"], category: ["children", "hygiene", "food"],
+    urgent: false,
+    needs: ["Diapers (all sizes)", "Baby formula & food", "Baby clothing", "Monetary donations"],
+    impact: "💡 Infant Crisis Services is OKC's only emergency baby supply nonprofit — providing diapers, formula, and clothing to thousands of Oklahoma families with infants in crisis.",
+    donateUrl: "https://www.infantcrisis.org/donate/",
+    volunteerUrl: "https://www.infantcrisis.org/volunteer/",
+    website: "https://www.infantcrisis.org", city: "oklahoma city"
+  },
+
+  // ── RICHMOND ──
+  {
+    id: 285, name: "FeedMore", icon: "🥗", iconClass: "card-icon-sun",
+    location: "Richmond, VA", distance: "—",
+    desc: "Central Virginia's comprehensive hunger relief organization, formed from the merger of the Central Virginia Foodbank and Meals on Wheels — distributing millions of pounds of food annually through community food pantries, home-delivered meals to seniors, and a community kitchen producing thousands of fresh meals daily.",
+    tags: ["Food", "Hunger Relief", "Seniors"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 FeedMore produces thousands of fresh meals daily from its community kitchen and delivers to seniors across Central Virginia — a true one-stop hunger relief organization.",
+    donateUrl: "https://feedmore.org/donate/",
+    volunteerUrl: "https://feedmore.org/volunteer/",
+    website: "https://feedmore.org", city: "richmond"
+  },
+  {
+    id: 286, name: "CARITAS Virginia", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Richmond, VA", distance: "—",
+    desc: "Richmond's largest emergency shelter network, using 170+ congregations across the city to provide rotating emergency shelter, meals, and case management to homeless men, women, and children — while requiring adult clients to save 75% of their income to build toward permanent housing.",
+    tags: ["Homelessness", "Housing", "Community"], category: ["housing"],
+    urgent: true,
+    needs: ["Monetary donations", "Volunteer meal hosts", "Clothing & hygiene items"],
+    impact: "💡 CARITAS is Richmond's largest emergency shelter network — mobilizing 170+ faith communities to shelter and support homeless neighbors toward self-sufficiency.",
+    donateUrl: "https://www.caritasva.org/donate/",
+    volunteerUrl: "https://www.caritasva.org/volunteer/",
+    website: "https://www.caritasva.org", city: "richmond"
+  },
+  {
+    id: 287, name: "Richmond SPCA", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Richmond, VA", distance: "—",
+    desc: "Central Virginia's largest animal welfare organization and a national leader in lifesaving since 1891 — caring for 4,000+ homeless pets annually through a no-kill shelter, a full-service veterinary hospital, Smoky's Spay and Neuter Clinic, and comprehensive community pet support services.",
+    tags: ["Animals", "No-Kill", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 Richmond SPCA is a national no-kill leader since 1891 — caring for 4,000+ pets annually with a full veterinary hospital and one of the nation's highest placement rates.",
+    donateUrl: "https://www.richmondspca.org/donate/",
+    volunteerUrl: "https://www.richmondspca.org/volunteer/",
+    website: "https://www.richmondspca.org", city: "richmond"
+  },
+  {
+    id: 288, name: "Children's Hospital of Richmond Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Richmond, VA", distance: "—",
+    desc: "Supporting Children's Hospital of Richmond at VCU — Virginia's only freestanding children's hospital and Level 1 Pediatric Trauma Center — funding specialized care, research, and community health programs for children from across Virginia and the Mid-Atlantic region.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Children's Hospital of Richmond is Virginia's only freestanding children's hospital — your gift funds specialized care and trauma services for kids across the Mid-Atlantic.",
+    donateUrl: "https://www.vcuhealth.org/childrens-hospital/giving/",
+    volunteerUrl: "https://www.vcuhealth.org/childrens-hospital/giving/",
+    website: "https://www.vcuhealth.org/childrens-hospital/", city: "richmond"
+  },
+  {
+    id: 289, name: "Virginia Supportive Housing", icon: "🌿", iconClass: "card-icon-sky",
+    location: "Richmond, VA", distance: "—",
+    desc: "Providing permanent supportive housing, case management, and mental health services to chronically homeless Virginians since 1988 — with a proven Housing First model that has successfully housed thousands of Richmond residents and maintains some of the highest housing retention rates in the state.",
+    tags: ["Homelessness", "Housing", "Mental Health"], category: ["housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Household items", "Volunteer hours"],
+    impact: "💡 Virginia Supportive Housing has permanently housed thousands of Richmond's most vulnerable neighbors — with exceptional retention rates through ongoing case management.",
+    donateUrl: "https://www.vasupportivehousing.org/donate/",
+    volunteerUrl: "https://www.vasupportivehousing.org/volunteer/",
+    website: "https://www.vasupportivehousing.org", city: "richmond"
+  },
+  {
+    id: 290, name: "Habitat for Humanity of Greater Richmond", icon: "🏗", iconClass: "card-icon-coral",
+    location: "Richmond, VA", distance: "—",
+    desc: "Building strength, stability, and self-reliance through affordable homeownership in Greater Richmond — Habitat has built more than 275 homes in the region with over 30,000 volunteers contributing 96,250+ hours of sweat equity alongside partner families.",
+    tags: ["Housing", "Homeownership", "Community"], category: ["housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer build days", "ReStore donations"],
+    impact: "💡 Habitat Richmond has built 275+ homes with 30,000+ volunteers — a true community-wide effort to end housing instability in Central Virginia.",
+    donateUrl: "https://www.habitatrva.org/donate/",
+    volunteerUrl: "https://www.habitatrva.org/volunteer/",
+    website: "https://www.habitatrva.org", city: "richmond"
+  },
+
+  // ── MEMPHIS ──
+  {
+    id: 291, name: "Mid-South Food Bank", icon: "🍗", iconClass: "card-icon-sun",
+    location: "Memphis, TN", distance: "—",
+    desc: "Fighting hunger across the Mid-South since 1981, the Mid-South Food Bank distributes food through a network of 400+ partner agencies across 31 counties in Tennessee, Mississippi, and Arkansas — serving one of the most food-insecure regions in the United States.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Mid-South Food Bank serves 31 counties across three states in one of the most food-insecure regions in America — distributing millions of meals annually through 400+ partners.",
+    donateUrl: "https://www.midsouthfoodbank.org/donate/",
+    volunteerUrl: "https://www.midsouthfoodbank.org/volunteer/",
+    website: "https://www.midsouthfoodbank.org", city: "memphis"
+  },
+  {
+    id: 292, name: "Memphis Union Mission", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Memphis, TN", distance: "—",
+    desc: "Serving Memphis's homeless and hungry neighbors since 1954 — Memphis Union Mission provides emergency shelter, hot meals, addiction recovery, life skills training, and transitional housing to men experiencing homelessness, with a compassionate, holistic approach to lasting transformation.",
+    tags: ["Homelessness", "Recovery", "Food"], category: ["housing", "food", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Volunteer meal servers"],
+    impact: "💡 Memphis Union Mission has served the city's most vulnerable men for 70+ years — providing meals, shelter, and life-changing recovery programs on the banks of the Mississippi.",
+    donateUrl: "https://www.memphismission.org/donate/",
+    volunteerUrl: "https://www.memphismission.org/volunteer/",
+    website: "https://www.memphismission.org", city: "memphis"
+  },
+  {
+    id: 293, name: "Humane Society of Memphis & Shelby County", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Memphis, TN", distance: "—",
+    desc: "Saving animals' lives across Memphis and Shelby County through adoption, foster programs, spay/neuter services, and critically injured animal care — entirely privately funded with no government support, relying 100% on donations and volunteers to carry out their life-saving mission.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 The Humane Society of Memphis is 100% privately funded — focusing on critically injured animals and placing thousands of Memphis pets in loving homes each year.",
+    donateUrl: "https://www.memphishumane.org/donate/",
+    volunteerUrl: "https://www.memphishumane.org/volunteer/",
+    website: "https://www.memphishumane.org", city: "memphis"
+  },
+  {
+    id: 294, name: "Le Bonheur Children's Hospital Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Memphis, TN", distance: "—",
+    desc: "Supporting Le Bonheur Children's Hospital — consistently ranked among the nation's best children's hospitals — funding pediatric research, specialized care, and community health programs for children from across the Mid-South, including underserved communities in Tennessee, Mississippi, and Arkansas.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Le Bonheur is consistently ranked among America's best children's hospitals — serving children from across three states with world-class pediatric care.",
+    donateUrl: "https://www.lebonheur.org/foundation/donate/",
+    volunteerUrl: "https://www.lebonheur.org/foundation/",
+    website: "https://www.lebonheur.org", city: "memphis"
+  },
+  {
+    id: 295, name: "Manna House Memphis", icon: "☕", iconClass: "card-icon-sky",
+    location: "Memphis, TN", distance: "—",
+    desc: "A radical hospitality day shelter for Memphis's homeless neighbors — Manna House provides hot showers, clean clothes, a hot breakfast, and endless cups of coffee every day at no cost, offering a welcoming, dignified refuge for people living on the streets of Memphis.",
+    tags: ["Homelessness", "Food", "Dignity"], category: ["housing", "food"],
+    urgent: false,
+    needs: ["Monetary donations", "Clothing donations", "Hygiene items", "Volunteer hours"],
+    impact: "💡 Manna House serves Memphis's homeless neighbors every morning with showers, clean clothes, and coffee — radical hospitality that treats every guest with dignity.",
+    donateUrl: "https://www.mannahousememphis.org/donate/",
+    volunteerUrl: "https://www.mannahousememphis.org/volunteer/",
+    website: "https://www.mannahousememphis.org", city: "memphis"
+  },
+  {
+    id: 296, name: "Boys & Girls Clubs of Greater Memphis", icon: "🌟", iconClass: "card-icon-coral",
+    location: "Memphis, TN", distance: "—",
+    desc: "Opening doors to bright futures for Memphis youth through after-school programs, summer camps, college preparation, technical education, and mentoring — serving thousands of young Memphians with evidence-based programs that break cycles of generational poverty.",
+    tags: ["Youth", "Education", "Mentorship"], category: ["children", "education"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer mentors", "School supply donations"],
+    impact: "💡 Boys & Girls Clubs of Memphis serves thousands of young people with mentoring, college prep, and career training — breaking cycles of poverty one youth at a time.",
+    donateUrl: "https://www.bgcmem.org/donate/",
+    volunteerUrl: "https://www.bgcmem.org/volunteer/",
+    website: "https://www.bgcmem.org", city: "memphis"
+  },
+
+  // ── VIRGINIA BEACH / HAMPTON ROADS ──
+  {
+    id: 297, name: "Foodbank of Southeastern Virginia", icon: "🥗", iconClass: "card-icon-sun",
+    location: "Norfolk / Virginia Beach, VA", distance: "—",
+    desc: "The Feeding America food bank serving Hampton Roads and the Eastern Shore since 1981 — distributing food through a network of 200+ partner agencies across seven cities and six counties in Southeastern Virginia, serving hundreds of thousands of neighbors facing food insecurity.",
+    tags: ["Food", "Hunger Relief", "Families"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 Foodbank of Southeastern Virginia serves Hampton Roads through 200+ partners — ensuring no neighbor in the region goes without food.",
+    donateUrl: "https://www.foodbankonline.org/donate/",
+    volunteerUrl: "https://www.foodbankonline.org/volunteer/",
+    website: "https://www.foodbankonline.org", city: "virginia beach"
+  },
+  {
+    id: 298, name: "Union Mission Ministries Hampton Roads", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Norfolk / Virginia Beach, VA", distance: "—",
+    desc: "Serving Hampton Roads' homeless and hungry neighbors since 1892 — Union Mission Ministries provides emergency shelter, hot meals, addiction recovery, job training, and transitional housing to men, women, and children across the region with compassion and without judgment.",
+    tags: ["Homelessness", "Recovery", "Food"], category: ["housing", "food", "health"],
+    urgent: true,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Volunteer meal servers"],
+    impact: "💡 Union Mission Ministries has served Hampton Roads' most vulnerable neighbors for over 130 years — providing meals, shelter, and recovery programs to thousands each year.",
+    donateUrl: "https://www.unionmissionministries.org/donate/",
+    volunteerUrl: "https://www.unionmissionministries.org/volunteer/",
+    website: "https://www.unionmissionministries.org", city: "virginia beach"
+  },
+  {
+    id: 299, name: "SPCA of Virginia Beach", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Virginia Beach, VA", distance: "—",
+    desc: "Virginia Beach's dedicated animal welfare organization providing shelter, adoption, foster care, spay/neuter services, and community programs for thousands of dogs, cats, and small animals across Hampton Roads — working toward a community where every adoptable pet finds a loving home.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 SPCA of Virginia Beach saves thousands of Hampton Roads animals each year through adoption, foster programs, and community spay/neuter services.",
+    donateUrl: "https://www.vbspca.com/donate/",
+    volunteerUrl: "https://www.vbspca.com/volunteer/",
+    website: "https://www.vbspca.com", city: "virginia beach"
+  },
+  {
+    id: 300, name: "Children's Hospital of The King's Daughters", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Norfolk, VA", distance: "—",
+    desc: "Virginia's only freestanding children's hospital dedicated exclusively to pediatric care — Children's Hospital of The King's Daughters serves children across the Hampton Roads region and Eastern Virginia with specialized medical care, research, and community health programs.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Children's Hospital of The King's Daughters is Virginia's only standalone children's hospital — your gift funds specialized pediatric care for children across Hampton Roads.",
+    donateUrl: "https://www.chkd.org/giving/",
+    volunteerUrl: "https://www.chkd.org/giving/",
+    website: "https://www.chkd.org", city: "virginia beach"
+  },
+  {
+    id: 301, name: "Samaritan House Hampton Roads", icon: "🌸", iconClass: "card-icon-sky",
+    location: "Virginia Beach, VA", distance: "—",
+    desc: "Fostering personal safety, growth, and self-sufficiency for adults and children escaping domestic violence and sexual assault across Hampton Roads since 1981 — providing emergency shelter, transitional housing, counseling, legal advocacy, and children's programs.",
+    tags: ["Domestic Violence", "Women", "Children"], category: ["housing", "health", "children"],
+    urgent: true,
+    needs: ["Monetary donations", "Household items", "Hygiene products", "Volunteer hours"],
+    impact: "💡 Samaritan House has helped Hampton Roads survivors of domestic violence and sexual assault find safety and healing for over 40 years.",
+    donateUrl: "https://www.samaritanhouseva.org/donate/",
+    volunteerUrl: "https://www.samaritanhouseva.org/volunteer/",
+    website: "https://www.samaritanhouseva.org", city: "virginia beach"
+  },
+  {
+    id: 302, name: "Habitat for Humanity of South Hampton Roads", icon: "🏗", iconClass: "card-icon-coral",
+    location: "Norfolk / Virginia Beach, VA", distance: "—",
+    desc: "Building strength, stability, and self-reliance through affordable homeownership across Hampton Roads — partnering with volunteers and low-income families to build and renovate homes while operating ReStore locations that generate additional funding for the mission.",
+    tags: ["Housing", "Homeownership", "Veterans"], category: ["housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer build days", "ReStore donations"],
+    impact: "💡 Habitat for Humanity South Hampton Roads has helped hundreds of families achieve affordable homeownership — building community strength across Virginia Beach, Norfolk, and Chesapeake.",
+    donateUrl: "https://www.habitatshr.org/donate/",
+    volunteerUrl: "https://www.habitatshr.org/volunteer/",
+    website: "https://www.habitatshr.org", city: "virginia beach"
+  },
+
+  // ── BUFFALO ──
+  {
+    id: 303, name: "FeedMore WNY", icon: "🌾", iconClass: "card-icon-sun",
+    location: "Buffalo, NY", distance: "—",
+    desc: "Western New York's food bank and Meals on Wheels program combined — FeedMore WNY provides food assistance, nutrition education, and home-delivered meals to individuals and families across Erie and Niagara counties, ensuring every Western New Yorker has access to nutritious food.",
+    tags: ["Food", "Hunger Relief", "Seniors"], category: ["food"],
+    urgent: false,
+    needs: ["Non-perishable food", "Monetary donations", "Volunteer hours"],
+    impact: "💡 FeedMore WNY combines food banking and Meals on Wheels — fighting hunger and isolation for Western New Yorkers of all ages across Erie and Niagara counties.",
+    donateUrl: "https://feedmorewny.org/donate/",
+    volunteerUrl: "https://feedmorewny.org/volunteer/",
+    website: "https://feedmorewny.org", city: "buffalo"
+  },
+  {
+    id: 304, name: "Buffalo City Mission", icon: "🏠", iconClass: "card-icon-coral",
+    location: "Downtown Buffalo, NY", distance: "—",
+    desc: "Serving Buffalo's homeless and underprivileged neighbors since 1917 — Buffalo City Mission provides emergency shelter, hot meals, addiction recovery, education, and job training to men, women, and children experiencing homelessness in Western New York.",
+    tags: ["Homelessness", "Recovery", "Food"], category: ["housing", "food", "health"],
+    urgent: true,
+    needs: ["Monetary donations", "Clothing & hygiene items", "Volunteer meal servers"],
+    impact: "💡 Buffalo City Mission has been Western New York's frontline homeless shelter for over 100 years — providing meals, shelter, and life-changing recovery programs.",
+    donateUrl: "https://www.buffalocitymission.org/donate/",
+    volunteerUrl: "https://www.buffalocitymission.org/volunteer/",
+    website: "https://www.buffalocitymission.org", city: "buffalo"
+  },
+  {
+    id: 305, name: "SPCA Serving Erie County", icon: "🐾", iconClass: "card-icon-plum",
+    location: "Buffalo, NY", distance: "—",
+    desc: "Western New York's comprehensive animal welfare organization providing shelter, adoption, cruelty investigation, veterinary care, and community programs for animals across Erie County — working to end animal cruelty and ensure every pet in Western New York has a loving home.",
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    urgent: false,
+    needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
+    impact: "💡 SPCA Serving Erie County protects Western New York animals through adoption, cruelty investigation, and community veterinary care — finding loving homes for thousands each year.",
+    donateUrl: "https://yourspca.org/donate/",
+    volunteerUrl: "https://yourspca.org/volunteer/",
+    website: "https://yourspca.org", city: "buffalo"
+  },
+  {
+    id: 306, name: "Oishei Children's Hospital Foundation", icon: "🏥", iconClass: "card-icon-teal",
+    location: "Buffalo, NY", distance: "—",
+    desc: "Supporting John R. Oishei Children's Hospital — Western New York's only dedicated inpatient children's hospital, consistently ranked among the nation's best — funding pediatric research, specialized care, and community health programs for children across the Buffalo-Niagara region.",
+    tags: ["Children's Health", "Hospital", "Research"], category: ["health", "children"],
+    urgent: false,
+    needs: ["Monetary donations", "Corporate partnerships", "Event support"],
+    impact: "💡 Oishei Children's Hospital is Western New York's only dedicated children's hospital — your gift funds specialized pediatric care for Buffalo-area kids.",
+    donateUrl: "https://www.oisheichildrens.org/giving/",
+    volunteerUrl: "https://www.oisheichildrens.org/giving/",
+    website: "https://www.oisheichildrens.org", city: "buffalo"
+  },
+  {
+    id: 307, name: "Journey's End Refugee Services", icon: "🌍", iconClass: "card-icon-sky",
+    location: "Buffalo, NY", distance: "—",
+    desc: "Welcoming refugees to Buffalo regardless of ethnic origin or creed since 1979 — Journey's End assists newly arrived refugees with housing, employment, English language classes, legal services, and community integration, helping them become healthy, independent members of the Buffalo community.",
+    tags: ["Immigration", "Community", "Education"], category: ["housing", "education"],
+    urgent: false,
+    needs: ["Monetary donations", "Household items", "Volunteer tutors & mentors"],
+    impact: "💡 Journey's End has welcomed thousands of refugees to Buffalo since 1979 — helping families from around the world build new lives in Western New York.",
+    donateUrl: "https://www.journeysendrefugee.org/donate/",
+    volunteerUrl: "https://www.journeysendrefugee.org/volunteer/",
+    website: "https://www.journeysendrefugee.org", city: "buffalo"
+  },
+  {
+    id: 308, name: "Habitat for Humanity Buffalo", icon: "🏗", iconClass: "card-icon-coral",
+    location: "Buffalo, NY", distance: "—",
+    desc: "Building affordable homes and revitalizing Buffalo neighborhoods since 1986 — Habitat Buffalo empowers families through affordable homeownership requiring sweat equity, while operating a ReStore that sells donated home goods to fund the mission and a home repair program for seniors and veterans.",
+    tags: ["Housing", "Homeownership", "Veterans"], category: ["housing"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer build days", "ReStore donations"],
+    impact: "💡 Habitat Buffalo has helped hundreds of families achieve homeownership — revitalizing neighborhoods and building community strength across Western New York since 1986.",
+    donateUrl: "https://www.habitatbuffalo.org/donate/",
+    volunteerUrl: "https://www.habitatbuffalo.org/volunteer/",
+    website: "https://www.habitatbuffalo.org", city: "buffalo"
   }
 ];
 
@@ -3718,7 +4532,7 @@ let currentCity = 'Miami, FL';
 
 // Derived site-wide totals — always accurate
 const TOTAL_CHARITIES = charities.length;
-const TOTAL_CITIES    = 333;
+const TOTAL_CITIES    = 637;
 const TOTAL_CATS      = 7;
 
 function animateStat(el, target) {
@@ -3890,6 +4704,17 @@ const CITY_COORDS = {
   'kansas city':   { lat: 39.0997, lng: -94.5786,  label: 'Kansas City, MO' },
   'indianapolis':  { lat: 39.7684, lng: -86.1581,  label: 'Indianapolis, IN' },
   'jacksonville':  { lat: 30.3322, lng: -81.6557,  label: 'Jacksonville, FL' },
+  'sacramento':    { lat: 38.5816, lng: -121.4944, label: 'Sacramento, CA' },
+  'cincinnati':    { lat: 39.1031, lng: -84.5120,  label: 'Cincinnati, OH' },
+  'cleveland':     { lat: 41.4993, lng: -81.6944,  label: 'Cleveland, OH' },
+  'louisville':    { lat: 38.2527, lng: -85.7585,  label: 'Louisville, KY' },
+  'milwaukee':     { lat: 43.0389, lng: -87.9065,  label: 'Milwaukee, WI' },
+  'salt lake city':{ lat: 40.7608, lng: -111.8910, label: 'Salt Lake City, UT' },
+  'oklahoma city': { lat: 35.4676, lng: -97.5164,  label: 'Oklahoma City, OK' },
+  'richmond':      { lat: 37.5407, lng: -77.4360,  label: 'Richmond, VA' },
+  'memphis':       { lat: 35.1495, lng: -90.0490,  label: 'Memphis, TN' },
+  'virginia beach':{ lat: 36.8529, lng: -75.9780,  label: 'Virginia Beach, VA' },
+  'buffalo':       { lat: 42.8864, lng: -78.8784,  label: 'Buffalo, NY' },
 };
 
 function haversineDistance(lat1, lng1, lat2, lng2) {
@@ -3960,6 +4785,17 @@ function getCityKey(cityStr) {
   if (s.includes('kansas city') || s.includes('overland park') || s.includes('olathe') || s.includes('lenexa') || s.includes('shawnee, ks') || s.includes('lee\'s summit') || s.includes('independence, mo') || s.includes('blue springs, mo') || s.includes('johnson county, ks')) return 'kansas city';
   if (s.includes('indianapolis') || s.includes('carmel, in') || s.includes('fishers, in') || s.includes('noblesville') || s.includes('greenwood, in') || s.includes('lawrence, in') || s.includes('marion county, in') || s.includes('hamilton county, in')) return 'indianapolis';
   if (s.includes('jacksonville') || s.includes('jacksonville, fl') || s.includes('duval county') || s.includes('orange park') || s.includes('neptune beach') || s.includes('atlantic beach, fl') || s.includes('jacksonville beach') || s.includes('ponte vedra')) return 'jacksonville';
+  if (s.includes('sacramento') || s.includes('elk grove') || s.includes('roseville, ca') || s.includes('folsom, ca') || s.includes('citrus heights') || s.includes('rancho cordova') || s.includes('davis, ca') || s.includes('woodland, ca') || s.includes('west sacramento') || s.includes('rocklin') || s.includes('lincoln, ca') || s.includes('auburn, ca') || s.includes('placerville') || s.includes('grass valley, ca') || s.includes('yuba city') || s.includes('marysville, ca') || s.includes('fairfield, ca') || s.includes('vacaville') || s.includes('lodi, ca') || s.includes('stockton') || s.includes('modesto') || s.includes('antelope, ca') || s.includes('orangevale') || s.includes('fair oaks, ca') || s.includes('carmichael') || s.includes('north highlands') || s.includes('arden-arcade') || s.includes('sacramento county') || s.includes('placer county') || s.includes('el dorado county') || s.includes('yolo county')) return 'sacramento';
+  if (s.includes('cincinnati') || s.includes('northern kentucky') || s.includes('covington, ky') || s.includes('florence, ky') || s.includes('mason, oh') || s.includes('blue ash') || s.includes('westchester, oh') || s.includes('hamilton county, oh') || s.includes('anderson township') || s.includes('reading, oh') || s.includes('norwood, oh') || s.includes('loveland, oh') || s.includes('milford, oh') || s.includes('hyde park, oh') || s.includes('mount lookout') || s.includes('westwood, oh') || s.includes('forest park, oh') || s.includes('fairfield, oh') || s.includes('middletown, oh') || s.includes('hamilton, oh') || s.includes('lebanon, oh') || s.includes('fort thomas') || s.includes('newport, ky') || s.includes('bellevue, ky') || s.includes('boone county, ky') || s.includes('campbell county, ky') || s.includes('kenton county') || s.includes('erlanger') || s.includes('independence, ky') || s.includes('union, ky') || s.includes('colerain township') || s.includes('delhi township') || s.includes('clermont county')) return 'cincinnati';
+  if (s.includes('cleveland') || s.includes('akron') || s.includes('parma, oh') || s.includes('lakewood, oh') || s.includes('euclid, oh') || s.includes('strongsville') || s.includes('mentor, oh') || s.includes('cuyahoga county') || s.includes('lorain, oh') || s.includes('elyria, oh') || s.includes('medina, oh') || s.includes('brunswick, oh') || s.includes('westlake, oh') || s.includes('rocky river') || s.includes('bay village') || s.includes('fairview park') || s.includes('north olmsted') || s.includes('olmsted falls') || s.includes('berea, oh') || s.includes('brook park') || s.includes('garfield heights') || s.includes('maple heights') || s.includes('south euclid') || s.includes('cleveland heights') || s.includes('university heights, oh') || s.includes('shaker heights') || s.includes('beachwood, oh') || s.includes('solon, oh') || s.includes('aurora, oh') || s.includes('twinsburg') || s.includes('stow, oh') || s.includes('hudson, oh') || s.includes('kent, oh') || s.includes('ravenna, oh') || s.includes('willoughby') || s.includes('eastlake, oh') || s.includes('wickliffe') || s.includes('summit county') || s.includes('portage county, oh') || s.includes('lake county, oh') || s.includes('lorain county') || s.includes('medina county')) return 'cleveland';
+  if (s.includes('louisville') || s.includes('jeffersontown') || s.includes('st. matthews') || s.includes('shively') || s.includes('newburg, ky') || s.includes('jeffersonville, in') || s.includes('new albany, in') || s.includes('floyd county, in') || s.includes('jefferson county, ky') || s.includes('anchorage, ky') || s.includes('middletown, ky') || s.includes('prospect, ky') || s.includes('goshen, ky') || s.includes('la grange, ky') || s.includes('shelbyville, ky') || s.includes('bardstown') || s.includes('elizabethtown, ky') || s.includes('shepherdsville') || s.includes('mount washington, ky') || s.includes('bullitt county') || s.includes('oldham county') || s.includes('shelby county, ky') || s.includes('clark county, in') || s.includes('charlestown, in') || s.includes('sellersburg') || s.includes('clarksville, in') || s.includes('floyds knobs') || s.includes('buechel') || s.includes('okolona, ky') || s.includes('pleasure ridge park')) return 'louisville';
+  if (s.includes('milwaukee') || s.includes('wauwatosa') || s.includes('west allis') || s.includes('brookfield, wi') || s.includes('waukesha') || s.includes('greenfield, wi') || s.includes('oak creek') || s.includes('racine, wi') || s.includes('kenosha') || s.includes('milwaukee county') || s.includes('new berlin') || s.includes('muskego') || s.includes('franklin, wi') || s.includes('greendale') || s.includes('hales corners') || s.includes('cudahy, wi') || s.includes('south milwaukee') || s.includes('st. francis, wi') || s.includes('bay view, wi') || s.includes('shorewood, wi') || s.includes('whitefish bay') || s.includes('fox point, wi') || s.includes('glendale, wi') || s.includes('brown deer') || s.includes('menomonee falls') || s.includes('germantown, wi') || s.includes('richfield, wi') || s.includes('hartland, wi') || s.includes('waukesha county') || s.includes('ozaukee county') || s.includes('washington county, wi') || s.includes('walworth county') || s.includes('mequon') || s.includes('pewaukee') || s.includes('delafield') || s.includes('lake geneva, wi') || s.includes('port washington, wi') || s.includes('cedarburg') || s.includes('grafton, wi')) return 'milwaukee';
+  if (s.includes('salt lake city') || s.includes('slc') || s.includes('west valley city') || s.includes('west jordan') || s.includes('sandy, ut') || s.includes('south jordan') || s.includes('taylorsville') || s.includes('murray, ut') || s.includes('millcreek, ut') || s.includes('midvale, ut') || s.includes('provo') || s.includes('orem, ut') || s.includes('draper, ut') || s.includes('herriman') || s.includes('riverton, ut') || s.includes('lehi, ut') || s.includes('american fork') || s.includes('pleasant grove, ut') || s.includes('ogden, ut') || s.includes('layton, ut') || s.includes('bountiful, ut') || s.includes('kaysville') || s.includes('clearfield, ut') || s.includes('south salt lake') || s.includes('holladay, ut') || s.includes('cottonwood heights') || s.includes('salt lake county') || s.includes('utah county') || s.includes('davis county, ut') || s.includes('weber county')) return 'salt lake city';
+  if (s.includes('oklahoma city') || s.includes('okc') || s.includes('edmond, ok') || s.includes('norman, ok') || s.includes('moore, ok') || s.includes('midwest city') || s.includes('del city') || s.includes('yukon, ok') || s.includes('mustang, ok') || s.includes('bethany, ok') || s.includes('warr acres') || s.includes('the village, ok') || s.includes('nichols hills') || s.includes('choctaw, ok') || s.includes('harrah, ok') || s.includes('newcastle, ok') || s.includes('blanchard, ok') || s.includes('oklahoma county') || s.includes('cleveland county, ok') || s.includes('canadian county, ok') || s.includes('grady county, ok')) return 'oklahoma city';
+  if (s.includes('richmond, va') || s.includes('richmond va') || s.includes('henrico') || s.includes('chesterfield county') || s.includes('glen allen') || s.includes('mechanicsville, va') || s.includes('short pump') || s.includes('midlothian, va') || s.includes('chester, va') || s.includes('colonial heights') || s.includes('hopewell, va') || s.includes('petersburg, va') || s.includes('ashland, va') || s.includes('bon air, va') || s.includes('tuckahoe, va') || s.includes('goochland') || s.includes('hanover county, va') || s.includes('powhatan county')) return 'richmond';
+  if (s.includes('memphis') || s.includes('shelby county, tn') || s.includes('bartlett, tn') || s.includes('germantown, tn') || s.includes('collierville') || s.includes('cordova, tn') || s.includes('southaven') || s.includes('olive branch') || s.includes('horn lake') || s.includes('west memphis') || s.includes('millington, tn') || s.includes('arlington, tn') || s.includes('lakeland, tn') || s.includes('munford, tn') || s.includes('desoto county') || s.includes('crittenden county') || s.includes('tipton county')) return 'memphis';
+  if (s.includes('virginia beach') || s.includes('norfolk, va') || s.includes('chesapeake, va') || s.includes('portsmouth, va') || s.includes('suffolk, va') || s.includes('hampton, va') || s.includes('newport news') || s.includes('hampton roads') || s.includes('poquoson') || s.includes('smithfield, va') || s.includes('isle of wight') || s.includes('williamsburg, va') || s.includes('york county, va') || s.includes('james city county') || s.includes('gloucester county, va') || s.includes('currituck county') || s.includes('kill devil hills') || s.includes('outer banks')) return 'virginia beach';
+  if (s.includes('buffalo') || s.includes('buffalo, ny') || s.includes('niagara falls, ny') || s.includes('tonawanda') || s.includes('amherst, ny') || s.includes('cheektowaga') || s.includes('lackawanna, ny') || s.includes('west seneca') || s.includes('lancaster, ny') || s.includes('depew, ny') || s.includes('kenmore, ny') || s.includes('snyder, ny') || s.includes('williamsville, ny') || s.includes('clarence, ny') || s.includes('orchard park, ny') || s.includes('hamburg, ny') || s.includes('angola, ny') || s.includes('lockport, ny') || s.includes('north tonawanda') || s.includes('wheatfield, ny') || s.includes('grand island, ny') || s.includes('erie county, ny') || s.includes('niagara county') || s.includes('western new york') || s.includes('wny')) return 'buffalo';
   if (s.includes('charlotte') || s.includes('matthews, nc') || s.includes('concord, nc') || s.includes('gastonia') || s.includes('mecklenburg') || s.includes('kannapolis') || s.includes('huntersville') || s.includes('mooresville, nc')) return 'charlotte';
   if (s.includes('raleigh') || s.includes('cary, nc') || s.includes('apex, nc') || s.includes('wake county') || s.includes('chapel hill') || s.includes('morrisville, nc') || s.includes('garner, nc') || s.includes('wake forest, nc')) return 'raleigh';
   if (s.includes('greensboro') || s.includes('guilford county') || s.includes('high point, nc') || s.includes('kernersville')) return 'greensboro';
