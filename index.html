@@ -3,6 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══ SEO & GEO OPTIMIZATION ═══ -->
+  <title>My Local Charity — Find Charities Near You | Donate & Volunteer Locally</title>
+  <meta name="description" content="Find trusted local charities in your city for food, housing, health, children, animals, education, and more. Search by zip code or city, donate directly, and volunteer near you. Built by 12-year-old Dante Murena in Miami, FL.">
+  <meta name="keywords" content="local charities, donate locally, volunteer near me, food bank, homeless shelter, animal shelter, children's charities, mental health nonprofits, charity finder, find a charity, nonprofit directory">
+  <meta name="author" content="Dante Murena">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://www.mylocalcharity.org/">
+
+  <!-- Open Graph (Facebook, LinkedIn, iMessage previews) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mylocalcharity.org/">
+  <meta property="og:title" content="My Local Charity — Find Charities Near You">
+  <meta property="og:description" content="Find trusted local charities in your city. Search by zip code or city for food banks, homeless shelters, animal rescues, children's programs, and more. Donate directly. Volunteer locally. Built by a 12-year-old in Miami.">
+  <meta property="og:image" content="https://www.mylocalcharity.org/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="My Local Charity — Find local charities, food banks, shelters, and nonprofits near you">
+  <meta property="og:site_name" content="My Local Charity">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://www.mylocalcharity.org/">
+  <meta name="twitter:title" content="My Local Charity — Find Charities Near You">
+  <meta name="twitter:description" content="Search 456+ trusted local charities in 50+ US cities. Donate directly or volunteer near you. Built by 12-year-old Dante Murena in Miami.">
+  <meta name="twitter:image" content="https://www.mylocalcharity.org/og-image.png">
+  <meta name="twitter:image:alt" content="My Local Charity — Find local charities near you">
+
+  <!-- Additional GEO & entity signals -->
+  <meta name="geo.region" content="US">
+  <meta name="geo.placename" content="United States">
+  <meta name="category" content="Charity, Nonprofit, Philanthropy">
+  <meta name="classification" content="Nonprofit Directory">
+  <link rel="alternate" hreflang="en" href="https://www.mylocalcharity.org/">
+  <link rel="alternate" hreflang="x-default" href="https://www.mylocalcharity.org/">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -270,6 +306,205 @@
     .charity-grid { grid-template-columns: 1fr; }
   }
 </style>
+
+  <!-- ═══ JSON-LD STRUCTURED DATA (SEO + GEO) ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.mylocalcharity.org/#website",
+        "url": "https://www.mylocalcharity.org/",
+        "name": "My Local Charity",
+        "description": "Find trusted local charities near you. Search by city or zip code to donate, volunteer, or drop off items at food banks, homeless shelters, animal rescues, children's programs, and more — across 50+ US cities.",
+        "inLanguage": "en-US",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://www.mylocalcharity.org/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.mylocalcharity.org/#organization",
+        "name": "My Local Charity",
+        "alternateName": "mylocalcharity.org",
+        "url": "https://www.mylocalcharity.org/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.mylocalcharity.org/favicon-512.png",
+          "width": 512,
+          "height": 512
+        },
+        "foundingDate": "2026",
+        "founder": {
+          "@type": "Person",
+          "name": "Dante Murena",
+          "age": "12",
+          "description": "12-year-old founder of My Local Charity, inspired by his sister Leila's charity WundieUndies and MrBeast's philanthropy.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Miami",
+            "addressRegion": "FL",
+            "addressCountry": "US"
+          }
+        },
+        "description": "My Local Charity is a free nonprofit directory built by 12-year-old Dante Murena in Miami, FL. It connects people with trusted local charities across 50+ US cities — covering food, housing, health, children, animals, education, mental health, job training, domestic violence, veterans, seniors, LGBTQ+, disability, and hygiene causes. We never process donations — all giving goes directly to the charity.",
+        "knowsAbout": [
+          "Charity donation",
+          "Local nonprofits",
+          "Food banks",
+          "Homeless shelters",
+          "Animal rescue",
+          "Children's charities",
+          "Mental health nonprofits",
+          "Domestic violence shelters",
+          "Veterans services",
+          "Senior services",
+          "LGBTQ+ organizations",
+          "Disability services",
+          "Diaper banks",
+          "Job training nonprofits",
+          "Volunteer opportunities",
+          "Community giving"
+        ],
+        "areaServed": {
+          "@type": "Country",
+          "name": "United States"
+        },
+        "sameAs": [
+          "https://www.mylocalcharity.org/about.html"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "kdmurena@gmail.com",
+          "contactType": "customer support",
+          "availableLanguage": "English"
+        },
+        "nonprofitStatus": "NonprofitType"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.mylocalcharity.org/#webpage",
+        "url": "https://www.mylocalcharity.org/",
+        "name": "My Local Charity — Find Charities Near You",
+        "description": "Search 456+ trusted local charities across 50+ US cities by zip code, city, or cause. Find food banks, homeless shelters, animal rescues, children's programs, mental health services, and more — then donate directly or volunteer near you.",
+        "isPartOf": { "@id": "https://www.mylocalcharity.org/#website" },
+        "about": { "@id": "https://www.mylocalcharity.org/#organization" },
+        "inLanguage": "en-US",
+        "dateModified": "2026-07-01",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.mylocalcharity.org/"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.mylocalcharity.org/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I find local charities near me?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Visit mylocalcharity.org and we'll automatically detect your city using your location. You can also type any city name or zip code into the search bar to find charities near you. Filter by cause — food, housing, health, children, animals, education, mental health, and more."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does My Local Charity process donations?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. My Local Charity never processes donations. Every donate button takes you directly to the charity's own website and payment system. 100% of your donation goes to the charity you choose."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I list my charity for free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Visit mylocalcharity.org/register.html to submit your charity for free. We list all verified local nonprofits at no cost — always."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What cities does My Local Charity cover?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "My Local Charity covers 50+ major US cities including Miami, New York, Los Angeles, Chicago, Houston, Phoenix, Philadelphia, San Antonio, San Diego, Dallas, San Francisco, Austin, Jacksonville, Seattle, Denver, Nashville, Baltimore, Louisville, Portland, Las Vegas, Boston, Atlanta, Detroit, Minneapolis, Sacramento, New Orleans, Cleveland, Pittsburgh, Cincinnati, Kansas City, Indianapolis, Milwaukee, Salt Lake City, Oklahoma City, Richmond, Memphis, Virginia Beach, and Buffalo — plus hundreds of surrounding suburbs and towns."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who built My Local Charity?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "My Local Charity was built by Dante Murena, a 12-year-old from Miami, FL who just finished sixth grade. He was inspired by his sister Leila's charity WundieUndies — which collects and donates underwear, diapers, and hygiene products — and by MrBeast's philanthropic work."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What causes can I filter charities by?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "My Local Charity lets you filter by 14 cause categories: Food, Housing, Health, Children, Animals, Education, Hygiene, Mental Health, Job Training, Domestic Violence, Veterans, Seniors, LGBTQ+, and Disability."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I find volunteer opportunities near me?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Each charity listing includes a direct link to their volunteer page. You can also click the Volunteer tab on the homepage to browse volunteer opportunities in your city."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I find drop-off locations for donations near me?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Click the Drop-Off tab on the My Local Charity homepage to find physical donation drop-off locations near you for clothing, food, hygiene products, diapers, and more."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://www.mylocalcharity.org/#charity-categories",
+        "name": "Charity Cause Categories on My Local Charity",
+        "description": "Browse charities on My Local Charity by cause category",
+        "numberOfItems": 14,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Food Banks & Hunger Relief", "url": "https://www.mylocalcharity.org/?filter=food" },
+          { "@type": "ListItem", "position": 2, "name": "Housing & Homeless Shelters", "url": "https://www.mylocalcharity.org/?filter=housing" },
+          { "@type": "ListItem", "position": 3, "name": "Health & Medical Services", "url": "https://www.mylocalcharity.org/?filter=health" },
+          { "@type": "ListItem", "position": 4, "name": "Children & Youth Programs", "url": "https://www.mylocalcharity.org/?filter=children" },
+          { "@type": "ListItem", "position": 5, "name": "Animal Rescue & Adoption", "url": "https://www.mylocalcharity.org/?filter=animals" },
+          { "@type": "ListItem", "position": 6, "name": "Education & Tutoring", "url": "https://www.mylocalcharity.org/?filter=education" },
+          { "@type": "ListItem", "position": 7, "name": "Hygiene & Diaper Banks", "url": "https://www.mylocalcharity.org/?filter=hygiene" },
+          { "@type": "ListItem", "position": 8, "name": "Mental Health Services", "url": "https://www.mylocalcharity.org/?filter=mental-health" },
+          { "@type": "ListItem", "position": 9, "name": "Job Training & Workforce Development", "url": "https://www.mylocalcharity.org/?filter=job-training" },
+          { "@type": "ListItem", "position": 10, "name": "Domestic Violence Shelters", "url": "https://www.mylocalcharity.org/?filter=domestic-violence" },
+          { "@type": "ListItem", "position": 11, "name": "Veterans Services", "url": "https://www.mylocalcharity.org/?filter=veterans" },
+          { "@type": "ListItem", "position": 12, "name": "Senior Services & Meals on Wheels", "url": "https://www.mylocalcharity.org/?filter=seniors" },
+          { "@type": "ListItem", "position": 13, "name": "LGBTQ+ Organizations", "url": "https://www.mylocalcharity.org/?filter=lgbtq" },
+          { "@type": "ListItem", "position": 14, "name": "Disability Services", "url": "https://www.mylocalcharity.org/?filter=disability" }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
