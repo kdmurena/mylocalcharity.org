@@ -6,7 +6,7 @@
 
   <!-- ═══ SEO & GEO OPTIMIZATION ═══ -->
   <title>My Local Charity — Find Charities Near You | Donate & Volunteer Locally</title>
-  <meta name="description" content="Find trusted local charities in your city for food, housing, health, children, animals, education, and more. Search by zip code or city, donate directly, and volunteer near you. Built by 12-year-old Dante Murena in Miami, FL.">
+  <meta name="description" content="Find trusted local charities in your city for food, housing, health, children, animals, disaster relief, mental health, and more. Search by zip code or city, donate directly, and volunteer near you. Built by 12-year-old Dante Murena in Miami, FL.">
   <meta name="keywords" content="local charities, donate locally, volunteer near me, food bank, homeless shelter, animal shelter, children's charities, mental health nonprofits, charity finder, find a charity, nonprofit directory">
   <meta name="author" content="Dante Murena">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -172,6 +172,9 @@
   .card-desc { font-size: 13px; color: var(--ink-mid); line-height: 1.55; margin-bottom: 0.875rem; flex: 1; }
   .card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 0.875rem; }
   .tag { font-size: 11px; padding: 3px 10px; border-radius: var(--r-pill); background: var(--cream); border: 1px solid var(--border); color: var(--ink-mid); font-weight: 500; }
+  .card-cats { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 0.75rem; }
+  .card-cat-pill { font-size: 10px; padding: 2px 9px; border-radius: var(--r-pill); background: var(--teal-light); border: 1px solid rgba(29,143,110,0.2); color: var(--teal-dark); font-weight: 500; cursor: pointer; transition: background 0.15s; }
+  .card-cat-pill:hover { background: var(--teal); color: white; }
   .card-footer { display: flex; gap: 8px; border-top: 1px solid var(--border); padding-top: 0.875rem; }
   .card-btn { flex: 1; font-size: 13px; font-weight: 500; padding: 8px; border-radius: var(--r-sm); cursor: pointer; text-align: center; font-family: 'DM Sans', sans-serif; border: none; transition: all 0.15s; }
   .card-btn-primary { background: var(--teal); color: white; }
@@ -368,6 +371,10 @@
           "LGBTQ+ organizations",
           "Disability services",
           "Diaper banks",
+          "Disaster relief",
+          "Hurricane response",
+          "American Red Cross",
+          "Emergency preparedness",
           "Job training nonprofits",
           "Volunteer opportunities",
           "Community giving"
@@ -392,7 +399,7 @@
         "@id": "https://www.mylocalcharity.org/#webpage",
         "url": "https://www.mylocalcharity.org/",
         "name": "My Local Charity — Find Charities Near You",
-        "description": "Search 456+ trusted local charities across 50+ US cities by zip code, city, or cause. Find food banks, homeless shelters, animal rescues, children's programs, mental health services, and more — then donate directly or volunteer near you.",
+        "description": "Search 506+ trusted local charities across 50+ US cities by zip code, city, or cause. Find food banks, homeless shelters, animal rescues, children's programs, mental health services, and more — then donate directly or volunteer near you.",
         "isPartOf": { "@id": "https://www.mylocalcharity.org/#website" },
         "about": { "@id": "https://www.mylocalcharity.org/#organization" },
         "inLanguage": "en-US",
@@ -458,7 +465,7 @@
             "name": "What causes can I filter charities by?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "My Local Charity lets you filter by 14 cause categories: Food, Housing, Health, Children, Animals, Education, Hygiene, Mental Health, Job Training, Domestic Violence, Veterans, Seniors, LGBTQ+, and Disability."
+              "text": "My Local Charity lets you filter by 15 cause categories: Food, Housing, Health, Children, Animals, Education, Hygiene, Mental Health, Job Training, Domestic Violence, Veterans, Seniors, LGBTQ+, Disability, and Disaster Relief."
             }
           },
           {
@@ -484,7 +491,7 @@
         "@id": "https://www.mylocalcharity.org/#charity-categories",
         "name": "Charity Cause Categories on My Local Charity",
         "description": "Browse charities on My Local Charity by cause category",
-        "numberOfItems": 14,
+        "numberOfItems": 15,
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Food Banks & Hunger Relief", "url": "https://www.mylocalcharity.org/?filter=food" },
           { "@type": "ListItem", "position": 2, "name": "Housing & Homeless Shelters", "url": "https://www.mylocalcharity.org/?filter=housing" },
@@ -499,7 +506,8 @@
           { "@type": "ListItem", "position": 11, "name": "Veterans Services", "url": "https://www.mylocalcharity.org/?filter=veterans" },
           { "@type": "ListItem", "position": 12, "name": "Senior Services & Meals on Wheels", "url": "https://www.mylocalcharity.org/?filter=seniors" },
           { "@type": "ListItem", "position": 13, "name": "LGBTQ+ Organizations", "url": "https://www.mylocalcharity.org/?filter=lgbtq" },
-          { "@type": "ListItem", "position": 14, "name": "Disability Services", "url": "https://www.mylocalcharity.org/?filter=disability" }
+          { "@type": "ListItem", "position": 14, "name": "Disability Services", "url": "https://www.mylocalcharity.org/?filter=disability" },
+          { "@type": "ListItem", "position": 15, "name": "Disaster Relief & Emergency Response", "url": "https://www.mylocalcharity.org/?filter=disaster-relief" }
         ]
       }
     ]
@@ -560,6 +568,7 @@
       <button class="pill" onclick="setFilter('seniors', this)">👴 Seniors</button>
       <button class="pill" onclick="setFilter('lgbtq', this)">🏳️‍🌈 LGBTQ+</button>
       <button class="pill" onclick="setFilter('disability', this)">♿ Disability</button>
+      <button class="pill" onclick="setFilter('disaster relief', this)">🚨 Disaster Relief</button>
     </div>
   </div>
 </section>
@@ -591,7 +600,7 @@
     <div style="font-size:11px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--teal-dark);white-space:nowrap;width:90px;flex-shrink:0;opacity:0.85;">Site-Wide</div>
     <div style="display:flex;flex:1;justify-content:space-around;flex-wrap:wrap;gap:0.5rem;">
       <div class="stat" style="text-align:center;min-width:90px;">
-        <span class="stat-num" id="totalCharities" style="font-size:1.6rem;">456</span>
+        <span class="stat-num" id="totalCharities" style="font-size:1.6rem;">506</span>
         <span class="stat-label">Charities</span>
       </div>
       <div class="stat" style="text-align:center;min-width:90px;">
@@ -599,7 +608,7 @@
         <span class="stat-label">Cities & Towns</span>
       </div>
       <div class="stat" style="text-align:center;min-width:90px;">
-        <span class="stat-num" style="font-size:1.6rem;">14</span>
+        <span class="stat-num" style="font-size:1.6rem;">15</span>
         <span class="stat-label">Cause Categories</span>
       </div>
     </div>
@@ -2387,7 +2396,7 @@ const charities = [
     id: 116, name: "Paz de Cristo", icon: "🌮", iconClass: "card-icon-teal",
     location: "Mesa, Phoenix, AZ", distance: "—",
     desc: "Serving the hungry and homeless in the East Valley since 1981, Paz de Cristo provides free meals, groceries, clothing, showers, and social services to thousands of Arizona neighbors each week — treating every guest with dignity and respect.",
-    tags: ["Food", "Homelessness", "Dignity"], category: ["food", "housing"],
+    tags: ["Food", "Homelessness", "Dignity"], category: ["food", "housing", "disaster relief"],
     urgent: false,
     needs: ["Monetary donations", "Food donations", "Clothing", "Volunteer meal servers"],
     impact: "💡 Paz de Cristo serves 2,000+ free meals each week to Phoenix-area neighbors in need — with compassion, dignity, and no questions asked.",
@@ -3027,7 +3036,7 @@ const charities = [
     id: 167, name: "Louisiana SPCA", icon: "🐾", iconClass: "card-icon-plum",
     location: "New Orleans, LA", distance: "—",
     desc: "New Orleans' premier animal welfare organization since 1888 — providing shelter, adoption, cruelty investigation, low-cost veterinary care, and community programs to protect animals across Southeast Louisiana, including heroic disaster response during hurricanes.",
-    tags: ["Animals", "Rescue", "Adoption"], category: ["animals"],
+    tags: ["Animals", "Rescue", "Adoption"], category: ["animals", "disaster relief"],
     urgent: false,
     needs: ["Monetary donations", "Foster homes", "Pet food & supplies", "Volunteer hours"],
     impact: "💡 The Louisiana SPCA has protected New Orleans animals for over 135 years — including life-saving rescue operations during Hurricane Katrina and beyond.",
@@ -4809,7 +4818,7 @@ const charities = [
   // ── LONG ISLAND (3 more → 9 total) ──
   { id: 333, name: "Long Island Crisis Center", icon: "🧠", iconClass: "card-icon-plum", location: "Bellmore, Long Island, NY", distance: "—", desc: "Providing free mental health counseling, crisis intervention, and support groups to Long Island residents since 1971 — including a 24/7 crisis hotline, LGBTQ+ counseling, suicide prevention, and grief support across Nassau and Suffolk counties.", tags: ["Mental Health", "Crisis Support", "LGBTQ+"], category: ["health", "mental health", "lgbtq"], urgent: false, needs: ["Monetary donations", "Volunteer counselors", "Event support"], impact: "💡 Long Island Crisis Center's 24/7 hotline has helped hundreds of thousands of Long Islanders through mental health crises and emergencies since 1971.", donateUrl: "https://www.longislandcrisiscenter.org/donate/", volunteerUrl: "https://www.longislandcrisiscenter.org/volunteer/", website: "https://www.longislandcrisiscenter.org", city: "long island" },
   { id: 334, name: "Big Brothers Big Sisters of Long Island", icon: "👫", iconClass: "card-icon-sky", location: "Hauppauge, Long Island, NY", distance: "—", desc: "Creating and supporting one-to-one mentoring relationships for Long Island youth — BBBS matches caring adults with children ages 6–18 across Nassau and Suffolk counties to help them build confidence, improve in school, and stay on track.", tags: ["Youth", "Mentorship", "Education"], category: ["children", "education"], urgent: false, needs: ["Volunteer Bigs (mentors)", "Monetary donations", "Event support"], impact: "💡 BBBS of Long Island mentors hundreds of Nassau and Suffolk County youth — one caring adult relationship changes everything for a young person on Long Island.", donateUrl: "https://www.bbbsli.org/donate/", volunteerUrl: "https://www.bbbsli.org/volunteer/", website: "https://www.bbbsli.org", city: "long island" },
-  { id: 335, name: "Interfaith Nutrition Network (The INN)", icon: "🍽", iconClass: "card-icon-coral", location: "Hempstead, Long Island, NY", distance: "—", desc: "Nassau County's largest hunger relief and homeless services organization — The INN serves over 2,400 hot meals daily at 14 soup kitchens and food pantries, while operating homeless shelters, supportive housing, and social services programs across Long Island.", tags: ["Food", "Homelessness", "Housing"], category: ["food", "housing"], urgent: false, needs: ["Non-perishable food", "Monetary donations", "Volunteer meal servers"], impact: "💡 The INN serves 2,400+ hot meals daily across 14 Long Island locations — Nassau County's largest hunger and homeless services organization.", donateUrl: "https://www.theinnli.org/donate/", volunteerUrl: "https://www.theinnli.org/volunteer/", website: "https://www.theinnli.org", city: "long island" },
+  { id: 335, name: "Interfaith Nutrition Network (The INN)", icon: "🍽", iconClass: "card-icon-coral", location: "Hempstead, Long Island, NY", distance: "—", desc: "Nassau County's largest hunger relief and homeless services organization — The INN serves over 2,400 hot meals daily at 14 soup kitchens and food pantries, while operating homeless shelters, supportive housing, and social services programs across Long Island.", tags: ["Food", "Homelessness", "Housing"], category: ["food", "housing", "disaster relief"], urgent: false, needs: ["Non-perishable food", "Monetary donations", "Volunteer meal servers"], impact: "💡 The INN serves 2,400+ hot meals daily across 14 Long Island locations — Nassau County's largest hunger and homeless services organization.", donateUrl: "https://www.theinnli.org/donate/", volunteerUrl: "https://www.theinnli.org/volunteer/", website: "https://www.theinnli.org", city: "long island" },
   // ── LAS VEGAS (3 more → 9 total) ──
   { id: 336, name: "Safe Nest Las Vegas", icon: "🌸", iconClass: "card-icon-teal", location: "Las Vegas, NV", distance: "—", desc: "Nevada's largest domestic violence organization — providing emergency shelter, crisis counseling, legal advocacy, and transitional housing to survivors of domestic violence in Southern Nevada, helping thousands escape abuse and rebuild their lives.", tags: ["Domestic Violence", "Women", "Children"], category: ["housing", "health", "children", "domestic violence", "mental health"], urgent: true, needs: ["Monetary donations", "Household items", "Hygiene products", "Volunteer hours"], impact: "💡 Safe Nest is Nevada's largest domestic violence organization — providing emergency shelter and support to thousands of Las Vegas-area survivors each year.", donateUrl: "https://www.safenest.org/donate/", volunteerUrl: "https://www.safenest.org/volunteer/", website: "https://www.safenest.org", city: "las vegas" },
   { id: 337, name: "Big Brothers Big Sisters of Southern Nevada", icon: "👫", iconClass: "card-icon-sky", location: "Las Vegas, NV", distance: "—", desc: "Igniting the power and promise of Las Vegas youth through one-to-one mentoring — matching adult volunteers with children ages 5–18 to help them achieve academic success, avoid risky behaviors, and build confidence and resilience to thrive.", tags: ["Youth", "Mentorship", "Education"], category: ["children", "education"], urgent: false, needs: ["Volunteer Bigs (mentors)", "Monetary donations", "Event support"], impact: "💡 BBBS of Southern Nevada mentors hundreds of Las Vegas youth — one caring adult relationship at a time, changing trajectories and building brighter futures.", donateUrl: "https://www.bbbsnevada.org/donate/", volunteerUrl: "https://www.bbbsnevada.org/get-involved/", website: "https://www.bbbsnevada.org", city: "las vegas" },
@@ -4965,8 +4974,607 @@ const charities = [
   // ── BUFFALO (3 more → 9 total) ──
   { id: 450, name: "Big Brothers Big Sisters of Erie & Niagara Counties", icon: "👫", iconClass: "card-icon-sky", location: "Buffalo, NY", distance: "—", desc: "Igniting the power and promise of Western New York youth through professionally supported one-to-one mentoring — BBBS matches caring adults with children ages 6–18 across Erie and Niagara counties.", tags: ["Youth", "Mentorship", "Education"], category: ["children", "education"], urgent: false, needs: ["Volunteer Bigs (mentors)", "Monetary donations", "Event support"], impact: "💡 BBBS Erie & Niagara Counties mentors hundreds of Buffalo-area youth — one caring adult relationship at a time, helping young Western New Yorkers reach their full potential.", donateUrl: "https://www.bbbswny.org/donate/", volunteerUrl: "https://www.bbbswny.org/volunteer/", website: "https://www.bbbswny.org", city: "buffalo" },
   { id: 451, name: "Crisis Services of Erie County", icon: "🧠", iconClass: "card-icon-teal", location: "Buffalo, NY", distance: "—", desc: "Operating Western New York's 24/7 mental health crisis hotline and mobile crisis response — Crisis Services provides immediate telephone counseling, mobile outreach, crisis stabilization, and suicide prevention services to Buffalo and Erie County residents.", tags: ["Mental Health", "Crisis Support", "Suicide Prevention"], category: ["health", "mental health"], urgent: false, needs: ["Monetary donations", "Volunteer crisis counselors", "Event support"], impact: "💡 Crisis Services operates Buffalo's 24/7 mental health crisis hotline and mobile response — providing immediate care to Western New Yorkers in psychiatric emergencies.", donateUrl: "https://www.crisisservices.org/donate/", volunteerUrl: "https://www.crisisservices.org/volunteer/", website: "https://www.crisisservices.org", city: "buffalo" },
-  { id: 452, name: "WNY Diaper Bank", icon: "🩲", iconClass: "card-icon-coral", location: "Buffalo, NY", distance: "—", desc: "Providing free diapers to Western New York families with infants and young children in need — distributes diapers through social service agencies across Erie and Niagara counties, ensuring no Buffalo-area baby goes without clean diapers.", tags: ["Children", "Hygiene", "Families"], category: ["children", "hygiene"], urgent: false, needs: ["Diapers (all sizes)", "Baby wipes", "Monetary donations", "Volunteer hours"], impact: "💡 WNY Diaper Bank ensures no Western New York baby goes without clean diapers — distributing free diapers to Buffalo-area families through trusted community partner agencies.", donateUrl: "https://www.wnydiaperbank.org/donate/", volunteerUrl: "https://www.wnydiaperbank.org/volunteer/", website: "https://www.wnydiaperbank.org", city: "buffalo" }
-
+  { id: 452, name: "WNY Diaper Bank", icon: "🩲", iconClass: "card-icon-coral", location: "Buffalo, NY", distance: "—", desc: "Providing free diapers to Western New York families with infants and young children in need — distributes diapers through social service agencies across Erie and Niagara counties, ensuring no Buffalo-area baby goes without clean diapers.", tags: ["Children", "Hygiene", "Families"], category: ["children", "hygiene"], urgent: false, needs: ["Diapers (all sizes)", "Baby wipes", "Monetary donations", "Volunteer hours"], impact: "💡 WNY Diaper Bank ensures no Western New York baby goes without clean diapers — distributing free diapers to Buffalo-area families through trusted community partner agencies.", donateUrl: "https://www.wnydiaperbank.org/donate/", volunteerUrl: "https://www.wnydiaperbank.org/volunteer/", website: "https://www.wnydiaperbank.org", city: "buffalo" },
+  {
+    id: 453, name: "American Red Cross — South Florida Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "South Florida, USA", distance: "—",
+    desc: "Providing disaster relief across Miami-Dade, Broward, Monroe, and Palm Beach counties — responding to hurricanes, home fires, and tropical storms that frequently impact the South Florida region.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/florida/south-florida.html",
+    volunteerUrl: "https://www.redcross.org/local/florida/south-florida.html",
+    website: "https://www.redcross.org/local/florida/south-florida.html", city: "miami"
+  },
+  {
+    id: 454, name: "American Red Cross — Greater New York Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Greater New York, USA", distance: "—",
+    desc: "The largest Red Cross chapter in the nation, responding to thousands of disasters annually across New York City's five boroughs — from home fires to major weather events and large-scale emergencies.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/new-york/greater-new-york.html",
+    volunteerUrl: "https://www.redcross.org/local/new-york/greater-new-york.html",
+    website: "https://www.redcross.org/local/new-york/greater-new-york.html", city: "new york"
+  },
+  {
+    id: 455, name: "American Red Cross — Los Angeles Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Los Angeles, USA", distance: "—",
+    desc: "Responding to wildfires, earthquakes, floods, and home fires across Los Angeles County — providing emergency shelter, food, and recovery support to Southern California communities in crisis.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/california/los-angeles.html",
+    volunteerUrl: "https://www.redcross.org/local/california/los-angeles.html",
+    website: "https://www.redcross.org/local/california/los-angeles.html", city: "los angeles"
+  },
+  {
+    id: 456, name: "American Red Cross — Greater Chicago Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Greater Chicago, USA", distance: "—",
+    desc: "Providing disaster relief, home fire response, blood services, and military family support across Chicagoland — one of the Midwest's busiest Red Cross chapters responding to thousands of emergencies each year.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/illinois/greater-chicago.html",
+    volunteerUrl: "https://www.redcross.org/local/illinois/greater-chicago.html",
+    website: "https://www.redcross.org/local/illinois/greater-chicago.html", city: "chicago"
+  },
+  {
+    id: 457, name: "American Red Cross — Bay Area Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Bay Area, USA", distance: "—",
+    desc: "Responding to wildfires, earthquakes, and home fires across the San Francisco Bay Area with a volunteer network of over 3,000 trained disaster relief responders.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/california/northern-california-coastal/about-us/locations/bay-area.html",
+    volunteerUrl: "https://www.redcross.org/local/california/northern-california-coastal/about-us/locations/bay-area.html",
+    website: "https://www.redcross.org/local/california/northern-california-coastal/about-us/locations/bay-area.html", city: "san francisco"
+  },
+  {
+    id: 458, name: "American Red Cross — Texas Gulf Coast Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Texas Gulf Coast, USA", distance: "—",
+    desc: "Serving one of the nation's most disaster-prone regions — the Texas Gulf Coast Red Cross responds to hurricanes, floods, and home fires across Greater Houston with emergency shelter, food, and recovery services.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/texas/gulf-coast.html",
+    volunteerUrl: "https://www.redcross.org/local/texas/gulf-coast.html",
+    website: "https://www.redcross.org/local/texas/gulf-coast.html", city: "houston"
+  },
+  {
+    id: 459, name: "American Red Cross — Massachusetts Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Massachusetts, USA", distance: "—",
+    desc: "Providing disaster relief, home fire response, and emergency preparedness training across Massachusetts — the Greater Boston Red Cross responds to thousands of emergencies each year across New England.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/massachusetts.html",
+    volunteerUrl: "https://www.redcross.org/local/massachusetts.html",
+    website: "https://www.redcross.org/local/massachusetts.html", city: "boston"
+  },
+  {
+    id: 460, name: "American Red Cross — National Capital Region Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "National Capital Region, USA", distance: "—",
+    desc: "Serving Washington DC, Maryland, Virginia, and Delaware — the National Capital Red Cross responds to disasters of all sizes, from home fires to major regional emergencies in the nation's capital.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/dc-va-md-de.html",
+    volunteerUrl: "https://www.redcross.org/local/dc-va-md-de.html",
+    website: "https://www.redcross.org/local/dc-va-md-de.html", city: "washington"
+  },
+  {
+    id: 461, name: "American Red Cross — Central Florida Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Central Florida, USA", distance: "—",
+    desc: "Providing disaster relief and hurricane preparedness across Central Florida — the Red Cross of Central Florida responds to home fires, hurricanes, and tropical weather events affecting the Orlando metro.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/florida/central-florida.html",
+    volunteerUrl: "https://www.redcross.org/local/florida/central-florida.html",
+    website: "https://www.redcross.org/local/florida/central-florida.html", city: "orlando"
+  },
+  {
+    id: 462, name: "American Red Cross — Suncoast Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Suncoast, USA", distance: "—",
+    desc: "Serving Tampa Bay, Sarasota, and the Suncoast region with hurricane preparedness, home fire response, and disaster relief — one of Florida's most active Red Cross regions due to frequent tropical weather.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/florida/suncoast.html",
+    volunteerUrl: "https://www.redcross.org/local/florida/suncoast.html",
+    website: "https://www.redcross.org/local/florida/suncoast.html", city: "tampa"
+  },
+  {
+    id: 463, name: "American Red Cross — Long Island Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Long Island, USA", distance: "—",
+    desc: "Providing disaster relief, home fire response, and emergency preparedness across Nassau and Suffolk counties — the Long Island Red Cross serves one of the densest disaster-response territories in the Northeast.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/new-york/long-island.html",
+    volunteerUrl: "https://www.redcross.org/local/new-york/long-island.html",
+    website: "https://www.redcross.org/local/new-york/long-island.html", city: "long island"
+  },
+  {
+    id: 464, name: "American Red Cross — Nevada Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Nevada, USA", distance: "—",
+    desc: "Providing disaster relief, home fire response, and emergency preparedness training across Nevada — the Red Cross of Nevada serves Las Vegas and surrounding communities with trained disaster volunteers.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/nevada.html",
+    volunteerUrl: "https://www.redcross.org/local/nevada.html",
+    website: "https://www.redcross.org/local/nevada.html", city: "las vegas"
+  },
+  {
+    id: 465, name: "American Red Cross — Arizona Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Arizona, USA", distance: "—",
+    desc: "Responding to wildfires, extreme heat events, floods, and home fires across Arizona — the Red Cross of Arizona serves the Phoenix metro and surrounding desert communities with disaster relief and preparedness.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/arizona.html",
+    volunteerUrl: "https://www.redcross.org/local/arizona.html",
+    website: "https://www.redcross.org/local/arizona.html", city: "phoenix"
+  },
+  {
+    id: 466, name: "American Red Cross — Missouri-Arkansas Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Missouri-Arkansas, USA", distance: "—",
+    desc: "Providing disaster relief across Missouri and Arkansas — the St. Louis-area Red Cross responds to tornadoes, flooding, and home fires with emergency shelter, meals, and recovery services.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/missouri-arkansas.html",
+    volunteerUrl: "https://www.redcross.org/local/missouri-arkansas.html",
+    website: "https://www.redcross.org/local/missouri-arkansas.html", city: "st louis"
+  },
+  {
+    id: 467, name: "American Red Cross — Southeastern Pennsylvania Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Southeastern Pennsylvania, USA", distance: "—",
+    desc: "Providing disaster relief, home fire response, and blood services across the Philadelphia region — one of the Mid-Atlantic's busiest Red Cross chapters responding to thousands of emergencies annually.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/pennsylvania/southeastern-pennsylvania.html",
+    volunteerUrl: "https://www.redcross.org/local/pennsylvania/southeastern-pennsylvania.html",
+    website: "https://www.redcross.org/local/pennsylvania/southeastern-pennsylvania.html", city: "philadelphia"
+  },
+  {
+    id: 468, name: "American Red Cross — Georgia Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Georgia, USA", distance: "—",
+    desc: "Responding to tornadoes, ice storms, flooding, and home fires across Georgia — the Atlanta-area Red Cross provides emergency shelter, meals, and recovery support to communities struck by disaster.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/georgia.html",
+    volunteerUrl: "https://www.redcross.org/local/georgia.html",
+    website: "https://www.redcross.org/local/georgia.html", city: "atlanta"
+  },
+  {
+    id: 469, name: "American Red Cross — Tennessee Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Tennessee, USA", distance: "—",
+    desc: "Providing disaster relief across Tennessee — the Nashville Red Cross responds to tornadoes, flooding, and home fires, including catastrophic recovery efforts after Nashville's 2020 tornado outbreak.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/tennessee.html",
+    volunteerUrl: "https://www.redcross.org/local/tennessee.html",
+    website: "https://www.redcross.org/local/tennessee.html", city: "nashville"
+  },
+  {
+    id: 470, name: "American Red Cross — Carolinas Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Carolinas, USA", distance: "—",
+    desc: "Serving the Carolinas with disaster relief, hurricane preparedness, and home fire response — the Red Cross responds to thousands of emergencies annually across North and South Carolina.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/north-carolina.html",
+    volunteerUrl: "https://www.redcross.org/local/north-carolina.html",
+    website: "https://www.redcross.org/local/north-carolina.html", city: "charlotte"
+  },
+  {
+    id: 471, name: "American Red Cross — North Carolina Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "North Carolina, USA", distance: "—",
+    desc: "Providing disaster relief and hurricane preparedness across North Carolina — the Raleigh-area Red Cross responds to home fires, hurricanes, and flooding with trained volunteer disaster response teams.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/north-carolina.html",
+    volunteerUrl: "https://www.redcross.org/local/north-carolina.html",
+    website: "https://www.redcross.org/local/north-carolina.html", city: "raleigh"
+  },
+  {
+    id: 472, name: "American Red Cross — Piedmont Triad Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Piedmont Triad, USA", distance: "—",
+    desc: "Serving Guilford, Forsyth, and surrounding counties with disaster relief, tornado response, and home fire assistance — the Piedmont Triad Red Cross provides emergency shelter and recovery support.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/north-carolina.html",
+    volunteerUrl: "https://www.redcross.org/local/north-carolina.html",
+    website: "https://www.redcross.org/local/north-carolina.html", city: "greensboro"
+  },
+  {
+    id: 473, name: "American Red Cross — North Carolina Triangle Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "North Carolina Triangle, USA", distance: "—",
+    desc: "Providing disaster relief, home fire response, and emergency preparedness across the Triangle region — the Red Cross of North Carolina serves Durham and Wake counties with trained disaster volunteers.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/north-carolina.html",
+    volunteerUrl: "https://www.redcross.org/local/north-carolina.html",
+    website: "https://www.redcross.org/local/north-carolina.html", city: "durham"
+  },
+  {
+    id: 474, name: "American Red Cross — Eastern North Carolina Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Eastern North Carolina, USA", distance: "—",
+    desc: "Serving Eastern North Carolina with hurricane preparedness, flood response, and home fire relief — the Red Cross of Eastern NC has been a frontline responder through multiple major hurricane seasons.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/north-carolina.html",
+    volunteerUrl: "https://www.redcross.org/local/north-carolina.html",
+    website: "https://www.redcross.org/local/north-carolina.html", city: "greenville nc"
+  },
+  {
+    id: 475, name: "American Red Cross — Northwest North Carolina Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Northwest North Carolina, USA", distance: "—",
+    desc: "Providing disaster relief and tornado response across Forsyth County and Northwest NC — the Winston-Salem Red Cross responds to home fires, severe weather, and regional disasters with local volunteers.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/north-carolina.html",
+    volunteerUrl: "https://www.redcross.org/local/north-carolina.html",
+    website: "https://www.redcross.org/local/north-carolina.html", city: "winston-salem"
+  },
+  {
+    id: 476, name: "American Red Cross — Colorado Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Colorado, USA", distance: "—",
+    desc: "Responding to wildfires, floods, blizzards, and home fires across Colorado — the Denver Red Cross provides emergency shelter, meals, and recovery support to Front Range and mountain communities.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/colorado.html",
+    volunteerUrl: "https://www.redcross.org/local/colorado.html",
+    website: "https://www.redcross.org/local/colorado.html", city: "denver"
+  },
+  {
+    id: 477, name: "American Red Cross — North Texas Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "North Texas, USA", distance: "—",
+    desc: "Providing disaster relief across North Texas and DFW — the North Texas Red Cross responds to tornadoes, ice storms, and home fires with emergency shelter, food, and recovery services for affected families.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/texas/north-texas.html",
+    volunteerUrl: "https://www.redcross.org/local/texas/north-texas.html",
+    website: "https://www.redcross.org/local/texas/north-texas.html", city: "dallas"
+  },
+  {
+    id: 478, name: "American Red Cross — Pacific Northwest Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Pacific Northwest, USA", distance: "—",
+    desc: "Responding to wildfires, earthquakes, and severe weather across the Pacific Northwest — the Seattle-area Red Cross provides emergency preparedness training and disaster relief to Washington state communities.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/washington-northern-idaho.html",
+    volunteerUrl: "https://www.redcross.org/local/washington-northern-idaho.html",
+    website: "https://www.redcross.org/local/washington-northern-idaho.html", city: "seattle"
+  },
+  {
+    id: 479, name: "American Red Cross — Louisiana Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Louisiana, USA", distance: "—",
+    desc: "Serving Louisiana with hurricane preparedness, flood response, and home fire relief — the New Orleans Red Cross has been central to major disaster recovery including Hurricane Katrina and subsequent Gulf storms.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/louisiana.html",
+    volunteerUrl: "https://www.redcross.org/local/louisiana.html",
+    website: "https://www.redcross.org/local/louisiana.html", city: "new orleans"
+  },
+  {
+    id: 480, name: "American Red Cross — Ohio Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Ohio, USA", distance: "—",
+    desc: "Providing disaster relief, tornado response, and home fire assistance across Central Ohio — the Columbus Red Cross responds to thousands of emergencies annually across Franklin and surrounding counties.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/ohio/central-ohio.html",
+    volunteerUrl: "https://www.redcross.org/local/ohio/central-ohio.html",
+    website: "https://www.redcross.org/local/ohio/central-ohio.html", city: "columbus"
+  },
+  {
+    id: 481, name: "American Red Cross — San Diego/Imperial Counties Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "San Diego/Imperial Counties, USA", distance: "—",
+    desc: "Responding to wildfires, earthquakes, and home fires across San Diego and Imperial counties — the San Diego Red Cross deploys rapidly to protect communities from Southern California's frequent wildfire emergencies.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/california/san-diego-imperial-counties.html",
+    volunteerUrl: "https://www.redcross.org/local/california/san-diego-imperial-counties.html",
+    website: "https://www.redcross.org/local/california/san-diego-imperial-counties.html", city: "san diego"
+  },
+  {
+    id: 482, name: "American Red Cross — Michigan Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Michigan, USA", distance: "—",
+    desc: "Providing disaster relief, tornado response, and home fire assistance across Metropolitan Detroit and Michigan — the Red Cross of Michigan serves one of the Great Lakes region's largest metro areas.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/michigan.html",
+    volunteerUrl: "https://www.redcross.org/local/michigan.html",
+    website: "https://www.redcross.org/local/michigan.html", city: "detroit"
+  },
+  {
+    id: 483, name: "American Red Cross — Minnesota Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Minnesota, USA", distance: "—",
+    desc: "Responding to tornadoes, blizzards, flooding, and home fires across Minnesota — the Twin Cities Red Cross provides emergency shelter, meals, and recovery support to communities across the Upper Midwest.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/minnesota.html",
+    volunteerUrl: "https://www.redcross.org/local/minnesota.html",
+    website: "https://www.redcross.org/local/minnesota.html", city: "minneapolis"
+  },
+  {
+    id: 484, name: "American Red Cross — Oregon Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Oregon, USA", distance: "—",
+    desc: "Responding to wildfires, earthquakes, ice storms, and home fires across Oregon — the Portland-area Red Cross provides emergency preparedness training and disaster relief across the Pacific Northwest.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/oregon.html",
+    volunteerUrl: "https://www.redcross.org/local/oregon.html",
+    website: "https://www.redcross.org/local/oregon.html", city: "portland"
+  },
+  {
+    id: 485, name: "American Red Cross — Texas Hill Country Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Texas Hill Country, USA", distance: "—",
+    desc: "Providing disaster relief, wildfire response, and home fire assistance across Central Texas — the Austin Red Cross responds to floods, wildfires, and severe storms affecting the fastest-growing major US city.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/texas/hill-country.html",
+    volunteerUrl: "https://www.redcross.org/local/texas/hill-country.html",
+    website: "https://www.redcross.org/local/texas/hill-country.html", city: "austin"
+  },
+  {
+    id: 486, name: "American Red Cross — South Texas Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "South Texas, USA", distance: "—",
+    desc: "Serving South Texas with hurricane preparedness, flood response, and home fire relief — the San Antonio Red Cross provides emergency shelter and recovery support to communities across the Alamo City region.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/texas/south-texas.html",
+    volunteerUrl: "https://www.redcross.org/local/texas/south-texas.html",
+    website: "https://www.redcross.org/local/texas/south-texas.html", city: "san antonio"
+  },
+  {
+    id: 487, name: "American Red Cross — Maryland Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Maryland, USA", distance: "—",
+    desc: "Providing disaster relief, home fire response, and flood recovery across Maryland — the Baltimore-area Red Cross serves one of the Mid-Atlantic's most critical disaster response regions.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/dc-va-md-de.html",
+    volunteerUrl: "https://www.redcross.org/local/dc-va-md-de.html",
+    website: "https://www.redcross.org/local/dc-va-md-de.html", city: "baltimore"
+  },
+  {
+    id: 488, name: "American Red Cross — Greater Pittsburgh Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Greater Pittsburgh, USA", distance: "—",
+    desc: "Providing disaster relief, tornado and flood response, and home fire assistance across Western Pennsylvania — the Pittsburgh Red Cross has served the Steel City region for over a century.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/pennsylvania/western-pennsylvania.html",
+    volunteerUrl: "https://www.redcross.org/local/pennsylvania/western-pennsylvania.html",
+    website: "https://www.redcross.org/local/pennsylvania/western-pennsylvania.html", city: "pittsburgh"
+  },
+  {
+    id: 489, name: "American Red Cross — Missouri-Arkansas Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Missouri-Arkansas, USA", distance: "—",
+    desc: "Responding to tornadoes, flooding, and home fires across the Kansas City metro — the Missouri Red Cross provides emergency shelter, meals, and recovery support to communities on both sides of the state line.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/missouri-arkansas.html",
+    volunteerUrl: "https://www.redcross.org/local/missouri-arkansas.html",
+    website: "https://www.redcross.org/local/missouri-arkansas.html", city: "kansas city"
+  },
+  {
+    id: 490, name: "American Red Cross — Indiana Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Indiana, USA", distance: "—",
+    desc: "Providing disaster relief, tornado response, and home fire assistance across Indiana — the Indianapolis Red Cross responds to thousands of emergencies annually across Marion and surrounding counties.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/indiana.html",
+    volunteerUrl: "https://www.redcross.org/local/indiana.html",
+    website: "https://www.redcross.org/local/indiana.html", city: "indianapolis"
+  },
+  {
+    id: 491, name: "American Red Cross — Northeast Florida Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Northeast Florida, USA", distance: "—",
+    desc: "Serving Northeast Florida with hurricane preparedness, flood response, and home fire relief — the Jacksonville Red Cross is a frontline responder for one of Florida's most hurricane-vulnerable metro areas.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/florida/northeast-florida.html",
+    volunteerUrl: "https://www.redcross.org/local/florida/northeast-florida.html",
+    website: "https://www.redcross.org/local/florida/northeast-florida.html", city: "jacksonville"
+  },
+  {
+    id: 492, name: "American Red Cross — Sierra Delta Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Sierra Delta, USA", distance: "—",
+    desc: "Responding to wildfires, flooding, and home fires across the Sacramento Valley and Sierra foothills — the Sierra Delta Red Cross provides emergency shelter and disaster relief to California's capital region.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/california/sierra-delta.html",
+    volunteerUrl: "https://www.redcross.org/local/california/sierra-delta.html",
+    website: "https://www.redcross.org/local/california/sierra-delta.html", city: "sacramento"
+  },
+  {
+    id: 493, name: "American Red Cross — Ohio River Valley Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Ohio River Valley, USA", distance: "—",
+    desc: "Providing disaster relief, flood response, and home fire assistance across the tristate Cincinnati area — the Ohio River Valley Red Cross responds to Ohio River flooding and regional disasters each year.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/ohio/ohio-river-valley.html",
+    volunteerUrl: "https://www.redcross.org/local/ohio/ohio-river-valley.html",
+    website: "https://www.redcross.org/local/ohio/ohio-river-valley.html", city: "cincinnati"
+  },
+  {
+    id: 494, name: "American Red Cross — Northeast Ohio Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Northeast Ohio, USA", distance: "—",
+    desc: "Serving Northeast Ohio with disaster relief, lake-effect storm response, and home fire assistance — the Cleveland Red Cross provides emergency shelter and recovery support across the Great Lakes region.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/ohio/northeast-ohio.html",
+    volunteerUrl: "https://www.redcross.org/local/ohio/northeast-ohio.html",
+    website: "https://www.redcross.org/local/ohio/northeast-ohio.html", city: "cleveland"
+  },
+  {
+    id: 495, name: "American Red Cross — Kentucky Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Kentucky, USA", distance: "—",
+    desc: "Responding to tornadoes, flooding, and home fires across Kentuckiana — the Louisville Red Cross has served the Bluegrass State since 1917, providing emergency shelter and recovery across five Kentucky chapters.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/kentucky.html",
+    volunteerUrl: "https://www.redcross.org/local/kentucky.html",
+    website: "https://www.redcross.org/local/kentucky.html", city: "louisville"
+  },
+  {
+    id: 496, name: "American Red Cross — Wisconsin Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Wisconsin, USA", distance: "—",
+    desc: "Providing disaster relief, tornado and flood response, and home fire assistance across Wisconsin — the Milwaukee Red Cross responds to emergencies across the Badger State with trained local volunteers.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/wisconsin.html",
+    volunteerUrl: "https://www.redcross.org/local/wisconsin.html",
+    website: "https://www.redcross.org/local/wisconsin.html", city: "milwaukee"
+  },
+  {
+    id: 497, name: "American Red Cross — Utah Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Utah, USA", distance: "—",
+    desc: "Responding to wildfires, floods, earthquakes, and home fires across Utah — the Salt Lake City Red Cross provides emergency shelter and disaster recovery support across the Intermountain West.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/utah.html",
+    volunteerUrl: "https://www.redcross.org/local/utah.html",
+    website: "https://www.redcross.org/local/utah.html", city: "salt lake city"
+  },
+  {
+    id: 498, name: "American Red Cross — Oklahoma Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Oklahoma, USA", distance: "—",
+    desc: "Serving one of the nation's most tornado-prone regions — the Oklahoma City Red Cross responds to tornadoes, severe storms, and home fires with emergency shelter and recovery for Oklahoma communities.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/oklahoma.html",
+    volunteerUrl: "https://www.redcross.org/local/oklahoma.html",
+    website: "https://www.redcross.org/local/oklahoma.html", city: "oklahoma city"
+  },
+  {
+    id: 499, name: "American Red Cross — Virginia Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Virginia, USA", distance: "—",
+    desc: "Providing disaster relief, hurricane response, and home fire assistance across Virginia — the Richmond-area Red Cross responds to flooding, snowstorms, and regional disasters affecting Central Virginia.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/dc-va-md-de.html",
+    volunteerUrl: "https://www.redcross.org/local/dc-va-md-de.html",
+    website: "https://www.redcross.org/local/dc-va-md-de.html", city: "richmond"
+  },
+  {
+    id: 500, name: "American Red Cross — Tennessee Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Tennessee, USA", distance: "—",
+    desc: "Responding to tornadoes, flooding, and home fires across the Mid-South — the Memphis Red Cross provides emergency shelter, meals, and recovery support to families affected by disasters across the tristate region.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/tennessee.html",
+    volunteerUrl: "https://www.redcross.org/local/tennessee.html",
+    website: "https://www.redcross.org/local/tennessee.html", city: "memphis"
+  },
+  {
+    id: 501, name: "American Red Cross — Tidewater Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Tidewater, USA", distance: "—",
+    desc: "Serving Hampton Roads with hurricane preparedness, flood response, and home fire relief — the Tidewater Red Cross is a critical resource for one of the East Coast's most hurricane-vulnerable coastal metro areas.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/dc-va-md-de.html",
+    volunteerUrl: "https://www.redcross.org/local/dc-va-md-de.html",
+    website: "https://www.redcross.org/local/dc-va-md-de.html", city: "virginia beach"
+  },
+  {
+    id: 502, name: "American Red Cross — Western New York Chapter", icon: "🚨", iconClass: "card-icon-coral",
+    location: "Western New York, USA", distance: "—",
+    desc: "Responding to lake-effect blizzards, flooding, and home fires across Western New York — the Buffalo Red Cross provides emergency shelter and disaster recovery to communities along the Great Lakes.",
+    tags: ["Disaster Relief", "Emergency Shelter", "Hurricane Response"], category: ["disaster relief", "housing", "health"],
+    urgent: false,
+    needs: ["Monetary donations", "Volunteer disaster responders", "Blood donations"],
+    impact: "💡 The American Red Cross responds to a disaster every 8 minutes in the US — your gift and your volunteer hours help your neighbors recover from home fires, hurricanes, floods, and more.",
+    donateUrl: "https://www.redcross.org/local/new-york/western-new-york.html",
+    volunteerUrl: "https://www.redcross.org/local/new-york/western-new-york.html",
+    website: "https://www.redcross.org/local/new-york/western-new-york.html", city: "buffalo"
+  }
 ];
 
 let activeFilter = 'all';
@@ -4975,7 +5583,7 @@ let currentCity = 'Miami, FL';
 // Derived site-wide totals — always accurate
 const TOTAL_CHARITIES = charities.length;
 const TOTAL_CITIES    = 637;
-const TOTAL_CATS      = 14;
+const TOTAL_CATS      = 15;
 
 function animateStat(el, target) {
   if (!el) return;
@@ -4995,7 +5603,7 @@ function animateStat(el, target) {
 
 let statsInitialized = false;
 
-function updateStats(cityKey) {
+function updateStats(cityKey, filteredList) {
   const numEl     = document.getElementById('statCharities');
   const numLbl    = document.getElementById('statCharitiesLabel');
   const midEl     = document.getElementById('statCities');
@@ -5013,10 +5621,12 @@ function updateStats(cityKey) {
   }
 
   if (cityKey) {
-    const cityList  = charities.filter(c => c.city === cityKey);
-    const cityCount = cityList.length;
-    const catCount  = [...new Set(cityList.flatMap(c => c.category))].length;
-    const urgent    = cityList.filter(c => c.urgent).length;
+    // Use filteredList if provided (e.g. when a category pill is active),
+    // otherwise use the full city list
+    const cityList   = filteredList !== undefined ? filteredList : charities.filter(c => c.city === cityKey);
+    const cityCount  = cityList.length;
+    const catCount   = [...new Set(cityList.flatMap(c => c.category))].length;
+    const urgent     = cityList.filter(c => c.urgent).length;
     animateStat(numEl,  cityCount); numLbl.textContent  = 'Charities';
     animateStat(midEl,  urgent);    midLbl.textContent  = urgent === 1 ? 'Urgent Need' : 'Urgent Needs';
     animateStat(catsEl, catCount);  catsLbl.textContent = 'Cause Categories';
@@ -5071,6 +5681,23 @@ function applyManualCity() {
 }
 
 /* ---- CHARITY RENDERING ---- */
+const CAT_LABELS = {
+  'food':             '🥗 Food',
+  'housing':          '🏠 Housing',
+  'health':           '❤️‍🩹 Health',
+  'children':         '👶 Children',
+  'animals':          '🐾 Animals',
+  'education':        '📚 Education',
+  'hygiene':          '🧴 Hygiene',
+  'mental health':    '🧠 Mental Health',
+  'job training':     '💼 Job Training',
+  'domestic violence':'🌸 Domestic Violence',
+  'veterans':         '🎖 Veterans',
+  'seniors':          '👴 Seniors',
+  'lgbtq':            '🏳️‍🌈 LGBTQ+',
+  'disaster relief':  '🚨 Disaster Relief',
+};
+
 function renderCharities(list, searchedCity) {
   const grid = document.getElementById('charityGrid');
   const displayCity = searchedCity || currentCity;
@@ -5097,6 +5724,7 @@ function renderCharities(list, searchedCity) {
         ${c.desc}
       </div>
       <div class="card-tags">${c.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <div class="card-cats">${c.category.map(cat => `<span class="card-cat-pill" onclick="setFilterFromCard('${cat}',event)">${CAT_LABELS[cat] || cat}</span>`).join('')}</div>
       <div class="card-footer">
         <button class="card-btn card-btn-primary" onclick="openCharityModal(${c.id})">💚 Donate</button>
         <button class="card-btn card-btn-secondary" onclick="openCharityModal(${c.id})">Learn More</button>
@@ -5283,13 +5911,13 @@ function applyFilters(cityStr, q, shouldScroll) {
       c.location.toLowerCase().includes(q) ||
       c.desc.toLowerCase().includes(q)
     );
-    updateStats(cityKey);
+    updateStats(cityKey, list);
     renderCharities(list, cityStr);
   } else {
     if (!cityKey) { updateStats(null); renderCharities([], cityStr); return; }
     list = list.filter(c => c.city === cityKey);
     if (activeFilter !== 'all') list = list.filter(c => c.category.includes(activeFilter));
-    updateStats(cityKey);
+    updateStats(cityKey, list);
     renderCharities(list, cityStr);
   }
 
@@ -5424,24 +6052,27 @@ function setFilter(f, btn) {
   document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
 
+  const q = document.getElementById('searchInput').value.toLowerCase();
+
   if (f === 'all') {
-    // All Causes — always revert to current city (geolocated or searched)
-    userHasSearchedCity = false;
-    const q = document.getElementById('searchInput').value.toLowerCase();
-    applyFilters(currentCity, q, false);
-  } else if (userHasSearchedCity) {
-    // User typed a city — filter that cause within their city
-    const q = document.getElementById('searchInput').value.toLowerCase();
+    // All Causes — show all charities for current city (geo or searched)
     applyFilters(currentCity, q, false);
   } else {
-    // No city typed — show this cause site-wide
-    const filtered = charities.filter(c => c.category.includes(f));
-    const label = btn.textContent.trim().replace(/^[^\w]+/, '').trim();
-    updateStats(null);
-    renderCharities(filtered, 'all cities');
-    document.getElementById('resultsCount').textContent =
-      'Showing ' + filtered.length + ' ' + label + ' charities across all cities';
+    // Any specific category — always filter within current city
+    // currentCity is set by either geolocation or user search, so it's always valid
+    applyFilters(currentCity, q, false);
   }
+}
+
+function setFilterFromCard(cat, event) {
+  event.stopPropagation();
+  // Find the matching pill button and activate it
+  const pills = document.querySelectorAll('.pill');
+  let matched = null;
+  pills.forEach(p => {
+    if (p.getAttribute('onclick') && p.getAttribute('onclick').includes(`'${cat}'`)) matched = p;
+  });
+  if (matched) setFilter(cat, matched);
 }
 
 function switchTab(tab) {
