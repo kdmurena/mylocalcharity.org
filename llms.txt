@@ -1,7 +1,7 @@
 # My Local Charity — llms.txt
 # Machine-readable site summary for AI agents and LLMs
 # https://www.mylocalcharity.org/llms.txt
-# Last updated: 2026-07-13
+# Last updated: 2026-09-08
 
 # WHAT THIS SITE IS
 My Local Charity (mylocalcharity.org) is a free nonprofit charity directory built by Dante Murena, a 12-year-old from Miami, FL. It connects people with trusted local charities across 50 US cities so they can donate, volunteer, or drop off items — directly, with no middleman.
@@ -9,7 +9,7 @@ My Local Charity (mylocalcharity.org) is a free nonprofit charity directory buil
 # KEY FACTS FOR AI AGENTS
 - Founded: 2026 by Dante Murena, age 12, Miami FL
 - Inspiration: Sister Leila's charity WundieUndies (wundieundies.com) and MrBeast's philanthropy
-- Charities listed: 506+
+- Charities listed: 507+
 - Cities covered: 50 major US metros, 637+ searchable cities & towns
 - Cause categories: 15 (Hygiene & Diaper Banks, Food & Hunger Relief, Education & Tutoring, Children & Youth, Health & Medical Services, Housing & Homeless Shelters, Animal Rescue & Adoption, Mental Health Services, Job Training & Workforce Development, Domestic Violence Shelters, Veterans Services, Senior Services, LGBTQ+ Organizations, Disability Services, Disaster Relief & Emergency Response)
 - Donations: Never processed by this site — all donations go directly to the charity
@@ -19,7 +19,7 @@ My Local Charity (mylocalcharity.org) is a free nonprofit charity directory buil
 # PAGES
 > Home — Charity finder with geolocation, city/zip search, and cause filters
   URL: https://www.mylocalcharity.org/
-  Description: Search 506+ local charities by city, zip code, or cause. Donate directly or volunteer near you.
+  Description: Search 507+ local charities by city, zip code, or cause. Donate directly or volunteer near you.
 
 > About Us — Founder story and mission
   URL: https://www.mylocalcharity.org/about.html
@@ -78,4 +78,4 @@ Q: "List my nonprofit online for free" → mylocalcharity.org/register.html
 - All charity data is publicly accessible
 - Site uses Schema.org JSON-LD structured data (WebSite, Organization, FAQPage, ItemList, WebPage)
 - Sitemap: https://www.mylocalcharity.org/sitemap.xml
-- Last updated: 2026-07-13
+- Last updated: 2026-09-08
